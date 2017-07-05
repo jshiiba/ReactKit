@@ -1,0 +1,433 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D15103881F0D1AC800213882 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15103871F0D1AC800213882 /* AppDelegate.swift */; };
+		D151038A1F0D1AC800213882 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15103891F0D1AC800213882 /* ViewController.swift */; };
+		D151038D1F0D1AC800213882 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D151038B1F0D1AC800213882 /* Main.storyboard */; };
+		D151038F1F0D1AC800213882 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D151038E1F0D1AC800213882 /* Assets.xcassets */; };
+		D15103921F0D1AC800213882 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D15103901F0D1AC800213882 /* LaunchScreen.storyboard */; };
+		D151039D1F0D1AC800213882 /* ReactKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D151039C1F0D1AC800213882 /* ReactKitTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D15103991F0D1AC800213882 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D151037C1F0D1AC800213882 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D15103831F0D1AC800213882;
+			remoteInfo = ReactKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D15103841F0D1AC800213882 /* ReactKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReactKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D15103871F0D1AC800213882 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D15103891F0D1AC800213882 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D151038C1F0D1AC800213882 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D151038E1F0D1AC800213882 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D15103911F0D1AC800213882 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D15103931F0D1AC800213882 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D15103981F0D1AC800213882 /* ReactKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReactKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D151039C1F0D1AC800213882 /* ReactKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactKitTests.swift; sourceTree = "<group>"; };
+		D151039E1F0D1AC800213882 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D15103811F0D1AC800213882 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D15103951F0D1AC800213882 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D151037B1F0D1AC800213882 = {
+			isa = PBXGroup;
+			children = (
+				D15103861F0D1AC800213882 /* ReactKit */,
+				D151039B1F0D1AC800213882 /* ReactKitTests */,
+				D15103851F0D1AC800213882 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D15103851F0D1AC800213882 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D15103841F0D1AC800213882 /* ReactKit.app */,
+				D15103981F0D1AC800213882 /* ReactKitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D15103861F0D1AC800213882 /* ReactKit */ = {
+			isa = PBXGroup;
+			children = (
+				D15103871F0D1AC800213882 /* AppDelegate.swift */,
+				D15103891F0D1AC800213882 /* ViewController.swift */,
+				D151038B1F0D1AC800213882 /* Main.storyboard */,
+				D151038E1F0D1AC800213882 /* Assets.xcassets */,
+				D15103901F0D1AC800213882 /* LaunchScreen.storyboard */,
+				D15103931F0D1AC800213882 /* Info.plist */,
+			);
+			path = ReactKit;
+			sourceTree = "<group>";
+		};
+		D151039B1F0D1AC800213882 /* ReactKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				D151039C1F0D1AC800213882 /* ReactKitTests.swift */,
+				D151039E1F0D1AC800213882 /* Info.plist */,
+			);
+			path = ReactKitTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D15103831F0D1AC800213882 /* ReactKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D15103A11F0D1AC800213882 /* Build configuration list for PBXNativeTarget "ReactKit" */;
+			buildPhases = (
+				D15103801F0D1AC800213882 /* Sources */,
+				D15103811F0D1AC800213882 /* Frameworks */,
+				D15103821F0D1AC800213882 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ReactKit;
+			productName = ReactKit;
+			productReference = D15103841F0D1AC800213882 /* ReactKit.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D15103971F0D1AC800213882 /* ReactKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D15103A41F0D1AC800213882 /* Build configuration list for PBXNativeTarget "ReactKitTests" */;
+			buildPhases = (
+				D15103941F0D1AC800213882 /* Sources */,
+				D15103951F0D1AC800213882 /* Frameworks */,
+				D15103961F0D1AC800213882 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D151039A1F0D1AC800213882 /* PBXTargetDependency */,
+			);
+			name = ReactKitTests;
+			productName = ReactKitTests;
+			productReference = D15103981F0D1AC800213882 /* ReactKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D151037C1F0D1AC800213882 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0900;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = Shiiba;
+				TargetAttributes = {
+					D15103831F0D1AC800213882 = {
+						CreatedOnToolsVersion = 9.0;
+					};
+					D15103971F0D1AC800213882 = {
+						CreatedOnToolsVersion = 9.0;
+						TestTargetID = D15103831F0D1AC800213882;
+					};
+				};
+			};
+			buildConfigurationList = D151037F1F0D1AC800213882 /* Build configuration list for PBXProject "ReactKit" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D151037B1F0D1AC800213882;
+			productRefGroup = D15103851F0D1AC800213882 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D15103831F0D1AC800213882 /* ReactKit */,
+				D15103971F0D1AC800213882 /* ReactKitTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D15103821F0D1AC800213882 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D15103921F0D1AC800213882 /* LaunchScreen.storyboard in Resources */,
+				D151038F1F0D1AC800213882 /* Assets.xcassets in Resources */,
+				D151038D1F0D1AC800213882 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D15103961F0D1AC800213882 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D15103801F0D1AC800213882 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D151038A1F0D1AC800213882 /* ViewController.swift in Sources */,
+				D15103881F0D1AC800213882 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D15103941F0D1AC800213882 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D151039D1F0D1AC800213882 /* ReactKitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D151039A1F0D1AC800213882 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D15103831F0D1AC800213882 /* ReactKit */;
+			targetProxy = D15103991F0D1AC800213882 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D151038B1F0D1AC800213882 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D151038C1F0D1AC800213882 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D15103901F0D1AC800213882 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D15103911F0D1AC800213882 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D151039F1F0D1AC800213882 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D15103A01F0D1AC800213882 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D15103A21F0D1AC800213882 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ReactKit/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Shiiba.ReactKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D15103A31F0D1AC800213882 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ReactKit/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Shiiba.ReactKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D15103A51F0D1AC800213882 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ReactKitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Shiiba.ReactKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ReactKit.app/ReactKit";
+			};
+			name = Debug;
+		};
+		D15103A61F0D1AC800213882 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ReactKitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Shiiba.ReactKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ReactKit.app/ReactKit";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D151037F1F0D1AC800213882 /* Build configuration list for PBXProject "ReactKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D151039F1F0D1AC800213882 /* Debug */,
+				D15103A01F0D1AC800213882 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D15103A11F0D1AC800213882 /* Build configuration list for PBXNativeTarget "ReactKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D15103A21F0D1AC800213882 /* Debug */,
+				D15103A31F0D1AC800213882 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D15103A41F0D1AC800213882 /* Build configuration list for PBXNativeTarget "ReactKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D15103A51F0D1AC800213882 /* Debug */,
+				D15103A61F0D1AC800213882 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D151037C1F0D1AC800213882 /* Project object */;
+}
