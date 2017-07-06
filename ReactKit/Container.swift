@@ -15,13 +15,16 @@ class Container: Component {
         self.components = components
     }
 
-    func render(props: PropType) -> UIView {
+    /**
+     TODO: layout calculations for subviews
+     */
+    func render() -> UIView {
 
         let view = UIView()
         var currentY: CGFloat = 0
 
         components.forEach { component in
-            let subView = component.render(props: NilProps())
+            let subView = component.render()
             subView.frame = CGRect(x: 0, y: currentY, width: subView.frame.width, height: subView.frame.height)
             view.addSubview(subView)
             currentY = currentY + subView.frame.height

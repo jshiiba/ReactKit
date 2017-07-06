@@ -14,7 +14,7 @@ protocol LabelPropType: PropType {
 
 class Label: Component {
 
-    func render(props: PropType) -> UIView {
+    func render() -> UIView {
         return GenericComponent<UILabel> { label in
             label.text = "Hello world" // props.title
         }.view

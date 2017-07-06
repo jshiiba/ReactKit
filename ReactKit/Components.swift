@@ -16,7 +16,7 @@ struct NilProps: PropType {}
  All components must be able to return a UIView
  */
 protocol Component {
-    func render(props: PropType) -> UIView
+    func render() -> UIView
 }
 
 
@@ -31,21 +31,32 @@ class GenericComponent<V: UIView>: Component {
         config(self.view)
     }
 
-    func render(props: PropType) -> UIView {
+    func render() -> UIView {
         return self.view
     }
 }
 
+protocol MyComponentPropType: PropType {
+    var title: String { get }
+    var backgroundColor: UIColor { get }
+}
+
 class MyComponent: Component {
-    func render(props: PropType) -> UIView {
+    let props: MyComponentPropType
+
+    init(props: MyComponentPropType) {
+        self.props = props
+    }
+
+    func render() -> UIView {
+
         let view = UIView()
         view.frame = CGRect(x: 0, y: 0, width: 200, height: 300)
-        view.backgroundColor = .gray
 
         let label = GenericComponent<UILabel> { (label) in
-            label.text = "Hello world"  // label.text = props.title
+            label.text = props.title
             label.frame = CGRect(x: 0, y: 0, width: 200, height: 300)
-            label.backgroundColor = .green
+            label.backgroundColor = props.backgroundColor
         }
 
         view.addSubview(label.view)
