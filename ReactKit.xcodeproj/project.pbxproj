@@ -13,6 +13,12 @@
 		D151038F1F0D1AC800213882 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D151038E1F0D1AC800213882 /* Assets.xcassets */; };
 		D15103921F0D1AC800213882 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D15103901F0D1AC800213882 /* LaunchScreen.storyboard */; };
 		D151039D1F0D1AC800213882 /* ReactKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D151039C1F0D1AC800213882 /* ReactKitTests.swift */; };
+		D1EB7BA11F0D3F9700739A67 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EB7BA01F0D3F9700739A67 /* Components.swift */; };
+		D1EB7BA31F0E84A200739A67 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EB7BA21F0E84A200739A67 /* Node.swift */; };
+		D1EB7BA51F0E87DC00739A67 /* ComponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EB7BA41F0E87DC00739A67 /* ComponentViewController.swift */; };
+		D1EB7BA81F0E890800739A67 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EB7BA71F0E890800739A67 /* Label.swift */; };
+		D1EB7BAA1F0E8C9400739A67 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EB7BA91F0E8C9400739A67 /* Renderer.swift */; };
+		D1EB7BAC1F0EA9DA00739A67 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EB7BAB1F0EA9DA00739A67 /* Container.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +42,12 @@
 		D15103981F0D1AC800213882 /* ReactKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReactKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D151039C1F0D1AC800213882 /* ReactKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactKitTests.swift; sourceTree = "<group>"; };
 		D151039E1F0D1AC800213882 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D1EB7BA01F0D3F9700739A67 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		D1EB7BA21F0E84A200739A67 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		D1EB7BA41F0E87DC00739A67 /* ComponentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentViewController.swift; sourceTree = "<group>"; };
+		D1EB7BA71F0E890800739A67 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		D1EB7BA91F0E8C9400739A67 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		D1EB7BAB1F0EA9DA00739A67 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,11 +90,16 @@
 			isa = PBXGroup;
 			children = (
 				D15103871F0D1AC800213882 /* AppDelegate.swift */,
-				D15103891F0D1AC800213882 /* ViewController.swift */,
+				D1EB7BA61F0E87FF00739A67 /* Controller */,
 				D151038B1F0D1AC800213882 /* Main.storyboard */,
 				D151038E1F0D1AC800213882 /* Assets.xcassets */,
 				D15103901F0D1AC800213882 /* LaunchScreen.storyboard */,
 				D15103931F0D1AC800213882 /* Info.plist */,
+				D1EB7BAB1F0EA9DA00739A67 /* Container.swift */,
+				D1EB7BA01F0D3F9700739A67 /* Components.swift */,
+				D1EB7BA21F0E84A200739A67 /* Node.swift */,
+				D1EB7BA71F0E890800739A67 /* Label.swift */,
+				D1EB7BA91F0E8C9400739A67 /* Renderer.swift */,
 			);
 			path = ReactKit;
 			sourceTree = "<group>";
@@ -94,6 +111,15 @@
 				D151039E1F0D1AC800213882 /* Info.plist */,
 			);
 			path = ReactKitTests;
+			sourceTree = "<group>";
+		};
+		D1EB7BA61F0E87FF00739A67 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D15103891F0D1AC800213882 /* ViewController.swift */,
+				D1EB7BA41F0E87DC00739A67 /* ComponentViewController.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,7 +224,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D151038A1F0D1AC800213882 /* ViewController.swift in Sources */,
+				D1EB7BA51F0E87DC00739A67 /* ComponentViewController.swift in Sources */,
+				D1EB7BAA1F0E8C9400739A67 /* Renderer.swift in Sources */,
+				D1EB7BA81F0E890800739A67 /* Label.swift in Sources */,
+				D1EB7BA11F0D3F9700739A67 /* Components.swift in Sources */,
+				D1EB7BAC1F0EA9DA00739A67 /* Container.swift in Sources */,
 				D15103881F0D1AC800213882 /* AppDelegate.swift in Sources */,
+				D1EB7BA31F0E84A200739A67 /* Node.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +450,7 @@
 				D15103A31F0D1AC800213882 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D15103A41F0D1AC800213882 /* Build configuration list for PBXNativeTarget "ReactKitTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +459,7 @@
 				D15103A61F0D1AC800213882 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
