@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D11148411F111C3000CC37AA /* BaseComponentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11148401F111C3000CC37AA /* BaseComponentCell.swift */; };
+		D11148431F11295100CC37AA /* ComponentDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11148421F11295100CC37AA /* ComponentDataSource.swift */; };
+		D11148451F11307000CC37AA /* UIButton+React.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11148441F11307000CC37AA /* UIButton+React.swift */; };
+		D11148481F11322700CC37AA /* ComponentFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11148471F11322700CC37AA /* ComponentFlowLayout.swift */; };
+		D111484A1F1132DB00CC37AA /* ComponentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11148491F1132DB00CC37AA /* ComponentRenderer.swift */; };
 		D15103881F0D1AC800213882 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15103871F0D1AC800213882 /* AppDelegate.swift */; };
 		D151038A1F0D1AC800213882 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15103891F0D1AC800213882 /* ViewController.swift */; };
 		D151038D1F0D1AC800213882 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D151038B1F0D1AC800213882 /* Main.storyboard */; };
@@ -15,7 +20,6 @@
 		D151039D1F0D1AC800213882 /* ReactKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D151039C1F0D1AC800213882 /* ReactKitTests.swift */; };
 		D1EB7BA11F0D3F9700739A67 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EB7BA01F0D3F9700739A67 /* Components.swift */; };
 		D1EB7BA31F0E84A200739A67 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EB7BA21F0E84A200739A67 /* Node.swift */; };
-		D1EB7BA51F0E87DC00739A67 /* ComponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EB7BA41F0E87DC00739A67 /* ComponentViewController.swift */; };
 		D1EB7BA81F0E890800739A67 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EB7BA71F0E890800739A67 /* Label.swift */; };
 		D1EB7BAA1F0E8C9400739A67 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EB7BA91F0E8C9400739A67 /* Renderer.swift */; };
 		D1EB7BAC1F0EA9DA00739A67 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EB7BAB1F0EA9DA00739A67 /* Container.swift */; };
@@ -32,6 +36,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D11148401F111C3000CC37AA /* BaseComponentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseComponentCell.swift; sourceTree = "<group>"; };
+		D11148421F11295100CC37AA /* ComponentDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentDataSource.swift; sourceTree = "<group>"; };
+		D11148441F11307000CC37AA /* UIButton+React.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+React.swift"; sourceTree = "<group>"; };
+		D11148471F11322700CC37AA /* ComponentFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentFlowLayout.swift; sourceTree = "<group>"; };
+		D11148491F1132DB00CC37AA /* ComponentRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentRenderer.swift; sourceTree = "<group>"; };
 		D15103841F0D1AC800213882 /* ReactKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReactKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D15103871F0D1AC800213882 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D15103891F0D1AC800213882 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -44,7 +53,6 @@
 		D151039E1F0D1AC800213882 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1EB7BA01F0D3F9700739A67 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
 		D1EB7BA21F0E84A200739A67 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
-		D1EB7BA41F0E87DC00739A67 /* ComponentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentViewController.swift; sourceTree = "<group>"; };
 		D1EB7BA71F0E890800739A67 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		D1EB7BA91F0E8C9400739A67 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 		D1EB7BAB1F0EA9DA00739A67 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
@@ -68,6 +76,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D111483F1F111C0100CC37AA /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				D1EB7BAB1F0EA9DA00739A67 /* Container.swift */,
+				D1EB7BA01F0D3F9700739A67 /* Components.swift */,
+				D1EB7BA21F0E84A200739A67 /* Node.swift */,
+				D1EB7BA71F0E890800739A67 /* Label.swift */,
+				D1EB7BA91F0E8C9400739A67 /* Renderer.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		D11148461F11307400CC37AA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D11148441F11307000CC37AA /* UIButton+React.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		D151037B1F0D1AC800213882 = {
 			isa = PBXGroup;
 			children = (
@@ -90,16 +118,14 @@
 			isa = PBXGroup;
 			children = (
 				D15103871F0D1AC800213882 /* AppDelegate.swift */,
+				D11148401F111C3000CC37AA /* BaseComponentCell.swift */,
 				D1EB7BA61F0E87FF00739A67 /* Controller */,
+				D111483F1F111C0100CC37AA /* Components */,
 				D151038B1F0D1AC800213882 /* Main.storyboard */,
 				D151038E1F0D1AC800213882 /* Assets.xcassets */,
 				D15103901F0D1AC800213882 /* LaunchScreen.storyboard */,
 				D15103931F0D1AC800213882 /* Info.plist */,
-				D1EB7BAB1F0EA9DA00739A67 /* Container.swift */,
-				D1EB7BA01F0D3F9700739A67 /* Components.swift */,
-				D1EB7BA21F0E84A200739A67 /* Node.swift */,
-				D1EB7BA71F0E890800739A67 /* Label.swift */,
-				D1EB7BA91F0E8C9400739A67 /* Renderer.swift */,
+				D11148461F11307400CC37AA /* Extensions */,
 			);
 			path = ReactKit;
 			sourceTree = "<group>";
@@ -117,7 +143,9 @@
 			isa = PBXGroup;
 			children = (
 				D15103891F0D1AC800213882 /* ViewController.swift */,
-				D1EB7BA41F0E87DC00739A67 /* ComponentViewController.swift */,
+				D11148421F11295100CC37AA /* ComponentDataSource.swift */,
+				D11148471F11322700CC37AA /* ComponentFlowLayout.swift */,
+				D11148491F1132DB00CC37AA /* ComponentRenderer.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -224,13 +252,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				D151038A1F0D1AC800213882 /* ViewController.swift in Sources */,
-				D1EB7BA51F0E87DC00739A67 /* ComponentViewController.swift in Sources */,
+				D11148411F111C3000CC37AA /* BaseComponentCell.swift in Sources */,
 				D1EB7BAA1F0E8C9400739A67 /* Renderer.swift in Sources */,
+				D11148431F11295100CC37AA /* ComponentDataSource.swift in Sources */,
+				D111484A1F1132DB00CC37AA /* ComponentRenderer.swift in Sources */,
 				D1EB7BA81F0E890800739A67 /* Label.swift in Sources */,
 				D1EB7BA11F0D3F9700739A67 /* Components.swift in Sources */,
 				D1EB7BAC1F0EA9DA00739A67 /* Container.swift in Sources */,
+				D11148481F11322700CC37AA /* ComponentFlowLayout.swift in Sources */,
 				D15103881F0D1AC800213882 /* AppDelegate.swift in Sources */,
 				D1EB7BA31F0E84A200739A67 /* Node.swift in Sources */,
+				D11148451F11307000CC37AA /* UIButton+React.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

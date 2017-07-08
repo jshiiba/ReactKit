@@ -9,7 +9,12 @@
 import UIKit
 
 class Container: Component {
+
     var components: [Component]
+
+    var childrenCount: Int {
+        return components.count
+    }
 
     init(components: [Component]) {
         self.components = components
@@ -29,6 +34,7 @@ class Container: Component {
             view.addSubview(subView)
             currentY = currentY + subView.frame.height
         }
+        view.sizeToFit()
 
         return view
     }

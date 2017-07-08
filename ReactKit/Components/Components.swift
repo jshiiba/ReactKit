@@ -51,15 +51,16 @@ class MyComponent: Component {
     func render() -> UIView {
 
         let view = UIView()
-        view.frame = CGRect(x: 0, y: 0, width: 200, height: 300)
 
         let label = GenericComponent<UILabel> { (label) in
             label.text = props.title
-            label.frame = CGRect(x: 0, y: 0, width: 200, height: 300)
+//            label.frame = CGRect(x: 0, y: 0, width: 200, height: 300)
             label.backgroundColor = props.backgroundColor
+            label.sizeToFit()
         }
 
         view.addSubview(label.view)
+
         return view
     }
 }
