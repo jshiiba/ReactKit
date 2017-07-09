@@ -9,7 +9,6 @@
 import UIKit
 
 protocol PropType {}
-
 struct NilProps: PropType {}
 
 /**
@@ -18,7 +17,6 @@ struct NilProps: PropType {}
 protocol Component {
     func render() -> UIView
 }
-
 
 class GenericComponent<V: UIView>: Component {
 
@@ -54,7 +52,6 @@ class MyComponent: Component {
 
         let label = GenericComponent<UILabel> { (label) in
             label.text = props.title
-//            label.frame = CGRect(x: 0, y: 0, width: 200, height: 300)
             label.backgroundColor = props.backgroundColor
             label.sizeToFit()
         }
