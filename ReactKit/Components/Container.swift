@@ -23,19 +23,22 @@ class Container: Component {
     /**
      TODO: layout calculations for subviews
      */
-    func render() -> UIView {
-
+    func render(props: PropType) -> [Renderable] {
         let view = UIView()
         var currentY: CGFloat = 0
 
-        components.forEach { component in
-            let subView = component.render()
-            subView.frame = CGRect(x: 0, y: currentY, width: subView.frame.width, height: subView.frame.height)
-            view.addSubview(subView)
-            currentY = currentY + subView.frame.height
-        }
+//        components.forEach { component in
+//            guard let subView = component.render(props: props) as? UIView else {
+//                return
+//            }
+//            subView.frame = CGRect(x: 0, y: currentY, width: subView.frame.width, height: subView.frame.height)
+//            view.addSubview(subView)
+//            currentY = currentY + subView.frame.height
+//        }
         view.sizeToFit()
 
-        return view
+        return [view]
     }
 }
+
+extension Container: Renderable {}

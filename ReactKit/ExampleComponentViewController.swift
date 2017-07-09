@@ -23,6 +23,17 @@ protocol ExampleComponentViewControllerPropType: PropType {
     var labelProps: LabelPropType { get }
 }
 
+class ExampleComponentView: Component {
+    func render(props: PropType) -> [Renderable] {
+        guard let props = props as? ExampleComponentViewControllerProps else { return [] }
+
+        return [
+            ExampleComponent(initProps: props.exampleComponentProps),
+            Label(props: props.labelProps)
+        ]
+    }
+}
+
 class ExampleComponentViewController: BaseComponentViewController {
 
     let props: ExampleComponentViewControllerProps
@@ -39,13 +50,8 @@ class ExampleComponentViewController: BaseComponentViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        renderComponents([ExampleComponentView()], with: self.props)
     }
 
-    override func render<P: ExampleComponentViewControllerPropType>(props: P) -> [Component] {
-        return [
-            ExampleComponent(props: props.exampleComponentProps),
-            Label(props: props.labelProps)
-        ]
-    }
 }
 

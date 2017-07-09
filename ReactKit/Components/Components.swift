@@ -11,15 +11,21 @@ import UIKit
 protocol PropType {}
 struct NilProps: PropType {}
 
+///
+/// can be a UIView, Component or Container
+///
+protocol Renderable {}
+
+extension UIView: Renderable {}
+
 /**
  All components must be able to return a UIView
  */
-protocol Component {
-    func render() -> UIView
+protocol Component: Renderable {
+    func render(props: PropType) -> [Renderable]
 }
 
 class GenericComponent<V: UIView>: Component {
-
     typealias Config = (V) -> ()
     let view: V
 
@@ -29,8 +35,8 @@ class GenericComponent<V: UIView>: Component {
         config(self.view)
     }
 
-    func render() -> UIView {
-        return self.view
+    func render(props: PropType) -> [Renderable] {
+        return [self.view]
     }
 }
 
@@ -40,22 +46,24 @@ protocol ExampleComponentPropType: PropType {
 }
 
 class ExampleComponent: Component {
-    let props: ExampleComponentPropType
-
-    init(props: ExampleComponentPropType) {
-        self.props = props
+    let initProps: ExampleComponentPropType?
+    init(initProps: ExampleComponentPropType) {
+        self.initProps = initProps
     }
 
-    func render() -> UIView {
-        let view = UIView()
+    func render(props: PropType) -> [Renderable] {
+        guard let props = props as? ExampleComponentPropType else {
+            return []
+        }
 
+        let view = UIView()
         let label = GenericComponent<UILabel> { (label) in
             label.text = props.title
             label.backgroundColor = props.backgroundColor
             label.sizeToFit()
         }
         view.addSubview(label.view)
-        return view
+        return [view]
     }
 }
 
@@ -65,13 +73,9 @@ protocol ChildExampleComponentPropType: PropType {
 }
 
 class ChildExampleComponent: Component {
-    let props: ChildExampleComponentPropType
+    func render(props: PropType) -> [Renderable] {
+        guard let props = props as? ChildExampleComponentPropType else { return [] }
 
-    init(props: ChildExampleComponentPropType) {
-        self.props = props
-    }
-
-    func render() -> UIView {
         let view = UIView()
         let label = GenericComponent<UILabel> { (label) in
             label.text = props.title
@@ -80,7 +84,7 @@ class ChildExampleComponent: Component {
             label.sizeToFit()
         }
         view.addSubview(label.view)
-        return view
+        return [view]
     }
 }
 

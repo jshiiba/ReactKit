@@ -24,11 +24,15 @@ class Label: Component {
         self.props = props
     }
 
-    func render() -> UIView {
-        return GenericComponent<UILabel> { label in
+    func render(props: PropType) -> [Renderable] {
+        guard let props = props as? LabelProps else {
+            return []
+        }
+
+        return [GenericComponent<UILabel> { label in
             label.text = props.title
             label.sizeToFit()
-        }.view
+        }.view]
     }
 }
 
