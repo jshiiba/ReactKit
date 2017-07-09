@@ -11,6 +11,11 @@ import UIKit
 class ComponentDataSource {
 
     private(set) var components: [Component] = []
+    private(set) var props: PropType?
+
+    func update(_ props: PropType) {
+        self.props = props
+    }
 
     /// Finds the indexPaths in renderedComponents that matches the updatedComponents
     /// - parameters:
@@ -36,11 +41,15 @@ extension ComponentDataSource {
 
     func numberOfItems(in section: Int) -> Int {
         // TODO: get components within a section
-        return components.count
+        return 1 //components.count
     }
 
     func component(at indexPath: IndexPath) -> UIView? {
-        let component = components[indexPath.row]
-        return component.render()
+        guard let props = props else {
+            return nil
+        }
+
+        // 1) main component
+        return nil
     }
 }

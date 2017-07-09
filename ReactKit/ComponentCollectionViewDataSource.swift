@@ -39,6 +39,8 @@ class ComponentCollectionViewDataSource: NSObject {
     ///     - components: components to update
     ///     - props: new properties
     func setComponents(_ components: [Component], with props: PropType) {
+        componentDataSource.update(props)
+
         let indexPathsToReload = renderer.render(components, with: props)
         componentCollectionView.reloadItems(at: indexPathsToReload)
     }
