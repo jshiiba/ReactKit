@@ -21,5 +21,4 @@ class BaseComponentCell: UICollectionViewCell {
         self.contentView.addConstraints([top, right, bottom, left])
         self.contentView.setNeedsUpdateConstraints()
     }
-
 }

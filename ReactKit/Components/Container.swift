@@ -23,7 +23,7 @@ class Container: Component {
     /**
      TODO: layout calculations for subviews
      */
-    func render(props: PropType) -> [Renderable] {
+    func render(props: PropType) -> RenderItems {
         let view = UIView()
         var currentY: CGFloat = 0
 

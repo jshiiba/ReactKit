@@ -16,13 +16,15 @@ struct NilProps: PropType {}
 ///
 protocol Renderable {}
 
+typealias RenderItems = [Renderable]
+
 extension UIView: Renderable {}
 
 /**
  All components must be able to return a UIView
  */
 protocol Component: Renderable {
-    func render(props: PropType) -> [Renderable]
+    func render(props: PropType) -> RenderItems
 }
 
 class GenericComponent<V: UIView>: Component {
@@ -35,56 +37,8 @@ class GenericComponent<V: UIView>: Component {
         config(self.view)
     }
 
-    func render(props: PropType) -> [Renderable] {
+    func render(props: PropType) -> RenderItems {
         return [self.view]
-    }
-}
-
-protocol ExampleComponentPropType: PropType {
-    var title: String { get }
-    var backgroundColor: UIColor { get }
-}
-
-class ExampleComponent: Component {
-    let initProps: ExampleComponentPropType?
-    init(initProps: ExampleComponentPropType) {
-        self.initProps = initProps
-    }
-
-    func render(props: PropType) -> [Renderable] {
-        guard let props = props as? ExampleComponentPropType else {
-            return []
-        }
-
-        let view = UIView()
-        let label = GenericComponent<UILabel> { (label) in
-            label.text = props.title
-            label.backgroundColor = props.backgroundColor
-            label.sizeToFit()
-        }
-        view.addSubview(label.view)
-        return [view]
-    }
-}
-
-protocol ChildExampleComponentPropType: PropType {
-    var title: String { get }
-    var backgroundColor: UIColor { get }
-}
-
-class ChildExampleComponent: Component {
-    func render(props: PropType) -> [Renderable] {
-        guard let props = props as? ChildExampleComponentPropType else { return [] }
-
-        let view = UIView()
-        let label = GenericComponent<UILabel> { (label) in
-            label.text = props.title
-            label.backgroundColor = props.backgroundColor
-            label.textAlignment = .right
-            label.sizeToFit()
-        }
-        view.addSubview(label.view)
-        return [view]
     }
 }
 

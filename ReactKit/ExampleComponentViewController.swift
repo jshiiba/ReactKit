@@ -8,30 +8,9 @@
 
 import UIKit
 
-struct ExampleProps: ExampleComponentPropType {
-    let title: String
-    let backgroundColor: UIColor
-}
-
-struct ExampleComponentViewControllerProps: ExampleComponentViewControllerPropType {
-    let exampleComponentProps: ExampleComponentPropType
-    let labelProps: LabelPropType
-}
-
 protocol ExampleComponentViewControllerPropType: PropType {
     var exampleComponentProps: ExampleComponentPropType { get }
     var labelProps: LabelPropType { get }
-}
-
-class ExampleComponentView: Component {
-    func render(props: PropType) -> [Renderable] {
-        guard let props = props as? ExampleComponentViewControllerProps else { return [] }
-
-        return [
-            ExampleComponent(initProps: props.exampleComponentProps),
-            Label(props: props.labelProps)
-        ]
-    }
 }
 
 class ExampleComponentViewController: BaseComponentViewController {
