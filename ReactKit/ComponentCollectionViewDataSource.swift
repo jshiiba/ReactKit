@@ -1,17 +1,43 @@
 //
-//  ComponentDataSource.swift
+//  ComponentCollectionViewDataSource.swift
 //  ReactKit
 //
-//  Created by Justin Shiiba on 7/8/17.
+//  Created by Justin Shiiba on 7/9/17.
 //  Copyright © 2017 Shiiba. All rights reserved.
 //
 
 import UIKit
 
-class ComponentCollectionViewDataSource: NSObject {
-    var componentDataSource: ComponentDataSource!
-    private let identifier = "ID"
+private let identifier = "Identifier"
 
+class ComponentCollectionViewDataSource: NSObject {
+    let componentDataSource: ComponentDataSource
+    let renderer: ComponentRender
+
+    var componentCollectionView: UICollectionView! {
+        didSet {
+            configure(componentCollectionView)
+        }
+    }
+
+    init(renderer: ComponentRender) {
+        self.renderer = renderer
+        self.componentDataSource = renderer.componentDataSource
+    }
+
+    private func configure(_ collectionView: UICollectionView) {
+        collectionView.register(BaseComponentCell.self, forCellWithReuseIdentifier: identifier)
+        collectionView.collectionViewLayout = ComponentFlowLayout()
+    }
+
+    /// Updates collectionview with new components and props, reloads updated cells
+    /// - parameters:
+    ///     - components: components to update
+    ///     - props: new properties
+    func setComponents(_ components: [Component], with props: PropType) {
+        let indexPathsToReload = renderer.render(components, with: props)
+        componentCollectionView.reloadItems(at: indexPathsToReload)
+    }
 }
 
 extension ComponentCollectionViewDataSource: UICollectionViewDataSource {
@@ -33,4 +59,3 @@ extension ComponentCollectionViewDataSource: UICollectionViewDataSource {
         return componentDataSource.numberOfItems(in: section)
     }
 }
-

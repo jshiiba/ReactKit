@@ -10,14 +10,21 @@ import UIKit
 
 class BaseComponentViewController: UIViewController {
 
-    let dataSource: ComponentCollectionViewDataSource = ComponentCollectionViewDataSource()
+    var renderer: ComponentRender!
+
+    var dataSource: ComponentCollectionViewDataSource!
     var collectionView: UICollectionView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        renderer = ComponentRender(componentDataSource: ComponentDataSource(), reconciler: ComponentReconciler())
+        dataSource = ComponentCollectionViewDataSource(renderer: renderer)
+
+        // TODO: prevent retain cycle
         collectionView = UICollectionView()
         collectionView.dataSource = dataSource
+        dataSource.componentCollectionView = collectionView
     }
 
     func dispatch() {
@@ -25,8 +32,9 @@ class BaseComponentViewController: UIViewController {
         // dispatch action to the store
     }
 
-    func setState(state: Int) {
-        // trigger re-render with state
+    func setComponents(_ components: [Component], withProps props: PropType) {
+        // trigger re-render with props
+        dataSource.setComponents(components, with: props)
     }
 }
 

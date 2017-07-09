@@ -10,9 +10,7 @@ import UIKit
 
 class BaseComponentCell: UICollectionViewCell {
 
-
-
-    public func configure(with view: UIView) {
+    func configure(with view: UIView) {
         self.contentView.addSubview(view)
 
         let top = view.topAnchor.constraint(equalTo: self.contentView.topAnchor)
