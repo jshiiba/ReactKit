@@ -12,11 +12,22 @@ protocol LabelPropType: PropType {
     var title: String { get }
 }
 
+struct LabelProps: LabelPropType {
+    let title: String
+}
+
 class Label: Component {
+
+    let props: LabelPropType
+
+    init(props: LabelPropType) {
+        self.props = props
+    }
 
     func render() -> UIView {
         return GenericComponent<UILabel> { label in
-            label.text = "Hello world" // props.title
+            label.text = props.title
+            label.sizeToFit()
         }.view
     }
 }

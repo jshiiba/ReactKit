@@ -8,24 +8,44 @@
 
 import UIKit
 
+struct ExampleProps: ExampleComponentPropType {
+    let title: String
+    let backgroundColor: UIColor
+}
+
+struct ExampleComponentViewControllerProps: ExampleComponentViewControllerPropType {
+    let exampleComponentProps: ExampleComponentPropType
+    let labelProps: LabelPropType
+}
+
+protocol ExampleComponentViewControllerPropType: PropType {
+    var exampleComponentProps: ExampleComponentPropType { get }
+    var labelProps: LabelPropType { get }
+}
+
 class ExampleComponentViewController: BaseComponentViewController {
 
-    struct ExampleProps: ExampleComponentPropType {
-        let title: String
-        let backgroundColor: UIColor
+    let props: ExampleComponentViewControllerProps
 
-        static let ex1: ExampleProps = ExampleProps(title: "Title", backgroundColor: .blue)
-        static let ex2: ExampleProps = ExampleProps(title: "Title 2", backgroundColor: .green)
+    init(props: ExampleComponentViewControllerProps) {
+        self.props = props
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let components = [
-            ExampleComponent(props: ExampleProps.ex1),
-            ExampleComponent(props: ExampleProps.ex2)
-        ]
+    }
 
-        setComponents(components, withProps: NilProps())
+    override func render<P: ExampleComponentViewControllerPropType>(props: P) -> [Component] {
+        return [
+            ExampleComponent(props: props.exampleComponentProps),
+            Label(props: props.labelProps)
+        ]
     }
 }
+

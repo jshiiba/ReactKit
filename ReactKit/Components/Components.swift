@@ -59,3 +59,28 @@ class ExampleComponent: Component {
     }
 }
 
+protocol ChildExampleComponentPropType: PropType {
+    var title: String { get }
+    var backgroundColor: UIColor { get }
+}
+
+class ChildExampleComponent: Component {
+    let props: ChildExampleComponentPropType
+
+    init(props: ChildExampleComponentPropType) {
+        self.props = props
+    }
+
+    func render() -> UIView {
+        let view = UIView()
+        let label = GenericComponent<UILabel> { (label) in
+            label.text = props.title
+            label.backgroundColor = props.backgroundColor
+            label.textAlignment = .right
+            label.sizeToFit()
+        }
+        view.addSubview(label.view)
+        return view
+    }
+}
+

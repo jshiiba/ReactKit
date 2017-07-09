@@ -30,12 +30,8 @@ class BaseComponentViewController: UIViewController {
         self.view.addSubview(collectionView)
     }
 
-    func dispatch() {
-        print("dispatch action")
-        // dispatch action to the store
-    }
+    func renderComponents(_ components: [Component], with props: PropType) {
 
-    func setComponents(_ components: [Component], withProps props: PropType) {
         // trigger re-render with props
         dataSource.setComponents(components, with: props)
     }

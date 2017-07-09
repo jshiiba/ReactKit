@@ -12,7 +12,7 @@ class ComponentDataSource {
 
     private(set) var components: [Component] = []
 
-    /// Finds the index paths in renderedComponents that matches the updatedComponents
+    /// Finds the indexPaths in renderedComponents that matches the updatedComponents
     /// - parameters:
     ///     - renderedComponents: Components that were originally rendered from the view
     ///     - updatedComponents: Components that were actually updated via the reconciler
