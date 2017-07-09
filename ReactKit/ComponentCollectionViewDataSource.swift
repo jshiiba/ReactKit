@@ -27,7 +27,9 @@ class ComponentCollectionViewDataSource: NSObject {
 
     private func configure(_ collectionView: UICollectionView) {
         collectionView.register(BaseComponentCell.self, forCellWithReuseIdentifier: identifier)
-        collectionView.collectionViewLayout = ComponentFlowLayout()
+//        collectionView.collectionViewLayout = ComponentFlowLayout()
+//        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        collectionView.backgroundColor = .red
     }
 
     /// Updates collectionview with new components and props, reloads updated cells
@@ -36,7 +38,7 @@ class ComponentCollectionViewDataSource: NSObject {
     ///     - props: new properties
     func setComponents(_ components: [Component], with props: PropType) {
         let indexPathsToReload = renderer.render(components, with: props)
-        componentCollectionView.reloadItems(at: indexPathsToReload)
+        //componentCollectionView.reloadItems(at: indexPathsToReload)
     }
 }
 

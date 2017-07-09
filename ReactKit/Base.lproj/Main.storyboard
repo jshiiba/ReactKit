@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Base Component View Controller-->
+        <!--Example Component View Controller-->
         <scene sceneID="Mck-ev-FqM">
             <objects>
-                <viewController id="sIl-1T-qn1" customClass="BaseComponentViewController" customModule="ReactKit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="sIl-1T-qn1" customClass="ExampleComponentViewController" customModule="ReactKit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pbG-0F-Zw2"/>
                         <viewControllerLayoutGuide type="bottom" id="VPM-Uo-pG5"/>

@@ -21,10 +21,13 @@ class BaseComponentViewController: UIViewController {
         renderer = ComponentRender(componentDataSource: ComponentDataSource(), reconciler: ComponentReconciler())
         dataSource = ComponentCollectionViewDataSource(renderer: renderer)
 
-        // TODO: prevent retain cycle
-        collectionView = UICollectionView()
+        collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.dataSource = dataSource
+
+        // TODO: prevent retain cycle
         dataSource.componentCollectionView = collectionView
+
+        self.view.addSubview(collectionView)
     }
 
     func dispatch() {

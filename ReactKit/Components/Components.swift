@@ -34,20 +34,19 @@ class GenericComponent<V: UIView>: Component {
     }
 }
 
-protocol MyComponentPropType: PropType {
+protocol ExampleComponentPropType: PropType {
     var title: String { get }
     var backgroundColor: UIColor { get }
 }
 
-class MyComponent: Component {
-    let props: MyComponentPropType
+class ExampleComponent: Component {
+    let props: ExampleComponentPropType
 
-    init(props: MyComponentPropType) {
+    init(props: ExampleComponentPropType) {
         self.props = props
     }
 
     func render() -> UIView {
-
         let view = UIView()
 
         let label = GenericComponent<UILabel> { (label) in
@@ -55,9 +54,7 @@ class MyComponent: Component {
             label.backgroundColor = props.backgroundColor
             label.sizeToFit()
         }
-
         view.addSubview(label.view)
-
         return view
     }
 }
