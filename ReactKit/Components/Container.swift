@@ -8,37 +8,17 @@
 
 import UIKit
 
-class Container: Component {
+ class Container: Renderable {
+    let items: [Renderable?]
 
-    var components: [Component]
-
-    var childrenCount: Int {
-        return components.count
+    init(items: [Renderable?]) {
+        self.items = items
     }
 
-    init(components: [Component]) {
-        self.components = components
-    }
+    static func render(items: [RenderItems?]) -> [Renderable] {
 
-    /**
-     TODO: layout calculations for subviews
-     */
-    func render(props: PropType) -> RenderItems {
-        let view = UIView()
-        var currentY: CGFloat = 0
-
-//        components.forEach { component in
-//            guard let subView = component.render(props: props) as? UIView else {
-//                return
-//            }
-//            subView.frame = CGRect(x: 0, y: currentY, width: subView.frame.width, height: subView.frame.height)
-//            view.addSubview(subView)
-//            currentY = currentY + subView.frame.height
-//        }
-        view.sizeToFit()
-
-        return [view]
+        // Maybe dont flatmap?
+        let result = items.flatMap { $0 }
+        return result
     }
 }
-
-extension Container: Renderable {}

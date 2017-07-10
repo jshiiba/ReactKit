@@ -19,11 +19,15 @@ struct ExampleComponentViewControllerProps: ExampleComponentViewControllerPropTy
 }
 
 class ExampleComponentView: Component {
-    func render(props: PropType) -> RenderItems {
-        guard let props = props as? ExampleComponentViewControllerProps else { return [] }
+    func render(props: PropType) -> Renderable? {
+        guard let props = props as? ExampleComponentViewControllerProps else {
+            return nil
+        }
 
-        let items = ExampleComponent().render(props: props.exampleComponentProps) + Label().render(props: props.labelProps)
-        return items
+        return Container(items: [
+            ExampleComponent().render(props: props.exampleComponentProps),
+            Label().render(props: props.labelProps)
+        ])
     }
 }
 
@@ -33,9 +37,9 @@ protocol ExampleComponentPropType: PropType {
 }
 
 class ExampleComponent: Component {
-    func render(props: PropType) -> RenderItems {
+    func render(props: PropType) -> Renderable? {
         guard let props = props as? ExampleComponentPropType else {
-            return []
+            return nil
         }
 
         let view = UIView()
@@ -46,13 +50,18 @@ class ExampleComponent: Component {
         }
         view.addSubview(label.view)
 
-        return [view] + ChildExampleComponent().render(props: props)
+        return Container(items: [
+            view,
+            ChildExampleComponent().render(props: props)
+        ])
     }
 }
 
 class ChildExampleComponent: Component {
-    func render(props: PropType) -> RenderItems {
-        guard let props = props as? ExampleComponentPropType else { return [] }
+    func render(props: PropType) -> Renderable? {
+        guard let props = props as? ExampleComponentPropType else {
+            return nil
+        }
 
         let view = UIView()
         let label = GenericComponent<UILabel> { (label) in
@@ -62,6 +71,6 @@ class ChildExampleComponent: Component {
             label.sizeToFit()
         }
         view.addSubview(label.view)
-        return [view]
+        return view
     }
 }

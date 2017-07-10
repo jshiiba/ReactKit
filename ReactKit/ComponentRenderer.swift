@@ -31,7 +31,7 @@ class ComponentRender {
         print("\n\n\n")
 
         // Iterating through all root level components and rendering each subtree
-        let result = components.flatMap { $0.render(props: props) }
+        let result = components.flatMap { $0.render(props: props) }.flatMap { ($0 as? Container)?.items }
 
         print(result)
 

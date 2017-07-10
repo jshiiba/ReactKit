@@ -19,7 +19,7 @@ struct NilProps: PropType {}
 ///
 protocol Renderable {}
 
-typealias RenderItems = [Renderable]
+typealias RenderItems = Renderable
 
 extension UIView: Renderable {}
 
@@ -27,7 +27,7 @@ extension UIView: Renderable {}
 ///
 ///
 protocol Component: Renderable {
-    func render(props: PropType) -> RenderItems
+    func render(props: PropType) -> Renderable?
 }
 
 class GenericComponent<V: UIView>: Component {
@@ -40,8 +40,8 @@ class GenericComponent<V: UIView>: Component {
         config(self.view)
     }
 
-    func render(props: PropType) -> RenderItems {
-        return [self.view]
+    func render(props: PropType) -> Renderable? {
+        return self.view
     }
 }
 
