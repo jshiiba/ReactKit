@@ -22,10 +22,8 @@ class ExampleComponentView: Component {
     func render(props: PropType) -> RenderItems {
         guard let props = props as? ExampleComponentViewControllerProps else { return [] }
 
-        return [
-            ExampleComponent(initProps: props.exampleComponentProps),
-            Label(props: props.labelProps)
-        ]
+        let items = ExampleComponent().render(props: props.exampleComponentProps) + Label().render(props: props.labelProps)
+        return items
     }
 }
 
@@ -35,11 +33,6 @@ protocol ExampleComponentPropType: PropType {
 }
 
 class ExampleComponent: Component {
-    let initProps: ExampleComponentPropType?
-    init(initProps: ExampleComponentPropType) {
-        self.initProps = initProps
-    }
-
     func render(props: PropType) -> RenderItems {
         guard let props = props as? ExampleComponentPropType else {
             return []
@@ -52,18 +45,14 @@ class ExampleComponent: Component {
             label.sizeToFit()
         }
         view.addSubview(label.view)
-        return [view]
-    }
-}
 
-protocol ChildExampleComponentPropType: PropType {
-    var title: String { get }
-    var backgroundColor: UIColor { get }
+        return [view] + ChildExampleComponent().render(props: props)
+    }
 }
 
 class ChildExampleComponent: Component {
     func render(props: PropType) -> RenderItems {
-        guard let props = props as? ChildExampleComponentPropType else { return [] }
+        guard let props = props as? ExampleComponentPropType else { return [] }
 
         let view = UIView()
         let label = GenericComponent<UILabel> { (label) in

@@ -17,13 +17,6 @@ struct LabelProps: LabelPropType {
 }
 
 class Label: Component {
-
-    let props: LabelPropType
-
-    init(props: LabelPropType) {
-        self.props = props
-    }
-
     func render(props: PropType) -> [Renderable] {
         guard let props = props as? LabelProps else {
             return []

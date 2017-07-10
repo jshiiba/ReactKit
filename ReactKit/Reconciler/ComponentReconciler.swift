@@ -8,9 +8,6 @@
 
 import Foundation
 
-// Temp
-typealias Tree = Int
-
 ///
 /// - parameters: Current Components with new props
 /// - returns: Components to update
@@ -22,15 +19,6 @@ class ComponentReconciler {
         let cachedTree = cacher.cache(nodeTree)
         let updatedComponents = ComponentDiffer.diff(nodeTree, cachedTree)
         return updatedComponents
-    }
-}
-
-///
-/// - parameters: Current Components with new props
-/// - returns: Tree - A virtual representation of the Components that can be diffed
-class ComponentTranslator {
-    static func translate(_ components: [Component], with props: PropType) -> Tree {
-        return 1
     }
 }
 

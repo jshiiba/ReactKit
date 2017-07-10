@@ -24,9 +24,22 @@ class ComponentRender {
     ///
     ///
     func render(_ components: [Component], with props: PropType) -> [IndexPath] {
+        let _ = Node(type: .root, props: NilProps())
+
+        print(components)
+
+        print("\n\n\n")
+
+        // Iterating through all root level components and rendering each subtree
+        let result = components.flatMap { $0.render(props: props) }
+
+        print(result)
+
+
         let updatedComponents = reconciler.reconcile(components, with: props)
         return componentDataSource.indexPathsToReloadFor(renderedComponents: components, updatedComponents: updatedComponents)
     }
+
 }
 
 

@@ -8,6 +8,9 @@
 
 import UIKit
 
+///
+///
+///
 protocol PropType {}
 struct NilProps: PropType {}
 
@@ -20,9 +23,9 @@ typealias RenderItems = [Renderable]
 
 extension UIView: Renderable {}
 
-/**
- All components must be able to return a UIView
- */
+///
+///
+///
 protocol Component: Renderable {
     func render(props: PropType) -> RenderItems
 }

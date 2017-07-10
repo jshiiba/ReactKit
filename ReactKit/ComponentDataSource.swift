@@ -45,11 +45,7 @@ extension ComponentDataSource {
     }
 
     func component(at indexPath: IndexPath) -> UIView? {
-        guard let props = props else {
-            return nil
-        }
-
-        // 1) main component
+        // return component from tree
         return nil
     }
 }
