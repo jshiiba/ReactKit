@@ -19,15 +19,17 @@ struct ExampleComponentViewControllerProps: ExampleComponentViewControllerPropTy
 }
 
 class ExampleComponentView: Component {
-    func render(props: PropType) -> BaseComponent? {
+    func render(props: PropType) -> RenderedComponent? {
         guard let props = props as? ExampleComponentViewControllerProps else {
             return nil
         }
 
-        return Container(items: [
+        return RenderedComponent(component: Label(), props: props.labelProps) //Label().render(props: props.labelProps)
+
+            /*Container(items: [
             ExampleComponent().render(props: props.exampleComponentProps),
             Label().render(props: props.labelProps)
-        ])
+        ])*/
     }
 }
 
@@ -35,42 +37,43 @@ protocol ExampleComponentPropType: PropType {
     var title: String { get }
     var backgroundColor: UIColor { get }
 }
+//
+//class ExampleComponent: Component {
+//    func render(props: PropType) -> BaseComponent? {
+//        guard let props = props as? ExampleComponentPropType else {
+//            return nil
+//        }
+//
+//        let view = UIView()
+//        let label = GenericComponent<UILabel> { (label) in
+//            label.text = props.title
+//            label.backgroundColor = props.backgroundColor
+//            label.sizeToFit()
+//        }
+//        view.addSubview(label.view)
+//
+//        return Container(items: [
+//            view,
+//            ChildExampleComponent().render(props: props)
+//        ])
+//    }
+//}
+//
+//class ChildExampleComponent: Component {
+//    func render(props: PropType) -> BaseComponent? {
+//        guard let props = props as? ExampleComponentPropType else {
+//            return nil
+//        }
+//
+//        let view = UIView()
+//        let label = GenericComponent<UILabel> { (label) in
+//            label.text = props.title
+//            label.backgroundColor = props.backgroundColor
+//            label.textAlignment = .right
+//            label.sizeToFit()
+//        }
+//        view.addSubview(label.view)
+//        return view
+//    }
+//}
 
-class ExampleComponent: Component {
-    func render(props: PropType) -> BaseComponent? {
-        guard let props = props as? ExampleComponentPropType else {
-            return nil
-        }
-
-        let view = UIView()
-        let label = GenericComponent<UILabel> { (label) in
-            label.text = props.title
-            label.backgroundColor = props.backgroundColor
-            label.sizeToFit()
-        }
-        view.addSubview(label.view)
-
-        return Container(items: [
-            view,
-            ChildExampleComponent().render(props: props)
-        ])
-    }
-}
-
-class ChildExampleComponent: Component {
-    func render(props: PropType) -> BaseComponent? {
-        guard let props = props as? ExampleComponentPropType else {
-            return nil
-        }
-
-        let view = UIView()
-        let label = GenericComponent<UILabel> { (label) in
-            label.text = props.title
-            label.backgroundColor = props.backgroundColor
-            label.textAlignment = .right
-            label.sizeToFit()
-        }
-        view.addSubview(label.view)
-        return view
-    }
-}

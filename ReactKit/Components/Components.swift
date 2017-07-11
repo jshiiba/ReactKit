@@ -15,11 +15,16 @@ protocol BaseComponent {}
 
 extension UIView: BaseComponent {}
 
+struct RenderedComponent {
+    let component: BaseComponent
+    let props: PropType
+}
+
 ///
 ///
 ///
 protocol Component: BaseComponent {
-    func render(props: PropType) -> BaseComponent?
+    func render(props: PropType) -> RenderedComponent?
 }
 
 class GenericComponent<V: UIView>: Component {
@@ -32,8 +37,8 @@ class GenericComponent<V: UIView>: Component {
         config(self.view)
     }
 
-    func render(props: PropType) -> BaseComponent? {
-        return self.view
+    func render(props: PropType) -> RenderedComponent? {
+        return RenderedComponent(component: self.view, props: props)
     }
 }
 

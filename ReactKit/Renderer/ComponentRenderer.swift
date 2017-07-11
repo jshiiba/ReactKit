@@ -26,18 +26,41 @@ class ComponentRender {
     func render(_ components: [Component], with props: PropType) -> [IndexPath] {
         let _ = Node(type: .root, props: NilProps())
 
-        print(components)
+        print("Input components: \(components)")
 
-        print("\n\n\n")
+        guard let rootComponent = components.first?.render(props: props) else {
+            return []
+        }
+        print("ROOT: \(rootComponent)")
+
+        renderBaseComponent(rootComponent)
 
         // Iterating through all root level components and rendering each subtree
-        let result = components.flatMap { $0.render(props: props) }.flatMap { ($0 as? Container)?.items }
-
-        print(result)
+//        let result = components.flatMap { $0.render(props: props) }
+//        print(result)
 
 
         let updatedComponents = reconciler.reconcile(components, with: props)
         return componentDataSource.indexPathsToReloadFor(renderedComponents: components, updatedComponents: updatedComponents)
+    }
+
+    func renderBaseComponent(_ renderedComponent: RenderedComponent) {
+        print("RENDERED COMP: \(renderedComponent)")
+
+        if let view = renderedComponent.component as? UIView {
+            print("VIEW: \(view), PROPS: \(renderedComponent.props)")
+            return  // base case
+        }
+
+        if let component = renderedComponent.component as? Component {
+            print("COMPONENT: \(component)")
+
+            if let childComponent = component.render(props: renderedComponent.props) {
+                print("RENDER CHILD")
+                renderBaseComponent(childComponent)
+            }
+        }
+        
     }
 
 }
