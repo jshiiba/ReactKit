@@ -24,7 +24,7 @@ class ComponentRender {
     ///
     ///
     func render(_ components: [Component], with props: PropType) -> [IndexPath] {
-        let _ = Node(type: .root, props: NilProps())
+        let tree = Node(type: .root, props: props)
 
         print("Input components: \(components)")
 
@@ -33,7 +33,9 @@ class ComponentRender {
         }
         print("ROOT: \(rootComponent)")
 
-        renderBaseComponent(rootComponent)
+        let subtree = renderBaseComponent(rootComponent)
+        tree.children.append(subtree!)
+        print("NODE TREE: \(tree)")
 
         // Iterating through all root level components and rendering each subtree
 //        let result = components.flatMap { $0.render(props: props) }
@@ -44,23 +46,31 @@ class ComponentRender {
         return componentDataSource.indexPathsToReloadFor(renderedComponents: components, updatedComponents: updatedComponents)
     }
 
-    func renderBaseComponent(_ renderedComponent: RenderedComponent) {
+
+    func renderBaseComponent(_ renderedComponent: RenderedComponent) -> Node? {
         print("RENDERED COMP: \(renderedComponent)")
 
         if let view = renderedComponent.component as? UIView {
             print("VIEW: \(view), PROPS: \(renderedComponent.props)")
-            return  // base case
+            return  Node(type: .leaf, props: renderedComponent.props)
         }
 
         if let component = renderedComponent.component as? Component {
             print("COMPONENT: \(component)")
+            let nodeWithChildren = Node(type: .node, props: renderedComponent.props)
 
             if let childComponent = component.render(props: renderedComponent.props) {
                 print("RENDER CHILD")
-                renderBaseComponent(childComponent)
+                if let childNode = renderBaseComponent(childComponent) {
+                    nodeWithChildren.children.append(childNode)
+                    return nodeWithChildren
+                }
             }
         }
-        
+
+        // TODO: Containers with children
+
+        return nil
     }
 
 }
