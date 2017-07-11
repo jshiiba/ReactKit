@@ -19,7 +19,7 @@ struct ExampleComponentViewControllerProps: ExampleComponentViewControllerPropTy
 }
 
 class ExampleComponentView: Component {
-    func render(props: PropType) -> Renderable? {
+    func render(props: PropType) -> BaseComponent? {
         guard let props = props as? ExampleComponentViewControllerProps else {
             return nil
         }
@@ -37,7 +37,7 @@ protocol ExampleComponentPropType: PropType {
 }
 
 class ExampleComponent: Component {
-    func render(props: PropType) -> Renderable? {
+    func render(props: PropType) -> BaseComponent? {
         guard let props = props as? ExampleComponentPropType else {
             return nil
         }
@@ -58,7 +58,7 @@ class ExampleComponent: Component {
 }
 
 class ChildExampleComponent: Component {
-    func render(props: PropType) -> Renderable? {
+    func render(props: PropType) -> BaseComponent? {
         guard let props = props as? ExampleComponentPropType else {
             return nil
         }

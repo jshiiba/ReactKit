@@ -8,14 +8,14 @@
 
 import UIKit
 
- class Container: Renderable {
-    let items: [Renderable?]
+ class Container: BaseComponent {
+    let items: [BaseComponent?]
 
-    init(items: [Renderable?]) {
+    init(items: [BaseComponent?]) {
         self.items = items
     }
 
-    static func render(items: [RenderItems?]) -> [Renderable] {
+    static func render(items: [BaseComponent?]) -> [BaseComponent] {
 
         // Maybe dont flatmap?
         let result = items.flatMap { $0 }

@@ -23,6 +23,7 @@
 		D18FCCC31F12DE7300B27F4E /* ExampleComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18FCCC21F12DE7300B27F4E /* ExampleComponents.swift */; };
 		D1E157081F139025001C345C /* ComponentTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E157071F139025001C345C /* ComponentTranslator.swift */; };
 		D1E1570B1F13909F001C345C /* ComponentReconciler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E1570A1F139098001C345C /* ComponentReconciler.swift */; };
+		D1E1570E1F14E135001C345C /* PropType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E1570D1F14E135001C345C /* PropType.swift */; };
 		D1EB7BA11F0D3F9700739A67 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EB7BA01F0D3F9700739A67 /* Components.swift */; };
 		D1EB7BA81F0E890800739A67 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EB7BA71F0E890800739A67 /* Label.swift */; };
 		D1EB7BAC1F0EA9DA00739A67 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EB7BAB1F0EA9DA00739A67 /* Container.swift */; };
@@ -59,6 +60,7 @@
 		D18FCCC21F12DE7300B27F4E /* ExampleComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExampleComponents.swift; path = Example/ExampleComponents.swift; sourceTree = "<group>"; };
 		D1E157071F139025001C345C /* ComponentTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComponentTranslator.swift; path = Reconciler/ComponentTranslator.swift; sourceTree = "<group>"; };
 		D1E1570A1F139098001C345C /* ComponentReconciler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComponentReconciler.swift; path = Reconciler/ComponentReconciler.swift; sourceTree = "<group>"; };
+		D1E1570D1F14E135001C345C /* PropType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropType.swift; sourceTree = "<group>"; };
 		D1EB7BA01F0D3F9700739A67 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
 		D1EB7BA71F0E890800739A67 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		D1EB7BAB1F0EA9DA00739A67 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				D1EB7BA01F0D3F9700739A67 /* Components.swift */,
 				D1EB7BA71F0E890800739A67 /* Label.swift */,
 				D18FCCC01F12B54E00B27F4E /* ComponentsTypeErasure.swift */,
+				D1E1570D1F14E135001C345C /* PropType.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -125,6 +128,7 @@
 				D15103871F0D1AC800213882 /* AppDelegate.swift */,
 				D18FCCC21F12DE7300B27F4E /* ExampleComponents.swift */,
 				D18FCCBD1F126F0700B27F4E /* ExampleComponentViewController.swift */,
+				D1E1570F1F14E2FD001C345C /* Renderer */,
 				D1E157061F138FF2001C345C /* Reconciler */,
 				D1EB7BA61F0E87FF00739A67 /* Controller */,
 				D111483F1F111C0100CC37AA /* Components */,
@@ -154,13 +158,20 @@
 			name = Reconciler;
 			sourceTree = "<group>";
 		};
+		D1E1570F1F14E2FD001C345C /* Renderer */ = {
+			isa = PBXGroup;
+			children = (
+				D11148421F11295100CC37AA /* ComponentRenderer.swift */,
+			);
+			path = Renderer;
+			sourceTree = "<group>";
+		};
 		D1EB7BA61F0E87FF00739A67 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				D11148401F111C3000CC37AA /* BaseComponentCell.swift */,
 				D15103891F0D1AC800213882 /* BaseComponentViewController.swift */,
 				D18FCCBB1F12675B00B27F4E /* ComponentCollectionViewDataSource.swift */,
-				D11148421F11295100CC37AA /* ComponentRenderer.swift */,
 				D118430C1F12557900EA62AC /* ComponentDataSource.swift */,
 				D11148471F11322700CC37AA /* ComponentFlowLayout.swift */,
 			);
@@ -274,6 +285,7 @@
 				D18FCCC31F12DE7300B27F4E /* ExampleComponents.swift in Sources */,
 				D18FCCC11F12B54E00B27F4E /* ComponentsTypeErasure.swift in Sources */,
 				D118430D1F12557900EA62AC /* ComponentDataSource.swift in Sources */,
+				D1E1570E1F14E135001C345C /* PropType.swift in Sources */,
 				D18FCCBE1F126F0700B27F4E /* ExampleComponentViewController.swift in Sources */,
 				D1EB7BA81F0E890800739A67 /* Label.swift in Sources */,
 				D1EB7BA11F0D3F9700739A67 /* Components.swift in Sources */,

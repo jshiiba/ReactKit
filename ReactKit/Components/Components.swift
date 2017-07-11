@@ -9,25 +9,17 @@
 import UIKit
 
 ///
-///
-///
-protocol PropType {}
-struct NilProps: PropType {}
-
-///
 /// can be a UIView, Component or Container
 ///
-protocol Renderable {}
+protocol BaseComponent {}
 
-typealias RenderItems = Renderable
-
-extension UIView: Renderable {}
+extension UIView: BaseComponent {}
 
 ///
 ///
 ///
-protocol Component: Renderable {
-    func render(props: PropType) -> Renderable?
+protocol Component: BaseComponent {
+    func render(props: PropType) -> BaseComponent?
 }
 
 class GenericComponent<V: UIView>: Component {
@@ -40,7 +32,7 @@ class GenericComponent<V: UIView>: Component {
         config(self.view)
     }
 
-    func render(props: PropType) -> Renderable? {
+    func render(props: PropType) -> BaseComponent? {
         return self.view
     }
 }
