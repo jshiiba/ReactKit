@@ -8,13 +8,6 @@
 
 import UIKit
 
-///
-/// can be a UIView, Component or Container
-///
-protocol BaseComponent {}
-
-extension UIView: BaseComponent {}
-
 struct RenderedComponent {
     enum ViewType {
         case view
