@@ -26,10 +26,8 @@ class ExampleComponentViewController: BaseComponentViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        renderComponents([ExampleComponentView()], with: self.props)
+    override func render() -> Component {
+        return ExampleComponentView(props: self.props)
     }
 
 }

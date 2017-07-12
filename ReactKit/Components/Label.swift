@@ -16,18 +16,21 @@ struct LabelProps: LabelPropType {
     let title: String
 }
 
-class Label: Component {
-    func render(props: PropType) -> RenderedComponent? {
-        guard let props = props as? LabelProps else {
-            return nil
-        }
+class Label: Component, ComponentLike {
+    typealias ComponentPropType = LabelPropType
 
-        let view = UIKitComponent<UILabel> { label in
-            label.text = props.title
+    let props: PropType
+    init(props: LabelPropType) {
+        self.props = props
+    }
+
+    func render() -> BaseComponent? {
+        let view = UIKitComponent<UILabel>(props: _props) { label in
+            label.text = _props.title
             label.sizeToFit()
         }.view
 
-        return RenderedComponent(component: view, props: props)
+        return view
     }
 }
 

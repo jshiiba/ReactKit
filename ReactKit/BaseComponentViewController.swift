@@ -28,12 +28,16 @@ class BaseComponentViewController: UIViewController {
         dataSource.componentCollectionView = collectionView
 
         self.view.addSubview(collectionView)
+
+        _render()
     }
 
-    func renderComponents(_ components: [Component], with props: PropType) {
+    func _render() {
+        dataSource.setComponent(render())
+    }
 
-        // trigger re-render with props
-        dataSource.setComponents(components, with: props)
+    func render() -> Component {
+        fatalError("Override method required")
     }
 }
 

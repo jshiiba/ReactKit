@@ -18,6 +18,8 @@
 		D15103921F0D1AC800213882 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D15103901F0D1AC800213882 /* LaunchScreen.storyboard */; };
 		D151039D1F0D1AC800213882 /* ReactKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D151039C1F0D1AC800213882 /* ReactKitTests.swift */; };
 		D1680EAE1F1643CE0070ADF9 /* BaseComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1680EAD1F1643CE0070ADF9 /* BaseComponent.swift */; };
+		D1680EB01F1644C70070ADF9 /* UIKitComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1680EAF1F1644C60070ADF9 /* UIKitComponent.swift */; };
+		D1680EB21F164DAD0070ADF9 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1680EB11F164DAD0070ADF9 /* Node.swift */; };
 		D18FCCBC1F12675B00B27F4E /* ComponentCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18FCCBB1F12675B00B27F4E /* ComponentCollectionViewDataSource.swift */; };
 		D18FCCBE1F126F0700B27F4E /* ExampleComponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18FCCBD1F126F0700B27F4E /* ExampleComponentViewController.swift */; };
 		D18FCCC11F12B54E00B27F4E /* ComponentsTypeErasure.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18FCCC01F12B54E00B27F4E /* ComponentsTypeErasure.swift */; };
@@ -56,6 +58,8 @@
 		D151039C1F0D1AC800213882 /* ReactKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactKitTests.swift; sourceTree = "<group>"; };
 		D151039E1F0D1AC800213882 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1680EAD1F1643CE0070ADF9 /* BaseComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseComponent.swift; sourceTree = "<group>"; };
+		D1680EAF1F1644C60070ADF9 /* UIKitComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitComponent.swift; sourceTree = "<group>"; };
+		D1680EB11F164DAD0070ADF9 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		D18FCCBB1F12675B00B27F4E /* ComponentCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		D18FCCBD1F126F0700B27F4E /* ExampleComponentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleComponentViewController.swift; sourceTree = "<group>"; };
 		D18FCCC01F12B54E00B27F4E /* ComponentsTypeErasure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsTypeErasure.swift; sourceTree = "<group>"; };
@@ -95,6 +99,7 @@
 				D1EB7BA71F0E890800739A67 /* Label.swift */,
 				D18FCCC01F12B54E00B27F4E /* ComponentsTypeErasure.swift */,
 				D1E1570D1F14E135001C345C /* PropType.swift */,
+				D1680EAF1F1644C60070ADF9 /* UIKitComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -164,6 +169,7 @@
 		D1E1570F1F14E2FD001C345C /* Renderer */ = {
 			isa = PBXGroup;
 			children = (
+				D1680EB11F164DAD0070ADF9 /* Node.swift */,
 				D11148421F11295100CC37AA /* ComponentRenderer.swift */,
 			);
 			path = Renderer;
@@ -291,6 +297,8 @@
 				D1E1570E1F14E135001C345C /* PropType.swift in Sources */,
 				D18FCCBE1F126F0700B27F4E /* ExampleComponentViewController.swift in Sources */,
 				D1EB7BA81F0E890800739A67 /* Label.swift in Sources */,
+				D1680EB01F1644C70070ADF9 /* UIKitComponent.swift in Sources */,
+				D1680EB21F164DAD0070ADF9 /* Node.swift in Sources */,
 				D1EB7BA11F0D3F9700739A67 /* Components.swift in Sources */,
 				D1EB7BAC1F0EA9DA00739A67 /* Container.swift in Sources */,
 				D1680EAE1F1643CE0070ADF9 /* BaseComponent.swift in Sources */,

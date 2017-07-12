@@ -36,6 +36,13 @@ extension BaseComponent {
     var componentType: BaseComponentType {
         return BaseComponentType(baseComponent: self)
     }
+
+    var componentProps: PropType? {
+        guard case .component(let component) = BaseComponentType(baseComponent: self) else {
+            return nil
+        }
+        return component.props
+    }
 }
 
 extension UIView: BaseComponent {}

@@ -18,17 +18,19 @@ struct ExampleComponentViewControllerProps: ExampleComponentViewControllerPropTy
     let labelProps: LabelPropType
 }
 
-class ExampleComponentView: Component {
-    func render(props: PropType) -> RenderedComponent? {
-        guard let props = props as? ExampleComponentViewControllerProps else {
-            return nil
-        }
+class ExampleComponentView: Component, ComponentLike {
+    typealias ComponentPropType = ExampleComponentViewControllerProps
+    let props: PropType
+    init(props: ExampleComponentViewControllerProps) {
+        self.props = props
+    }
 
-        return RenderedComponent(component: Container(items: [
-            //RenderedComponent(component: ExampleComponent(), props: props.exampleComponentProps),
-                RenderedComponent(component: Label(), props: props.labelProps),
-                RenderedComponent(component: Label(), props: props.labelProps)
-            ]), props: props)
+    func render() -> BaseComponent? {
+        return Container(items: [
+            ExampleComponent(props: _props.exampleComponentProps),
+            Label(props: _props.labelProps),
+            Label(props: _props.labelProps),
+        ])
     }
 }
 
@@ -36,27 +38,24 @@ protocol ExampleComponentPropType: PropType {
     var title: String { get }
     var backgroundColor: UIColor { get }
 }
-//
-//class ExampleComponent: Component {
-//    func render(props: PropType) -> BaseComponent? {
-//        guard let props = props as? ExampleComponentPropType else {
-//            return nil
-//        }
-//
-//        let view = UIView()
-//        let label = GenericComponent<UILabel> { (label) in
-//            label.text = props.title
-//            label.backgroundColor = props.backgroundColor
-//            label.sizeToFit()
-//        }
-//        view.addSubview(label.view)
-//
-//        return Container(items: [
-//            view,
-//            ChildExampleComponent().render(props: props)
-//        ])
-//    }
-//}
+
+class ExampleComponent: Component, ComponentLike {
+    typealias ComponentPropType = ExampleComponentPropType
+    let props: PropType
+    init(props: ExampleComponentPropType) {
+        self.props = props
+    }
+
+    func render() -> BaseComponent? {
+        return Container(items: [
+            UIKitComponent<UILabel>(props: _props) { (label) in
+                label.text = _props.title
+                label.backgroundColor = _props.backgroundColor
+                label.sizeToFit()
+            }
+        ])
+    }
+}
 //
 //class ChildExampleComponent: Component {
 //    func render(props: PropType) -> BaseComponent? {

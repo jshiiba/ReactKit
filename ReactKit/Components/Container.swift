@@ -9,9 +9,9 @@
 import UIKit
 
  class Container: BaseComponent {
-    let items: [RenderedComponent?]
+    let items: [BaseComponent?]
 
-    init(items: [RenderedComponent?]) {
+    init(items: [BaseComponent?]) {
         self.items = items
     }
 

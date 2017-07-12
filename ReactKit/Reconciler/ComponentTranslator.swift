@@ -11,29 +11,6 @@ import UIKit
 // Temp
 typealias Tree = Int
 
-enum NodeType {
-    case root
-    case node
-    case leaf
-}
-
-class Node {
-
-    var type: NodeType = .node
-
-    var props: PropType = NilProps() // temp
-
-    var children: [Node] = []
-
-    var sectionCount: Int = 0
-
-    init(type: NodeType, props: PropType) {
-        self.type = type
-        self.props = props
-    }
-
-}
-
 ///
 /// - parameters: Current Components with new props
 /// - returns: Tree - A virtual representation of the Components that can be diffed
