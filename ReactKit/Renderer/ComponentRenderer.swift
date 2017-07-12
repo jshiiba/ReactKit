@@ -33,13 +33,11 @@ class ComponentRender {
         }
         print("ROOT: \(rootComponent)")
 
-        let subtree = renderBaseComponent(rootComponent)
-        tree.children.append(subtree!)
-        print("NODE TREE: \(tree)")
+        if let subtree = renderNodeSubtreeFrom(rootComponent) {
+            tree.children.append(subtree)
+            print("NODE TREE: \(tree)")
+        }
 
-        // Iterating through all root level components and rendering each subtree
-//        let result = components.flatMap { $0.render(props: props) }
-//        print(result)
 
 
         let updatedComponents = reconciler.reconcile(components, with: props)
@@ -47,30 +45,41 @@ class ComponentRender {
     }
 
 
-    func renderBaseComponent(_ renderedComponent: RenderedComponent) -> Node? {
-        print("RENDERED COMP: \(renderedComponent)")
-
-        if let view = renderedComponent.component as? UIView {
-            print("VIEW: \(view), PROPS: \(renderedComponent.props)")
-            return  Node(type: .leaf, props: renderedComponent.props)
+    func renderNodeSubtreeFrom(_ currentComponent: RenderedComponent) -> Node? {
+        switch currentComponent.type {
+        case .view: return Node(type: .leaf, props: currentComponent.props)
+        case .component(let component): return nodeFor(component, with: currentComponent.props)
+        case .container(let container): return nodeFor(container, with: currentComponent.props)
+        case .undefined: return nil
         }
+    }
 
-        if let component = renderedComponent.component as? Component {
-            print("COMPONENT: \(component)")
-            let nodeWithChildren = Node(type: .node, props: renderedComponent.props)
+    fileprivate func nodeFor(_ component: Component, with props: PropType) -> Node {
+        print("COMPONENT: \(component)")
+        let node = Node(type: .node, props: props)
 
-            if let childComponent = component.render(props: renderedComponent.props) {
-                print("RENDER CHILD")
-                if let childNode = renderBaseComponent(childComponent) {
-                    nodeWithChildren.children.append(childNode)
-                    return nodeWithChildren
-                }
+        // recurse if there is a child (multiple children are handled in containers)
+        if let childComponent = component.render(props: props),
+           let childNode = renderNodeSubtreeFrom(childComponent) {
+            node.children.append(childNode)
+            return node
+        } else {
+            return node
+        }
+    }
+
+    fileprivate func nodeFor(_ container: Container, with props: PropType) -> Node? {
+        let nodes: [Node] = container.items.flatMap { (baseComponent) in
+            guard let component = baseComponent else {
+                return nil
             }
+            let renderedComponent = RenderedComponent(component: component, props: props)
+            return renderNodeSubtreeFrom(renderedComponent)
         }
 
-        // TODO: Containers with children
-
-        return nil
+        let nodeWithChildren = Node(type: .node, props: props)
+        nodeWithChildren.children = nodes
+        return nodeWithChildren
     }
 
 }

@@ -22,7 +22,7 @@ class Label: Component {
             return nil
         }
 
-        let view = GenericComponent<UILabel> { label in
+        let view = UIKitComponent<UILabel> { label in
             label.text = props.title
             label.sizeToFit()
         }.view
