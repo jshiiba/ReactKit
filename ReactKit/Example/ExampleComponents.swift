@@ -24,12 +24,11 @@ class ExampleComponentView: Component {
             return nil
         }
 
-        return RenderedComponent(component: Label(), props: props.labelProps) //Label().render(props: props.labelProps)
-
-            /*Container(items: [
-            ExampleComponent().render(props: props.exampleComponentProps),
-            Label().render(props: props.labelProps)
-        ])*/
+        return RenderedComponent(component: Container(items: [
+            //RenderedComponent(component: ExampleComponent(), props: props.exampleComponentProps),
+                RenderedComponent(component: Label(), props: props.labelProps),
+                RenderedComponent(component: Label(), props: props.labelProps)
+            ]), props: props)
     }
 }
 

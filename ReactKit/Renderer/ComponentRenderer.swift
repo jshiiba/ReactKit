@@ -9,7 +9,7 @@
 import UIKit
 
 ///
-/// Right now this classes only job is to hide the use of the reconciler. Might not be necessary.
+///
 ///
 class ComponentRender {
     let componentDataSource: ComponentDataSource
@@ -31,7 +31,6 @@ class ComponentRender {
         guard let rootComponent = components.first?.render(props: props) else {
             return []
         }
-        print("ROOT: \(rootComponent)")
 
         if let subtree = renderNodeSubtreeFrom(rootComponent) {
             tree.children.append(subtree)
@@ -55,7 +54,6 @@ class ComponentRender {
     }
 
     fileprivate func nodeFor(_ component: Component, with props: PropType) -> Node {
-        print("COMPONENT: \(component)")
         let node = Node(type: .node, props: props)
 
         // recurse if there is a child (multiple children are handled in containers)
@@ -69,12 +67,11 @@ class ComponentRender {
     }
 
     fileprivate func nodeFor(_ container: Container, with props: PropType) -> Node? {
-        let nodes: [Node] = container.items.flatMap { (baseComponent) in
-            guard let component = baseComponent else {
+        let nodes: [Node] = container.items.flatMap { (renderedComponent) in
+            guard let component = renderedComponent else {
                 return nil
             }
-            let renderedComponent = RenderedComponent(component: component, props: props)
-            return renderNodeSubtreeFrom(renderedComponent)
+            return renderNodeSubtreeFrom(component)
         }
 
         let nodeWithChildren = Node(type: .node, props: props)

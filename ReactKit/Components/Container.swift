@@ -9,16 +9,16 @@
 import UIKit
 
  class Container: BaseComponent {
-    let items: [BaseComponent?]
+    let items: [RenderedComponent?]
 
-    init(items: [BaseComponent?]) {
+    init(items: [RenderedComponent?]) {
         self.items = items
     }
 
-    static func render(items: [BaseComponent?]) -> [BaseComponent] {
-
-        // Maybe dont flatmap?
-        let result = items.flatMap { $0 }
-        return result
-    }
+//    static func render(items: [RenderedComponent?]) -> [RenderedComponent] {
+//
+//        // Maybe dont flatmap?
+//        let result = items.flatMap { $0 }
+//        return result
+//    }
 }
