@@ -11,6 +11,24 @@ import Foundation
 ///
 ///
 ///
-protocol PropType {}
+protocol PropType {
+    func isEqualTo(other: PropType) -> Bool
+}
+
+extension PropType where Self : Equatable {
+    func isEqualTo(other: PropType) -> Bool {
+        if let o = other as? Self {
+            return self == o
+        }
+        return false
+    }
+}
+
+extension PropType {
+    func isEqualTo(other: PropType) -> Bool {
+        return false
+    }
+}
+
 
 struct NilProps: PropType {}

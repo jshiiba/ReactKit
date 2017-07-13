@@ -8,6 +8,10 @@
 
 import UIKit
 
+// TODO: remove
+private let DEBUG_CONTAINER = false
+
+
 struct ExampleProps: ExampleComponentPropType {
     let title: String
     let backgroundColor: UIColor
@@ -26,11 +30,23 @@ class ExampleComponentView: Component, ComponentLike {
     }
 
     func render() -> BaseComponent? {
+        if DEBUG_CONTAINER {
+            return renderContainer()
+        } else {
+            return renderLabel()
+        }
+    }
+
+    func renderContainer() -> BaseComponent {
         return Container(items: [
             ExampleComponent(props: _props.exampleComponentProps),
             Label(props: _props.labelProps),
             Label(props: _props.labelProps),
         ])
+    }
+
+    func renderLabel() -> BaseComponent {
+        return Label(props: _props.labelProps)
     }
 }
 

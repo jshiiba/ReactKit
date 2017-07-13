@@ -20,11 +20,10 @@
 		D1680EAE1F1643CE0070ADF9 /* BaseComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1680EAD1F1643CE0070ADF9 /* BaseComponent.swift */; };
 		D1680EB01F1644C70070ADF9 /* UIKitComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1680EAF1F1644C60070ADF9 /* UIKitComponent.swift */; };
 		D1680EB21F164DAD0070ADF9 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1680EB11F164DAD0070ADF9 /* Node.swift */; };
+		D1680EB41F178BA60070ADF9 /* ComponentCacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1680EB31F178BA60070ADF9 /* ComponentCacher.swift */; };
 		D18FCCBC1F12675B00B27F4E /* ComponentCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18FCCBB1F12675B00B27F4E /* ComponentCollectionViewDataSource.swift */; };
 		D18FCCBE1F126F0700B27F4E /* ExampleComponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18FCCBD1F126F0700B27F4E /* ExampleComponentViewController.swift */; };
-		D18FCCC11F12B54E00B27F4E /* ComponentsTypeErasure.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18FCCC01F12B54E00B27F4E /* ComponentsTypeErasure.swift */; };
 		D18FCCC31F12DE7300B27F4E /* ExampleComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18FCCC21F12DE7300B27F4E /* ExampleComponents.swift */; };
-		D1E157081F139025001C345C /* ComponentTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E157071F139025001C345C /* ComponentTranslator.swift */; };
 		D1E1570B1F13909F001C345C /* ComponentReconciler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E1570A1F139098001C345C /* ComponentReconciler.swift */; };
 		D1E1570E1F14E135001C345C /* PropType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E1570D1F14E135001C345C /* PropType.swift */; };
 		D1EB7BA11F0D3F9700739A67 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EB7BA01F0D3F9700739A67 /* Components.swift */; };
@@ -60,11 +59,11 @@
 		D1680EAD1F1643CE0070ADF9 /* BaseComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseComponent.swift; sourceTree = "<group>"; };
 		D1680EAF1F1644C60070ADF9 /* UIKitComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitComponent.swift; sourceTree = "<group>"; };
 		D1680EB11F164DAD0070ADF9 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		D1680EB31F178BA60070ADF9 /* ComponentCacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComponentCacher.swift; path = Reconciler/ComponentCacher.swift; sourceTree = "<group>"; };
+		D1680EB51F179D2E0070ADF9 /* Notes.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Notes.md; sourceTree = "<group>"; };
 		D18FCCBB1F12675B00B27F4E /* ComponentCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		D18FCCBD1F126F0700B27F4E /* ExampleComponentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleComponentViewController.swift; sourceTree = "<group>"; };
-		D18FCCC01F12B54E00B27F4E /* ComponentsTypeErasure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsTypeErasure.swift; sourceTree = "<group>"; };
 		D18FCCC21F12DE7300B27F4E /* ExampleComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExampleComponents.swift; path = Example/ExampleComponents.swift; sourceTree = "<group>"; };
-		D1E157071F139025001C345C /* ComponentTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComponentTranslator.swift; path = Reconciler/ComponentTranslator.swift; sourceTree = "<group>"; };
 		D1E1570A1F139098001C345C /* ComponentReconciler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComponentReconciler.swift; path = Reconciler/ComponentReconciler.swift; sourceTree = "<group>"; };
 		D1E1570D1F14E135001C345C /* PropType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropType.swift; sourceTree = "<group>"; };
 		D1EB7BA01F0D3F9700739A67 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
@@ -97,7 +96,6 @@
 				D1EB7BAB1F0EA9DA00739A67 /* Container.swift */,
 				D1EB7BA01F0D3F9700739A67 /* Components.swift */,
 				D1EB7BA71F0E890800739A67 /* Label.swift */,
-				D18FCCC01F12B54E00B27F4E /* ComponentsTypeErasure.swift */,
 				D1E1570D1F14E135001C345C /* PropType.swift */,
 				D1680EAF1F1644C60070ADF9 /* UIKitComponent.swift */,
 			);
@@ -133,6 +131,7 @@
 		D15103861F0D1AC800213882 /* ReactKit */ = {
 			isa = PBXGroup;
 			children = (
+				D1680EB51F179D2E0070ADF9 /* Notes.md */,
 				D15103871F0D1AC800213882 /* AppDelegate.swift */,
 				D18FCCC21F12DE7300B27F4E /* ExampleComponents.swift */,
 				D18FCCBD1F126F0700B27F4E /* ExampleComponentViewController.swift */,
@@ -140,10 +139,10 @@
 				D1E157061F138FF2001C345C /* Reconciler */,
 				D1EB7BA61F0E87FF00739A67 /* Controller */,
 				D111483F1F111C0100CC37AA /* Components */,
+				D11148461F11307400CC37AA /* Extensions */,
 				D151038E1F0D1AC800213882 /* Assets.xcassets */,
 				D15103901F0D1AC800213882 /* LaunchScreen.storyboard */,
 				D15103931F0D1AC800213882 /* Info.plist */,
-				D11148461F11307400CC37AA /* Extensions */,
 			);
 			path = ReactKit;
 			sourceTree = "<group>";
@@ -161,7 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				D1E1570A1F139098001C345C /* ComponentReconciler.swift */,
-				D1E157071F139025001C345C /* ComponentTranslator.swift */,
+				D1680EB31F178BA60070ADF9 /* ComponentCacher.swift */,
 			);
 			name = Reconciler;
 			sourceTree = "<group>";
@@ -288,11 +287,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D151038A1F0D1AC800213882 /* BaseComponentViewController.swift in Sources */,
-				D1E157081F139025001C345C /* ComponentTranslator.swift in Sources */,
+				D1680EB41F178BA60070ADF9 /* ComponentCacher.swift in Sources */,
 				D11148411F111C3000CC37AA /* BaseComponentCell.swift in Sources */,
 				D11148431F11295100CC37AA /* ComponentRenderer.swift in Sources */,
 				D18FCCC31F12DE7300B27F4E /* ExampleComponents.swift in Sources */,
-				D18FCCC11F12B54E00B27F4E /* ComponentsTypeErasure.swift in Sources */,
 				D118430D1F12557900EA62AC /* ComponentDataSource.swift in Sources */,
 				D1E1570E1F14E135001C345C /* PropType.swift in Sources */,
 				D18FCCBE1F126F0700B27F4E /* ExampleComponentViewController.swift in Sources */,

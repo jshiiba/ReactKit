@@ -29,10 +29,10 @@ class BaseComponentViewController: UIViewController {
 
         self.view.addSubview(collectionView)
 
-        _render()
+        triggerRender()
     }
 
-    func _render() {
+    func triggerRender() {
         dataSource.setComponent(render())
     }
 

@@ -15,7 +15,8 @@ protocol ExampleComponentViewControllerPropType: PropType {
 
 class ExampleComponentViewController: BaseComponentViewController {
 
-    let props: ExampleComponentViewControllerProps
+    var props: ExampleComponentViewControllerProps
+    var count = 1
 
     init(props: ExampleComponentViewControllerProps) {
         self.props = props
@@ -26,9 +27,35 @@ class ExampleComponentViewController: BaseComponentViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = "Example Component"
+
+        let rightItem = UIBarButtonItem(title: "Reload", style: .plain, target: self, action: #selector(triggerState))
+        navigationItem.setRightBarButton(rightItem, animated: false)
+    }
+
     override func render() -> Component {
         return ExampleComponentView(props: self.props)
     }
+}
 
+extension ExampleComponentViewController {
+    @objc func triggerState() {
+        if count % 2 == 0 {
+            count = count + 1
+            props = ExampleComponentViewControllerProps(
+                exampleComponentProps: ExampleProps(title: "Hello world!", backgroundColor: .green),
+                labelProps: LabelProps(title: "Hello again!")
+            )
+        } else {
+            count = count + 1
+            props = ExampleComponentViewControllerProps(
+                exampleComponentProps: ExampleProps(title: "Goodbye world!", backgroundColor: .red),
+                labelProps: LabelProps(title: "Goodbye again!")
+            )
+        }
+        triggerRender()
+    }
 }
 

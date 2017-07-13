@@ -12,8 +12,18 @@ protocol LabelPropType: PropType {
     var title: String { get }
 }
 
+func ==(lhs: LabelPropType, rhs: LabelPropType) -> Bool {
+    return lhs.isEqualTo(other: rhs)
+}
+
 struct LabelProps: LabelPropType {
     let title: String
+}
+
+extension LabelProps: Equatable {
+    static func ==(lhs: LabelProps, rhs: LabelProps) -> Bool {
+        return lhs.title == rhs.title
+    }
 }
 
 class Label: Component, ComponentLike {

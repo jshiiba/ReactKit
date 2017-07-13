@@ -12,28 +12,9 @@ import Foundation
 /// - parameters: Current Components with new props
 /// - returns: Components to update
 class ComponentReconciler {
-    let cacher = ComponentCacher()
-
-    func reconcile(_ components: [Component], with props: PropType) -> [Component] {
-        let nodeTree = ComponentTranslator.translate(components, with: props)
-        let cachedTree = cacher.cache(nodeTree)
-        let updatedComponents = ComponentDiffer.diff(nodeTree, cachedTree)
+    func reconcile(_ currentTree: Node, cachedTree: Node?) -> [Node] {
+        let updatedComponents = ComponentDiffer.diff(currentTree, cachedTree)
         return updatedComponents
-    }
-}
-
-/// Takes input and caches it and returns last cached tree
-/// - parameters: A Tree
-/// - returns: Recently Cached Tree
-class ComponentCacher {
-    var cachedTree: Tree?
-
-    func cache(_ tree: Tree) -> Tree? {
-        defer {
-            cachedTree = tree
-        }
-
-        return cachedTree
     }
 }
 
@@ -41,7 +22,17 @@ class ComponentCacher {
 /// - parameters: currentTree and cached tree
 /// - returns: an array of components to update
 class ComponentDiffer {
-    static func diff(_ currentTree: Tree, _ cachedTree: Tree?) -> [Component] {
-        return []
+    static func diff(_ currentTree: Node, _ cachedTree: Node?, _ updatedNodes: [Node] = []) -> [Node] {
+
+        // base case
+        if case NodeType.leaf = currentTree.type {
+            return updatedNodes
+        }
+
+//        if currentTree.props?.isEqualTo(other: cachedTree?.props) {
+//
+//        }
+
+        return updatedNodes
     }
 }

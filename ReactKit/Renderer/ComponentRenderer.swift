@@ -14,10 +14,12 @@ import UIKit
 class ComponentRender {
     let componentDataSource: ComponentDataSource
     let reconciler: ComponentReconciler
+    let cacher: ComponentCacher
 
     init(componentDataSource: ComponentDataSource, reconciler: ComponentReconciler) {
         self.componentDataSource = componentDataSource
         self.reconciler = reconciler
+        self.cacher = ComponentCacher()
     }
 
     /// 
@@ -31,7 +33,11 @@ class ComponentRender {
             print("NODE TREE: \(tree)")
         }
 
-        //let updatedComponents = reconciler.reconcile(components, with: props)
+        let cachedTree = cacher.cache(tree)
+
+        let updatedNodes = reconciler.reconcile(tree, cachedTree: cachedTree)
+        print("Nodes to update: \(updatedNodes)")
+
         //componentDataSource.indexPathsToReloadFor(renderedComponents: components, updatedComponents: updatedComponents)
         return []
     }

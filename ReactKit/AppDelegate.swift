@@ -19,12 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             exampleComponentProps: ExampleProps(title: "Hello world!", backgroundColor: .green),
             labelProps: LabelProps(title: "Hello again!")
         )
+        let exampleController = ExampleComponentViewController(props: props)
+        let nav = UINavigationController(rootViewController: exampleController)
 
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = ExampleComponentViewController(props: props)
+        window?.rootViewController = nav
         window?.makeKeyAndVisible()
-
         return true
     }
 }
-
