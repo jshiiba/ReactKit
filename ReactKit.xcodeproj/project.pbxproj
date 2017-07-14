@@ -21,6 +21,7 @@
 		D1680EB01F1644C70070ADF9 /* UIKitComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1680EAF1F1644C60070ADF9 /* UIKitComponent.swift */; };
 		D1680EB21F164DAD0070ADF9 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1680EB11F164DAD0070ADF9 /* Node.swift */; };
 		D1680EB41F178BA60070ADF9 /* ComponentCacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1680EB31F178BA60070ADF9 /* ComponentCacher.swift */; };
+		D1680EB81F18D5FB0070ADF9 /* ComponentTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1680EB71F18D5FB0070ADF9 /* ComponentTranslator.swift */; };
 		D18FCCBC1F12675B00B27F4E /* ComponentCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18FCCBB1F12675B00B27F4E /* ComponentCollectionViewDataSource.swift */; };
 		D18FCCBE1F126F0700B27F4E /* ExampleComponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18FCCBD1F126F0700B27F4E /* ExampleComponentViewController.swift */; };
 		D18FCCC31F12DE7300B27F4E /* ExampleComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18FCCC21F12DE7300B27F4E /* ExampleComponents.swift */; };
@@ -61,6 +62,7 @@
 		D1680EB11F164DAD0070ADF9 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		D1680EB31F178BA60070ADF9 /* ComponentCacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComponentCacher.swift; path = Reconciler/ComponentCacher.swift; sourceTree = "<group>"; };
 		D1680EB51F179D2E0070ADF9 /* Notes.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Notes.md; sourceTree = "<group>"; };
+		D1680EB71F18D5FB0070ADF9 /* ComponentTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentTranslator.swift; sourceTree = "<group>"; };
 		D18FCCBB1F12675B00B27F4E /* ComponentCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		D18FCCBD1F126F0700B27F4E /* ExampleComponentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleComponentViewController.swift; sourceTree = "<group>"; };
 		D18FCCC21F12DE7300B27F4E /* ExampleComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExampleComponents.swift; path = Example/ExampleComponents.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 			children = (
 				D1680EB11F164DAD0070ADF9 /* Node.swift */,
 				D11148421F11295100CC37AA /* ComponentRenderer.swift */,
+				D1680EB71F18D5FB0070ADF9 /* ComponentTranslator.swift */,
 			);
 			path = Renderer;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				D11148411F111C3000CC37AA /* BaseComponentCell.swift in Sources */,
 				D11148431F11295100CC37AA /* ComponentRenderer.swift in Sources */,
 				D18FCCC31F12DE7300B27F4E /* ExampleComponents.swift in Sources */,
+				D1680EB81F18D5FB0070ADF9 /* ComponentTranslator.swift in Sources */,
 				D118430D1F12557900EA62AC /* ComponentDataSource.swift in Sources */,
 				D1E1570E1F14E135001C345C /* PropType.swift in Sources */,
 				D18FCCBE1F126F0700B27F4E /* ExampleComponentViewController.swift in Sources */,

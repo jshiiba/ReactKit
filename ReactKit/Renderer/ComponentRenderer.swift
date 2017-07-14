@@ -13,6 +13,7 @@ import UIKit
 ///
 class ComponentRender {
     let componentDataSource: ComponentDataSource
+    let translator: ComponentTranslator
     let reconciler: ComponentReconciler
     let cacher: ComponentCacher
 
@@ -20,18 +21,15 @@ class ComponentRender {
         self.componentDataSource = componentDataSource
         self.reconciler = reconciler
         self.cacher = ComponentCacher()
+        self.translator = ComponentTranslator()
     }
 
     /// 
     ///
     ///
     func render(_ rootComponent: Component) -> [IndexPath] {
-        let tree = Node(type: .root, props: rootComponent.componentProps)
-
-        if let subtree = renderNodeSubtreeFrom(rootComponent) {
-            tree.children.append(subtree)
-            print("NODE TREE: \(tree)")
-        }
+        
+        let tree = translator.translateToNodeTree(from: rootComponent)
 
         let cachedTree = cacher.cache(tree)
 
@@ -41,41 +39,6 @@ class ComponentRender {
         //componentDataSource.indexPathsToReloadFor(renderedComponents: components, updatedComponents: updatedComponents)
         return []
     }
-
-
-    func renderNodeSubtreeFrom(_ currentComponent: BaseComponent) -> Node? {
-        switch currentComponent.componentType {
-        case .view: return Node(type: .leaf)
-        case .component(let component): return nodeFor(component, with: component.props)
-        case .container(let container): return nodeFor(container)
-        case .undefined: return nil
-        }
-    }
-
-    fileprivate func nodeFor(_ component: Component, with props: PropType) -> Node {
-        let node = Node(type: .node, props: props)
-
-        // recurse if there is a child (multiple children are handled in containers)
-        if let childComponent = component.render(),
-           let childNode = renderNodeSubtreeFrom(childComponent) {
-            node.children.append(childNode)
-            return node
-        } else {
-            return node
-        }
-    }
-
-    fileprivate func nodeFor(_ container: Container) -> Node? {
-        let children: [Node] = container.items.flatMap { (renderedComponent) in
-            guard let component = renderedComponent else {
-                return nil
-            }
-            return renderNodeSubtreeFrom(component)
-        }
-
-        return Node(type: .container, children: children)
-    }
-
 }
 
 

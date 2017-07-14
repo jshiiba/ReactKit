@@ -9,7 +9,7 @@
 import UIKit
 
 // TODO: remove
-private let DEBUG_CONTAINER = false
+private let DEBUG_CONTAINER = true
 
 
 struct ExampleProps: ExampleComponentPropType {

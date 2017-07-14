@@ -12,7 +12,6 @@ enum BaseComponentType {
     case view(UIView)
     case component(Component)
     case container(Container)
-    case undefined
 
     init(baseComponent: BaseComponent) {
         if let container = baseComponent as? Container {
@@ -22,7 +21,7 @@ enum BaseComponentType {
         } else if let component = baseComponent as? Component {
             self = .component(component)
         } else {
-            self = .undefined
+            fatalError("BaseComponentType must be a UIView, Component or Container")
         }
     }
 }
