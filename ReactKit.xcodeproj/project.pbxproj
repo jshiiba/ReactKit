@@ -12,6 +12,7 @@
 		D11148451F11307000CC37AA /* UIButton+React.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11148441F11307000CC37AA /* UIButton+React.swift */; };
 		D11148481F11322700CC37AA /* ComponentFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11148471F11322700CC37AA /* ComponentFlowLayout.swift */; };
 		D1182DE71F1A5022008EED00 /* InternalComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1182DE61F1A5022008EED00 /* InternalComponent.swift */; };
+		D1182DE91F1A79A6008EED00 /* SingleViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1182DE81F1A79A6008EED00 /* SingleViewComponent.swift */; };
 		D118430D1F12557900EA62AC /* ComponentDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D118430C1F12557900EA62AC /* ComponentDataSource.swift */; };
 		D15103881F0D1AC800213882 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15103871F0D1AC800213882 /* AppDelegate.swift */; };
 		D151038A1F0D1AC800213882 /* BaseComponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15103891F0D1AC800213882 /* BaseComponentViewController.swift */; };
@@ -20,7 +21,6 @@
 		D151039D1F0D1AC800213882 /* ReactKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D151039C1F0D1AC800213882 /* ReactKitTests.swift */; };
 		D1680EAE1F1643CE0070ADF9 /* BaseComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1680EAD1F1643CE0070ADF9 /* BaseComponent.swift */; };
 		D1680EB01F1644C70070ADF9 /* UIKitComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1680EAF1F1644C60070ADF9 /* UIKitComponent.swift */; };
-		D1680EB21F164DAD0070ADF9 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1680EB11F164DAD0070ADF9 /* Node.swift */; };
 		D1680EB41F178BA60070ADF9 /* ComponentCacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1680EB31F178BA60070ADF9 /* ComponentCacher.swift */; };
 		D1680EB81F18D5FB0070ADF9 /* ComponentTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1680EB71F18D5FB0070ADF9 /* ComponentTranslator.swift */; };
 		D18FCCBC1F12675B00B27F4E /* ComponentCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18FCCBB1F12675B00B27F4E /* ComponentCollectionViewDataSource.swift */; };
@@ -49,6 +49,7 @@
 		D11148441F11307000CC37AA /* UIButton+React.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+React.swift"; sourceTree = "<group>"; };
 		D11148471F11322700CC37AA /* ComponentFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentFlowLayout.swift; sourceTree = "<group>"; };
 		D1182DE61F1A5022008EED00 /* InternalComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalComponent.swift; sourceTree = "<group>"; };
+		D1182DE81F1A79A6008EED00 /* SingleViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleViewComponent.swift; sourceTree = "<group>"; };
 		D118430C1F12557900EA62AC /* ComponentDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentDataSource.swift; sourceTree = "<group>"; };
 		D15103841F0D1AC800213882 /* ReactKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReactKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D15103871F0D1AC800213882 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -61,7 +62,6 @@
 		D151039E1F0D1AC800213882 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1680EAD1F1643CE0070ADF9 /* BaseComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseComponent.swift; sourceTree = "<group>"; };
 		D1680EAF1F1644C60070ADF9 /* UIKitComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitComponent.swift; sourceTree = "<group>"; };
-		D1680EB11F164DAD0070ADF9 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		D1680EB31F178BA60070ADF9 /* ComponentCacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComponentCacher.swift; path = Reconciler/ComponentCacher.swift; sourceTree = "<group>"; };
 		D1680EB51F179D2E0070ADF9 /* Notes.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Notes.md; sourceTree = "<group>"; };
 		D1680EB71F18D5FB0070ADF9 /* ComponentTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentTranslator.swift; sourceTree = "<group>"; };
@@ -99,6 +99,7 @@
 				D1680EAD1F1643CE0070ADF9 /* BaseComponent.swift */,
 				D1EB7BAB1F0EA9DA00739A67 /* Container.swift */,
 				D1EB7BA01F0D3F9700739A67 /* Components.swift */,
+				D1182DE81F1A79A6008EED00 /* SingleViewComponent.swift */,
 				D1EB7BA71F0E890800739A67 /* Label.swift */,
 				D1E1570D1F14E135001C345C /* PropType.swift */,
 				D1680EAF1F1644C60070ADF9 /* UIKitComponent.swift */,
@@ -172,7 +173,6 @@
 		D1E1570F1F14E2FD001C345C /* Renderer */ = {
 			isa = PBXGroup;
 			children = (
-				D1680EB11F164DAD0070ADF9 /* Node.swift */,
 				D11148421F11295100CC37AA /* ComponentRenderer.swift */,
 				D1680EB71F18D5FB0070ADF9 /* ComponentTranslator.swift */,
 				D1182DE61F1A5022008EED00 /* InternalComponent.swift */,
@@ -298,12 +298,12 @@
 				D11148431F11295100CC37AA /* ComponentRenderer.swift in Sources */,
 				D18FCCC31F12DE7300B27F4E /* ExampleComponents.swift in Sources */,
 				D1680EB81F18D5FB0070ADF9 /* ComponentTranslator.swift in Sources */,
+				D1182DE91F1A79A6008EED00 /* SingleViewComponent.swift in Sources */,
 				D118430D1F12557900EA62AC /* ComponentDataSource.swift in Sources */,
 				D1E1570E1F14E135001C345C /* PropType.swift in Sources */,
 				D18FCCBE1F126F0700B27F4E /* ExampleComponentViewController.swift in Sources */,
 				D1EB7BA81F0E890800739A67 /* Label.swift in Sources */,
 				D1680EB01F1644C70070ADF9 /* UIKitComponent.swift in Sources */,
-				D1680EB21F164DAD0070ADF9 /* Node.swift in Sources */,
 				D1EB7BA11F0D3F9700739A67 /* Components.swift in Sources */,
 				D1EB7BAC1F0EA9DA00739A67 /* Container.swift in Sources */,
 				D1680EAE1F1643CE0070ADF9 /* BaseComponent.swift in Sources */,

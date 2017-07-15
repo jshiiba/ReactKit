@@ -8,6 +8,9 @@
 
 import UIKit
 
+///
+/// Represents a Section in an IndexPath containing a row of Components
+///
 struct SectionComponent {
     let section: Int
     var rows: [RowComponent]
@@ -18,6 +21,9 @@ struct SectionComponent {
     }
 }
 
+///
+/// Represents a Row in an IndexPath that contains a UIView
+///
 struct RowComponent {
     let props: PropType
     let section: Int

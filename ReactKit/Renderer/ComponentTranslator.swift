@@ -9,7 +9,7 @@
 import Foundation
 
 class ComponentTranslator {
-    private let rootSection: Int = 0
+    private let rootSection: Int = 0 // TODO: figure out how to avoid Section 0 always being empty
 
     func translateToSections(from rootComponent: Component) -> [SectionComponent] {
 
@@ -33,7 +33,9 @@ class ComponentTranslator {
             let row = RowComponent(view: singleComponent.reduce(),
                                    props: component.props,
                                    section: sectionIndex)
+
             sections[sectionIndex].rows.append(row)
+
         } else if let child = component.render() {
             translate(child, in: &sections, at: sectionIndex)
         }
