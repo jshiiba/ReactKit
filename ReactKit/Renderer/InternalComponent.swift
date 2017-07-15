@@ -27,11 +27,13 @@ struct SectionComponent {
 struct RowComponent {
     let props: PropType
     let section: Int
+    let row: Int
     let view: UIView?
 
-    init(view: UIView?, props: PropType, section: Int) {
+    init(view: UIView?, props: PropType, row: Int, section: Int) {
         self.view = view
         self.props = props
+        self.row = row
         self.section = section
     }
 }

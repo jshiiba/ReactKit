@@ -32,6 +32,7 @@ class ComponentTranslator {
 
             let row = RowComponent(view: singleComponent.reduce(),
                                    props: component.props,
+                                   row: sections[sectionIndex].rows.count,
                                    section: sectionIndex)
 
             sections[sectionIndex].rows.append(row)

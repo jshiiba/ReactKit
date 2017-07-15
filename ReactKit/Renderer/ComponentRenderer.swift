@@ -35,15 +35,11 @@ class ComponentRenderer {
 
         let cachedSections = cacher.cache(sections)
 
-        let _ = reconciler.reconcile(sections, cachedSections: cachedSections)
+        let rowsToUpdate = reconciler.reconcile(sections, cachedSections: cachedSections)
 
-//        let cachedTree = cacher.cache(tree)
-//
-//        let updatedNodes = reconciler.reconcile(tree, cachedTree: cachedTree)
-//        print("Nodes to update: \(updatedNodes)")
-
-        //componentDataSource.indexPathsToReloadFor(renderedComponents: components, updatedComponents: updatedComponents)
-        return []
+        return rowsToUpdate.map { row in
+            return IndexPath(row: row.row, section: row.section)
+        }
     }
 }
 
