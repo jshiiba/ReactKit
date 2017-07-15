@@ -29,6 +29,3 @@ extension PropType {
         return false
     }
 }
-
-
-struct NilProps: PropType {}

@@ -8,17 +8,29 @@
 
 import UIKit
 
+protocol ComponentDataSource {
+
+    var numberOfSections: Int { get }
+
+    func numberOfItems(in section: Int) -> Int
+
+    func component(at indexPath: IndexPath) -> UIView?
+}
+
 ///
 ///
 ///
 class ComponentRenderer {
-    let componentDataSource: ComponentDataSource
+
+    /// dependencies
     let translator: ComponentTranslator
     let reconciler: ComponentReconciler
     let cacher: ComponentCacher
 
-    init(componentDataSource: ComponentDataSource, reconciler: ComponentReconciler) {
-        self.componentDataSource = componentDataSource
+    /// private vars
+    private var sections: [SectionComponent] = []
+
+    init(reconciler: ComponentReconciler) {
         self.reconciler = reconciler
         self.cacher = ComponentCacher()
         self.translator = ComponentTranslator()
@@ -29,19 +41,37 @@ class ComponentRenderer {
     ///
     func render(_ rootComponent: Component) -> [IndexPath] {
         
-        let sections = translator.translateToSections(from: rootComponent)
-
-        componentDataSource.update(sections)
+        sections = translator.translateToSections(from: rootComponent)
 
         let cachedSections = cacher.cache(sections)
 
-        let rowsToUpdate = reconciler.reconcile(sections, cachedSections: cachedSections)
+        let updatedItems = reconciler.reconcile(sections, cachedSections: cachedSections)
 
-        return rowsToUpdate.map { row in
-            return IndexPath(row: row.row, section: row.section)
+        return updatedItems.map { item in
+            return IndexPath(row: item.row, section: item.section)
         }
     }
 }
 
+// MARK: -  ComponentDataSource
+
+extension ComponentRenderer: ComponentDataSource {
+    var numberOfSections: Int {
+        return sections.count
+    }
+
+    func numberOfItems(in section: Int) -> Int {
+        return sections[section].rows.count
+    }
+
+    func component(at indexPath: IndexPath) -> UIView? {
+        guard indexPath.section >= 0 && indexPath.section < sections.count &&
+              indexPath.row >= 0 && indexPath.row < sections[indexPath.section].rows.count else {
+                return nil
+        }
+
+        return sections[indexPath.section].rows[indexPath.row].view
+    }
+}
 
 

@@ -11,7 +11,6 @@ import UIKit
 private let identifier = "Identifier"
 
 class ComponentCollectionViewDataSource: NSObject {
-    let componentDataSource: ComponentDataSource
     let renderer: ComponentRenderer
 
     var componentCollectionView: UICollectionView! {
@@ -22,7 +21,6 @@ class ComponentCollectionViewDataSource: NSObject {
 
     init(renderer: ComponentRenderer) {
         self.renderer = renderer
-        self.componentDataSource = renderer.componentDataSource
     }
 
     private func configure(_ collectionView: UICollectionView) {
@@ -38,8 +36,8 @@ class ComponentCollectionViewDataSource: NSObject {
     /// - parameters:
     ///     - component: component to update
     func setComponent(_ component: Component) {
-        let indexPathsToReload = renderer.render(component)
-        componentCollectionView.reloadItems(at: indexPathsToReload)
+        let updatedIndexPaths = renderer.render(component)
+        componentCollectionView.reloadItems(at: updatedIndexPaths)
     }
 }
 
@@ -47,7 +45,7 @@ extension ComponentCollectionViewDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! BaseComponentCell
 
-        if let component = componentDataSource.component(at: indexPath) {
+        if let component = renderer.component(at: indexPath) {
             cell.configure(with: component)
         }
 
@@ -55,10 +53,10 @@ extension ComponentCollectionViewDataSource: UICollectionViewDataSource {
     }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return componentDataSource.numberOfSections
+        return renderer.numberOfSections
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return componentDataSource.numberOfItems(in: section)
+        return renderer.numberOfItems(in: section)
     }
 }
