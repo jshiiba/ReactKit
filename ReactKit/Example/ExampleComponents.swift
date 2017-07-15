@@ -8,10 +8,6 @@
 
 import UIKit
 
-// TODO: remove
-private let DEBUG_CONTAINER = true
-
-
 struct ExampleProps: ExampleComponentPropType {
     let title: String
     let backgroundColor: UIColor
@@ -19,10 +15,10 @@ struct ExampleProps: ExampleComponentPropType {
 
 struct ExampleComponentViewControllerProps: ExampleComponentViewControllerPropType {
     let exampleComponentProps: ExampleComponentPropType
-    let labelProps: LabelPropType
+    let labels: [LabelPropType]
 }
 
-class ExampleComponentView: Component, ComponentLike {
+struct ExampleComponentView: Component, ComponentLike {
     typealias ComponentPropType = ExampleComponentViewControllerProps
     let props: PropType
     init(props: ExampleComponentViewControllerProps) {
@@ -30,23 +26,13 @@ class ExampleComponentView: Component, ComponentLike {
     }
 
     func render() -> BaseComponent? {
-        if DEBUG_CONTAINER {
-            return renderContainer()
-        } else {
-            return renderLabel()
+        // example of repeat components
+        let labels: [Component] = _props.labels.map { label in
+            return Label(props: label)
         }
-    }
 
-    func renderContainer() -> BaseComponent {
-        return Container(items: [
-            ExampleComponent(props: _props.exampleComponentProps),
-            Label(props: _props.labelProps),
-            Label(props: _props.labelProps),
-        ])
-    }
-
-    func renderLabel() -> BaseComponent {
-        return Label(props: _props.labelProps)
+        let components = [ExampleComponent(props: _props.exampleComponentProps)] + labels
+        return Container(components: components)
     }
 }
 
@@ -55,7 +41,7 @@ protocol ExampleComponentPropType: PropType {
     var backgroundColor: UIColor { get }
 }
 
-class ExampleComponent: Component, ComponentLike {
+struct ExampleComponent: Component, ComponentLike {
     typealias ComponentPropType = ExampleComponentPropType
     let props: PropType
     init(props: ExampleComponentPropType) {
@@ -63,18 +49,11 @@ class ExampleComponent: Component, ComponentLike {
     }
 
     func render() -> BaseComponent? {
-        return Container(items: [
-            UIKitComponent<UILabel>(props: _props) { (label) in
+        return UIKitComponent<UILabel>(props: _props) { (label) in
                 label.text = _props.title
                 label.backgroundColor = _props.backgroundColor
                 label.sizeToFit()
-            },
-            UIKitComponent<UILabel>(props: _props) { (label) in
-                label.text = _props.title
-                label.backgroundColor = _props.backgroundColor
-                label.sizeToFit()
-            }
-        ])
+        }
     }
 }
 

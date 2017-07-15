@@ -8,6 +8,9 @@
 
 import Foundation
 
+///
+///
+///
 class ComponentTranslator {
     private let rootSection: Int = 0 // TODO: figure out how to avoid Section 0 always being empty
 
@@ -46,7 +49,7 @@ class ComponentTranslator {
         let newSectionIndex = sectionIndex + 1
         let newSection = SectionComponent(section: newSectionIndex, rows: [])
         sections.append(newSection)
-        container.items.forEach { baseComponent in
+        container.components.forEach { baseComponent in
             guard let component = baseComponent else { return }
             translate(component, in: &sections, at: newSectionIndex)
         }

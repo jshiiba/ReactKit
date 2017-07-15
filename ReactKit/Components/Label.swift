@@ -26,7 +26,7 @@ extension LabelProps: Equatable {
     }
 }
 
-class Label: Component, ComponentLike {
+struct Label: Component, ComponentLike {
     typealias ComponentPropType = LabelPropType
 
     let props: PropType

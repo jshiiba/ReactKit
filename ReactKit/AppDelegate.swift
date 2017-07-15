@@ -17,7 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let props = ExampleComponentViewControllerProps(
             exampleComponentProps: ExampleProps(title: "Hello world!", backgroundColor: .green),
-            labelProps: LabelProps(title: "Hello again!")
+            labels: [
+                LabelProps(title: "Hello again!"),
+                LabelProps(title: "I like saying hello!")
+            ]
         )
         let exampleController = ExampleComponentViewController(props: props)
         let nav = UINavigationController(rootViewController: exampleController)

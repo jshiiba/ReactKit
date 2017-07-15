@@ -19,13 +19,13 @@ enum BaseComponentType {
         } else if let component = baseComponent as? Component {
             self = .component(component)
         } else {
-            fatalError("BaseComponentType must be a UIView, Component or Container")
+            fatalError("BaseComponentType must be a Component or Container")
         }
     }
 }
 
 ///
-/// can be a Composite, Component or Container
+/// can be a Component or Container
 ///
 protocol BaseComponent {}
 

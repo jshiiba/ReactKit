@@ -10,7 +10,7 @@ import UIKit
 
 protocol ExampleComponentViewControllerPropType: PropType {
     var exampleComponentProps: ExampleComponentPropType { get }
-    var labelProps: LabelPropType { get }
+    var labels: [LabelPropType] { get }
 }
 
 class ExampleComponentViewController: BaseComponentViewController {
@@ -40,19 +40,26 @@ class ExampleComponentViewController: BaseComponentViewController {
     }
 }
 
+// TODO: replace with redux
 extension ExampleComponentViewController {
     @objc func triggerState() {
         if count % 2 == 0 {
             count = count + 1
             props = ExampleComponentViewControllerProps(
                 exampleComponentProps: ExampleProps(title: "Hello world!", backgroundColor: .green),
-                labelProps: LabelProps(title: "Hello again!")
+                labels: [
+                    LabelProps(title: "Hello again!"),
+                    LabelProps(title: "I like saying hello!")
+                ]
             )
         } else {
             count = count + 1
             props = ExampleComponentViewControllerProps(
                 exampleComponentProps: ExampleProps(title: "Goodbye world!", backgroundColor: .red),
-                labelProps: LabelProps(title: "Goodbye again!")
+                labels: [
+                    LabelProps(title: "Goodbye again!"),
+                    LabelProps(title: "I like saying goodbye!")
+                ]
             )
         }
         triggerRender()

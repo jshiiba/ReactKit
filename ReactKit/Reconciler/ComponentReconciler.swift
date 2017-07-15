@@ -10,22 +10,19 @@ import Foundation
 
 ///
 /// - parameters: Current Components with new props
-/// - returns: Components to update
+/// - returns: IndexPaths to update
 class ComponentReconciler {
-    func reconcile(_ currentSections: [SectionComponent], cachedSections: [SectionComponent]?) -> [RowComponent] {
-        return ComponentDiffer.diff(currentSections, cachedSections)
-    }
-}
+    func reconcile(_ currentSections: [SectionComponent], cachedSections: [SectionComponent]?) -> [IndexPath] {
+        // TODO: Diff
 
-///
-/// - parameters: currentTree and cached tree
-/// - returns: an array of components to update
-class ComponentDiffer {
-    static func diff(_ currentSections: [SectionComponent], _ cachedSections: [SectionComponent]?) -> [RowComponent] {
-        // TODO: Use Dwifft to diff between current and cached
-
-        return currentSections.reduce([]) { (result, section) in
+        return currentSections
+        // convert sections to array of rows to update
+        .reduce([]) { (result, section) in
             return result + section.rows
+        }
+        // convert rows to IndexPath
+        .map { path in
+            return IndexPath(row: path.row, section: path.section)
         }
     }
 }
