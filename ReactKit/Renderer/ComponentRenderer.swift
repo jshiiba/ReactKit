@@ -11,7 +11,7 @@ import UIKit
 ///
 ///
 ///
-class ComponentRender {
+class ComponentRender { // TODO: RenderER
     let componentDataSource: ComponentDataSource
     let translator: ComponentTranslator
     let reconciler: ComponentReconciler

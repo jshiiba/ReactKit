@@ -11,6 +11,7 @@
 		D11148431F11295100CC37AA /* ComponentRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11148421F11295100CC37AA /* ComponentRenderer.swift */; };
 		D11148451F11307000CC37AA /* UIButton+React.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11148441F11307000CC37AA /* UIButton+React.swift */; };
 		D11148481F11322700CC37AA /* ComponentFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11148471F11322700CC37AA /* ComponentFlowLayout.swift */; };
+		D1182DE71F1A5022008EED00 /* InternalComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1182DE61F1A5022008EED00 /* InternalComponent.swift */; };
 		D118430D1F12557900EA62AC /* ComponentDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D118430C1F12557900EA62AC /* ComponentDataSource.swift */; };
 		D15103881F0D1AC800213882 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15103871F0D1AC800213882 /* AppDelegate.swift */; };
 		D151038A1F0D1AC800213882 /* BaseComponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15103891F0D1AC800213882 /* BaseComponentViewController.swift */; };
@@ -47,6 +48,7 @@
 		D11148421F11295100CC37AA /* ComponentRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentRenderer.swift; sourceTree = "<group>"; };
 		D11148441F11307000CC37AA /* UIButton+React.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+React.swift"; sourceTree = "<group>"; };
 		D11148471F11322700CC37AA /* ComponentFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentFlowLayout.swift; sourceTree = "<group>"; };
+		D1182DE61F1A5022008EED00 /* InternalComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalComponent.swift; sourceTree = "<group>"; };
 		D118430C1F12557900EA62AC /* ComponentDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentDataSource.swift; sourceTree = "<group>"; };
 		D15103841F0D1AC800213882 /* ReactKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReactKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D15103871F0D1AC800213882 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				D1680EB11F164DAD0070ADF9 /* Node.swift */,
 				D11148421F11295100CC37AA /* ComponentRenderer.swift */,
 				D1680EB71F18D5FB0070ADF9 /* ComponentTranslator.swift */,
+				D1182DE61F1A5022008EED00 /* InternalComponent.swift */,
 			);
 			path = Renderer;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				D1E1570B1F13909F001C345C /* ComponentReconciler.swift in Sources */,
 				D15103881F0D1AC800213882 /* AppDelegate.swift in Sources */,
 				D11148451F11307000CC37AA /* UIButton+React.swift in Sources */,
+				D1182DE71F1A5022008EED00 /* InternalComponent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

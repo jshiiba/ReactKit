@@ -9,15 +9,17 @@
 import UIKit
 
 enum BaseComponentType {
-    case view(UIView)
+
+    // TODO singular --> Component, Component --> Composite
+    case singular(SingularComponent)
     case component(Component)
     case container(Container)
 
     init(baseComponent: BaseComponent) {
         if let container = baseComponent as? Container {
             self = .container(container)
-        } else if let view = baseComponent as? UIView {
-            self = .view(view)
+        } else if let single = baseComponent as? SingularComponent {
+            self = .singular(single)
         } else if let component = baseComponent as? Component {
             self = .component(component)
         } else {

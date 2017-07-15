@@ -11,6 +11,37 @@ import Foundation
 class ComponentTranslator {
     private let rootSection: Int = -1
 
+
+    func translateToSections(from rootComponent: Component) -> [SectionComponent] {
+
+        // translate component Tree to Array of Sections, Rows
+
+        return []
+    }
+
+    func translate(_ base: BaseComponent, in sections: inout [SectionComponent], sectionIndex: Int) {
+        switch base.componentType {
+        case .singular(let singleComponent):
+            let row = RowComponent(view: singleComponent.reduce(), props: singleComponent.props, section: sectionIndex)
+            sections[sectionIndex].rows.append(row)
+        case .component(let component):
+            if let child = component.render() {
+                translate(child, in: &sections, sectionIndex: sectionIndex)
+            }
+        case .container(let container):
+            container.items.forEach { baseComponent in
+                guard let component = baseComponent else { return }
+                let newSectionIndex = sectionIndex + 1
+                let newSection = SectionComponent(section: newSectionIndex, rows: [])
+                sections.append(newSection)
+                translate(component, in: &sections, sectionIndex: newSectionIndex)
+            }
+        }
+    }
+
+
+    /// Tree version
+
     func translateToNodeTree(from rootComponent: Component) -> Node {
         let root = translate(rootComponent, in: rootSection)
         return root

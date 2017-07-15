@@ -30,3 +30,13 @@ extension ComponentLike where Self : Component {
     }
 }
 
+protocol SingularComponent: Component {
+    func reduce() -> UIView
+}
+
+extension SingularComponent {
+    func reduce() -> UIView {
+        let view: UIView = UIView()
+        return view
+    }
+}
