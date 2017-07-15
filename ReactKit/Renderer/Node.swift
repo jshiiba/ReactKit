@@ -23,12 +23,13 @@ class Node {
 
     var children: [Node]
 
-    var sectionCount: Int = 0
+    var section: Int = 0
 
-    init(type: NodeType, props: PropType? = nil, children: [Node] = []) {
+    init(type: NodeType, props: PropType? = nil, children: [Node] = [], section: Int = 0) {
         self.type = type
         self.props = props
         self.children = children
+        self.section = section
     }
 
 }

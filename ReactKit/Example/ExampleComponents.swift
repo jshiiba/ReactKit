@@ -63,31 +63,11 @@ class ExampleComponent: Component, ComponentLike {
     }
 
     func render() -> BaseComponent? {
-        return Container(items: [
-            UIKitComponent<UILabel>(props: _props) { (label) in
-                label.text = _props.title
-                label.backgroundColor = _props.backgroundColor
-                label.sizeToFit()
-            }
-        ])
+        return UIKitComponent<UILabel>(props: _props) { (label) in
+            label.text = _props.title
+            label.backgroundColor = _props.backgroundColor
+            label.sizeToFit()
+        }
     }
 }
-//
-//class ChildExampleComponent: Component {
-//    func render(props: PropType) -> BaseComponent? {
-//        guard let props = props as? ExampleComponentPropType else {
-//            return nil
-//        }
-//
-//        let view = UIView()
-//        let label = GenericComponent<UILabel> { (label) in
-//            label.text = props.title
-//            label.backgroundColor = props.backgroundColor
-//            label.textAlignment = .right
-//            label.sizeToFit()
-//        }
-//        view.addSubview(label.view)
-//        return view
-//    }
-//}
 
