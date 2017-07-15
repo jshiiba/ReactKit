@@ -10,7 +10,7 @@ import UIKit
 
 class BaseComponentViewController: UIViewController {
 
-    var renderer: ComponentRender!
+    var renderer: ComponentRenderer!
 
     var dataSource: ComponentCollectionViewDataSource!
     var collectionView: UICollectionView!
@@ -18,7 +18,7 @@ class BaseComponentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        renderer = ComponentRender(componentDataSource: ComponentDataSource(), reconciler: ComponentReconciler())
+        renderer = ComponentRenderer(componentDataSource: ComponentDataSource(), reconciler: ComponentReconciler())
         dataSource = ComponentCollectionViewDataSource(renderer: renderer)
 
         collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: UICollectionViewFlowLayout())

@@ -21,9 +21,9 @@ struct SectionComponent {
 struct RowComponent {
     let props: PropType
     let section: Int
-    let view: UIView
+    let view: UIView?
 
-    init(view: UIView, props: PropType, section: Int) {
+    init(view: UIView?, props: PropType, section: Int) {
         self.view = view
         self.props = props
         self.section = section

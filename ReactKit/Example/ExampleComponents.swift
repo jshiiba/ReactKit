@@ -63,11 +63,18 @@ class ExampleComponent: Component, ComponentLike {
     }
 
     func render() -> BaseComponent? {
-        return UIKitComponent<UILabel>(props: _props) { (label) in
-            label.text = _props.title
-            label.backgroundColor = _props.backgroundColor
-            label.sizeToFit()
-        }
+        return Container(items: [
+            UIKitComponent<UILabel>(props: _props) { (label) in
+                label.text = _props.title
+                label.backgroundColor = _props.backgroundColor
+                label.sizeToFit()
+            },
+            UIKitComponent<UILabel>(props: _props) { (label) in
+                label.text = _props.title
+                label.backgroundColor = _props.backgroundColor
+                label.sizeToFit()
+            }
+        ])
     }
 }
 

@@ -12,7 +12,7 @@ private let identifier = "Identifier"
 
 class ComponentCollectionViewDataSource: NSObject {
     let componentDataSource: ComponentDataSource
-    let renderer: ComponentRender
+    let renderer: ComponentRenderer
 
     var componentCollectionView: UICollectionView! {
         didSet {
@@ -20,7 +20,7 @@ class ComponentCollectionViewDataSource: NSObject {
         }
     }
 
-    init(renderer: ComponentRender) {
+    init(renderer: ComponentRenderer) {
         self.renderer = renderer
         self.componentDataSource = renderer.componentDataSource
     }

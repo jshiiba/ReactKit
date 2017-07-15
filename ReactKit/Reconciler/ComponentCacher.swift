@@ -8,17 +8,16 @@
 
 import Foundation
 
-/// Takes input and caches it and returns last cached tree
-/// - parameters: root of the tree
-/// - returns: Recently Cached Tree
+/// Takes input and caches it and returns last cached sections
+/// - parameters: sections
+/// - returns: Recently Cached sections
 class ComponentCacher {
-    var cachedTree: Node?
+    var cachedSections: [SectionComponent]?
 
-    func cache(_ treeRoot: Node) -> Node? {
+    func cache(_ sections: [SectionComponent]) -> [SectionComponent]? {
         defer {
-            cachedTree = treeRoot
+            cachedSections = sections
         }
-
-        return cachedTree
+        return cachedSections
     }
 }

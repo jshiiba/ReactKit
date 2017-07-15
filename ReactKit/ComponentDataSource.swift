@@ -10,11 +10,9 @@ import UIKit
 
 class ComponentDataSource {
 
-    private(set) var components: [Component] = []
-    private(set) var props: PropType?
-
-    func update(_ props: PropType) {
-        self.props = props
+    private(set) var sections: [SectionComponent] = []
+    func update(_ sections: [SectionComponent]) {
+        self.sections = sections
     }
 
     /// Finds the indexPaths in renderedComponents that matches the updatedComponents
@@ -23,7 +21,6 @@ class ComponentDataSource {
     ///     - updatedComponents: Components that were actually updated via the reconciler
     /// - returns: IndexPaths of the cells to reload
     func indexPathsToReloadFor(renderedComponents: [Component], updatedComponents: [Component]) -> [IndexPath] {
-        self.components = renderedComponents
 
         // TODO: get index paths by searching through renderedComponents for matching components in updatedComponents
         let indexPathsToReload: [IndexPath] = []
@@ -36,16 +33,20 @@ class ComponentDataSource {
 extension ComponentDataSource {
     var numberOfSections: Int {
         // TODO: return number of sections within Components
-        return 1
+        return sections.count
     }
 
     func numberOfItems(in section: Int) -> Int {
         // TODO: get components within a section
-        return 1 //components.count
+        return sections[section].rows.count
     }
 
     func component(at indexPath: IndexPath) -> UIView? {
+        guard indexPath.section >= 0 && indexPath.section < sections.count &&
+            indexPath.row >= 0 && indexPath.row < sections[indexPath.section].rows.count else {
+                return nil
+        }
         // return component from tree
-        return nil
+        return sections[indexPath.section].rows[indexPath.row].view
     }
 }

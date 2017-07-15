@@ -11,7 +11,7 @@ import UIKit
 ///
 ///
 ///
-class ComponentRender { // TODO: RenderER
+class ComponentRenderer {
     let componentDataSource: ComponentDataSource
     let translator: ComponentTranslator
     let reconciler: ComponentReconciler
@@ -29,7 +29,13 @@ class ComponentRender { // TODO: RenderER
     ///
     func render(_ rootComponent: Component) -> [IndexPath] {
         
-        let tree = translator.translateToSections(from: rootComponent)
+        let sections = translator.translateToSections(from: rootComponent)
+
+        componentDataSource.update(sections)
+
+        let cachedSections = cacher.cache(sections)
+
+        let _ = reconciler.reconcile(sections, cachedSections: cachedSections)
 
 //        let cachedTree = cacher.cache(tree)
 //

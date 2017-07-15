@@ -31,13 +31,24 @@ extension ComponentLike where Self : Component {
 }
 
 protocol SingleViewComponent {
-    func reduce() -> UIView
+    func reduce() -> UIView?
 }
 
 extension SingleViewComponent where Self : Component {
-    func reduce() -> UIView {
+    func reduce() -> UIView? {
         // TODO: Loop through renders until UIView
-        let view: UIView = UIView()
-        return view
+
+        guard var base = self.render() else {
+            return nil
+        }
+
+        while !(base is UIView) {
+            if let component = base as? Component, let rendered = component.render() {
+                base = rendered
+            } else {
+                break
+            }
+        }
+        return base as? UIView
     }
 }
