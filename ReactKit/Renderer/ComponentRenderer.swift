@@ -29,12 +29,12 @@ class ComponentRender { // TODO: RenderER
     ///
     func render(_ rootComponent: Component) -> [IndexPath] {
         
-        let tree = translator.translateToNodeTree(from: rootComponent)
+        let tree = translator.translateToSections(from: rootComponent)
 
-        let cachedTree = cacher.cache(tree)
-
-        let updatedNodes = reconciler.reconcile(tree, cachedTree: cachedTree)
-        print("Nodes to update: \(updatedNodes)")
+//        let cachedTree = cacher.cache(tree)
+//
+//        let updatedNodes = reconciler.reconcile(tree, cachedTree: cachedTree)
+//        print("Nodes to update: \(updatedNodes)")
 
         //componentDataSource.indexPathsToReloadFor(renderedComponents: components, updatedComponents: updatedComponents)
         return []

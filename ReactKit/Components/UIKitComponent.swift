@@ -27,3 +27,5 @@ class UIKitComponent<V: UIView>: Component {
         return self.view
     }
 }
+
+extension UIKitComponent: SingleViewComponent {}

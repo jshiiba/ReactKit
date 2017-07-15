@@ -44,3 +44,5 @@ class Label: Component, ComponentLike {
     }
 }
 
+extension Label: SingleViewComponent {}
+

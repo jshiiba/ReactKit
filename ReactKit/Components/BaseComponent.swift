@@ -10,16 +10,12 @@ import UIKit
 
 enum BaseComponentType {
 
-    // TODO singular --> Component, Component --> Composite
-    case singular(SingularComponent)
     case component(Component)
     case container(Container)
 
     init(baseComponent: BaseComponent) {
         if let container = baseComponent as? Container {
             self = .container(container)
-        } else if let single = baseComponent as? SingularComponent {
-            self = .singular(single)
         } else if let component = baseComponent as? Component {
             self = .component(component)
         } else {
@@ -29,7 +25,7 @@ enum BaseComponentType {
 }
 
 ///
-/// can be a UIView, Component or Container
+/// can be a Composite, Component or Container
 ///
 protocol BaseComponent {}
 

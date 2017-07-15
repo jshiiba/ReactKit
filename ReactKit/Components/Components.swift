@@ -30,12 +30,13 @@ extension ComponentLike where Self : Component {
     }
 }
 
-protocol SingularComponent: Component {
+protocol SingleViewComponent {
     func reduce() -> UIView
 }
 
-extension SingularComponent {
+extension SingleViewComponent where Self : Component {
     func reduce() -> UIView {
+        // TODO: Loop through renders until UIView
         let view: UIView = UIView()
         return view
     }
