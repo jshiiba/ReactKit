@@ -8,14 +8,18 @@
 
 import UIKit
 
-class ComponentFlowLayout: UICollectionViewFlowLayout {
+class ComponentFlowLayout: UICollectionViewLayout {
 
-    override init() {
-        super.init()
-        self.itemSize = CGSize(width: 300, height: 100)
+    override func prepare() {
+        super.prepare()
+        //opportunity to prepare and perform any calculations required to determine the collection view
+        // size and the positions of the items
     }
 
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        let attributes: [UICollectionViewLayoutAttributes] = []
+
+        return attributes
     }
+
 }
