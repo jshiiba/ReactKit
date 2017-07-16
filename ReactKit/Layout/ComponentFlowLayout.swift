@@ -8,8 +8,9 @@
 
 import UIKit
 
-class ComponentFlowLayout: UICollectionViewLayout {
+class ComponentFlowLayout: UICollectionViewFlowLayout {
 
+    /*
     override func prepare() {
         super.prepare()
         //opportunity to prepare and perform any calculations required to determine the collection view
@@ -21,5 +22,5 @@ class ComponentFlowLayout: UICollectionViewLayout {
 
         return attributes
     }
-
+     */
 }

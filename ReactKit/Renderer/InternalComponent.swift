@@ -14,10 +14,12 @@ import UIKit
 struct SectionComponent {
     let section: Int
     var rows: [RowComponent]
+    let layout: LayoutContainerProps
 
-    init(section: Int, rows: [RowComponent]) {
+    init(section: Int, rows: [RowComponent], layout: LayoutContainerProps) {
         self.section = section
         self.rows = rows
+        self.layout = layout
     }
 }
 
