@@ -21,6 +21,10 @@ struct SectionComponent {
         self.rows = rows
         self.layout = layout
     }
+
+    func row(at indexPath: IndexPath) -> RowComponent {
+        return self.rows[indexPath.row]
+    }
 }
 
 ///
@@ -30,11 +34,13 @@ struct RowComponent {
     let props: PropType
     let section: Int
     let row: Int
+    let layout: LayoutComponentProps?
     let view: UIView?
 
     init(view: UIView?, props: PropType, row: Int, section: Int) {
         self.view = view
         self.props = props
+        self.layout = props.layout
         self.row = row
         self.section = section
     }

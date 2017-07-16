@@ -26,6 +26,7 @@ class ComponentRenderer {
     let translator: ComponentTranslator
     let reconciler: ComponentReconciler
     let cacher: ComponentCacher
+    let layout: ComponentFlowLayout
 
     /// private vars
     private var sections: [SectionComponent] = []
@@ -34,6 +35,7 @@ class ComponentRenderer {
         self.reconciler = reconciler
         self.cacher = ComponentCacher()
         self.translator = ComponentTranslator()
+        self.layout = ComponentFlowLayout()
     }
 
     /// 
@@ -42,6 +44,7 @@ class ComponentRenderer {
     func render(_ rootComponent: Component) -> [IndexPath] {
         
         sections = translator.translateToSections(from: rootComponent)
+        layout.sections = sections
 
         let cachedSections = cacher.cache(sections)
 

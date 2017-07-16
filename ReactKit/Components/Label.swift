@@ -17,7 +17,13 @@ func ==(lhs: LabelPropType, rhs: LabelPropType) -> Bool {
 }
 
 struct LabelProps: LabelPropType {
+    let layout: LayoutComponentProps?
     let title: String
+
+    init(title: String, layout: LayoutComponentProps? = nil) {
+        self.title = title
+        self.layout = layout
+    }
 }
 
 extension LabelProps: Equatable {

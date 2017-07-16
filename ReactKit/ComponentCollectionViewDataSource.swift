@@ -27,9 +27,7 @@ class ComponentCollectionViewDataSource: NSObject {
         collectionView.register(BaseComponentCell.self, forCellWithReuseIdentifier: identifier)
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.backgroundColor = .white
-
-        let componentLayout = ComponentFlowLayout()
-        collectionView.collectionViewLayout = componentLayout
+        collectionView.collectionViewLayout = renderer.layout
     }
 
     /// Updates collectionview with new components and props, reloads updated cells

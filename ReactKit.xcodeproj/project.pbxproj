@@ -14,7 +14,8 @@
 		D1182DE71F1A5022008EED00 /* InternalComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1182DE61F1A5022008EED00 /* InternalComponent.swift */; };
 		D1182DE91F1A79A6008EED00 /* SingleViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1182DE81F1A79A6008EED00 /* SingleViewComponent.swift */; };
 		D1182DED1F1B9326008EED00 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1182DEC1F1B9326008EED00 /* Layout.swift */; };
-		D1182DEF1F1B95A7008EED00 /* FlexLayoutSingleComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1182DEE1F1B95A7008EED00 /* FlexLayoutSingleComponentTests.swift */; };
+		D1182DEF1F1B95A7008EED00 /* FlexLayoutAttributeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1182DEE1F1B95A7008EED00 /* FlexLayoutAttributeTests.swift */; };
+		D1182DF11F1BB8CA008EED00 /* LayoutExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1182DF01F1BB8CA008EED00 /* LayoutExampleViewController.swift */; };
 		D15103881F0D1AC800213882 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15103871F0D1AC800213882 /* AppDelegate.swift */; };
 		D151038A1F0D1AC800213882 /* BaseComponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15103891F0D1AC800213882 /* BaseComponentViewController.swift */; };
 		D151038F1F0D1AC800213882 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D151038E1F0D1AC800213882 /* Assets.xcassets */; };
@@ -51,7 +52,8 @@
 		D1182DE61F1A5022008EED00 /* InternalComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalComponent.swift; sourceTree = "<group>"; };
 		D1182DE81F1A79A6008EED00 /* SingleViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleViewComponent.swift; sourceTree = "<group>"; };
 		D1182DEC1F1B9326008EED00 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
-		D1182DEE1F1B95A7008EED00 /* FlexLayoutSingleComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FlexLayoutSingleComponentTests.swift; path = ReactKitTests/FlexLayoutSingleComponentTests.swift; sourceTree = SOURCE_ROOT; };
+		D1182DEE1F1B95A7008EED00 /* FlexLayoutAttributeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FlexLayoutAttributeTests.swift; path = ReactKitTests/FlexLayoutAttributeTests.swift; sourceTree = SOURCE_ROOT; };
+		D1182DF01F1BB8CA008EED00 /* LayoutExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutExampleViewController.swift; sourceTree = "<group>"; };
 		D15103841F0D1AC800213882 /* ReactKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReactKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D15103871F0D1AC800213882 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D15103891F0D1AC800213882 /* BaseComponentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseComponentViewController.swift; sourceTree = "<group>"; };
@@ -67,7 +69,7 @@
 		D1680EB71F18D5FB0070ADF9 /* ComponentTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentTranslator.swift; sourceTree = "<group>"; };
 		D18FCCBB1F12675B00B27F4E /* ComponentCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		D18FCCBD1F126F0700B27F4E /* ExampleComponentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleComponentViewController.swift; sourceTree = "<group>"; };
-		D18FCCC21F12DE7300B27F4E /* ExampleComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExampleComponents.swift; path = Example/ExampleComponents.swift; sourceTree = "<group>"; };
+		D18FCCC21F12DE7300B27F4E /* ExampleComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleComponents.swift; sourceTree = "<group>"; };
 		D1E1570A1F139098001C345C /* ComponentReconciler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComponentReconciler.swift; path = Reconciler/ComponentReconciler.swift; sourceTree = "<group>"; };
 		D1E1570D1F14E135001C345C /* PropType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropType.swift; sourceTree = "<group>"; };
 		D1EB7BA01F0D3F9700739A67 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
@@ -124,6 +126,17 @@
 			path = Layout;
 			sourceTree = "<group>";
 		};
+		D1182DF21F1BB8D2008EED00 /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				D18FCCC21F12DE7300B27F4E /* ExampleComponents.swift */,
+				D18FCCBD1F126F0700B27F4E /* ExampleComponentViewController.swift */,
+				D1182DF01F1BB8CA008EED00 /* LayoutExampleViewController.swift */,
+			);
+			name = Example;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		D151037B1F0D1AC800213882 = {
 			isa = PBXGroup;
 			children = (
@@ -147,8 +160,7 @@
 			children = (
 				D1680EB51F179D2E0070ADF9 /* Notes.md */,
 				D15103871F0D1AC800213882 /* AppDelegate.swift */,
-				D18FCCC21F12DE7300B27F4E /* ExampleComponents.swift */,
-				D18FCCBD1F126F0700B27F4E /* ExampleComponentViewController.swift */,
+				D1182DF21F1BB8D2008EED00 /* Example */,
 				D1182DEB1F1B92F7008EED00 /* Layout */,
 				D1E1570F1F14E2FD001C345C /* Renderer */,
 				D1E157061F138FF2001C345C /* Reconciler */,
@@ -165,7 +177,7 @@
 		D151039B1F0D1AC800213882 /* ReactKitTests */ = {
 			isa = PBXGroup;
 			children = (
-				D1182DEE1F1B95A7008EED00 /* FlexLayoutSingleComponentTests.swift */,
+				D1182DEE1F1B95A7008EED00 /* FlexLayoutAttributeTests.swift */,
 				D151039E1F0D1AC800213882 /* Info.plist */,
 			);
 			path = ReactKitTests;
@@ -321,6 +333,7 @@
 				D15103881F0D1AC800213882 /* AppDelegate.swift in Sources */,
 				D11148451F11307000CC37AA /* UIButton+React.swift in Sources */,
 				D1182DE71F1A5022008EED00 /* InternalComponent.swift in Sources */,
+				D1182DF11F1BB8CA008EED00 /* LayoutExampleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,7 +341,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1182DEF1F1B95A7008EED00 /* FlexLayoutSingleComponentTests.swift in Sources */,
+				D1182DEF1F1B95A7008EED00 /* FlexLayoutAttributeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

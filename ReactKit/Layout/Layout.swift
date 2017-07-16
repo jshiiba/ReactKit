@@ -9,7 +9,6 @@
 import UIKit
 
 struct LayoutContainerProps {
-
     let frame: CGRect
 }
 
@@ -23,10 +22,32 @@ struct LayoutAttribute {
 }
 
 struct FlexLayout {
-    static func attributes(forComponentProp component: LayoutComponentProps, in container: LayoutContainerProps) -> LayoutAttribute {
 
-        let flexWidth = container.frame.size.width * component.flex
+    static func attributes(forComponentProps components: [LayoutComponentProps], in container: LayoutContainerProps) -> [LayoutAttribute] {
+        let containerFrame = container.frame
+        var prevFrame = CGRect(origin: container.frame.origin, size: .zero)
+        var currentFrame = CGRect(origin: container.frame.origin, size: .zero)
 
-        return LayoutAttribute(frame: CGRect(x: 0, y: 0, width: flexWidth, height: component.size.height))
+        let attributes: [LayoutAttribute] = components.map { component in
+            currentFrame.size = CGSize(width: containerFrame.width * component.flex, height: component.size.height)
+            currentFrame.origin = origin(forPreviousFrame: prevFrame, currentFrame: currentFrame, in: container.frame)
+
+            prevFrame = currentFrame
+
+            return LayoutAttribute(frame: currentFrame)
+        }
+
+        return attributes
+    }
+
+    static func origin(forPreviousFrame prev: CGRect, currentFrame curr: CGRect, in containerFrame: CGRect) -> CGPoint {
+        let remainder = containerFrame.width - (prev.origin.x + prev.size.width)
+        if curr.size.width > remainder {
+            // wrap
+            return CGPoint(x: prev.origin.x, y: prev.origin.y + prev.size.height)
+        } else {
+            // inline
+            return CGPoint(x: prev.origin.x + prev.size.width, y: prev.origin.y)
+        }
     }
 }
