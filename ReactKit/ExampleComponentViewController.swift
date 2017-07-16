@@ -46,19 +46,19 @@ extension ExampleComponentViewController {
         if count % 2 == 0 {
             count = count + 1
             props = ExampleComponentViewControllerProps(
-                exampleComponentProps: ExampleProps(title: "Hello world!", backgroundColor: .green),
+                exampleComponentProps: ExampleProps(title: "I change backgrounds!", backgroundColor: .green),
                 labels: [
-                    LabelProps(title: "Hello again!"),
-                    LabelProps(title: "I like saying hello!")
+                    LabelProps(title: "I change text"),
+                    LabelProps(title: "I stay the same")
                 ]
             )
         } else {
             count = count + 1
             props = ExampleComponentViewControllerProps(
-                exampleComponentProps: ExampleProps(title: "Goodbye world!", backgroundColor: .red),
+                exampleComponentProps: ExampleProps(title: "I change backgrounds!", backgroundColor: .red),
                 labels: [
-                    LabelProps(title: "Goodbye again!"),
-                    LabelProps(title: "I like saying goodbye!")
+                    LabelProps(title: "Look I changed!"),
+                    LabelProps(title: "I stay the same")
                 ]
             )
         }
