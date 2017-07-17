@@ -9,10 +9,10 @@
 import UIKit
 
  struct Container: BaseComponent {
-    let components: [BaseComponent?]
-    let layout: LayoutContainerProps
+    let components: [BaseComponent]
+    let layout: ContainerLayout
 
-    init(components: [BaseComponent?], layout: LayoutContainerProps) {
+    init(components: [BaseComponent], layout: ContainerLayout) {
         self.components = components
         self.layout = layout
     }

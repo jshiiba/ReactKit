@@ -17,10 +17,10 @@ func ==(lhs: LabelPropType, rhs: LabelPropType) -> Bool {
 }
 
 struct LabelProps: LabelPropType {
-    let layout: LayoutComponentProps?
+    let layout: ComponentLayout?
     let title: String
 
-    init(title: String, layout: LayoutComponentProps? = nil) {
+    init(title: String, layout: ComponentLayout? = nil) {
         self.title = title
         self.layout = layout
     }

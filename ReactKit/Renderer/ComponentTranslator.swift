@@ -16,8 +16,8 @@ class ComponentTranslator {
 
     func translateToSections(from rootComponent: Component) -> [SectionComponent] {
 
-        let defaultLayout = LayoutContainerProps(frame: CGRect(x: 0, y: 0, width: 300, height: 500))
-        var sections: [SectionComponent] = [SectionComponent(section: rootSection, rows: [], layout: defaultLayout)]
+        let defaultLayout = ContainerLayout(frame: CGRect(x: 0, y: 0, width: 300, height: 500))
+        var sections: [SectionComponent] = [SectionComponent(index: rootSection, rows: [], layout: defaultLayout)]
 
         translate(rootComponent, in: &sections, at: rootSection)
 
@@ -36,7 +36,7 @@ class ComponentTranslator {
 
             let row = RowComponent(view: singleComponent.reduce(),
                                    props: component.props,
-                                   row: sections[sectionIndex].rows.count,
+                                   index: sections[sectionIndex].rows.count,
                                    section: sectionIndex)
 
             sections[sectionIndex].rows.append(row)
@@ -48,10 +48,9 @@ class ComponentTranslator {
 
     func translate(_ container: Container, in sections: inout [SectionComponent], at sectionIndex: Int) {
         let newSectionIndex = sectionIndex + 1
-        let newSection = SectionComponent(section: newSectionIndex, rows: [], layout: container.layout)
+        let newSection = SectionComponent(index: newSectionIndex, rows: [], layout: container.layout)
         sections.append(newSection)
-        container.components.forEach { baseComponent in
-            guard let component = baseComponent else { return }
+        container.components.forEach { component in
             translate(component, in: &sections, at: newSectionIndex)
         }
     }

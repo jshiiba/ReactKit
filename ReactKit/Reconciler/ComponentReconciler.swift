@@ -21,7 +21,7 @@ class ComponentReconciler {
             }
             // convert rows to IndexPath
             .map { path in
-                return IndexPath(row: path.row, section: path.section)
+                return IndexPath(row: path.index, section: path.section)
             }
         }
 
@@ -37,7 +37,7 @@ class ComponentReconciler {
                     print("EQUAL")
                 } else {
                     print("NOT EQUAL")
-                    updatedIndexPaths.append(IndexPath(row: row.row, section: row.section))
+                    updatedIndexPaths.append(IndexPath(row: row.index, section: row.section))
                 }
             }
         }

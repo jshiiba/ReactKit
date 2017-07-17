@@ -24,17 +24,17 @@ class LayoutView: Component, ComponentLike {
             return Label(props: label)
         }
 
-        return Container(components: labels, layout: LayoutContainerProps(frame: CGRect(x: 0, y: 0, width: 300, height: 500)))
+        return Container(components: labels, layout: ContainerLayout(frame: CGRect(x: 0, y: 0, width: 300, height: 500)))
     }
 }
 
 class LayoutExampleViewController: BaseComponentViewController {
     struct Props: LayoutViewProps {
         let labels: [LabelPropType] = [
-            LabelProps(title: "Label 1", layout: LayoutComponentProps(flex: 1, size: CGSize(width: 0, height: 50))),
-            LabelProps(title: "Label 2", layout: LayoutComponentProps(flex: 1, size: CGSize(width: 0, height: 50))),
-            LabelProps(title: "Label 3", layout: LayoutComponentProps(flex: 1, size: CGSize(width: 0, height: 50))),
-            LabelProps(title: "Label 4", layout: LayoutComponentProps(flex: 1, size: CGSize(width: 0, height: 50))),
+            LabelProps(title: "Label 1", layout: ComponentLayout(flex: 0.5, size: CGSize(width: 0, height: 50))),
+            LabelProps(title: "Label 2", layout: ComponentLayout(flex: 0.5, size: CGSize(width: 0, height: 50))),
+            LabelProps(title: "Label 3", layout: ComponentLayout(flex: 1, size: CGSize(width: 0, height: 50))),
+            LabelProps(title: "Label 4", layout: ComponentLayout(flex: 1, size: CGSize(width: 0, height: 50))),
         ]
     }
 

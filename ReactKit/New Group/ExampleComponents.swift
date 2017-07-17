@@ -32,7 +32,7 @@ struct ExampleComponentView: Component, ComponentLike {
         }
 
         let components = [ExampleComponent(props: _props.exampleComponentProps)] + labels
-        return Container(components: components, layout: LayoutContainerProps(frame: CGRect(x: 0, y: 0, width: 100, height: 100)))
+        return Container(components: components, layout: ContainerLayout(frame: CGRect(x: 0, y: 0, width: 100, height: 100)))
     }
 }
 

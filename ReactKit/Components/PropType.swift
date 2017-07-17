@@ -12,7 +12,7 @@ import Foundation
 ///
 ///
 protocol PropType {
-    var layout: LayoutComponentProps? { get }
+    var layout: ComponentLayout? { get }
     func isEqualTo(other: PropType) -> Bool
 }
 
@@ -26,7 +26,7 @@ extension PropType where Self : Equatable {
 }
 
 extension PropType {
-    var layout: LayoutComponentProps? {
+    var layout: ComponentLayout? {
         return nil
     }
 
