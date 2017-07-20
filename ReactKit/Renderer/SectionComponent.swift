@@ -14,11 +14,11 @@ import UIKit
 class SectionComponent {
     let index: Int
     var rows: [RowComponent]
-    let layout: ContainerLayout
+    let layout: SectionComponentLayout
 
     fileprivate var cachedAttributes: [UICollectionViewLayoutAttributes]?
 
-    init(index: Int, rows: [RowComponent], layout: ContainerLayout) {
+    init(index: Int, rows: [RowComponent], layout: SectionComponentLayout) {
         self.index = index
         self.rows = rows
         self.layout = layout
@@ -39,9 +39,9 @@ class SectionComponent {
 
         var attributes: [UICollectionViewLayoutAttributes] = []
 
-        let rowLayouts: [ComponentLayout] = rows.flatMap { $0.layout }
+        let rowLayouts: [RowComponentLayout] = rows.map { $0.layout }
         let indexPaths: [IndexPath] = rows.flatMap { IndexPath(row: $0.index, section: $0.section) }
-        let layoutAttributes = FlexLayout.attributes(forComponentProps: rowLayouts, in: layout)
+        let layoutAttributes = FlexLayout.attributes(forComponentsLayout: rowLayouts, in: layout)
 
         for (layoutAttribute, indexPath) in zip(layoutAttributes, indexPaths) {
             let newAttribute = UICollectionViewLayoutAttributes(forCellWith: indexPath)
@@ -52,5 +52,23 @@ class SectionComponent {
         cachedAttributes = attributes
 
         return attributes
+    }
+}
+
+struct SectionComponentLayout {
+    let frame: CGRect
+
+    // TODO: Origin modifiers, adjust height by content
+    init(dimension: FlexDimension, parentFrame: CGRect) {
+        switch dimension {
+        case .ratio(let ratio):
+            var newSize = parentFrame.size
+            newSize.width = newSize.width * ratio
+            self.frame = CGRect(origin: parentFrame.origin, size: newSize)
+        case .fixed(let size):
+            self.frame = CGRect(origin: parentFrame.origin, size: size)
+        case .fill:
+            self.frame = parentFrame
+        }
     }
 }

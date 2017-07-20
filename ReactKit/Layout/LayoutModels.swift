@@ -12,12 +12,16 @@ struct LayoutAttribute {
     let frame: CGRect
 }
 
-struct ComponentLayout {
-    let flex: CGFloat   // 0-1.0
-    let size: CGSize
+enum FlexDimension {
+    case ratio(ratio: CGFloat)
+    case fixed(size: CGSize)
+    case fill
 }
 
+struct ComponentLayout {
+    let dimension: FlexDimension
+}
 
 struct ContainerLayout {
-    let frame: CGRect
+    let dimension: FlexDimension
 }

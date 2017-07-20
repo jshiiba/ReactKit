@@ -21,7 +21,7 @@ class FlexLayoutAttributeTests: XCTestCase {
     // MARK: - Single Component
     func testFlex100() {
         let component = ComponentLayout(flex: 1, size: CGSize(width: 0, height: 50))
-        let attribute = FlexLayout.attributes(forComponentProps: [component], in: container)
+        let attribute = FlexLayout.attributes(forComponentsLayout: [component], in: container)
 
         let expectedFrame = CGRect(x: 0, y: 0, width: 100, height: 50)
         XCTAssertEqual(attribute[0].frame, expectedFrame)
@@ -29,7 +29,7 @@ class FlexLayoutAttributeTests: XCTestCase {
 
     func testThatFlexTakesPrecedentOverStaticFrameLessThanContainer() {
         let component = ComponentLayout(flex: 1, size: CGSize(width: 50, height: 50))
-        let attribute = FlexLayout.attributes(forComponentProps: [component], in: container)
+        let attribute = FlexLayout.attributes(forComponentsLayout: [component], in: container)
 
         let expectedFrame = CGRect(x: 0, y: 0, width: 100, height: 50)
         XCTAssertEqual(attribute[0].frame, expectedFrame)
@@ -37,7 +37,7 @@ class FlexLayoutAttributeTests: XCTestCase {
 
     func testThatFlexIsSetForStaticFrameGreaterThanContainer() {
         let component = ComponentLayout(flex: 1, size: CGSize(width: 150, height: 50))
-        let attribute = FlexLayout.attributes(forComponentProps: [component], in: container)
+        let attribute = FlexLayout.attributes(forComponentsLayout: [component], in: container)
 
         let expectedFrame = CGRect(x: 0, y: 0, width: 100, height: 50)
         XCTAssertEqual(attribute[0].frame, expectedFrame)
@@ -45,7 +45,7 @@ class FlexLayoutAttributeTests: XCTestCase {
 
     func testFlexLessThan100() {
         let component = ComponentLayout(flex: 0.75, size: CGSize(width: 0, height: 50))
-        let attribute = FlexLayout.attributes(forComponentProps: [component], in: container)
+        let attribute = FlexLayout.attributes(forComponentsLayout: [component], in: container)
 
         let expectedFrame = CGRect(x: 0, y: 0, width: 75, height: 50)
         XCTAssertEqual(attribute[0].frame, expectedFrame)
@@ -56,7 +56,7 @@ class FlexLayoutAttributeTests: XCTestCase {
     func testThatMultipleWithFlex100StackInContainer() {
         let c1 = ComponentLayout(flex: 1, size: CGSize(width: 0, height: 50))
         let c2 = ComponentLayout(flex: 1, size: CGSize(width: 0, height: 50))
-        let attributes = FlexLayout.attributes(forComponentProps: [c1, c2], in: container)
+        let attributes = FlexLayout.attributes(forComponentsLayout: [c1, c2], in: container)
 
         let c1ExpectedFrame = CGRect(x: 0, y: 0, width: 100, height: 50)
         let c2ExpectedFrame = CGRect(x: 0, y: 50, width: 100, height: 50)
@@ -68,7 +68,7 @@ class FlexLayoutAttributeTests: XCTestCase {
     func testThatMultipleWithFlex75And50StackInContainer() {
         let c1 = ComponentLayout(flex: 0.75, size: CGSize(width: 0, height: 50))
         let c2 = ComponentLayout(flex: 0.5, size: CGSize(width: 0, height: 50))
-        let attributes = FlexLayout.attributes(forComponentProps: [c1, c2], in: container)
+        let attributes = FlexLayout.attributes(forComponentsLayout: [c1, c2], in: container)
 
         let c1ExpectedFrame = CGRect(x: 0, y: 0, width: 75, height: 50)
         let c2ExpectedFrame = CGRect(x: 0, y: 50, width: 50, height: 50)
@@ -80,7 +80,7 @@ class FlexLayoutAttributeTests: XCTestCase {
     func testThatMultipleWithFlex50EachAreOnSameRowInContainer() {
         let c1 = ComponentLayout(flex: 0.5, size: CGSize(width: 0, height: 50))
         let c2 = ComponentLayout(flex: 0.5, size: CGSize(width: 0, height: 50))
-        let attributes = FlexLayout.attributes(forComponentProps: [c1, c2], in: container)
+        let attributes = FlexLayout.attributes(forComponentsLayout: [c1, c2], in: container)
 
         let c1ExpectedFrame = CGRect(x: 0, y: 0, width: 50, height: 50)
         let c2ExpectedFrame = CGRect(x: 50, y: 0, width: 50, height: 50)

@@ -13,13 +13,15 @@ import UIKit
 ///
 struct FlexLayout {
 
-    static func attributes(forComponentProps components: [ComponentLayout], in container: ContainerLayout) -> [LayoutAttribute] {
+    static func attributes(forComponentsLayout components: [RowComponentLayout], in container: SectionComponentLayout) -> [LayoutAttribute] {
         let containerFrame = container.frame
         var prevFrame = CGRect(origin: container.frame.origin, size: .zero)
         var currentFrame = CGRect(origin: container.frame.origin, size: .zero)
 
         let attributes: [LayoutAttribute] = components.map { component in
-            currentFrame.size = CGSize(width: containerFrame.width * component.flex, height: component.size.height)
+
+            // TODO: fix heights!
+            currentFrame.size = CGSize(width: component.rowWidth(in: containerFrame.width), height: 50)
             currentFrame.origin = origin(forPreviousFrame: prevFrame, currentFrame: currentFrame, in: container.frame)
 
             prevFrame = currentFrame

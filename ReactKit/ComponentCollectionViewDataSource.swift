@@ -34,7 +34,7 @@ class ComponentCollectionViewDataSource: NSObject {
     /// - parameters:
     ///     - component: component to update
     func setComponent(_ component: Component) {
-        let updatedIndexPaths = renderer.render(component)
+        let updatedIndexPaths = renderer.render(component, in: componentCollectionView.frame)
         componentCollectionView.reloadItems(at: updatedIndexPaths)
     }
 }
