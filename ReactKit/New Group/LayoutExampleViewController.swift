@@ -24,7 +24,10 @@ class LayoutView: Component, ComponentLike {
             return Label(props: label)
         }
 
-        return Container(components: labels, layout: ContainerLayout(dimension: .ratio(ratio: 1.0)))
+        return Container(components: [
+            Container(components: labels, layout: ContainerLayout(dimension: .ratio(ratio: 0.5))),
+            Container(components: labels, layout: ContainerLayout(dimension: .ratio(ratio: 0.5)))
+        ], layout: ContainerLayout(dimension: .ratio(ratio: 1.0)))
     }
 }
 
@@ -34,7 +37,6 @@ class LayoutExampleViewController: BaseComponentViewController {
             LabelProps(title: "Label 1", layout: ComponentLayout(dimension: .ratio(ratio: 0.5))),
             LabelProps(title: "Label 2", layout: ComponentLayout(dimension: .ratio(ratio: 0.5))),
             LabelProps(title: "Label 3", layout: ComponentLayout(dimension: .fill)),
-            LabelProps(title: "Label 4", layout: ComponentLayout(dimension: .fill)),
         ]
     }
 
