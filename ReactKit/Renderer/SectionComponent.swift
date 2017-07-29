@@ -40,13 +40,9 @@ class SectionComponent {
 
         var attributes: [UICollectionViewLayoutAttributes] = []
 
-        let rowLayouts: [RowComponentLayout] = []//rows.map { $0.layout }
-        let indexPaths: [IndexPath] = rows.flatMap { IndexPath(row: $0.index, section: $0.section) }
-        let layoutAttributes = FlexLayout.attributes(forComponentsLayout: rowLayouts, in: layout)
-
-        for (layoutAttribute, indexPath) in zip(layoutAttributes, indexPaths) {
-            let newAttribute = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-            newAttribute.frame = layoutAttribute.frame
+        for row in rows {
+            let newAttribute = UICollectionViewLayoutAttributes(forCellWith: row.indexPath)
+            newAttribute.frame = row.layout.frame
             attributes.append(newAttribute)
         }
 

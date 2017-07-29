@@ -10,6 +10,14 @@ import UIKit
 
 final class Translator {
 
+    static func translateSections(from component: Component, in frame: CGRect) -> [SectionComponent] {
+        guard let container = component.render() as? Container else {
+            return []
+        }
+
+        return translateSections(from: container, in: frame)
+    }
+
     static func translateSections(from container: Container, in frame: CGRect) -> [SectionComponent] {
         let currentSectionIndex = 0
         var currentRowIndex = 0

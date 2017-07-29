@@ -13,6 +13,7 @@ import UIKit
 ///
 struct RowComponent {
     let props: PropType
+    let indexPath: IndexPath
     let section: Int
     let index: Int
     let layout: RowComponentLayout
@@ -27,6 +28,7 @@ struct RowComponent {
         self.props = props
         self.index = index
         self.section = section
+        self.indexPath = IndexPath(row: index, section: section)
         self.layout = layout
     }
 }
