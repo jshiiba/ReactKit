@@ -18,37 +18,49 @@ struct RowComponent {
     let layout: RowComponentLayout
     let view: UIView?
 
-    init(view: UIView?, props: PropType, layout: RowComponentLayout, index: Int, section: Int) {
+    init(rowComponent: RowComponent, layout: RowComponentLayout) {
+        self.init(view: rowComponent.view, props: rowComponent.props, index: rowComponent.index, section: rowComponent.section, layout: layout)
+    }
+
+    init(view: UIView?, props: PropType, index: Int, section: Int, layout: RowComponentLayout) {
         self.view = view
         self.props = props
-        self.layout = layout
         self.index = index
         self.section = section
+        self.layout = layout
     }
 }
 
 struct RowComponentLayout {
-    let sectionFrame: CGRect // might not need this
-    let dimension: FlexDimension
 
-    // TODO: Origin modifiers, adjust height by content
-    init(dimension: FlexDimension?, sectionFrame: CGRect) {
-        self.dimension = dimension ?? .fill
-        self.sectionFrame = sectionFrame
+    var frame: CGRect
+    let dimension: FlexDimension
+    let height: CGFloat
+
+    init(layout: RowComponentLayout, newFrame: CGRect) {
+        self.init(dimension: layout.dimension, height: layout.height)
+        self.frame = newFrame
+    }
+
+    init(dimension: FlexDimension, height: CGFloat) {
+        self.dimension = dimension
+        self.height = height
+        self.frame = .zero
     }
 
     func rowWidth(in sectionWidth: CGFloat) -> CGFloat {
-        switch dimension {
-        case .fixed(let size):
-            if size.width > sectionWidth {
-                return sectionWidth
-            } else {
-                return size.width
-            }
-        case .ratio(let ratio):
-            return sectionWidth * ratio
-        case .fill:
-            return sectionWidth
-        }
+//        switch dimension {
+//        case .fixed(let size):
+//            if size.width > sectionWidth {
+//                return sectionWidth
+//            } else {
+//                return size.width
+//            }
+//        case .ratio(let ratio):
+//            return sectionWidth * ratio
+//        case .fill:
+//            return sectionWidth
+//        }
+        return 0
     }
 }

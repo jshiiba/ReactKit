@@ -15,6 +15,7 @@ class SectionComponent {
     let index: Int
     var rows: [RowComponent]
     let layout: SectionComponentLayout
+    // could store child section indexes
 
     fileprivate var cachedAttributes: [UICollectionViewLayoutAttributes]?
 
@@ -39,7 +40,7 @@ class SectionComponent {
 
         var attributes: [UICollectionViewLayoutAttributes] = []
 
-        let rowLayouts: [RowComponentLayout] = rows.map { $0.layout }
+        let rowLayouts: [RowComponentLayout] = []//rows.map { $0.layout }
         let indexPaths: [IndexPath] = rows.flatMap { IndexPath(row: $0.index, section: $0.section) }
         let layoutAttributes = FlexLayout.attributes(forComponentsLayout: rowLayouts, in: layout)
 
@@ -59,16 +60,7 @@ struct SectionComponentLayout {
     let frame: CGRect
 
     // TODO: Origin modifiers, adjust height by content
-    init(dimension: FlexDimension, parentFrame: CGRect) {
-        switch dimension {
-        case .ratio(let ratio):
-            var newSize = parentFrame.size
-            newSize.width = newSize.width * ratio
-            self.frame = CGRect(origin: parentFrame.origin, size: newSize)
-        case .fixed(let size):
-            self.frame = CGRect(origin: parentFrame.origin, size: size)
-        case .fill:
-            self.frame = parentFrame
-        }
+    init(width: CGFloat, height: CGFloat, parentOrigin: CGPoint) {
+        self.frame = CGRect(origin: parentOrigin, size: CGSize(width: width, height: height))
     }
 }

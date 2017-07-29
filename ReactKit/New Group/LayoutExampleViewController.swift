@@ -34,9 +34,9 @@ class LayoutView: Component, ComponentLike {
 class LayoutExampleViewController: BaseComponentViewController {
     struct Props: LayoutViewProps {
         let labels: [LabelPropType] = [
-            LabelProps(title: "Label 1", layout: ComponentLayout(dimension: .ratio(ratio: 0.5))),
-            LabelProps(title: "Label 2", layout: ComponentLayout(dimension: .ratio(ratio: 0.5))),
-            LabelProps(title: "Label 3", layout: ComponentLayout(dimension: .fill)),
+            LabelProps(title: "Label 1", layout: ComponentLayout(dimension: .ratio(ratio: 0.5), height: 100)),
+            LabelProps(title: "Label 2", layout: ComponentLayout(dimension: .ratio(ratio: 0.5), height: 100)),
+            LabelProps(title: "Label 3", layout: ComponentLayout(dimension: .fill, height: 100)),
         ]
     }
 
