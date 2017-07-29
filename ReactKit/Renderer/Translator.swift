@@ -10,6 +10,11 @@ import UIKit
 
 final class Translator {
 
+    struct RowData {
+        let rows: [RowComponent]
+        let height: CGFloat
+    }
+
     static func translateSections(from component: Component, in frame: CGRect) -> [SectionComponent] {
         guard let container = component.render() as? Container else {
             return []
@@ -28,20 +33,20 @@ final class Translator {
             case .container(let _): break// recurse
             case .component(let component): // base case
                 // create RowComponent
-                if let row = Translator.translateRows(from: component, in: currentSectionIndex, at: currentRowIndex) {
+                if let row = translateRows(from: component, in: currentSectionIndex, at: currentRowIndex) {
                     currentRowIndex = currentRowIndex + 1
                     currentRows.append(row)
                 }
             }
         }
 
-        let flexWidth = FlexLayout.sectionWidth(for: container.layout.dimension, in: frame)
-        let calculations = Translator.calculateRowLayout(from: currentRows, in: flexWidth, at: frame.origin)
+        let sectionWidth = widthFor(dimension: container.layout.dimension, in: frame.width)
+        let rowData = calculateRowData(from: currentRows, in: sectionWidth, at: frame.origin)
+        currentRows = rowData.rows
 
-        currentRows = calculations.rows
-        let calculatedHeight = calculations.totalHeight
-
-        let sectionLayout = SectionComponentLayout(width: flexWidth, height: calculatedHeight, parentOrigin: .zero)
+        let sectionLayout = SectionComponentLayout(width: sectionWidth,
+                                                   height: rowData.height,
+                                                   parentOrigin: .zero) // TODO: change parentOrigin
 
         let section = SectionComponent(index: currentSectionIndex,
                                        rows: currentRows,
@@ -50,15 +55,32 @@ final class Translator {
         return [section]
     }
 
-    static func calculateRowLayout(from rows: [RowComponent], in width: CGFloat, at origin: CGPoint) -> (rows: [RowComponent], totalHeight: CGFloat)  {
+    static func translateRows(from component: Component, in section: Int, at index: Int) -> RowComponent? {
+        guard let view = component as? SingleViewComponent else {
+            return nil
+        }
+        let dimension = component.props.layout?.dimension ?? .fill
+        let height = component.props.layout?.height ?? 0
+
+        let row = RowComponent(view: view.reduce(),
+                               props: component.props,
+                               index: index,
+                               section: section,
+                               layout: RowComponentLayout(dimension: dimension, height: height))
+        return row
+    }
+
+    // MARK: -  Layout
+
+    static func calculateRowData(from rows: [RowComponent], in width: CGFloat, at origin: CGPoint) -> RowData  {
         var previousFrame = CGRect(origin: origin, size: .zero)
         let newLineX = origin.x
         var maxY = getMaxY(for: previousFrame, currentMaxY: 0) // next Y pos, also total height of rows in section
 
-        return (rows.map { row in
+        let calculatedRows: [RowComponent] = rows.map { row in
             let height = row.layout.height
 
-            let rowWidth = FlexLayout.width(for: row.layout.dimension, in: width)
+            let rowWidth = widthFor(dimension: row.layout.dimension, in: width)
 
             let newOrigin = originFor(rowWidth: rowWidth,
                                       previousFrame: previousFrame,
@@ -76,7 +98,9 @@ final class Translator {
 
             let layout = RowComponentLayout(layout: row.layout, newFrame: newFrame)
             return RowComponent(rowComponent: row, layout: layout)
-        }, maxY)
+        }
+
+        return RowData(rows: calculatedRows, height: maxY)
     }
 
     static func originFor(rowWidth: CGFloat, previousFrame: CGRect, inSectionWidth sectionWith: CGFloat, newLineXPos: CGFloat, maxY: CGFloat) -> CGPoint {
@@ -95,19 +119,15 @@ final class Translator {
         return newFrame.origin.y + newFrame.height > currentMaxY ? (newFrame.origin.y + newFrame.height) : currentMaxY
     }
 
-    static func translateRows(from component: Component, in section: Int, at index: Int) -> RowComponent? {
-        guard let view = component as? SingleViewComponent else {
-            return nil
+    static func widthFor(dimension: FlexDimension, in parentWidth: CGFloat) -> CGFloat {
+        switch dimension {
+        case .fill:
+            return parentWidth
+        case .fixed(let size):
+            return size.width
+        case .ratio(let ratio):
+            return parentWidth * ratio
         }
-        let dimension = component.props.layout?.dimension ?? .fill
-        let height = component.props.layout?.height ?? 0
-
-        let row = RowComponent(view: view.reduce(),
-                               props: component.props,
-                               index: index,
-                               section: section,
-                               layout: RowComponentLayout(dimension: dimension, height: height))
-        return row
     }
 }
 

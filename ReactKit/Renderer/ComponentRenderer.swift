@@ -23,7 +23,6 @@ protocol ComponentDataSource {
 class ComponentRenderer {
 
     /// dependencies
-    let translator: ComponentTranslator
     let reconciler: ComponentReconciler
     let cacher: ComponentCacher
     let layout: ComponentFlowLayout
@@ -34,7 +33,6 @@ class ComponentRenderer {
     init(reconciler: ComponentReconciler) {
         self.reconciler = reconciler
         self.cacher = ComponentCacher()
-        self.translator = ComponentTranslator()
         self.layout = ComponentFlowLayout()
     }
 

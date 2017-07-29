@@ -113,28 +113,28 @@ class TranslatorTests: XCTestCase {
 
     func testThatOriginIsInlineStartingAtZeroOrigin() {
         let prevFrame = CGRect(x: 0, y: 0, width: 100, height: 0)
-        let outputOrigin = Translator.originFor(rowWidth: 100, previousFrame: prevFrame, inSectionWidth: 400, newLineXPos: 0, maxY: 0)
+        let outputOrigin = Translator.originFor(rowWidth : 100, previousFrame: prevFrame, inSectionWidth: 400, newLineXPos: 0, maxY: 0)
         XCTAssertEqual(outputOrigin.x, 100)
         XCTAssertEqual(outputOrigin.y, 0)
     }
 
     func  testThatOriginIsInLineStartingNotZeroOrigin() {
         let prevFrame = CGRect(x: 100, y: 0, width: 100, height: 100)
-        let outputOrigin = Translator.originFor(rowWidth: 100, previousFrame: prevFrame, inSectionWidth: 400, newLineXPos: 0, maxY: 0)
+        let outputOrigin = Translator.originFor(rowWidth : 100, previousFrame: prevFrame, inSectionWidth: 400, newLineXPos: 0, maxY: 0)
         XCTAssertEqual(outputOrigin.x, 200)
         XCTAssertEqual(outputOrigin.y, 0)
     }
 
     func testThatOriginIsWrapStartingAtZeroOrigin() {
         let prevFrame = CGRect(x: 0, y: 0, width: 300, height: 100)
-        let outputOrigin = Translator.originFor(rowWidth: 200, previousFrame: prevFrame, inSectionWidth: 400, newLineXPos: 0, maxY: 100)
+        let outputOrigin = Translator.originFor(rowWidth : 200, previousFrame: prevFrame, inSectionWidth: 400, newLineXPos: 0, maxY: 100)
         XCTAssertEqual(outputOrigin.x, 0)
         XCTAssertEqual(outputOrigin.y, 100)
     }
 
     func testThatOriginIsWrapStartNotZeroOrigin() {
         let prevFrame = CGRect(x: 100, y: 0, width: 200, height: 100)
-        let outputOrigin = Translator.originFor(rowWidth: 200, previousFrame: prevFrame, inSectionWidth: 400, newLineXPos: 0, maxY: 100)
+        let outputOrigin = Translator.originFor(rowWidth : 200, previousFrame: prevFrame, inSectionWidth: 400, newLineXPos: 0, maxY: 100)
         XCTAssertEqual(outputOrigin.x, 0)
         XCTAssertEqual(outputOrigin.y, 100)
     }
@@ -169,25 +169,47 @@ class TranslatorTests: XCTestCase {
         XCTAssertEqual(outputMaxY, 100)
     }
 
+    // MARK: - Width
+
+    func testThatFillEqualsParentWidth() {
+        let inputWidth: CGFloat = 100
+        let outputWidth = Translator.widthFor(dimension: .fill, in: inputWidth)
+        XCTAssertEqual(outputWidth, 100)
+    }
+
+    func testThatRatioEqualsParentWidthMultipliedByRatio() {
+        let inputWidth: CGFloat = 100
+        let outputWidth = Translator.widthFor(dimension: .ratio(ratio: 0.75), in: inputWidth)
+        XCTAssertEqual(outputWidth, 75)
+
+        let inputWidth2: CGFloat = 100
+        let outputWidth2 = Translator.widthFor(dimension: .ratio(ratio: 1.0), in: inputWidth2)
+        XCTAssertEqual(outputWidth2, 100)
+    }
+
+    func testThatFixedEqualsFixedValue() {
+        let inputWidth: CGFloat = 100
+        let outputWidth = Translator.widthFor(dimension: .fixed(size: CGSize(width: 75, height: 0)), in: inputWidth)
+        XCTAssertEqual(outputWidth, 75)
+    }
+
     // MARK: - Calculate Row Layout
 
     func testThatRowLayoutIsCalculatedForASingleRow() {
         let inputRows = MockRowComponents.singleRow
-        let outputRows = Translator.calculateRowLayout(from: inputRows, in: 400, at: CGPoint(x: 0, y: 0)).rows
+        let outputRows = Translator.calculateRowData(from: inputRows, in: 400, at: CGPoint(x: 0, y: 0)).rows
 
         XCTAssertEqual(outputRows.count, 1)
-        outputRows.forEach { row in
-            XCTAssertNotNil(row.layout)
-        }
+        outputRows.forEach { XCTAssertNotNil($0.layout) }
 
         XCTAssertEqual(outputRows[0].layout.frame, CGRect(x: 0, y: 0, width: 400, height: 100))
     }
 
     func testThatRowLayoutIsCalculatedForRows() {
         let inputRows = MockRowComponents.rows
-        let calculation = Translator.calculateRowLayout(from: inputRows, in: 400, at: CGPoint(x: 0, y: 0))
-        let outputRows = calculation.rows
-        let outputHeight = calculation.totalHeight
+        let rowData = Translator.calculateRowData(from: inputRows, in: 400, at: CGPoint(x: 0, y: 0))
+        let outputRows = rowData.rows
+        let outputHeight = rowData.height
 
         XCTAssertEqual(outputRows[0].layout.frame, CGRect(x: 0, y: 0, width: 200, height: 100))
         XCTAssertEqual(outputRows[1].layout.frame, CGRect(x: 200, y: 0, width: 200, height: 100))
@@ -198,9 +220,9 @@ class TranslatorTests: XCTestCase {
     // 0.75, 0.5, 0.25, 1.0
     func testThatRowLayoutIsCalculatedForRowsWithMultipleDimensions() {
         let inputRows = MockRowComponents.rowsMultipleDimensions
-        let calculation = Translator.calculateRowLayout(from: inputRows, in: 400, at: CGPoint(x: 0, y: 0))
-        let outputRows = calculation.rows
-        let outputHeight = calculation.totalHeight
+        let rowData = Translator.calculateRowData(from: inputRows, in: 400, at: CGPoint(x: 0, y: 0))
+        let outputRows = rowData.rows
+        let outputHeight = rowData.height
 
         XCTAssertEqual(outputRows[0].layout.frame, CGRect(x: 0, y: 0, width: 300, height: 100))
         XCTAssertEqual(outputRows[1].layout.frame, CGRect(x: 0, y: 100, width: 200, height: 100))
@@ -212,9 +234,9 @@ class TranslatorTests: XCTestCase {
     // 0.75-100, 0.5-200, 0.25-10, 1.0-75
     func testThatRowLayoutIsCalculatedForRowsWithMultipleDimensionsAndHeights() {
         let inputRows = MockRowComponents.rowsMultipleDimensionsMultipleHeights
-        let calculation = Translator.calculateRowLayout(from: inputRows, in: 400, at: CGPoint(x: 0, y: 0))
-        let outputRows = calculation.rows
-        let outputHeight = calculation.totalHeight
+        let rowData = Translator.calculateRowData(from: inputRows, in: 400, at: CGPoint(x: 0, y: 0))
+        let outputRows = rowData.rows
+        let outputHeight = rowData.height
 
         XCTAssertEqual(outputRows[0].layout.frame, CGRect(x: 0, y: 0, width: 300, height: 100))
         XCTAssertEqual(outputRows[1].layout.frame, CGRect(x: 0, y: 100, width: 200, height: 200))
