@@ -42,6 +42,8 @@
 		D1F7D7151F2E7204003AAE5A /* ReduxExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F7D7141F2E71F4003AAE5A /* ReduxExampleViewController.swift */; };
 		D1F7D7171F2E721A003AAE5A /* LayoutExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F7D7161F2E720D003AAE5A /* LayoutExampleViewController.swift */; };
 		D1F7D7191F2E7234003AAE5A /* ReduxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F7D7181F2E7234003AAE5A /* ReduxView.swift */; };
+		D1F7D71B1F2E8B35003AAE5A /* ExampleCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F7D71A1F2E8B35003AAE5A /* ExampleCoordinator.swift */; };
+		D1F7D71D1F2E8CB9003AAE5A /* ExampleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F7D71C1F2E8CB9003AAE5A /* ExampleTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +95,8 @@
 		D1F7D7141F2E71F4003AAE5A /* ReduxExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReduxExampleViewController.swift; path = Examples/ReduxExample/ReduxExampleViewController.swift; sourceTree = "<group>"; };
 		D1F7D7161F2E720D003AAE5A /* LayoutExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LayoutExampleViewController.swift; path = Examples/LayoutExample/LayoutExampleViewController.swift; sourceTree = "<group>"; };
 		D1F7D7181F2E7234003AAE5A /* ReduxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReduxView.swift; path = Examples/ReduxExample/ReduxView.swift; sourceTree = "<group>"; };
+		D1F7D71A1F2E8B35003AAE5A /* ExampleCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExampleCoordinator.swift; path = Examples/ExampleCoordinator.swift; sourceTree = "<group>"; };
+		D1F7D71C1F2E8CB9003AAE5A /* ExampleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExampleTableViewController.swift; path = Examples/ExampleTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +205,8 @@
 		D1BBA2911F2E0491003FE577 /* Examples */ = {
 			isa = PBXGroup;
 			children = (
+				D1F7D71A1F2E8B35003AAE5A /* ExampleCoordinator.swift */,
+				D1F7D71C1F2E8CB9003AAE5A /* ExampleTableViewController.swift */,
 				D1F7D7131F2E71E5003AAE5A /* LayoutExample */,
 				D1F7D7121F2E71D7003AAE5A /* ReduxExample */,
 			);
@@ -415,8 +421,10 @@
 				D152A1481F2E239E004C1B47 /* AppState.swift in Sources */,
 				D1BBA2851F2E0419003FE577 /* main.swift in Sources */,
 				D152A13D1F2E13EF004C1B47 /* ComponentCollectionViewLayout.swift in Sources */,
+				D1F7D71D1F2E8CB9003AAE5A /* ExampleTableViewController.swift in Sources */,
 				D1BBA2AC1F2E05DB003FE577 /* PropType.swift in Sources */,
 				D1F7D7191F2E7234003AAE5A /* ReduxView.swift in Sources */,
+				D1F7D71B1F2E8B35003AAE5A /* ExampleCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
