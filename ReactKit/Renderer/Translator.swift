@@ -68,8 +68,10 @@ final class Translator {
         let rowData = calculateRowData(from: currentRows, in: sectionWidth, at: frame.origin)
         currentRows = rowData.rows
 
-        // TODO: FIX Total height of child sections to be sectionMaxY
-        let sectionHeight = childSections.reduce(0) { $0 + $1.layout.frame.height }
+        let sectionHeight = childSections.reduce(0) { (height, section) in
+            return getMaxY(for: section.layout.frame, currentMaxY: height)
+        }
+
         let totalSectionHeight = sectionHeight + rowData.height
 
         let sectionLayout = SectionComponentLayout(width: sectionWidth,
