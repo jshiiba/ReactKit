@@ -126,6 +126,18 @@ class TranslatorTests: XCTestCase {
     }
      */
 
+    // MARK: - Translate Non SingleComponentViews
+
+    /* TODO: fix when composite view are renderable
+    func testThatNonSingleComponentViewsAreRendered() {
+        let inputComponent = MockComponents.composite()
+        let result = Translator.translateSections(from: inputComponent, in: CGRect(origin: .zero, size: CGSize(width: 300, height: 0)))
+        XCTAssertEqual(result[0].rows.count, 1)
+        XCTAssertEqual(result[0].rows[0].layout.frame, CGRect(x: 0, y: 0, width: 300, height: 100))
+        XCTAssertNotNil(result[0].rows[0].view)
+    }
+     */
+
     // MARK: - Translate Components to Rows
 
     func testThatComponentIsTranslatedToRow() {

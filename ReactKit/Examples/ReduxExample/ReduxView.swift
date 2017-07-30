@@ -48,6 +48,12 @@ protocol CounterViewPropType: PropType {
 
 struct CounterViewProps: CounterViewPropType {
     let count: Int
+    let layout: ComponentLayout?
+
+    init(count: Int, layout: ComponentLayout? = nil) {
+        self.count = count
+        self.layout = layout
+    }
 }
 
 class CounterView: Component, ComponentLike {
@@ -60,7 +66,9 @@ class CounterView: Component, ComponentLike {
     func render() -> BaseComponent? {
         let title = "Count: \(_props.count)"
         return Label(props: LabelProps(title: title,
-                                       textAlignment: .center,
-                                       layout: ComponentLayout(dimension: .fill, height: 100)))
+                                       textAlignment: .center))
     }
 }
+
+// TODO: This is only until composite components can be handled be renderer
+extension CounterView: SingleViewComponent {}

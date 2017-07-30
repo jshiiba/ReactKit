@@ -151,7 +151,7 @@ struct MockProps: PropType {
 }
 
 struct MockLabelProps: PropType {
-    let labelProps: LabelProps
+    let labelProps: LabelPropType
     let layout: ComponentLayout
 }
 
@@ -176,6 +176,7 @@ struct MockComposite: Component {
         self.props = props
     }
     func render() -> BaseComponent? {
-        return Container(components: [], layout: MockComponents.containerLayoutFill)
+        return MockComponent(props: MockLabelProps(labelProps: LabelProps(title: "composite"),
+                                                   layout: ComponentLayout(dimension: .fill, height: 100)))
     }
 }

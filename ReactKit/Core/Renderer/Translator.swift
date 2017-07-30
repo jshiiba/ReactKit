@@ -21,7 +21,6 @@ final class Translator {
         let height: CGFloat
     }
 
-
     static func translateSections(from component: Component, in frame: CGRect) -> [Section] {
         guard let container = component.render() as? Container else {
             return []
@@ -59,7 +58,7 @@ final class Translator {
 
                 let childSectionFrame = CGRect(origin: childSectionOrigin,
                                                size: CGSize(width: childSectionWidth,
-                                                            height: frame.height))
+                                               height: frame.height))
 
                 sectionMaxY = getMaxY(for: childSectionFrame, currentMaxY: sectionMaxY)
                 previousSectionFrame = childSectionFrame
@@ -72,6 +71,9 @@ final class Translator {
                 if let row = translateRows(from: component, in: currentSectionIndex, at: currentRowIndex) {
                     currentRowIndex = currentRowIndex + 1
                     currentRows.append(row)
+                } else if let _ = component.render() {
+                    // translate on base
+                    print("render from a composite")
                 }
             }
         }
@@ -87,12 +89,12 @@ final class Translator {
         let totalSectionHeight = sectionHeight + rowsCalculation.height
 
         let sectionLayout = SectionLayout(width: sectionWidth,
-                                                   height: totalSectionHeight,
-                                                   parentOrigin: frame.origin)
+                                          height: totalSectionHeight,
+                                          parentOrigin: frame.origin)
 
         let section = Section(index: index,
-                                       rows: currentRows,
-                                       layout: sectionLayout)
+                              rows: currentRows,
+                              layout: sectionLayout)
 
         return [section] + childSections
     }

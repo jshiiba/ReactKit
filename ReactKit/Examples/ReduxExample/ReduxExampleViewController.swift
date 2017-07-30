@@ -10,7 +10,7 @@ import Foundation
 
 class ReduxViewController: BaseComponentViewController {
     let props = ReduxProps(
-        counter: CounterViewProps(count: 1),
+        counter: CounterViewProps(count: 1, layout: ComponentLayout(dimension: .fill, height: 100)),
         buttons: [
             ButtonProps(title: "Increase",
                         titleColor: .black,
