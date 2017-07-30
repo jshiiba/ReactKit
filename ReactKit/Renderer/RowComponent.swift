@@ -49,20 +49,4 @@ struct RowComponentLayout {
         self.height = height
         self.frame = .zero
     }
-
-    func rowWidth(in sectionWidth: CGFloat) -> CGFloat {
-//        switch dimension {
-//        case .fixed(let size):
-//            if size.width > sectionWidth {
-//                return sectionWidth
-//            } else {
-//                return size.width
-//            }
-//        case .ratio(let ratio):
-//            return sectionWidth * ratio
-//        case .fill:
-//            return sectionWidth
-//        }
-        return 0
-    }
 }

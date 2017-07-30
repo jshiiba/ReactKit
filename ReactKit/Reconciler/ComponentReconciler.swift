@@ -19,10 +19,7 @@ class ComponentReconciler {
             .reduce([]) { (result, section) in
                 return result + section.rows
             }
-            // convert rows to IndexPath
-            .map { path in
-                return IndexPath(row: path.index, section: path.section)
-            }
+            .map { $0.indexPath }
         }
 
         var updatedIndexPaths: [IndexPath] = []

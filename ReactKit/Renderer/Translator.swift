@@ -47,7 +47,10 @@ final class Translator {
                                                    newLineXPos: sectionNewLineX,
                                                    maxY: sectionMaxY)
 
-                let childSectionFrame = CGRect(origin: childSectionOrigin, size: CGSize(width: childSectionWidth, height: frame.height))
+                let childSectionFrame = CGRect(origin: childSectionOrigin,
+                                               size: CGSize(width: childSectionWidth,
+                                                            height: frame.height))
+
                 sectionMaxY = getMaxY(for: childSectionFrame, currentMaxY: sectionMaxY)
                 previousSectionFrame = childSectionFrame
                 currentSectionIndex = currentSectionIndex + 1
@@ -156,7 +159,7 @@ final class Translator {
         case .fixed(let size):
             return size.width
         case .ratio(let ratio):
-            return parentWidth * ratio
+            return round(parentWidth * ratio)
         }
     }
 }
