@@ -23,7 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        )
 //        let exampleController = ExampleComponentViewController(props: props)
 
-        let exampleController = LayoutExampleViewController()
+//        let exampleController = LayoutExampleViewController()
+
+        let exampleController = ReduxViewController()
+
         let nav = UINavigationController(rootViewController: exampleController)
 
         window = UIWindow(frame: UIScreen.main.bounds)

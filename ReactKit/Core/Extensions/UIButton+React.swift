@@ -10,20 +10,22 @@ import UIKit
 
 // https://stackoverflow.com/questions/25919472/adding-a-closure-as-target-to-a-uibutton
 class ClosureSleeve {
-    let closure: ()->()
+    let control: UIControl // TODO: make generic if possible
+    let closure: (UIControl)->()
 
-    init (_ closure: @escaping ()->()) {
+    init(_ control: UIControl, _ closure: @escaping (UIControl)->()) {
+        self.control = control
         self.closure = closure
     }
 
     @objc func invoke () {
-        closure()
+        closure(control)
     }
 }
 
 extension UIControl {
-    func add(for controlEvents: UIControlEvents, _ closure: @escaping ()->()) {
-        let sleeve = ClosureSleeve(closure)
+    func add(for controlEvents: UIControlEvents, _ closure: @escaping (UIControl)->()) {
+        let sleeve = ClosureSleeve(self, closure)
         addTarget(sleeve, action: #selector(ClosureSleeve.invoke), for: controlEvents)
         objc_setAssociatedObject(self, String(format: "[%d]", arc4random()), sleeve, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
     }
