@@ -21,7 +21,7 @@ class BaseComponentViewController: UIViewController {
         renderer = Renderer(reconciler: Reconciler())
         dataSource = ComponentCollectionViewDataSource(renderer: renderer)
 
-        collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: UICollectionViewFlowLayout())
+        collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: renderer.layout)
         collectionView.dataSource = dataSource
 
         // TODO: prevent retain cycle

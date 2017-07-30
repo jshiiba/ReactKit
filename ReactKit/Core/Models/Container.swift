@@ -8,6 +8,10 @@
 
 import UIKit
 
+///
+/// A container can hold an array of components.
+/// Allows for components to be grouped in separate sections
+///
  struct Container: BaseComponent {
     let components: [BaseComponent]
     let layout: ContainerLayout

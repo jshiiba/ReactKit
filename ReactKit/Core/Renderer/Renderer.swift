@@ -18,7 +18,8 @@ protocol ComponentDataSource {
 }
 
 ///
-///
+/// Object that renders Components into a virtual CollectionViewDataSource
+/// and outputs the index paths that need to be updated
 ///
 class Renderer {
 
@@ -37,7 +38,8 @@ class Renderer {
     }
 
     /// 
-    ///
+    /// Renders the Component Tree into Sections.
+    /// Then determines the indexPaths that need to be updated through reconciliation
     ///
     func render(_ rootComponent: Component, in frame: CGRect) -> [IndexPath] {
         
@@ -62,6 +64,9 @@ extension Renderer: ComponentDataSource {
     }
 
     func numberOfItems(in section: Int) -> Int {
+        guard section >= 0 && section < sections.count else {
+            return 0
+        }
         return sections[section].rows.count
     }
 

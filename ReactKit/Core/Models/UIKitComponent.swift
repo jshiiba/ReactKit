@@ -9,7 +9,7 @@
 import UIKit
 
 ///
-///
+/// A component that wraps a UIKit element
 ///
 class UIKitComponent<V: UIView>: Component {
     typealias Configuration = (V) -> ()

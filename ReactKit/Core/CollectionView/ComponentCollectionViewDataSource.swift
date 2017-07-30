@@ -23,11 +23,13 @@ class ComponentCollectionViewDataSource: NSObject {
         self.renderer = renderer
     }
 
+    /// Configures the collectionview with properties needed for rendering
+    /// - parameters:
+    ///     - collectionView
     private func configure(_ collectionView: UICollectionView) {
         collectionView.register(BaseComponentCell.self, forCellWithReuseIdentifier: identifier)
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.backgroundColor = .white
-        collectionView.collectionViewLayout = renderer.layout
     }
 
     /// Updates collectionview with new components and props, reloads updated cells
@@ -38,6 +40,8 @@ class ComponentCollectionViewDataSource: NSObject {
         componentCollectionView.reloadItems(at: updatedIndexPaths)
     }
 }
+
+// MARK: - UICollectionViewDataSource
 
 extension ComponentCollectionViewDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

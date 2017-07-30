@@ -8,6 +8,9 @@
 
 import UIKit
 
+///
+/// Allows for easier access to cast the base into its true type
+///
 enum BaseComponentType {
 
     case component(Component)
@@ -42,4 +45,7 @@ extension BaseComponent {
     }
 }
 
+///
+/// UIView extends BaseComponent in order to be considered renderable
+///
 extension UIView: BaseComponent {}

@@ -24,20 +24,9 @@ class LayoutView: Component, ComponentLike {
             return Label(props: label)
         }
 
-        /*let addition = Container(components: [
-            Label(props: LabelProps(title: "Label 7", layout: ComponentLayout(dimension: .ratio(ratio: 1.0), height: 100)))
-        ], layout: ContainerLayout(dimension: .fill)) */
-
         return Container(components: [
             Container(components: labels, layout: ContainerLayout(dimension: .ratio(ratio: 0.5))),
-            Container(components: [
-                Container(components: [
-                    Label(props: LabelProps(title: "Label 7", layout: ComponentLayout(dimension: .ratio(ratio: 1.0), height: 100)))
-                ], layout: ContainerLayout(dimension: .ratio(ratio: 0.5))),
-                Container(components: [
-                    Label(props: LabelProps(title: "Label 8", layout: ComponentLayout(dimension: .ratio(ratio: 1.0), height: 100)))
-                ], layout: ContainerLayout(dimension: .ratio(ratio: 0.5)))
-            ], layout: ContainerLayout(dimension: .ratio(ratio: 0.5)))
+            Container(components: labels, layout: ContainerLayout(dimension: .ratio(ratio: 0.5))),
         ], layout: ContainerLayout(dimension: .ratio(ratio: 1.0)))
     }
 }

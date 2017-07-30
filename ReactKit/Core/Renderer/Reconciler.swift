@@ -30,10 +30,7 @@ class Reconciler {
                 let currentProps = row.props
                 let cachedProps = cachedSections[sectionIndex].rows[rowIndex].props
 
-                if currentProps.isEqualTo(other: cachedProps) {
-                    print("EQUAL")
-                } else {
-                    print("NOT EQUAL")
+                if currentProps != cachedProps {
                     updatedIndexPaths.append(IndexPath(row: row.index, section: row.section))
                 }
             }

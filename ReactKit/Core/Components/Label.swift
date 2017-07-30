@@ -44,8 +44,9 @@ struct LabelProps: LabelPropType {
     }
 }
 
+// might not be needed
 func ==(lhs: LabelPropType, rhs: LabelPropType) -> Bool {
-    return lhs.isEqualTo(other: rhs)
+    return lhs.isEqualTo(rhs)
 }
 
 extension LabelProps: Equatable {

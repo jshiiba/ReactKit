@@ -9,7 +9,8 @@
 import UIKit
 
 ///
-///
+/// An object that be rendered into a View. Components can be composed together
+/// to create a View hierarchy.
 ///
 protocol Component: BaseComponent {
     var props: PropType { get }
