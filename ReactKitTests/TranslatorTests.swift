@@ -237,7 +237,7 @@ class TranslatorTests: XCTestCase {
     // MARK: - Calculate Row Layout
 
     func testThatRowLayoutIsCalculatedForASingleRow() {
-        let inputRows = MockRowComponents.singleRow
+        let inputRows = MockRows.singleRow
         let outputRows = Translator.calculateRowData(from: inputRows, in: 400, at: CGPoint(x: 0, y: 0)).rows
 
         XCTAssertEqual(outputRows.count, 1)
@@ -247,7 +247,7 @@ class TranslatorTests: XCTestCase {
     }
 
     func testThatRowLayoutIsCalculatedForRows() {
-        let inputRows = MockRowComponents.rows
+        let inputRows = MockRows.rows
         let rowData = Translator.calculateRowData(from: inputRows, in: 400, at: CGPoint(x: 0, y: 0))
         let outputRows = rowData.rows
         let outputHeight = rowData.height
@@ -260,7 +260,7 @@ class TranslatorTests: XCTestCase {
 
     // 0.75, 0.5, 0.25, 1.0
     func testThatRowLayoutIsCalculatedForRowsWithMultipleDimensions() {
-        let inputRows = MockRowComponents.rowsMultipleDimensions
+        let inputRows = MockRows.rowsMultipleDimensions
         let rowData = Translator.calculateRowData(from: inputRows, in: 400, at: CGPoint(x: 0, y: 0))
         let outputRows = rowData.rows
         let outputHeight = rowData.height
@@ -274,7 +274,7 @@ class TranslatorTests: XCTestCase {
 
     // 0.75-100, 0.5-200, 0.25-10, 1.0-75
     func testThatRowLayoutIsCalculatedForRowsWithMultipleDimensionsAndHeights() {
-        let inputRows = MockRowComponents.rowsMultipleDimensionsMultipleHeights
+        let inputRows = MockRows.rowsMultipleDimensionsMultipleHeights
         let rowData = Translator.calculateRowData(from: inputRows, in: 400, at: CGPoint(x: 0, y: 0))
         let outputRows = rowData.rows
         let outputHeight = rowData.height

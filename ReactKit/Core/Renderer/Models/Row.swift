@@ -1,5 +1,5 @@
 //
-//  RowComponent.swift
+//  Row.swift
 //  ReactKit
 //
 //  Created by Justin Shiiba on 7/17/17.
@@ -11,19 +11,19 @@ import UIKit
 ///
 /// Represents a Row in an IndexPath that contains a UIView
 ///
-struct RowComponent {
+struct Row {
     let props: PropType
     let indexPath: IndexPath
     let section: Int
     let index: Int
-    let layout: RowComponentLayout
+    let layout: RowLayout
     let view: UIView?
 
-    init(rowComponent: RowComponent, layout: RowComponentLayout) {
-        self.init(view: rowComponent.view, props: rowComponent.props, index: rowComponent.index, section: rowComponent.section, layout: layout)
+    init(row: Row, layout: RowLayout) {
+        self.init(view: row.view, props: row.props, index: row.index, section: row.section, layout: layout)
     }
 
-    init(view: UIView?, props: PropType, index: Int, section: Int, layout: RowComponentLayout) {
+    init(view: UIView?, props: PropType, index: Int, section: Int, layout: RowLayout) {
         self.view = view
         self.props = props
         self.index = index
@@ -33,13 +33,13 @@ struct RowComponent {
     }
 }
 
-struct RowComponentLayout {
+struct RowLayout {
 
     var frame: CGRect
     let dimension: FlexDimension
     let height: CGFloat
 
-    init(layout: RowComponentLayout, newFrame: CGRect) {
+    init(layout: RowLayout, newFrame: CGRect) {
         self.init(dimension: layout.dimension, height: layout.height)
         self.frame = newFrame
     }

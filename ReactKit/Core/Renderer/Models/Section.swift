@@ -1,5 +1,5 @@
 //
-//  SectionComponent.swift
+//  Section.swift
 //  ReactKit
 //
 //  Created by Justin Shiiba on 7/15/17.
@@ -11,22 +11,18 @@ import UIKit
 ///
 /// Represents a Section in an IndexPath containing a row of Components
 ///
-class SectionComponent {
+class Section {
     let index: Int
-    var rows: [RowComponent]
-    let layout: SectionComponentLayout
+    var rows: [Row]
+    let layout: SectionLayout
     // could store child section indexes
 
     fileprivate var cachedAttributes: [UICollectionViewLayoutAttributes]?
 
-    init(index: Int, rows: [RowComponent], layout: SectionComponentLayout) {
+    init(index: Int, rows: [Row], layout: SectionLayout) {
         self.index = index
         self.rows = rows
         self.layout = layout
-    }
-
-    func row(at indexPath: IndexPath) -> RowComponent {
-        return self.rows[indexPath.row]
     }
 
     func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
@@ -54,10 +50,9 @@ class SectionComponent {
     }
 }
 
-struct SectionComponentLayout {
+struct SectionLayout {
     let frame: CGRect
 
-    // TODO: Origin modifiers, adjust height by content
     init(width: CGFloat, height: CGFloat, parentOrigin: CGPoint) {
         self.frame = CGRect(origin: parentOrigin, size: CGSize(width: width, height: height))
     }

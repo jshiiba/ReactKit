@@ -35,8 +35,8 @@
 		D1BBA2C71F2E06B7003FE577 /* ExampleComponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2C21F2E06A8003FE577 /* ExampleComponentViewController.swift */; };
 		D1BBA2CA1F2E06FF003FE577 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2C81F2E06F2003FE577 /* Label.swift */; };
 		D1BBA2CB1F2E0702003FE577 /* SingleViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2C91F2E06F2003FE577 /* SingleViewComponent.swift */; };
-		D1BBA2D61F2E08FA003FE577 /* RowComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2D41F2E08DC003FE577 /* RowComponent.swift */; };
-		D1BBA2D71F2E08FD003FE577 /* SectionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2D51F2E08DC003FE577 /* SectionComponent.swift */; };
+		D1BBA2D61F2E08FA003FE577 /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2D41F2E08DC003FE577 /* Row.swift */; };
+		D1BBA2D71F2E08FD003FE577 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2D51F2E08DC003FE577 /* Section.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +56,7 @@
 		D15103981F0D1AC800213882 /* ReactKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReactKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D151039E1F0D1AC800213882 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1BBA27F1F2E0412003FE577 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "Supporting FIles/AppDelegate.swift"; sourceTree = "<group>"; };
-		D1BBA2801F2E0412003FE577 /* Base.lproj */ = {isa = PBXFileReference; lastKnownFileType = file; name = Base.lproj; path = "Supporting FIles/Base.lproj"; sourceTree = "<group>"; };
+		D1BBA2801F2E0412003FE577 /* Base.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Base.lproj; path = "Supporting FIles/Base.lproj"; sourceTree = "<group>"; };
 		D1BBA2811F2E0412003FE577 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Supporting FIles/Assets.xcassets"; sourceTree = "<group>"; };
 		D1BBA2821F2E0412003FE577 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1BBA2831F2E0412003FE577 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = main.swift; path = "Supporting FIles/main.swift"; sourceTree = "<group>"; };
@@ -81,8 +81,8 @@
 		D1BBA2C41F2E06A8003FE577 /* LayoutExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LayoutExampleViewController.swift; path = Examples/LayoutExampleViewController.swift; sourceTree = "<group>"; };
 		D1BBA2C81F2E06F2003FE577 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Label.swift; path = Core/Components/Label.swift; sourceTree = "<group>"; };
 		D1BBA2C91F2E06F2003FE577 /* SingleViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SingleViewComponent.swift; path = Core/Components/SingleViewComponent.swift; sourceTree = "<group>"; };
-		D1BBA2D41F2E08DC003FE577 /* RowComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RowComponent.swift; path = Core/Renderer/Models/RowComponent.swift; sourceTree = "<group>"; };
-		D1BBA2D51F2E08DC003FE577 /* SectionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SectionComponent.swift; path = Core/Renderer/Models/SectionComponent.swift; sourceTree = "<group>"; };
+		D1BBA2D41F2E08DC003FE577 /* Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Row.swift; path = Core/Renderer/Models/Row.swift; sourceTree = "<group>"; };
+		D1BBA2D51F2E08DC003FE577 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Section.swift; path = Core/Renderer/Models/Section.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,8 +240,8 @@
 		D1BBA2D21F2E087C003FE577 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D1BBA2D41F2E08DC003FE577 /* RowComponent.swift */,
-				D1BBA2D51F2E08DC003FE577 /* SectionComponent.swift */,
+				D1BBA2D41F2E08DC003FE577 /* Row.swift */,
+				D1BBA2D51F2E08DC003FE577 /* Section.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -352,12 +352,12 @@
 				D1BBA2A91F2E05D5003FE577 /* BaseComponent.swift in Sources */,
 				D1BBA29D1F2E055F003FE577 /* ComponentCollectionViewDataSource.swift in Sources */,
 				D1BBA2BC1F2E0685003FE577 /* Translator.swift in Sources */,
-				D1BBA2D71F2E08FD003FE577 /* SectionComponent.swift in Sources */,
+				D1BBA2D71F2E08FD003FE577 /* Section.swift in Sources */,
 				D1BBA2871F2E043C003FE577 /* TestingAppDelegate.swift in Sources */,
 				D1BBA2BD1F2E0687003FE577 /* Cacher.swift in Sources */,
 				D1BBA2CB1F2E0702003FE577 /* SingleViewComponent.swift in Sources */,
 				D1BBA2C71F2E06B7003FE577 /* ExampleComponentViewController.swift in Sources */,
-				D1BBA2D61F2E08FA003FE577 /* RowComponent.swift in Sources */,
+				D1BBA2D61F2E08FA003FE577 /* Row.swift in Sources */,
 				D1BBA2941F2E04FD003FE577 /* UIButton+React.swift in Sources */,
 				D1BBA29B1F2E055A003FE577 /* BaseComponentCell.swift in Sources */,
 				D1BBA29C1F2E055C003FE577 /* BaseComponentViewController.swift in Sources */,

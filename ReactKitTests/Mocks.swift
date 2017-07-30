@@ -72,77 +72,77 @@ struct MockComponents {
     }
 }
 
-struct MockRowComponents {
-    static let singleRow: [RowComponent] = [
-        RowComponent(view: nil,
+struct MockRows {
+    static let singleRow: [Row] = [
+        Row(view: nil,
                      props: MockProps(layout: ComponentLayout(dimension: .fill, height: 100)),
                      index: 0,
                      section: 0,
-                     layout: RowComponentLayout(dimension: .fill, height: 100))
+                     layout: RowLayout(dimension: .fill, height: 100))
     ]
 
-    static let rows: [RowComponent] = [
-        RowComponent(view: nil,
+    static let rows: [Row] = [
+        Row(view: nil,
                      props: MockProps(layout: ComponentLayout(dimension: .ratio(ratio: 0.5), height: 100)),
                      index: 0,
                      section: 0,
-                     layout: RowComponentLayout(dimension: .ratio(ratio: 0.5), height: 100)),
-        RowComponent(view: nil,
+                     layout: RowLayout(dimension: .ratio(ratio: 0.5), height: 100)),
+        Row(view: nil,
                      props: MockProps(layout: ComponentLayout(dimension: .ratio(ratio: 0.5), height: 100)),
                      index: 0,
                      section: 0,
-                     layout: RowComponentLayout(dimension: .ratio(ratio: 0.5), height: 100)),
-        RowComponent(view: nil,
+                     layout: RowLayout(dimension: .ratio(ratio: 0.5), height: 100)),
+        Row(view: nil,
                      props: MockProps(layout: ComponentLayout(dimension: .ratio(ratio: 0.5), height: 100)),
                      index: 0,
                      section: 0,
-                     layout: RowComponentLayout(dimension: .ratio(ratio: 0.5), height: 100)),
+                     layout: RowLayout(dimension: .ratio(ratio: 0.5), height: 100)),
     ]
 
-    static let rowsMultipleDimensions: [RowComponent] = [
-        RowComponent(view: nil,
+    static let rowsMultipleDimensions: [Row] = [
+        Row(view: nil,
                      props: MockProps(layout: ComponentLayout(dimension: .ratio(ratio: 0.75), height: 100)),
                      index: 0,
                      section: 0,
-                     layout: RowComponentLayout(dimension: .ratio(ratio: 0.75), height: 100)),
-        RowComponent(view: nil,
+                     layout: RowLayout(dimension: .ratio(ratio: 0.75), height: 100)),
+        Row(view: nil,
                      props: MockProps(layout: ComponentLayout(dimension: .ratio(ratio: 0.5), height: 100)),
                      index: 0,
                      section: 0,
-                     layout: RowComponentLayout(dimension: .ratio(ratio: 0.5), height: 100)),
-        RowComponent(view: nil,
+                     layout: RowLayout(dimension: .ratio(ratio: 0.5), height: 100)),
+        Row(view: nil,
                      props: MockProps(layout: ComponentLayout(dimension: .ratio(ratio: 0.25), height: 100)),
                      index: 0,
                      section: 0,
-                     layout: RowComponentLayout(dimension: .ratio(ratio: 0.25), height: 100)),
-        RowComponent(view: nil,
+                     layout: RowLayout(dimension: .ratio(ratio: 0.25), height: 100)),
+        Row(view: nil,
                      props: MockProps(layout: ComponentLayout(dimension: .ratio(ratio: 1.0), height: 100)),
                      index: 0,
                      section: 0,
-                     layout: RowComponentLayout(dimension: .ratio(ratio: 1.0), height: 100)),
+                     layout: RowLayout(dimension: .ratio(ratio: 1.0), height: 100)),
     ]
 
-    static let rowsMultipleDimensionsMultipleHeights: [RowComponent] = [
-        RowComponent(view: nil,
+    static let rowsMultipleDimensionsMultipleHeights: [Row] = [
+        Row(view: nil,
                      props: MockProps(layout: ComponentLayout(dimension: .ratio(ratio: 0.75), height: 100)),
                      index: 0,
                      section: 0,
-                     layout: RowComponentLayout(dimension: .ratio(ratio: 0.75), height: 100)),
-        RowComponent(view: nil,
+                     layout: RowLayout(dimension: .ratio(ratio: 0.75), height: 100)),
+        Row(view: nil,
                      props: MockProps(layout: ComponentLayout(dimension: .ratio(ratio: 0.5), height: 200)),
                      index: 0,
                      section: 0,
-                     layout: RowComponentLayout(dimension: .ratio(ratio: 0.5), height: 200)),
-        RowComponent(view: nil,
+                     layout: RowLayout(dimension: .ratio(ratio: 0.5), height: 200)),
+        Row(view: nil,
                      props: MockProps(layout: ComponentLayout(dimension: .ratio(ratio: 0.25), height: 10)),
                      index: 0,
                      section: 0,
-                     layout: RowComponentLayout(dimension: .ratio(ratio: 0.25), height: 10)),
-        RowComponent(view: nil,
+                     layout: RowLayout(dimension: .ratio(ratio: 0.25), height: 10)),
+        Row(view: nil,
                      props: MockProps(layout: ComponentLayout(dimension: .ratio(ratio: 1.0), height: 75)),
                      index: 0,
                      section: 0,
-                     layout: RowComponentLayout(dimension: .ratio(ratio: 1.0), height: 75)),
+                     layout: RowLayout(dimension: .ratio(ratio: 1.0), height: 75)),
     ]
 }
 

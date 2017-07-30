@@ -12,9 +12,9 @@ import Foundation
 /// - parameters: sections
 /// - returns: Recently Cached sections
 class Cacher {
-    var cachedSections: [SectionComponent]?
+    var cachedSections: [Section]?
 
-    func cache(_ sections: [SectionComponent]) -> [SectionComponent]? {
+    func cache(_ sections: [Section]) -> [Section]? {
         defer {
             cachedSections = sections
         }

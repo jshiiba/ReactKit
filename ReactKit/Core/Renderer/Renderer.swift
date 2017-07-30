@@ -28,7 +28,7 @@ class Renderer {
     let layout: ComponentCollectionViewLayout
 
     /// private vars
-    private var sections: [SectionComponent] = []
+    private var sections: [Section] = []
 
     init(reconciler: Reconciler) {
         self.reconciler = reconciler

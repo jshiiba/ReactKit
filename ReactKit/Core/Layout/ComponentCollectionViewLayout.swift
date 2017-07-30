@@ -10,7 +10,7 @@ import UIKit
 
 class ComponentCollectionViewLayout: UICollectionViewLayout {
 
-    var sections: [SectionComponent] = []
+    var sections: [Section] = []
 
     override var collectionViewContentSize: CGSize {
         return sections.first?.layout.frame.size ?? .zero

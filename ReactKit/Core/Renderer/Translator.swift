@@ -11,11 +11,11 @@ import UIKit
 final class Translator {
 
     struct RowData {
-        let rows: [RowComponent]
+        let rows: [Row]
         let height: CGFloat
     }
 
-    static func translateSections(from component: Component, in frame: CGRect) -> [SectionComponent] {
+    static func translateSections(from component: Component, in frame: CGRect) -> [Section] {
         guard let container = component.render() as? Container else {
             return []
         }
@@ -24,14 +24,14 @@ final class Translator {
         return translateSections(from: container, in: newFrame, at: 0)
     }
 
-    static func translateSections(from container: Container, in frame: CGRect, at index: Int) -> [SectionComponent] {
+    static func translateSections(from container: Container, in frame: CGRect, at index: Int) -> [Section] {
         // vars for rows
         var currentRowIndex = 0
-        var currentRows: [RowComponent] = []
+        var currentRows: [Row] = []
 
         // vars for sections
         var currentSectionIndex = index
-        var childSections: [SectionComponent] = []
+        var childSections: [Section] = []
         var previousSectionFrame = frame
         let sectionNewLineX = frame.origin.x
         var sectionMaxY = getMaxY(for: previousSectionFrame, currentMaxY: frame.origin.y)
@@ -60,7 +60,6 @@ final class Translator {
                 childSections.append(contentsOf: children)
 
             case .component(let component): // base case
-                // create RowComponent
                 if let row = translateRows(from: component, in: currentSectionIndex, at: currentRowIndex) {
                     currentRowIndex = currentRowIndex + 1
                     currentRows.append(row)
@@ -78,40 +77,40 @@ final class Translator {
 
         let totalSectionHeight = sectionHeight + rowData.height
 
-        let sectionLayout = SectionComponentLayout(width: sectionWidth,
+        let sectionLayout = SectionLayout(width: sectionWidth,
                                                    height: totalSectionHeight,
                                                    parentOrigin: frame.origin)
 
-        let section = SectionComponent(index: index,
+        let section = Section(index: index,
                                        rows: currentRows,
                                        layout: sectionLayout)
 
         return [section] + childSections
     }
 
-    static func translateRows(from component: Component, in section: Int, at index: Int) -> RowComponent? {
+    static func translateRows(from component: Component, in section: Int, at index: Int) -> Row? {
         guard let view = component as? SingleViewComponent else {
             return nil
         }
         let dimension = component.props.layout?.dimension ?? .fill
         let height = component.props.layout?.height ?? 0
 
-        let row = RowComponent(view: view.reduce(),
+        let row = Row(view: view.reduce(),
                                props: component.props,
                                index: index,
                                section: section,
-                               layout: RowComponentLayout(dimension: dimension, height: height))
+                               layout: RowLayout(dimension: dimension, height: height))
         return row
     }
 
     // MARK: -  Layout
 
-    static func calculateRowData(from rows: [RowComponent], in width: CGFloat, at origin: CGPoint) -> RowData  {
+    static func calculateRowData(from rows: [Row], in width: CGFloat, at origin: CGPoint) -> RowData  {
         var previousFrame = CGRect(origin: origin, size: .zero)
         let newLineX = origin.x
         var maxY = getMaxY(for: previousFrame, currentMaxY: 0) // next Y pos, also total height of rows in section
 
-        let calculatedRows: [RowComponent] = rows.map { row in
+        let calculatedRows: [Row] = rows.map { row in
             let height = row.layout.height
 
             let rowWidth = widthFor(dimension: row.layout.dimension, in: width)
@@ -131,8 +130,8 @@ final class Translator {
             maxY = getMaxY(for: newFrame, currentMaxY: maxY)
             previousFrame = newFrame
 
-            let layout = RowComponentLayout(layout: row.layout, newFrame: newFrame)
-            return RowComponent(rowComponent: row, layout: layout)
+            let layout = RowLayout(layout: row.layout, newFrame: newFrame)
+            return Row(row: row, layout: layout)
         }
 
         return RowData(rows: calculatedRows, height: maxY)

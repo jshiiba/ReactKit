@@ -12,7 +12,7 @@ import Foundation
 /// - parameters: Current Components with new props
 /// - returns: IndexPaths to update
 class Reconciler {
-    func reconcile(_ currentSections: [SectionComponent], cachedSections: [SectionComponent]?) -> [IndexPath] {
+    func reconcile(_ currentSections: [Section], cachedSections: [Section]?) -> [IndexPath] {
         guard let cachedSections = cachedSections else {
             return currentSections
             // convert sections to array of rows to update
