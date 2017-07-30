@@ -19,6 +19,7 @@ struct Label: Component, ComponentLike {
     func render() -> BaseComponent? {
         let view = UIKitComponent<UILabel>(props: _props) { label in
             label.text = _props.title
+            label.textAlignment = _props.textAlignment
             label.sizeToFit()
         }.view
 
@@ -32,14 +33,17 @@ extension Label: SingleViewComponent {}
 
 protocol LabelPropType: PropType {
     var title: String { get }
+    var textAlignment: NSTextAlignment { get }
 }
 
 struct LabelProps: LabelPropType {
     let layout: ComponentLayout?
     let title: String
+    let textAlignment: NSTextAlignment
 
-    init(title: String, layout: ComponentLayout? = nil) {
+    init(title: String, textAlignment: NSTextAlignment = .left, layout: ComponentLayout? = nil) {
         self.title = title
+        self.textAlignment = textAlignment
         self.layout = layout
     }
 }

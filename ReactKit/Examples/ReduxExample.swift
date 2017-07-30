@@ -25,7 +25,7 @@ class ReduxView: Component, ComponentLike {
     }
 
     func render() -> BaseComponent? {
-        let count = Label(props: LabelProps(title: "Count: 0", layout: ComponentLayout(dimension: .fill, height: 100)))
+        let count = Label(props: LabelProps(title: "Count: 0", textAlignment: .center, layout: ComponentLayout(dimension: .fill, height: 100)))
 
         let buttons = _props.buttons.map { buttonProp in
             return Button(props: buttonProp)
