@@ -136,28 +136,35 @@ class TranslatorTests: XCTestCase {
 
     func testThatOriginIsInlineStartingAtZeroOrigin() {
         let prevFrame = CGRect(x: 0, y: 0, width: 100, height: 0)
-        let outputOrigin = Translator.originFor(width: 100, previousFrame: prevFrame, inSectionWidth: 400, newLineXPos: 0, maxY: 0)
+        let outputOrigin = Translator.originFor(width: 100, previousFrame: prevFrame, inSectionWidth: 400, sectionOrigin: .zero, newLineXPos: 0, maxY: 0)
         XCTAssertEqual(outputOrigin.x, 100)
         XCTAssertEqual(outputOrigin.y, 0)
     }
 
     func  testThatOriginIsInLineStartingNotZeroOrigin() {
         let prevFrame = CGRect(x: 100, y: 0, width: 100, height: 100)
-        let outputOrigin = Translator.originFor(width: 100, previousFrame: prevFrame, inSectionWidth: 400, newLineXPos: 0, maxY: 0)
+        let outputOrigin = Translator.originFor(width: 100, previousFrame: prevFrame, inSectionWidth: 400, sectionOrigin: .zero, newLineXPos: 0, maxY: 0)
+        XCTAssertEqual(outputOrigin.x, 200)
+        XCTAssertEqual(outputOrigin.y, 0)
+    }
+
+    func testThatOriginIsInLineStartingNotZeroOriginWithinSection() {
+        let prevFrame = CGRect(x: 100, y: 0, width: 100, height: 100)
+        let outputOrigin = Translator.originFor(width: 100, previousFrame: prevFrame, inSectionWidth: 200, sectionOrigin: CGPoint(x: 100, y: 0), newLineXPos: 0, maxY: 100)
         XCTAssertEqual(outputOrigin.x, 200)
         XCTAssertEqual(outputOrigin.y, 0)
     }
 
     func testThatOriginIsWrapStartingAtZeroOrigin() {
         let prevFrame = CGRect(x: 0, y: 0, width: 300, height: 100)
-        let outputOrigin = Translator.originFor(width: 200, previousFrame: prevFrame, inSectionWidth: 400, newLineXPos: 0, maxY: 100)
+        let outputOrigin = Translator.originFor(width: 200, previousFrame: prevFrame, inSectionWidth: 400, sectionOrigin: .zero, newLineXPos: 0, maxY: 100)
         XCTAssertEqual(outputOrigin.x, 0)
         XCTAssertEqual(outputOrigin.y, 100)
     }
 
     func testThatOriginIsWrapStartNotZeroOrigin() {
         let prevFrame = CGRect(x: 100, y: 0, width: 200, height: 100)
-        let outputOrigin = Translator.originFor(width: 200, previousFrame: prevFrame, inSectionWidth: 400, newLineXPos: 0, maxY: 100)
+        let outputOrigin = Translator.originFor(width: 200, previousFrame: prevFrame, inSectionWidth: 400, sectionOrigin: .zero, newLineXPos: 0, maxY: 100)
         XCTAssertEqual(outputOrigin.x, 0)
         XCTAssertEqual(outputOrigin.y, 100)
     }

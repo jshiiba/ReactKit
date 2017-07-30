@@ -44,6 +44,7 @@ final class Translator {
                 let childSectionOrigin = originFor(width: childSectionWidth,
                                                    previousFrame: previousSectionFrame,
                                                    inSectionWidth: frame.width,
+                                                   sectionOrigin: frame.origin,
                                                    newLineXPos: sectionNewLineX,
                                                    maxY: sectionMaxY)
 
@@ -118,6 +119,7 @@ final class Translator {
             let newOrigin = originFor(width: rowWidth,
                                       previousFrame: previousFrame,
                                       inSectionWidth: width,
+                                      sectionOrigin: origin,
                                       newLineXPos: newLineX,
                                       maxY: maxY)
 
@@ -136,8 +138,12 @@ final class Translator {
         return RowData(rows: calculatedRows, height: maxY)
     }
 
-    static func originFor(width: CGFloat, previousFrame: CGRect, inSectionWidth sectionWith: CGFloat, newLineXPos: CGFloat, maxY: CGFloat) -> CGPoint {
-        let remainder = sectionWith - (previousFrame.origin.x + previousFrame.width)
+    static func originFor(width: CGFloat, previousFrame: CGRect, inSectionWidth sectionWidth: CGFloat, sectionOrigin: CGPoint, newLineXPos: CGFloat, maxY: CGFloat) -> CGPoint {
+
+        // need to account for a secion origin being non-zero
+        let originXFromSectionOrigin = sectionOrigin.x == 0 ? previousFrame.origin.x : sectionOrigin.x - previousFrame.origin.x
+
+        let remainder = sectionWidth - (originXFromSectionOrigin + previousFrame.width)
 
         if width > remainder {
             // wrap
