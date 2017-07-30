@@ -1,5 +1,5 @@
 //
-//  ComponentRenderer.swift
+//  Reconciler.swift
 //  ReactKit
 //
 //  Created by Justin Shiiba on 7/8/17.
@@ -11,7 +11,7 @@ import Foundation
 ///
 /// - parameters: Current Components with new props
 /// - returns: IndexPaths to update
-class ComponentReconciler {
+class Reconciler {
     func reconcile(_ currentSections: [SectionComponent], cachedSections: [SectionComponent]?) -> [IndexPath] {
         guard let cachedSections = cachedSections else {
             return currentSections

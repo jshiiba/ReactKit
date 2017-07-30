@@ -1,5 +1,5 @@
 //
-//  ComponentFlowLayout.swift
+//  ComponentCollectionViewLayout.swift
 //  ReactKit
 //
 //  Created by Justin Shiiba on 7/8/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ComponentFlowLayout: UICollectionViewLayout {
+class ComponentCollectionViewLayout: UICollectionViewLayout {
 
     var sections: [SectionComponent] = []
 

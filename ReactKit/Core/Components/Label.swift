@@ -8,30 +8,6 @@
 
 import UIKit
 
-protocol LabelPropType: PropType {
-    var title: String { get }
-}
-
-func ==(lhs: LabelPropType, rhs: LabelPropType) -> Bool {
-    return lhs.isEqualTo(other: rhs)
-}
-
-struct LabelProps: LabelPropType {
-    let layout: ComponentLayout?
-    let title: String
-
-    init(title: String, layout: ComponentLayout? = nil) {
-        self.title = title
-        self.layout = layout
-    }
-}
-
-extension LabelProps: Equatable {
-    static func ==(lhs: LabelProps, rhs: LabelProps) -> Bool {
-        return lhs.title == rhs.title
-    }
-}
-
 struct Label: Component, ComponentLike {
     typealias ComponentPropType = LabelPropType
 
@@ -52,3 +28,28 @@ struct Label: Component, ComponentLike {
 
 extension Label: SingleViewComponent {}
 
+// MARK: - Label Props
+
+protocol LabelPropType: PropType {
+    var title: String { get }
+}
+
+struct LabelProps: LabelPropType {
+    let layout: ComponentLayout?
+    let title: String
+
+    init(title: String, layout: ComponentLayout? = nil) {
+        self.title = title
+        self.layout = layout
+    }
+}
+
+func ==(lhs: LabelPropType, rhs: LabelPropType) -> Bool {
+    return lhs.isEqualTo(other: rhs)
+}
+
+extension LabelProps: Equatable {
+    static func ==(lhs: LabelProps, rhs: LabelProps) -> Bool {
+        return lhs.title == rhs.title
+    }
+}

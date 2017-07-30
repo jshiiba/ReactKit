@@ -1,5 +1,5 @@
 //
-//  ComponentDataSource.swift
+//  Renderer.swift
 //  ReactKit
 //
 //  Created by Justin Shiiba on 7/8/17.
@@ -20,20 +20,20 @@ protocol ComponentDataSource {
 ///
 ///
 ///
-class ComponentRenderer {
+class Renderer {
 
     /// dependencies
-    let reconciler: ComponentReconciler
-    let cacher: ComponentCacher
-    let layout: ComponentFlowLayout
+    let reconciler: Reconciler
+    let cacher: Cacher
+    let layout: ComponentCollectionViewLayout
 
     /// private vars
     private var sections: [SectionComponent] = []
 
-    init(reconciler: ComponentReconciler) {
+    init(reconciler: Reconciler) {
         self.reconciler = reconciler
-        self.cacher = ComponentCacher()
-        self.layout = ComponentFlowLayout()
+        self.cacher = Cacher()
+        self.layout = ComponentCollectionViewLayout()
     }
 
     /// 
@@ -56,7 +56,7 @@ class ComponentRenderer {
 
 // MARK: -  ComponentDataSource
 
-extension ComponentRenderer: ComponentDataSource {
+extension Renderer: ComponentDataSource {
     var numberOfSections: Int {
         return sections.count
     }
