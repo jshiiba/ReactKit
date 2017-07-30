@@ -28,6 +28,8 @@
 		D18FCCBC1F12675B00B27F4E /* ComponentCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18FCCBB1F12675B00B27F4E /* ComponentCollectionViewDataSource.swift */; };
 		D18FCCBE1F126F0700B27F4E /* ExampleComponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18FCCBD1F126F0700B27F4E /* ExampleComponentViewController.swift */; };
 		D18FCCC31F12DE7300B27F4E /* ExampleComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18FCCC21F12DE7300B27F4E /* ExampleComponents.swift */; };
+		D1BBA2741F2DFF4A003FE577 /* TestingAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2731F2DFF4A003FE577 /* TestingAppDelegate.swift */; };
+		D1BBA2761F2DFF7A003FE577 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2751F2DFF7A003FE577 /* main.swift */; };
 		D1E1570B1F13909F001C345C /* ComponentReconciler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E1570A1F139098001C345C /* ComponentReconciler.swift */; };
 		D1E1570E1F14E135001C345C /* PropType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E1570D1F14E135001C345C /* PropType.swift */; };
 		D1EB7BA11F0D3F9700739A67 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EB7BA01F0D3F9700739A67 /* Components.swift */; };
@@ -73,6 +75,8 @@
 		D18FCCBB1F12675B00B27F4E /* ComponentCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		D18FCCBD1F126F0700B27F4E /* ExampleComponentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleComponentViewController.swift; sourceTree = "<group>"; };
 		D18FCCC21F12DE7300B27F4E /* ExampleComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleComponents.swift; sourceTree = "<group>"; };
+		D1BBA2731F2DFF4A003FE577 /* TestingAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingAppDelegate.swift; sourceTree = "<group>"; };
+		D1BBA2751F2DFF7A003FE577 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		D1E1570A1F139098001C345C /* ComponentReconciler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComponentReconciler.swift; path = Reconciler/ComponentReconciler.swift; sourceTree = "<group>"; };
 		D1E1570D1F14E135001C345C /* PropType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropType.swift; sourceTree = "<group>"; };
 		D1EB7BA01F0D3F9700739A67 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
@@ -162,7 +166,9 @@
 			isa = PBXGroup;
 			children = (
 				D1680EB51F179D2E0070ADF9 /* Notes.md */,
+				D1BBA2751F2DFF7A003FE577 /* main.swift */,
 				D15103871F0D1AC800213882 /* AppDelegate.swift */,
+				D1BBA2731F2DFF4A003FE577 /* TestingAppDelegate.swift */,
 				D1182DF21F1BB8D2008EED00 /* Example */,
 				D1182DEB1F1B92F7008EED00 /* Layout */,
 				D1E1570F1F14E2FD001C345C /* Renderer */,
@@ -332,11 +338,13 @@
 				D1EB7BA11F0D3F9700739A67 /* Components.swift in Sources */,
 				D1EB7BAC1F0EA9DA00739A67 /* Container.swift in Sources */,
 				D1680EAE1F1643CE0070ADF9 /* BaseComponent.swift in Sources */,
+				D1BBA2761F2DFF7A003FE577 /* main.swift in Sources */,
 				D18FCCBC1F12675B00B27F4E /* ComponentCollectionViewDataSource.swift in Sources */,
 				D11148481F11322700CC37AA /* ComponentFlowLayout.swift in Sources */,
 				D1E1570B1F13909F001C345C /* ComponentReconciler.swift in Sources */,
 				D15103881F0D1AC800213882 /* AppDelegate.swift in Sources */,
 				D11148451F11307000CC37AA /* UIButton+React.swift in Sources */,
+				D1BBA2741F2DFF4A003FE577 /* TestingAppDelegate.swift in Sources */,
 				D1182DE71F1A5022008EED00 /* SectionComponent.swift in Sources */,
 				D1182DF11F1BB8CA008EED00 /* LayoutExampleViewController.swift in Sources */,
 			);

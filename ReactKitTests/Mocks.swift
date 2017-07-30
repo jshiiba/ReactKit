@@ -55,6 +55,21 @@ struct MockComponents {
             ], layout: ContainerLayout(dimension: .ratio(ratio: 0.5))),
         ], layout: MockComponents.containerLayoutFill)
     }
+
+    static func multiLevelContainers() -> Container {
+        return Container(components: [
+            Container(components: [
+                Container(components: [
+                    Label(props: LabelProps(title: "Label 1", layout: ComponentLayout(dimension: .ratio(ratio: 0.5), height: 100))),
+                    Label(props: LabelProps(title: "Label 2", layout: ComponentLayout(dimension: .ratio(ratio: 0.5), height: 100)))
+                ], layout: ContainerLayout(dimension: .ratio(ratio: 0.5))),
+                Container(components: [
+                    Label(props: LabelProps(title: "Label 3", layout: ComponentLayout(dimension: .ratio(ratio: 0.5), height: 100))),
+                    Label(props: LabelProps(title: "Label 4", layout: ComponentLayout(dimension: .ratio(ratio: 0.5), height: 100)))
+                ], layout: ContainerLayout(dimension: .ratio(ratio: 0.5))),
+            ], layout: ContainerLayout(dimension: .ratio(ratio: 0.5))),
+        ], layout: MockComponents.containerLayoutFill)
+    }
 }
 
 struct MockRowComponents {
