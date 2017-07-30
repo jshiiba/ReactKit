@@ -17,9 +17,11 @@ class TranslatorTests: XCTestCase {
         super.setUp()
     }
 
+    // MARK: - Translate Container with only Components
+
     func testWhenRootComponentIsAnEmptyContainer() {
         let container = Container(components: [], layout: MockComponents.containerLayoutFill)
-        let result = Translator.translateSections(from: container, in: parentFrame)
+        let result = Translator.translateSections(from: container, in: parentFrame, at: 0)
 
         XCTAssertEqual(result.count, 1)
         XCTAssertEqual(result[0].index, 0)
@@ -29,7 +31,7 @@ class TranslatorTests: XCTestCase {
 
     func testWhenContainerHasLabelComponent() {
         let container = MockComponents.containerWithLabel(with: .fill, labelHeight: 100)
-        let result = Translator.translateSections(from: container, in: parentFrame)
+        let result = Translator.translateSections(from: container, in: parentFrame, at: 0)
 
         XCTAssertEqual(result.count, 1)
         XCTAssertEqual(result[0].index, 0)
@@ -40,7 +42,7 @@ class TranslatorTests: XCTestCase {
 
     func testWhenContainerHasTwoLabelComponentsWithSameLayouts() {
         let container = MockComponents.containerWithSameTwoLabels(with: .ratio(ratio: 0.5), labelHeight: 100)
-        let result = Translator.translateSections(from: container, in: parentFrame)
+        let result = Translator.translateSections(from: container, in: parentFrame, at: 0)
 
         XCTAssertEqual(result.count, 1)
         XCTAssertEqual(result[0].index, 0)
@@ -61,7 +63,7 @@ class TranslatorTests: XCTestCase {
 
     func testWhenContainerHasMultipleLabels() {
         let container = MockComponents.containerWithMultipleLabels()
-        let result = Translator.translateSections(from: container, in: parentFrame)
+        let result = Translator.translateSections(from: container, in: parentFrame, at: 0)
 
         XCTAssertEqual(result.count, 1)
         XCTAssertEqual(result[0].index, 0)
@@ -90,6 +92,27 @@ class TranslatorTests: XCTestCase {
         XCTAssertEqual(result[0].layout.frame.height, 400)
     }
 
+    // MARK: - Translate Container with Containers
+
+    func testThatContainersWithChildContainersHaveIndex() {
+        let container = MockComponents.containerWithContainers()
+        let result = Translator.translateSections(from: container, in: CGRect(origin: CGPoint(x: 0 , y: 0), size: CGSize(width: 300, height: 0)), at: 0)
+
+        XCTAssertEqual(result[0].index, 0)
+        XCTAssertEqual(result[1].index, 1)
+        XCTAssertEqual(result[2].index, 2)
+    }
+
+    func testThatContainersCanLayoutChildContainers() {
+        let container = MockComponents.containerWithContainers()
+        let result = Translator.translateSections(from: container, in: CGRect(origin: CGPoint(x: 0 , y: 0), size: CGSize(width: 300, height: 0)), at: 0)
+
+        XCTAssertEqual(result.count, 3)
+        XCTAssertEqual(result[0].layout.frame, CGRect(x: 0, y: 0, width: 300, height: 400))
+        XCTAssertEqual(result[1].layout.frame, CGRect(x: 0, y: 0, width: 150, height: 200))
+        XCTAssertEqual(result[2].layout.frame, CGRect(x: 150, y: 0, width: 150, height: 200))
+    }
+
     // MARK: - Translate Components to Rows
 
     func testThatComponentIsTranslatedToRow() {
@@ -113,28 +136,28 @@ class TranslatorTests: XCTestCase {
 
     func testThatOriginIsInlineStartingAtZeroOrigin() {
         let prevFrame = CGRect(x: 0, y: 0, width: 100, height: 0)
-        let outputOrigin = Translator.originFor(rowWidth : 100, previousFrame: prevFrame, inSectionWidth: 400, newLineXPos: 0, maxY: 0)
+        let outputOrigin = Translator.originFor(width: 100, previousFrame: prevFrame, inSectionWidth: 400, newLineXPos: 0, maxY: 0)
         XCTAssertEqual(outputOrigin.x, 100)
         XCTAssertEqual(outputOrigin.y, 0)
     }
 
     func  testThatOriginIsInLineStartingNotZeroOrigin() {
         let prevFrame = CGRect(x: 100, y: 0, width: 100, height: 100)
-        let outputOrigin = Translator.originFor(rowWidth : 100, previousFrame: prevFrame, inSectionWidth: 400, newLineXPos: 0, maxY: 0)
+        let outputOrigin = Translator.originFor(width: 100, previousFrame: prevFrame, inSectionWidth: 400, newLineXPos: 0, maxY: 0)
         XCTAssertEqual(outputOrigin.x, 200)
         XCTAssertEqual(outputOrigin.y, 0)
     }
 
     func testThatOriginIsWrapStartingAtZeroOrigin() {
         let prevFrame = CGRect(x: 0, y: 0, width: 300, height: 100)
-        let outputOrigin = Translator.originFor(rowWidth : 200, previousFrame: prevFrame, inSectionWidth: 400, newLineXPos: 0, maxY: 100)
+        let outputOrigin = Translator.originFor(width: 200, previousFrame: prevFrame, inSectionWidth: 400, newLineXPos: 0, maxY: 100)
         XCTAssertEqual(outputOrigin.x, 0)
         XCTAssertEqual(outputOrigin.y, 100)
     }
 
     func testThatOriginIsWrapStartNotZeroOrigin() {
         let prevFrame = CGRect(x: 100, y: 0, width: 200, height: 100)
-        let outputOrigin = Translator.originFor(rowWidth : 200, previousFrame: prevFrame, inSectionWidth: 400, newLineXPos: 0, maxY: 100)
+        let outputOrigin = Translator.originFor(width: 200, previousFrame: prevFrame, inSectionWidth: 400, newLineXPos: 0, maxY: 100)
         XCTAssertEqual(outputOrigin.x, 0)
         XCTAssertEqual(outputOrigin.y, 100)
     }

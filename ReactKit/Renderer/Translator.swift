@@ -20,17 +20,41 @@ final class Translator {
             return []
         }
 
-        return translateSections(from: container, in: frame)
+        let newFrame = CGRect(x: 0, y: 0, width: frame.width, height: 0)
+        return translateSections(from: container, in: newFrame, at: 0)
     }
 
-    static func translateSections(from container: Container, in frame: CGRect) -> [SectionComponent] {
-        let currentSectionIndex = 0
+    static func translateSections(from container: Container, in frame: CGRect, at index: Int) -> [SectionComponent] {
+        // vars for rows
         var currentRowIndex = 0
         var currentRows: [RowComponent] = []
 
+        // vars for sections
+        var currentSectionIndex = index
+        var childSections: [SectionComponent] = []
+        var previousSectionFrame = frame
+        let sectionNewLineX = frame.origin.x
+        var sectionMaxY = getMaxY(for: previousSectionFrame, currentMaxY: frame.origin.y)
+
         container.components.forEach { baseComponent in
             switch baseComponent.componentType {
-            case .container(let _): break// recurse
+            case .container(let childContainer): // recurse
+
+                let childSectionWidth = widthFor(dimension: childContainer.layout.dimension, in: frame.width)
+                let childSectionOrigin = originFor(width: childSectionWidth,
+                                                   previousFrame: previousSectionFrame,
+                                                   inSectionWidth: frame.width,
+                                                   newLineXPos: sectionNewLineX,
+                                                   maxY: sectionMaxY)
+
+                let childSectionFrame = CGRect(origin: childSectionOrigin, size: CGSize(width: childSectionWidth, height: frame.height))
+                sectionMaxY = getMaxY(for: childSectionFrame, currentMaxY: sectionMaxY)
+                previousSectionFrame = childSectionFrame
+                currentSectionIndex = currentSectionIndex + 1
+
+                let children = translateSections(from: childContainer, in: childSectionFrame, at: currentSectionIndex)
+                childSections.append(contentsOf: children)
+
             case .component(let component): // base case
                 // create RowComponent
                 if let row = translateRows(from: component, in: currentSectionIndex, at: currentRowIndex) {
@@ -40,19 +64,23 @@ final class Translator {
             }
         }
 
-        let sectionWidth = widthFor(dimension: container.layout.dimension, in: frame.width)
+        let sectionWidth = frame.width
         let rowData = calculateRowData(from: currentRows, in: sectionWidth, at: frame.origin)
         currentRows = rowData.rows
 
-        let sectionLayout = SectionComponentLayout(width: sectionWidth,
-                                                   height: rowData.height,
-                                                   parentOrigin: .zero) // TODO: change parentOrigin
+        // TODO: FIX Total height of child sections to be sectionMaxY
+        let sectionHeight = childSections.reduce(0) { $0 + $1.layout.frame.height }
+        let totalSectionHeight = sectionHeight + rowData.height
 
-        let section = SectionComponent(index: currentSectionIndex,
+        let sectionLayout = SectionComponentLayout(width: sectionWidth,
+                                                   height: totalSectionHeight,
+                                                   parentOrigin: frame.origin)
+
+        let section = SectionComponent(index: index,
                                        rows: currentRows,
                                        layout: sectionLayout)
 
-        return [section]
+        return [section] + childSections
     }
 
     static func translateRows(from component: Component, in section: Int, at index: Int) -> RowComponent? {
@@ -82,7 +110,7 @@ final class Translator {
 
             let rowWidth = widthFor(dimension: row.layout.dimension, in: width)
 
-            let newOrigin = originFor(rowWidth: rowWidth,
+            let newOrigin = originFor(width: rowWidth,
                                       previousFrame: previousFrame,
                                       inSectionWidth: width,
                                       newLineXPos: newLineX,
@@ -103,10 +131,10 @@ final class Translator {
         return RowData(rows: calculatedRows, height: maxY)
     }
 
-    static func originFor(rowWidth: CGFloat, previousFrame: CGRect, inSectionWidth sectionWith: CGFloat, newLineXPos: CGFloat, maxY: CGFloat) -> CGPoint {
+    static func originFor(width: CGFloat, previousFrame: CGRect, inSectionWidth sectionWith: CGFloat, newLineXPos: CGFloat, maxY: CGFloat) -> CGPoint {
         let remainder = sectionWith - (previousFrame.origin.x + previousFrame.width)
 
-        if rowWidth > remainder {
+        if width > remainder {
             // wrap
             return CGPoint(x: newLineXPos, y: maxY)
         } else {

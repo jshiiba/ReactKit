@@ -46,7 +46,9 @@ class SectionComponent {
             attributes.append(newAttribute)
         }
 
-        cachedAttributes = attributes
+        if !attributes.isEmpty {
+            cachedAttributes = attributes
+        }
 
         return attributes
     }
