@@ -8,11 +8,6 @@
 
 import Foundation
 
-struct AppState {
+protocol AppState {
 
-}
-
-enum Action {
-
-    
 }

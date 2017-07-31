@@ -16,6 +16,8 @@ class ExampleCoordinator {
         return rootViewController as? UINavigationController
     }
 
+    var store: Store?
+
     func present(in window: UIWindow) {
         let exampleTableViewController = ExampleTableViewController()
         exampleTableViewController.delegate = self
@@ -36,7 +38,9 @@ extension ExampleCoordinator: ExampleTableViewControllerDelegate {
     }
 
     func didSelectReduxExample() {
-        let reduxExample = ReduxViewController()
+        store = Store(state: CounterAppState.initial, reducer: AppReducer())
+
+        let reduxExample = ReduxViewController(store: store!)
 
         navigationController?.pushViewController(reduxExample, animated: true)
     }
