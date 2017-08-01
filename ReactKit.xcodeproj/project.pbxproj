@@ -101,6 +101,7 @@
 		D1F7D71E1F2F3E16003AAE5A /* CounterReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CounterReducer.swift; path = Examples/ReduxExample/CounterReducer.swift; sourceTree = "<group>"; };
 		D1F7D7201F2F3E5E003AAE5A /* UIButton+React.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIButton+React.swift"; path = "Core/Utils/UIButton+React.swift"; sourceTree = "<group>"; };
 		D1F7D7221F2F3EB3003AAE5A /* ReduxUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReduxUtils.swift; path = Core/Utils/ReduxUtils.swift; sourceTree = "<group>"; };
+		D1F7D7241F308CFA003AAE5A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +128,7 @@
 				D15103861F0D1AC800213882 /* ReactKit */,
 				D151039B1F0D1AC800213882 /* ReactKitTests */,
 				D15103851F0D1AC800213882 /* Products */,
+				D1F7D7241F308CFA003AAE5A /* README.md */,
 			);
 			sourceTree = "<group>";
 		};

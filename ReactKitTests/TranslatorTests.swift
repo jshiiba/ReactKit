@@ -161,35 +161,35 @@ class TranslatorTests: XCTestCase {
 
     func testThatOriginIsInlineStartingAtZeroOrigin() {
         let prevFrame = CGRect(x: 0, y: 0, width: 100, height: 0)
-        let outputOrigin = Translator.nextOrigin(for: 100, after: prevFrame, in: CGRect(origin: .zero, size: CGSize(width: 400, height: 0)), data: Translator.FlowLayoutData(previousFrame: prevFrame, currentMaxY: 0))
+        let outputOrigin = Translator.nextOrigin(for: 100, after: prevFrame, in: CGRect(origin: .zero, size: CGSize(width: 400, height: 0)), data: Translator.FlowLayoutAttributes(previousFrame: prevFrame, currentMaxY: 0))
         XCTAssertEqual(outputOrigin.x, 100)
         XCTAssertEqual(outputOrigin.y, 0)
     }
 
     func  testThatOriginIsInLineStartingNotZeroOrigin() {
         let prevFrame = CGRect(x: 100, y: 0, width: 100, height: 100)
-        let outputOrigin = Translator.nextOrigin(for: 100, after: prevFrame, in: CGRect(origin: .zero, size: CGSize(width: 400, height: 0)), data: Translator.FlowLayoutData(previousFrame: prevFrame, currentMaxY: 0))
+        let outputOrigin = Translator.nextOrigin(for: 100, after: prevFrame, in: CGRect(origin: .zero, size: CGSize(width: 400, height: 0)), data: Translator.FlowLayoutAttributes(previousFrame: prevFrame, currentMaxY: 0))
         XCTAssertEqual(outputOrigin.x, 200)
         XCTAssertEqual(outputOrigin.y, 0)
     }
 
     func testThatOriginIsInLineStartingNotZeroOriginWithinSection() {
         let prevFrame = CGRect(x: 100, y: 0, width: 100, height: 100)
-        let outputOrigin = Translator.nextOrigin(for: 100, after: prevFrame, in: CGRect(origin: CGPoint(x: 100, y: 0), size: CGSize(width: 200, height: 0)), data: Translator.FlowLayoutData(previousFrame: prevFrame, currentMaxY: 0))
+        let outputOrigin = Translator.nextOrigin(for: 100, after: prevFrame, in: CGRect(origin: CGPoint(x: 100, y: 0), size: CGSize(width: 200, height: 0)), data: Translator.FlowLayoutAttributes(previousFrame: prevFrame, currentMaxY: 0))
         XCTAssertEqual(outputOrigin.x, 200)
         XCTAssertEqual(outputOrigin.y, 0)
     }
 
     func testThatOriginIsWrapStartingAtZeroOrigin() {
         let prevFrame = CGRect(x: 0, y: 0, width: 300, height: 100)
-        let outputOrigin = Translator.nextOrigin(for: 200, after: prevFrame, in: CGRect(origin: .zero, size: CGSize(width: 400, height: 0)), data: Translator.FlowLayoutData(previousFrame: prevFrame, currentMaxY: 100))
+        let outputOrigin = Translator.nextOrigin(for: 200, after: prevFrame, in: CGRect(origin: .zero, size: CGSize(width: 400, height: 0)), data: Translator.FlowLayoutAttributes(previousFrame: prevFrame, currentMaxY: 100))
         XCTAssertEqual(outputOrigin.x, 0)
         XCTAssertEqual(outputOrigin.y, 100)
     }
 
     func testThatOriginIsWrapStartNotZeroOrigin() {
         let prevFrame = CGRect(x: 100, y: 0, width: 200, height: 100)
-        let outputOrigin = Translator.nextOrigin(for: 200, after: prevFrame, in: CGRect(origin: .zero, size: CGSize(width: 400, height: 0)), data: Translator.FlowLayoutData(previousFrame: prevFrame, currentMaxY: 100))
+        let outputOrigin = Translator.nextOrigin(for: 200, after: prevFrame, in: CGRect(origin: .zero, size: CGSize(width: 400, height: 0)), data: Translator.FlowLayoutAttributes(previousFrame: prevFrame, currentMaxY: 100))
         XCTAssertEqual(outputOrigin.x, 0)
         XCTAssertEqual(outputOrigin.y, 100)
     }
@@ -199,28 +199,28 @@ class TranslatorTests: XCTestCase {
     func testThatMaxYIsOverridenAtZeroY() {
         let inputMaxY: CGFloat = 0
         let inputFrame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        let outputMaxY =  Translator.FlowLayoutData(previousFrame: inputFrame, currentMaxY: inputMaxY).maxY
+        let outputMaxY =  Translator.FlowLayoutAttributes(previousFrame: inputFrame, currentMaxY: inputMaxY).maxY
         XCTAssertEqual(outputMaxY, 100)
     }
 
     func testThatMaxYIsOverridenAtNonZeroY() {
         let inputMaxY: CGFloat = 0
         let inputFrame = CGRect(x: 0, y: 100, width: 100, height: 200)
-        let outputMaxY = Translator.FlowLayoutData(previousFrame: inputFrame, currentMaxY: inputMaxY).maxY
+        let outputMaxY = Translator.FlowLayoutAttributes(previousFrame: inputFrame, currentMaxY: inputMaxY).maxY
         XCTAssertEqual(outputMaxY, 300)
     }
 
     func testThatMaxYIsOverridenWithNonZeroMaxY() {
         let inputMaxY: CGFloat = 100
         let inputFrame = CGRect(x: 0, y: 0, width: 100, height: 200)
-        let outputMaxY = Translator.FlowLayoutData(previousFrame: inputFrame, currentMaxY: inputMaxY).maxY
+        let outputMaxY = Translator.FlowLayoutAttributes(previousFrame: inputFrame, currentMaxY: inputMaxY).maxY
         XCTAssertEqual(outputMaxY, 200)
     }
 
     func testThatMaxYIsSame() {
         let inputMaxY: CGFloat = 100
         let inputFrame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        let outputMaxY = Translator.FlowLayoutData(previousFrame: inputFrame, currentMaxY: inputMaxY).maxY
+        let outputMaxY = Translator.FlowLayoutAttributes(previousFrame: inputFrame, currentMaxY: inputMaxY).maxY
         XCTAssertEqual(outputMaxY, 100)
     }
 
