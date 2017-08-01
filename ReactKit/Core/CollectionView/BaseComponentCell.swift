@@ -8,7 +8,11 @@
 
 import UIKit
 
-class BaseComponentCell: UICollectionViewCell {
+///
+/// A generic UICollectionView that can be configured with a UIView
+/// All components use this base class to display content
+///
+final class BaseComponentCell: UICollectionViewCell {
 
     var previousView: UIView?
 

@@ -11,7 +11,7 @@ import Foundation
 /// Takes input and caches it and returns last cached sections
 /// - parameters: sections
 /// - returns: Recently Cached sections
-class Cacher {
+final class Cacher {
     var cachedSections: [Section]?
 
     func cache(_ sections: [Section]) -> [Section]? {

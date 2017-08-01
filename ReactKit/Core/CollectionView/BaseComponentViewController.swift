@@ -8,6 +8,9 @@
 
 import UIKit
 
+///
+/// The base class view controller that renders Components in a UICollectionView
+///
 class BaseComponentViewController: UIViewController {
 
     var renderer: Renderer!

@@ -21,7 +21,7 @@ protocol ComponentDataSource {
 /// Object that renders Components into a virtual CollectionViewDataSource
 /// and outputs the index paths that need to be updated
 ///
-class Renderer {
+final class Renderer {
 
     /// dependencies
     let reconciler: Reconciler

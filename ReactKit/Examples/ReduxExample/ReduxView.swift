@@ -20,7 +20,7 @@ struct ReduxProps: ReduxPropType {
     let buttons: [ButtonPropType]
 }
 
-class ReduxView: Component, ComponentLike {
+final class ReduxView: Component, ComponentLike {
     typealias ComponentPropType = ReduxPropType
     let props: PropType
 
@@ -56,7 +56,7 @@ struct CounterViewProps: CounterViewPropType {
     }
 }
 
-class CounterView: Component, ComponentLike {
+final class CounterView: Component, ComponentLike {
     typealias ComponentPropType = CounterViewPropType
     let props: PropType
     init(props: CounterViewPropType) {

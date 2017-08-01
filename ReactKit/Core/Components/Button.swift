@@ -29,6 +29,8 @@ struct Button: Component, ComponentLike {
 
 extension Button: SingleViewComponent {}
 
+// MARK: - ButtonProps
+
 protocol ButtonPropType: PropType {
     var title: String { get }
     var titleColor: UIColor { get }

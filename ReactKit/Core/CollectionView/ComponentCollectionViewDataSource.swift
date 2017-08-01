@@ -10,7 +10,10 @@ import UIKit
 
 private let identifier = "Identifier"
 
-class ComponentCollectionViewDataSource: NSObject {
+///
+/// Main DataSource for a ComponentViewController that uses a Renderer
+///
+final class ComponentCollectionViewDataSource: NSObject {
     let renderer: Renderer
 
     var componentCollectionView: UICollectionView! {

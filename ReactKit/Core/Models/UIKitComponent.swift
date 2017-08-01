@@ -11,7 +11,7 @@ import UIKit
 ///
 /// A component that wraps a UIKit element
 ///
-class UIKitComponent<V: UIView>: Component {
+final class UIKitComponent<V: UIView>: Component {
     typealias Configuration = (V) -> ()
     let view: V
     let props: PropType

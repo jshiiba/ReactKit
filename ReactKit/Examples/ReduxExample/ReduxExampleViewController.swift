@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ReduxViewController: BaseComponentViewController {
+final class ReduxViewController: BaseComponentViewController {
     var props: ReduxProps! { // find a way to not force unwrap
         didSet {
             triggerRender()

@@ -1,5 +1,5 @@
 //
-//  CounterReducer.swift
+//  CounterRedux.swift
 //  ReactKit
 //
 //  Created by Justin Shiiba on 7/31/17.

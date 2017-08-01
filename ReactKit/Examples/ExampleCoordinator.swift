@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ExampleCoordinator {
+final class ExampleCoordinator {
 
     var rootViewController: UIViewController?
 

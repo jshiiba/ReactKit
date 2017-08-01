@@ -16,3 +16,4 @@ Inspiration:
 4. Allow the Renderer to accept a Container or Component
 5. Many levels of Containers within Containers does not work correctly
 6. Make the Store take a Generic StateType
+7. A protocols for all objects in the Renderer 

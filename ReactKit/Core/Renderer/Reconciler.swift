@@ -13,7 +13,7 @@ import Foundation
 /// components (represented as IndexPaths) to update due to dirty data
 /// - parameters: Current Components with new props
 /// - returns: IndexPaths to update
-class Reconciler {
+final class Reconciler {
     func reconcile(_ currentSections: [Section], cachedSections: [Section]?) -> [IndexPath] {
         guard let cachedSections = cachedSections else {
             return currentSections

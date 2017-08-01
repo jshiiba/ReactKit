@@ -48,6 +48,8 @@ struct LabelProps: LabelPropType {
     }
 }
 
+// MARK: - Equatable
+
 // might not be needed
 func ==(lhs: LabelPropType, rhs: LabelPropType) -> Bool {
     return lhs.isEqualTo(rhs)

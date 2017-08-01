@@ -11,7 +11,7 @@ import UIKit
 ///
 /// Custom UICollectionViewLayout
 ///
-class ComponentCollectionViewLayout: UICollectionViewLayout {
+final class ComponentCollectionViewLayout: UICollectionViewLayout {
 
     var sections: [Section] = []
 
