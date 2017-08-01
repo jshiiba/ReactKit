@@ -136,6 +136,15 @@ final class Translator {
         }
     }
 
+    ///
+    /// Calculates the layout for Rows in a Section. Updates each Row's RowLayout with new layout properties.
+    /// Also calculates total height of rows in section
+    /// - parameters:
+    ///     - rows: an array of rows in a section
+    ///     - width: width of current section
+    ///     - origin: origin of current section
+    /// - returns:
+    ///     - row calcuation including rows and total height
     static func calculateRowData(from rows: [Row], in width: CGFloat, at origin: CGPoint) -> RowCalculation  {
         var previousFrame = CGRect(origin: origin, size: .zero)
 

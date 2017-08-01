@@ -8,12 +8,12 @@
 
 import UIKit
 
+///
+/// DataSource for a BaseComponentViewController
+///
 protocol ComponentDataSource {
-
     var numberOfSections: Int { get }
-
     func numberOfItems(in section: Int) -> Int
-
     func component(at indexPath: IndexPath) -> UIView?
 }
 

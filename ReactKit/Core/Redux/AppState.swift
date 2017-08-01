@@ -8,6 +8,7 @@
 
 import Foundation
 
-protocol AppState {
-
-}
+///
+/// Represents the entire state of the application
+///
+protocol AppState {}

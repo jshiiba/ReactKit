@@ -8,7 +8,9 @@
 
 import Foundation
 
-///
+/// Performs reconcilation between a new virtual datasource and a cached datasource
+/// It determines what has changed between the old and new versions and outputs those
+/// components (represented as IndexPaths) to update due to dirty data
 /// - parameters: Current Components with new props
 /// - returns: IndexPaths to update
 class Reconciler {
@@ -24,7 +26,7 @@ class Reconciler {
 
         var updatedIndexPaths: [IndexPath] = []
 
-        // TODO: improve algorithm
+        // TODO: improve algorithm, this is a naive implementation
         for (sectionIndex, _) in currentSections.enumerated() {
             for (rowIndex, row) in currentSections[sectionIndex].rows.enumerated() {
                 let currentProps = row.props

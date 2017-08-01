@@ -8,10 +8,17 @@
 
 import Foundation
 
+///
+/// Represents an object that subscribes to updates to the state
+///
 protocol Subscriber {
     func update(_ state: AppState)
 }
 
+///
+/// Stores the app state, provides methods to dispatch new actions
+/// and notifies subscribers with an updated state.
+///
 final class Store {
 
     private var reducer: Reducer
