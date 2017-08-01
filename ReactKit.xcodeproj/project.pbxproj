@@ -10,7 +10,7 @@
 		D121D30A1F2CF31C00D9B144 /* TranslatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D121D3091F2CF31800D9B144 /* TranslatorTests.swift */; };
 		D121D30B1F2CF31E00D9B144 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D121D3081F2CF31800D9B144 /* Mocks.swift */; };
 		D152A13D1F2E13EF004C1B47 /* ComponentCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D152A13C1F2E13DD004C1B47 /* ComponentCollectionViewLayout.swift */; };
-		D152A1401F2E1DF7004C1B47 /* FlexDimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D152A13F1F2E1DF7004C1B47 /* FlexDimension.swift */; };
+		D152A1401F2E1DF7004C1B47 /* ComponentDimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D152A13F1F2E1DF7004C1B47 /* ComponentDimension.swift */; };
 		D152A1441F2E2043004C1B47 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = D152A1431F2E2043004C1B47 /* Store.swift */; };
 		D152A1461F2E2229004C1B47 /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D152A1451F2E2229004C1B47 /* Reducer.swift */; };
 		D152A1481F2E239E004C1B47 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D152A1471F2E239E004C1B47 /* AppState.swift */; };
@@ -24,7 +24,7 @@
 		D1BBA29B1F2E055A003FE577 /* BaseComponentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA29A1F2E0549003FE577 /* BaseComponentCell.swift */; };
 		D1BBA29C1F2E055C003FE577 /* BaseComponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2981F2E0549003FE577 /* BaseComponentViewController.swift */; };
 		D1BBA29D1F2E055F003FE577 /* ComponentCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2991F2E0549003FE577 /* ComponentCollectionViewDataSource.swift */; };
-		D1BBA2A11F2E0592003FE577 /* LayoutModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2A01F2E057D003FE577 /* LayoutModels.swift */; };
+		D1BBA2A11F2E0592003FE577 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2A01F2E057D003FE577 /* Layout.swift */; };
 		D1BBA2A91F2E05D5003FE577 /* BaseComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2A81F2E05AA003FE577 /* BaseComponent.swift */; };
 		D1BBA2AA1F2E05D7003FE577 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2A61F2E05AA003FE577 /* Components.swift */; };
 		D1BBA2AB1F2E05D9003FE577 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2A41F2E05A9003FE577 /* Container.swift */; };
@@ -46,6 +46,8 @@
 		D1F7D71F1F2F3E16003AAE5A /* CounterReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F7D71E1F2F3E16003AAE5A /* CounterReducer.swift */; };
 		D1F7D7211F2F3E74003AAE5A /* UIButton+React.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F7D7201F2F3E5E003AAE5A /* UIButton+React.swift */; };
 		D1F7D7231F2F3EB3003AAE5A /* ReduxUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F7D7221F2F3EB3003AAE5A /* ReduxUtils.swift */; };
+		D1F7D7261F30932E003AAE5A /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F7D7251F30932E003AAE5A /* FlowLayout.swift */; };
+		D1F7D7281F309443003AAE5A /* FlowLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F7D7271F309443003AAE5A /* FlowLayoutTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,7 +67,7 @@
 		D15103981F0D1AC800213882 /* ReactKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReactKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D151039E1F0D1AC800213882 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D152A13C1F2E13DD004C1B47 /* ComponentCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComponentCollectionViewLayout.swift; path = Core/CollectionView/ComponentCollectionViewLayout.swift; sourceTree = "<group>"; };
-		D152A13F1F2E1DF7004C1B47 /* FlexDimension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FlexDimension.swift; path = Core/Layout/FlexDimension.swift; sourceTree = "<group>"; };
+		D152A13F1F2E1DF7004C1B47 /* ComponentDimension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComponentDimension.swift; path = Core/Layout/ComponentDimension.swift; sourceTree = "<group>"; };
 		D152A1431F2E2043004C1B47 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Store.swift; path = Core/Redux/Store.swift; sourceTree = "<group>"; };
 		D152A1451F2E2229004C1B47 /* Reducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Reducer.swift; path = Core/Redux/Reducer.swift; sourceTree = "<group>"; };
 		D152A1471F2E239E004C1B47 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppState.swift; path = Core/Redux/AppState.swift; sourceTree = "<group>"; };
@@ -79,7 +81,7 @@
 		D1BBA2981F2E0549003FE577 /* BaseComponentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseComponentViewController.swift; path = Core/CollectionView/BaseComponentViewController.swift; sourceTree = "<group>"; };
 		D1BBA2991F2E0549003FE577 /* ComponentCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComponentCollectionViewDataSource.swift; path = Core/CollectionView/ComponentCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		D1BBA29A1F2E0549003FE577 /* BaseComponentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseComponentCell.swift; path = Core/CollectionView/BaseComponentCell.swift; sourceTree = "<group>"; };
-		D1BBA2A01F2E057D003FE577 /* LayoutModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LayoutModels.swift; path = Core/Layout/LayoutModels.swift; sourceTree = "<group>"; };
+		D1BBA2A01F2E057D003FE577 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Layout.swift; path = Core/Layout/Layout.swift; sourceTree = "<group>"; };
 		D1BBA2A41F2E05A9003FE577 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Container.swift; path = Core/Models/Container.swift; sourceTree = "<group>"; };
 		D1BBA2A51F2E05AA003FE577 /* PropType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PropType.swift; path = Core/Models/PropType.swift; sourceTree = "<group>"; };
 		D1BBA2A61F2E05AA003FE577 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Components.swift; path = Core/Models/Components.swift; sourceTree = "<group>"; };
@@ -102,6 +104,8 @@
 		D1F7D7201F2F3E5E003AAE5A /* UIButton+React.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIButton+React.swift"; path = "Core/Utils/UIButton+React.swift"; sourceTree = "<group>"; };
 		D1F7D7221F2F3EB3003AAE5A /* ReduxUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReduxUtils.swift; path = Core/Utils/ReduxUtils.swift; sourceTree = "<group>"; };
 		D1F7D7241F308CFA003AAE5A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		D1F7D7251F30932E003AAE5A /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FlowLayout.swift; path = Core/Layout/FlowLayout.swift; sourceTree = "<group>"; };
+		D1F7D7271F309443003AAE5A /* FlowLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayoutTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +159,7 @@
 		D151039B1F0D1AC800213882 /* ReactKitTests */ = {
 			isa = PBXGroup;
 			children = (
+				D1F7D7271F309443003AAE5A /* FlowLayoutTests.swift */,
 				D121D3091F2CF31800D9B144 /* TranslatorTests.swift */,
 				D121D3081F2CF31800D9B144 /* Mocks.swift */,
 				D151039E1F0D1AC800213882 /* Info.plist */,
@@ -242,8 +247,9 @@
 		D1BBA29E1F2E056A003FE577 /* Layout */ = {
 			isa = PBXGroup;
 			children = (
-				D1BBA2A01F2E057D003FE577 /* LayoutModels.swift */,
-				D152A13F1F2E1DF7004C1B47 /* FlexDimension.swift */,
+				D152A13F1F2E1DF7004C1B47 /* ComponentDimension.swift */,
+				D1F7D7251F30932E003AAE5A /* FlowLayout.swift */,
+				D1BBA2A01F2E057D003FE577 /* Layout.swift */,
 			);
 			name = Layout;
 			sourceTree = "<group>";
@@ -409,16 +415,17 @@
 				D1BBA2BC1F2E0685003FE577 /* Translator.swift in Sources */,
 				D1F7D7151F2E7204003AAE5A /* ReduxExampleViewController.swift in Sources */,
 				D1BBA2D71F2E08FD003FE577 /* Section.swift in Sources */,
-				D152A1401F2E1DF7004C1B47 /* FlexDimension.swift in Sources */,
+				D152A1401F2E1DF7004C1B47 /* ComponentDimension.swift in Sources */,
 				D1BBA2871F2E043C003FE577 /* TestingAppDelegate.swift in Sources */,
 				D1BBA2BD1F2E0687003FE577 /* Cacher.swift in Sources */,
 				D1BBA2CB1F2E0702003FE577 /* SingleViewComponent.swift in Sources */,
+				D1F7D7261F30932E003AAE5A /* FlowLayout.swift in Sources */,
 				D1BBA2D61F2E08FA003FE577 /* Row.swift in Sources */,
 				D1F7D7171F2E721A003AAE5A /* LayoutExampleViewController.swift in Sources */,
 				D1BBA29B1F2E055A003FE577 /* BaseComponentCell.swift in Sources */,
 				D1BBA29C1F2E055C003FE577 /* BaseComponentViewController.swift in Sources */,
 				D1F7D71F1F2F3E16003AAE5A /* CounterReducer.swift in Sources */,
-				D1BBA2A11F2E0592003FE577 /* LayoutModels.swift in Sources */,
+				D1BBA2A11F2E0592003FE577 /* Layout.swift in Sources */,
 				D1BBA2AD1F2E05DE003FE577 /* UIKitComponent.swift in Sources */,
 				D152A1461F2E2229004C1B47 /* Reducer.swift in Sources */,
 				D1BBA2CA1F2E06FF003FE577 /* Label.swift in Sources */,
@@ -444,6 +451,7 @@
 			files = (
 				D121D30A1F2CF31C00D9B144 /* TranslatorTests.swift in Sources */,
 				D121D30B1F2CF31E00D9B144 /* Mocks.swift in Sources */,
+				D1F7D7281F309443003AAE5A /* FlowLayoutTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -36,7 +36,7 @@ struct Row {
 struct RowLayout {
 
     var frame: CGRect
-    let dimension: FlexDimension
+    let dimension: ComponentDimension
     let height: CGFloat
 
     init(layout: RowLayout, frame: CGRect) {
@@ -44,7 +44,7 @@ struct RowLayout {
         self.frame = frame
     }
 
-    init(dimension: FlexDimension, height: CGFloat) {
+    init(dimension: ComponentDimension, height: CGFloat) {
         self.dimension = dimension
         self.height = height
         self.frame = .zero

@@ -41,17 +41,17 @@ class ReduxViewController: BaseComponentViewController {
         let counter = counterState.counters[0] // temporary until this can support multiple counters
 
         return ReduxProps(
-            counter: CounterViewProps(count: counter.count, layout: ComponentLayout(dimension: .fill, height: 100)),
+            counter: CounterViewProps(count: counter.count, layout: Layout(dimension: .fill, height: 100)),
             buttons: [
                 ButtonProps(title: "Increase",
                             titleColor: .black,
-                            layout: ComponentLayout(dimension: .ratio(ratio: 0.5), height: 50),
+                            layout: Layout(dimension: .ratio(ratio: 0.5), height: 50),
                             handler: { [weak self] control in
                         self?.store.dispatch(action: .increaseCount(counter.id))
                 }),
                 ButtonProps(title: "Decrease",
                             titleColor: .black,
-                            layout: ComponentLayout(dimension: .ratio(ratio: 0.5), height: 50),
+                            layout: Layout(dimension: .ratio(ratio: 0.5), height: 50),
                             handler: { [weak self] control in
                         self?.store.dispatch(action: .decreaseCount(counter.id))
                 }),

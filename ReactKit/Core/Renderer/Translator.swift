@@ -41,23 +41,24 @@ final class Translator {
         var currentSectionIndex = index
         var childSections: [Section] = []
         var previousSectionFrame = frame
-        var flowLayoutData = FlowLayoutAttributes(previousFrame: frame, currentMaxY: frame.origin.y)
+        var flowLayoutAttributes = FlowLayout.Attributes(previousFrame: frame, currentMaxY: frame.origin.y)
 
         container.components.forEach { baseComponent in
             switch baseComponent.componentType {
             case .container(let childContainer): // recurse
 
-                let childSectionWidth = widthFor(dimension: childContainer.layout.dimension, in: frame.width)
-                let childSectionOrigin = nextOrigin(for: childSectionWidth,
-                                                    after: previousSectionFrame,
-                                                    in: frame,
-                                                    attributes: flowLayoutData)
+                // TODO: just return frame from FlowLayout
+                let childSectionWidth = FlowLayout.widthFor(dimension: childContainer.layout.dimension, in: frame.width)
+                let childSectionOrigin = FlowLayout.nextOrigin(for: childSectionWidth,
+                                                               after: previousSectionFrame,
+                                                               in: frame,
+                                                               attributes: flowLayoutAttributes)
 
                 let childSectionFrame = CGRect(origin: childSectionOrigin,
                                                size: CGSize(width: childSectionWidth,
                                                height: frame.height))
 
-                flowLayoutData.updateMaxY(for: childSectionFrame)
+                flowLayoutAttributes.updateMaxY(for: childSectionFrame)
                 previousSectionFrame = childSectionFrame
                 currentSectionIndex = currentSectionIndex + 1
 
@@ -80,7 +81,7 @@ final class Translator {
         currentRows = rowsCalculation.rows
 
         let sectionHeight = childSections.reduce(0) { (height, section) in
-            return maxYFor(section.layout.frame, currentMaxY: height)
+            return FlowLayout.maxYFor(section.layout.frame, currentMaxY: height)
         }
 
         let totalSectionHeight = sectionHeight + rowsCalculation.height
@@ -111,31 +112,6 @@ final class Translator {
         return row
     }
 
-    // MARK: -  Layout
-
-    // TODO: separate layout from translations
-
-    ///
-    /// Attributes needed to layout the rows in a section similar to a UICollectionViewFlowLayout
-    ///
-    struct FlowLayoutAttributes {
-        let startX: CGFloat
-        var maxY: CGFloat
-
-        var totalHeight: CGFloat {
-            return maxY
-        }
-
-        init(previousFrame frame: CGRect, currentMaxY: CGFloat) {
-            self.startX = frame.origin.x
-            self.maxY = frame.origin.y + frame.height > currentMaxY ? (frame.origin.y + frame.height) : currentMaxY
-        }
-
-        mutating func updateMaxY(for frame: CGRect) {
-            self.maxY = frame.origin.y + frame.height > self.maxY ? (frame.origin.y + frame.height) : self.maxY
-        }
-    }
-
     ///
     /// Calculates the layout for Rows in a Section. Updates each Row's RowLayout with new layout properties.
     /// Also calculates total height of rows in section
@@ -148,17 +124,17 @@ final class Translator {
     static func calculateRowData(from rows: [Row], in width: CGFloat, at origin: CGPoint) -> RowCalculation  {
         var previousFrame = CGRect(origin: origin, size: .zero)
 
-        var flowLayoutAttributes = FlowLayoutAttributes(previousFrame: previousFrame, currentMaxY: 0)
+        var flowLayoutAttributes = FlowLayout.Attributes(previousFrame: previousFrame, currentMaxY: 0)
 
         let calculatedRows: [Row] = rows.map { row in
             let height = row.layout.height
 
-            let rowWidth = widthFor(dimension: row.layout.dimension, in: width)
+            let rowWidth = FlowLayout.widthFor(dimension: row.layout.dimension, in: width)
 
-            let origin = nextOrigin(for: rowWidth,
-                                    after: previousFrame,
-                                    in: CGRect(origin: origin, size: CGSize(width: width, height: 0)),
-                                    attributes: flowLayoutAttributes)
+            let origin = FlowLayout.nextOrigin(for: rowWidth,
+                                               after: previousFrame,
+                                               in: CGRect(origin: origin, size: CGSize(width: width, height: 0)),
+                                               attributes: flowLayoutAttributes)
 
             let frame = CGRect(x: origin.x, y: origin.y, width: rowWidth, height: height)
 
@@ -172,43 +148,5 @@ final class Translator {
         return RowCalculation(rows: calculatedRows, height: flowLayoutAttributes.totalHeight)
     }
 
-
-    static func nextOrigin(for width: CGFloat, after previousFrame: CGRect, in sectionFrame: CGRect, attributes: FlowLayoutAttributes) -> CGPoint {
-        // need to account for a secion origin being non-zero, maybe use bounds instead?
-        let xOrigin = sectionFrame.origin.x == 0 ? previousFrame.origin.x : sectionFrame.origin.x - previousFrame.origin.x
-
-        let remainder = sectionFrame.width - (xOrigin + previousFrame.width)
-
-        if width > remainder {
-            // wrap
-            return CGPoint(x: attributes.startX, y: attributes.maxY)
-        } else {
-            // inline
-            return CGPoint(x: (previousFrame.origin.x + previousFrame.size.width), y: previousFrame.origin.y)
-        }
-    }
-
-    // TODO: remove in favor of FlowLayoutData
-    ///
-    /// Get the Maximum Y position of the current Section
-    /// - parameters:
-    ///     - frame: a new frame (row) to add to the Section
-    ///     - currentMaxY: the current max Y positions in the Section
-    /// - returns:
-    ///     - Max Y after adding new frame to Section
-    static func maxYFor(_ frame: CGRect, currentMaxY: CGFloat) -> CGFloat {
-        return frame.origin.y + frame.height > currentMaxY ? (frame.origin.y + frame.height) : currentMaxY
-    }
-
-    static func widthFor(dimension: FlexDimension, in parentWidth: CGFloat) -> CGFloat {
-        switch dimension {
-        case .fill:
-            return parentWidth
-        case .fixed(let size):
-            return size.width
-        case .ratio(let ratio):
-            return round(parentWidth * ratio)
-        }
-    }
 }
 

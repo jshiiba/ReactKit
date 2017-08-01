@@ -1,5 +1,5 @@
 //
-//  FlexDimension.swift
+//  ComponentDimension.swift
 //  ReactKit
 //
 //  Created by Justin Shiiba on 7/30/17.
@@ -11,14 +11,14 @@ import UIKit
 ///
 /// Represents the dimensions of a component's layout
 ///
-enum FlexDimension {
+enum ComponentDimension {
     case ratio(ratio: CGFloat)
     case fixed(size: CGSize)
     case fill
 }
 
-extension FlexDimension: Equatable {
-    static func == (lhs: FlexDimension, rhs: FlexDimension) -> Bool {
+extension ComponentDimension: Equatable {
+    static func == (lhs: ComponentDimension, rhs: ComponentDimension) -> Bool {
         switch (rhs, lhs) {
         case (.fill, .fill): return true
         case (.ratio(let lhsRatio), .ratio(let rhsRatio)): return lhsRatio == rhsRatio

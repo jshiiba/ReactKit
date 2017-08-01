@@ -14,9 +14,9 @@ import UIKit
 ///
  struct Container: BaseComponent {
     let components: [BaseComponent]
-    let layout: ContainerLayout
+    let layout: Layout
 
-    init(components: [BaseComponent], layout: ContainerLayout) {
+    init(components: [BaseComponent], layout: Layout) {
         self.components = components
         self.layout = layout
     }

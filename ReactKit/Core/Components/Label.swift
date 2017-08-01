@@ -37,11 +37,11 @@ protocol LabelPropType: PropType {
 }
 
 struct LabelProps: LabelPropType {
-    let layout: ComponentLayout?
+    let layout: Layout?
     let title: String
     let textAlignment: NSTextAlignment
 
-    init(title: String, textAlignment: NSTextAlignment = .left, layout: ComponentLayout? = nil) {
+    init(title: String, textAlignment: NSTextAlignment = .left, layout: Layout? = nil) {
         self.title = title
         self.textAlignment = textAlignment
         self.layout = layout
