@@ -1,5 +1,8 @@
 # ReactKit
-ReactKit is an experimental React and Redux inspired framework that encourages building declarative and composable UI components within a uni-directional data flow.
+ReactKit is an experimental React and Redux inspired framework that encourages building declarative and composable UI components within a uni-directional data flow. It is written entirely in Swift and utilizes a native UICollectionView. 
+
+
+Similiar to React, ReactKit uses a **Renderer** to take Components as input, reconciles the changes that were made with a virtual UICollectionViewDataSource, and outputs a new UI by only updating the views with "stale data".
 
 Inspiration:
 
