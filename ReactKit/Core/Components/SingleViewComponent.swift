@@ -16,12 +16,12 @@ protocol SingleViewComponent {
 }
 
 extension SingleViewComponent where Self : Component {
+
+    ///
+    /// Continues to reduce a component until it reaches a UIView
+    /// This is not an ideal implementation.
     func reduce() -> UIView? {
-
-        guard var base = self.render() else {
-            return nil
-        }
-
+        var base: BaseComponent = self
         while !(base is UIView) {
             if let component = base as? Component, let rendered = component.render() {
                 base = rendered
