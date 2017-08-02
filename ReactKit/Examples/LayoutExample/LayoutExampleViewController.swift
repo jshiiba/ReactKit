@@ -12,11 +12,12 @@ final class LayoutExampleViewController: BaseComponentViewController {
     struct Props: LayoutViewProps {
         let labels: [LabelPropType] = [
             LabelProps(title: "Label 1", layout: Layout(dimension: .ratio(ratio: 0.25), height: 100)),
-            LabelProps(title: "Label 2", layout: Layout(dimension: .ratio(ratio: 0.70), height: 100)),
+            LabelProps(title: "Label 2", layout: Layout(dimension: .ratio(ratio: 0.75), height: 100)),
             LabelProps(title: "Label 3", layout: Layout(dimension: .fill, height: 25)),
-            LabelProps(title: "Label 4", layout: Layout(dimension: .ratio(ratio: 0.25), height: 200)),
-            LabelProps(title: "Label 5", layout: Layout(dimension: .ratio(ratio: 0.70), height: 100)),
-            LabelProps(title: "Label 6", layout: Layout(dimension: .fill, height: 100)),
+            LabelProps(title: "Label 4", layout: Layout(dimension: .ratio(ratio: 0.5), height: 200)),
+            LabelProps(title: "Label 5", layout: Layout(dimension: .ratio(ratio: 0.5), height: 100)),
+            LabelProps(title: "Label 6", layout: Layout(dimension: .ratio(ratio: 0.8), height: 100)),
+            LabelProps(title: "Label 7", layout: Layout(dimension: .fill, height: 100)),
         ]
     }
 

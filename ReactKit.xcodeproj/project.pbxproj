@@ -19,7 +19,6 @@
 		D1BBA2861F2E0436003FE577 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA27F1F2E0412003FE577 /* AppDelegate.swift */; };
 		D1BBA2871F2E043C003FE577 /* TestingAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2841F2E0412003FE577 /* TestingAppDelegate.swift */; };
 		D1BBA2881F2E043F003FE577 /* Base.lproj in Resources */ = {isa = PBXBuildFile; fileRef = D1BBA2801F2E0412003FE577 /* Base.lproj */; };
-		D1BBA2891F2E0444003FE577 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D1BBA2821F2E0412003FE577 /* Info.plist */; };
 		D1BBA28A1F2E0446003FE577 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1BBA2811F2E0412003FE577 /* Assets.xcassets */; };
 		D1BBA29B1F2E055A003FE577 /* BaseComponentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA29A1F2E0549003FE577 /* BaseComponentCell.swift */; };
 		D1BBA29C1F2E055C003FE577 /* BaseComponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2981F2E0549003FE577 /* BaseComponentViewController.swift */; };
@@ -387,7 +386,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1BBA2891F2E0444003FE577 /* Info.plist in Resources */,
 				D1BBA28A1F2E0446003FE577 /* Assets.xcassets in Resources */,
 				D1BBA2881F2E043F003FE577 /* Base.lproj in Resources */,
 			);

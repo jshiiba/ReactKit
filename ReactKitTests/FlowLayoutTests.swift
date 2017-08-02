@@ -34,6 +34,13 @@ class FlowLayoutTests: XCTestCase {
         XCTAssertEqual(outputOrigin.y, 0)
     }
 
+    func testThatOriginIsInLineWithDifferentHeights() {
+        let prevFrame = CGRect(x: 0, y: 0, width: 100, height: 200)
+        let outputOrigin = FlowLayout.nextOrigin(for: 100, after: prevFrame, in: CGRect(origin: .zero, size: CGSize(width: 400, height: 0)), attributes: FlowLayout.Attributes(previousFrame: prevFrame, currentMaxY: 200))
+        XCTAssertEqual(outputOrigin.x, 100)
+        XCTAssertEqual(outputOrigin.y, 0)
+    }
+
     func testThatOriginIsWrapStartingAtZeroOrigin() {
         let prevFrame = CGRect(x: 0, y: 0, width: 300, height: 100)
         let outputOrigin = FlowLayout.nextOrigin(for: 200, after: prevFrame, in: CGRect(origin: .zero, size: CGSize(width: 400, height: 0)), attributes: FlowLayout.Attributes(previousFrame: prevFrame, currentMaxY: 100))
