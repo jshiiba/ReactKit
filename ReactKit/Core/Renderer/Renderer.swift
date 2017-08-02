@@ -24,6 +24,7 @@ protocol ComponentDataSource {
 final class Renderer {
 
     /// dependencies
+    let translator: Translator
     let reconciler: Reconciler
     let cacher: Cacher
     let layout: ComponentCollectionViewLayout
@@ -31,7 +32,8 @@ final class Renderer {
     /// private vars
     private var sections: [Section] = []
 
-    init(reconciler: Reconciler) {
+    init(translator: Translator, reconciler: Reconciler) {
+        self.translator = translator
         self.reconciler = reconciler
         self.cacher = Cacher()
         self.layout = ComponentCollectionViewLayout()
@@ -43,7 +45,7 @@ final class Renderer {
     ///
     func render(_ rootComponent: Component, in frame: CGRect) -> [IndexPath] {
         
-        sections =  Translator.translateSections(from: rootComponent, in: frame)
+        sections =  translator.translateSections(from: rootComponent, in: frame)
         layout.sections = sections
 
         let cachedSections = cacher.cache(sections)

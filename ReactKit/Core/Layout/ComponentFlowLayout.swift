@@ -1,5 +1,5 @@
 //
-//  FlowLayout.swift
+//  ComponentFlowLayout.swift
 //  ReactKit
 //
 //  Created by Justin Shiiba on 8/1/17.
@@ -11,7 +11,7 @@ import UIKit
 ///
 /// Calculates the layout attributes for a layout similar to a UICollectionViewFlowLayout
 ///
-final class FlowLayout {
+final class ComponentFlowLayout {
 
     ///
     /// Attributes needed to layout the rows in a section
@@ -34,7 +34,7 @@ final class FlowLayout {
         }
     }
 
-    static func nextOrigin(for width: CGFloat, after previousFrame: CGRect, in sectionFrame: CGRect, attributes: Attributes) -> CGPoint {
+    func nextOrigin(for width: CGFloat, after previousFrame: CGRect, in sectionFrame: CGRect, attributes: Attributes) -> CGPoint {
         // need to account for a secion origin being non-zero, maybe use bounds instead?
         let xOrigin = sectionFrame.origin.x == 0 ? previousFrame.origin.x : sectionFrame.origin.x - previousFrame.origin.x
 
@@ -57,11 +57,11 @@ final class FlowLayout {
     ///     - currentMaxY: the current max Y positions in the Section
     /// - returns:
     ///     - Max Y after adding new frame to Section
-    static func maxYFor(_ frame: CGRect, currentMaxY: CGFloat) -> CGFloat {
+    func maxYFor(_ frame: CGRect, currentMaxY: CGFloat) -> CGFloat {
         return frame.origin.y + frame.height > currentMaxY ? (frame.origin.y + frame.height) : currentMaxY
     }
 
-    static func widthFor(dimension: ComponentDimension, in parentWidth: CGFloat) -> CGFloat {
+    func widthFor(dimension: ComponentDimension, in parentWidth: CGFloat) -> CGFloat {
         switch dimension {
         case .fill:
             return parentWidth

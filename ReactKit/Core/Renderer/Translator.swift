@@ -21,7 +21,9 @@ final class Translator {
         let height: CGFloat
     }
 
-    static func translateSections(from component: Component, in frame: CGRect) -> [Section] {
+    var flowLayout = ComponentFlowLayout()
+
+    func translateSections(from component: Component, in frame: CGRect) -> [Section] {
         guard let container = component.render() as? Container else {
             return []
         }
@@ -32,7 +34,7 @@ final class Translator {
         return translateSections(from: container, in: startingFrame, at: 0)
     }
 
-    static func translateSections(from container: Container, in frame: CGRect, at index: Int) -> [Section] {
+    func translateSections(from container: Container, in frame: CGRect, at index: Int) -> [Section] {
         // vars for rows
         var currentRowIndex = 0
         var currentRows: [Row] = []
@@ -41,15 +43,15 @@ final class Translator {
         var currentSectionIndex = index
         var childSections: [Section] = []
         var previousSectionFrame = frame
-        var flowLayoutAttributes = FlowLayout.Attributes(previousFrame: frame, currentMaxY: frame.origin.y)
+        var flowLayoutAttributes = flowlayout.Attributes(previousFrame: frame, currentMaxY: frame.origin.y)
 
         container.components.forEach { baseComponent in
             switch baseComponent.componentType {
             case .container(let childContainer): // recurse
 
                 // TODO: just return frame from FlowLayout
-                let childSectionWidth = FlowLayout.widthFor(dimension: childContainer.layout.dimension, in: frame.width)
-                let childSectionOrigin = FlowLayout.nextOrigin(for: childSectionWidth,
+                let childSectionWidth = flowlayout.widthFor(dimension: childContainer.layout.dimension, in: frame.width)
+                let childSectionOrigin = flowlayout.nextOrigin(for: childSectionWidth,
                                                                after: previousSectionFrame,
                                                                in: frame,
                                                                attributes: flowLayoutAttributes)
@@ -81,7 +83,7 @@ final class Translator {
         currentRows = rowsCalculation.rows
 
         let sectionHeight = childSections.reduce(0) { (height, section) in
-            return FlowLayout.maxYFor(section.layout.frame, currentMaxY: height)
+            return flowlayout.maxYFor(section.layout.frame, currentMaxY: height)
         }
 
         let totalSectionHeight = sectionHeight + rowsCalculation.height
@@ -97,7 +99,7 @@ final class Translator {
         return [section] + childSections
     }
 
-    static func translateRows(from component: Component, in section: Int, at index: Int) -> Row? {
+    func translateRows(from component: Component, in section: Int, at index: Int) -> Row? {
         guard let view = component as? SingleViewComponent else {
             return nil
         }
@@ -121,17 +123,17 @@ final class Translator {
     ///     - origin: origin of current section
     /// - returns:
     ///     - row calcuation including rows and total height
-    static func calculateRowData(from rows: [Row], in width: CGFloat, at origin: CGPoint) -> RowCalculation  {
+    func calculateRowData(from rows: [Row], in width: CGFloat, at origin: CGPoint) -> RowCalculation  {
         var previousFrame = CGRect(origin: origin, size: .zero)
 
-        var flowLayoutAttributes = FlowLayout.Attributes(previousFrame: previousFrame, currentMaxY: 0)
+        var flowLayoutAttributes = flowlayout.Attributes(previousFrame: previousFrame, currentMaxY: 0)
 
         let calculatedRows: [Row] = rows.map { row in
             let height = row.layout.height
 
-            let rowWidth = FlowLayout.widthFor(dimension: row.layout.dimension, in: width)
+            let rowWidth = flowlayout.widthFor(dimension: row.layout.dimension, in: width)
 
-            let origin = FlowLayout.nextOrigin(for: rowWidth,
+            let origin = flowlayout.nextOrigin(for: rowWidth,
                                                after: previousFrame,
                                                in: CGRect(origin: origin, size: CGSize(width: width, height: 0)),
                                                attributes: flowLayoutAttributes)
