@@ -13,28 +13,35 @@ import UIKit
 ///
 final class ComponentFlowLayout {
 
-    ///
-    /// Attributes needed to layout the rows in a section
-    ///
-    struct Attributes {
-        let startX: CGFloat
-        var maxY: CGFloat
+    var startX: CGFloat
+    var maxY: CGFloat
 
-        var totalHeight: CGFloat {
-            return maxY
-        }
-
-        init(previousFrame frame: CGRect, currentMaxY: CGFloat) {
-            self.startX = frame.origin.x
-            self.maxY = frame.origin.y + frame.height > currentMaxY ? (frame.origin.y + frame.height) : currentMaxY
-        }
-
-        mutating func updateMaxY(for frame: CGRect) {
-            self.maxY = frame.origin.y + frame.height > self.maxY ? (frame.origin.y + frame.height) : self.maxY
-        }
+    var totalHeight: CGFloat {
+        return maxY
     }
 
-    func nextOrigin(for width: CGFloat, after previousFrame: CGRect, in sectionFrame: CGRect, attributes: Attributes) -> CGPoint {
+    internal var parentFrame: CGRect
+    internal var previousFrame: CGRect?
+
+    init(parentFrame: CGRect) {
+        self.parentFrame = parentFrame
+        self.startX = 0
+        self.maxY = 0
+    }
+
+    func calculateNextFrame(forWidth width: CGFloat, height: CGFloat) -> CGRect {
+        let previous = previousFrame ?? CGRect(origin: parentFrame.origin, size: .zero)
+        let origin = nextOrigin(for: width, after: previous, in: parentFrame, startX: startX, maxY: maxY)
+
+        let frame = CGRect(origin: origin, size: CGSize(width: width, height: height))
+
+        maxY = maxYFor(frame, currentMaxY: maxY)
+        previousFrame = frame
+        
+        return frame
+    }
+
+    func nextOrigin(for width: CGFloat, after previousFrame: CGRect, in sectionFrame: CGRect, startX: CGFloat, maxY: CGFloat) -> CGPoint {
         // need to account for a secion origin being non-zero, maybe use bounds instead?
         let xOrigin = sectionFrame.origin.x == 0 ? previousFrame.origin.x : sectionFrame.origin.x - previousFrame.origin.x
 
@@ -42,14 +49,13 @@ final class ComponentFlowLayout {
 
         if width > remainder {
             // wrap
-            return CGPoint(x: attributes.startX, y: attributes.maxY)
+            return CGPoint(x: startX, y: maxY)
         } else {
             // inline
             return CGPoint(x: (previousFrame.origin.x + previousFrame.size.width), y: previousFrame.origin.y)
         }
     }
 
-    // TODO: remove in favor of FlowLayoutData
     ///
     /// Get the Maximum Y position of the current Section
     /// - parameters:
@@ -59,16 +65,5 @@ final class ComponentFlowLayout {
     ///     - Max Y after adding new frame to Section
     func maxYFor(_ frame: CGRect, currentMaxY: CGFloat) -> CGFloat {
         return frame.origin.y + frame.height > currentMaxY ? (frame.origin.y + frame.height) : currentMaxY
-    }
-
-    func widthFor(dimension: ComponentDimension, in parentWidth: CGFloat) -> CGFloat {
-        switch dimension {
-        case .fill:
-            return parentWidth
-        case .fixed(let size):
-            return size.width
-        case .ratio(let ratio):
-            return round(parentWidth * ratio)
-        }
     }
 }
