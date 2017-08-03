@@ -41,14 +41,10 @@ Inspiration:
 - [Redux](http://redux.js.org/)
 
 ## TODOs and Issues
-1. **In progress**: Separate Layout code from the Translator into its own framework (or at least a different class)
-    - Abstract the renderer models (Row, Section) from FlowLayout
-    - Add the concepts of different Layout behaviors other than "Flow" (Justified, Directions)
-    - **Right now Layout within a Container is somewhat broken**
-2. Make Container a subclass of Component to enable the layout to be more generic. Right now they are both BaseComponents, but this Model structure is problematic.
-3. Allow for Composite Components (Components that do not reduce down to a single UIView)
-4. Allow the Renderer to accept a Container or Component (this makes the above HelloWorld example not work)
-5. Many levels of Containers within Containers does not work correctly
-6. Make the Store take a Generic StateType
-7. Make protocols for all objects in the Renderer 
-8. More Unit Tests!
+1. Make Container a subclas	s of Component to enable the layout to be more generic. Right now they are both BaseComponents, but this Model structure is problematic.
+2. Allow for Composite Components (Components that do not reduce down to a single UIView)
+3. Allow the Renderer to accept a Container or Component (this makes the above HelloWorld example not work)
+4. Many levels of Containers within Containers does not work correctly
+5. Make the Store take a Generic StateType
+6. Make protocols for all objects in the Renderer 
+7. More Unit Tests!
