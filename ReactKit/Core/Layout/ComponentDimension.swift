@@ -23,7 +23,7 @@ enum ComponentDimension {
         case .fixed(let size):
             return size.width
         case .ratio(let ratio):
-            return round(parentWidth * ratio)
+            return floor(parentWidth * ratio)
         }
     }
 }

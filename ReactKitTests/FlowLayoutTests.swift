@@ -115,29 +115,4 @@ class FlowLayoutTests: XCTestCase {
         let outputMaxY = layout.maxYFor(inputFrame, currentMaxY: inputMaxY)
         XCTAssertEqual(outputMaxY, 100)
     }
-
-    // MARK: - Width
-/*
-    func testThatFillEqualsParentWidth() {
-        let inputWidth: CGFloat = 100
-        let outputWidth = ComponentFlowLayout.widthFor(dimension: .fill, in: inputWidth)
-        XCTAssertEqual(outputWidth, 100)
-    }
-
-    func testThatRatioEqualsParentWidthMultipliedByRatio() {
-        let inputWidth: CGFloat = 100
-        let outputWidth = ComponentFlowLayout.widthFor(dimension: .ratio(ratio: 0.75), in: inputWidth)
-        XCTAssertEqual(outputWidth, 75)
-
-        let inputWidth2: CGFloat = 100
-        let outputWidth2 = ComponentFlowLayout.widthFor(dimension: .ratio(ratio: 1.0), in: inputWidth2)
-        XCTAssertEqual(outputWidth2, 100)
-    }
-
-    func testThatFixedEqualsFixedValue() {
-        let inputWidth: CGFloat = 100
-        let outputWidth = ComponentFlowLayout.widthFor(dimension: .fixed(size: CGSize(width: 75, height: 0)), in: inputWidth)
-        XCTAssertEqual(outputWidth, 75)
-    }
- */
 }

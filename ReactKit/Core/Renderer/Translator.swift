@@ -8,7 +8,6 @@
 
 import UIKit
 
-// TODO: Separate Layout code from translation code
 ///
 /// Translates an external View representation (Containers and Component) into an internal
 /// virutal representation (Sections and Rows).
@@ -67,7 +66,7 @@ final class Translator {
         }
 
         let sectionWidth = frame.width
-        let rowsCalculation = calculateRowData(from: currentRows, in: sectionWidth, at: frame.origin)
+        let rowsCalculation = calculateRowData(from: currentRows, in: sectionWidth, at: frame.origin) // TODO: Move inside Section
         currentRows = rowsCalculation.rows
 
         let sectionHeight = childSections.reduce(0) { (height, section) in
@@ -102,7 +101,6 @@ final class Translator {
         return row
     }
 
-    ///
     /// Calculates the layout for Rows in a Section. Updates each Row's RowLayout with new layout properties.
     /// Also calculates total height of rows in section
     /// - parameters:
@@ -115,15 +113,14 @@ final class Translator {
         let rowFlowLayout = ComponentFlowLayout(parentFrame: CGRect(x: origin.x, y: origin.y, width: width, height: 0))
 
         let calculatedRows: [Row] = rows.map { row in
-            let height = row.layout.height
+            let rowHeight = row.layout.height
             let rowWidth = row.layout.dimension.width(in: width)
-            let frame = rowFlowLayout.calculateNextFrame(forWidth: rowWidth, height: height)
-            let layout = RowLayout(layout: row.layout, frame: frame)
+            let rowFrame = rowFlowLayout.calculateNextFrame(forWidth: rowWidth, height: rowHeight)
+            let layout = RowLayout(layout: row.layout, frame: rowFrame)
             return Row(row: row, layout: layout)
         }
 
         return RowCalculation(rows: calculatedRows, height: rowFlowLayout.totalHeight)
     }
-
 }
 

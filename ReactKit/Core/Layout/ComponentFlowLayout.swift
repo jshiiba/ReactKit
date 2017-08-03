@@ -41,11 +41,11 @@ final class ComponentFlowLayout {
         return frame
     }
 
-    func nextOrigin(for width: CGFloat, after previousFrame: CGRect, in sectionFrame: CGRect, startX: CGFloat, maxY: CGFloat) -> CGPoint {
+    func nextOrigin(for width: CGFloat, after previousFrame: CGRect, in parentFrame: CGRect, startX: CGFloat, maxY: CGFloat) -> CGPoint {
         // need to account for a secion origin being non-zero, maybe use bounds instead?
-        let xOrigin = sectionFrame.origin.x == 0 ? previousFrame.origin.x : sectionFrame.origin.x - previousFrame.origin.x
+        let xOrigin = parentFrame.origin.x == 0 ? previousFrame.origin.x : parentFrame.origin.x - previousFrame.origin.x
 
-        let remainder = sectionFrame.width - (xOrigin + previousFrame.width)
+        let remainder = parentFrame.width - (xOrigin + previousFrame.width)
 
         if width > remainder {
             // wrap
