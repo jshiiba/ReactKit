@@ -8,16 +8,25 @@
 
 import UIKit
 
+protocol ContainerPropType: PropType {}
+
+struct ContainerProps: ContainerPropType {
+    let layout: Layout
+    init(layout: Layout) {
+        self.layout = layout
+    }
+}
+
 ///
 /// A container can hold an array of components.
 /// Allows for components to be grouped in separate sections
 ///
-struct Container: BaseComponent {
-    let components: [BaseComponent]
-    let layout: Layout
+struct Container: ComponentContaining {
+    let components: [Component]
+    let props: PropType
 
-    init(components: [BaseComponent], layout: Layout) {
+    init(components: [Component], props: ContainerPropType) {
         self.components = components
-        self.layout = layout
+        self.props = props
     }
 }

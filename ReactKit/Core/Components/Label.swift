@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Label: Component, ComponentLike {
+struct Label: ComponentReducing, ComponentLike {
     typealias ComponentPropType = LabelPropType
 
     let props: PropType
@@ -16,7 +16,7 @@ struct Label: Component, ComponentLike {
         self.props = props
     }
 
-    func render() -> BaseComponent? {
+    func reduce() -> UIView? {
         let view = UIKitComponent<UILabel>(props: _props) { label in
             label.text = _props.title
             label.textAlignment = _props.textAlignment
@@ -26,8 +26,6 @@ struct Label: Component, ComponentLike {
         return view
     }
 }
-
-extension Label: SingleViewComponent {}
 
 // MARK: - Label Props
 

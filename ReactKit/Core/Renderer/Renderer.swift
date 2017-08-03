@@ -45,7 +45,7 @@ final class Renderer {
     ///
     func render(_ rootComponent: Component, in frame: CGRect) -> [IndexPath] {
         
-        sections =  translator.translateSections(from: rootComponent, in: frame)
+        sections =  translator.translate(fromComponent: rootComponent, in: frame)
         layout.sections = sections
 
         let cachedSections = cacher.cache(sections)

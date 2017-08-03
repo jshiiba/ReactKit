@@ -15,6 +15,10 @@
 		D152A1461F2E2229004C1B47 /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D152A1451F2E2229004C1B47 /* Reducer.swift */; };
 		D152A1481F2E239E004C1B47 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D152A1471F2E239E004C1B47 /* AppState.swift */; };
 		D152A14A1F2E63DC004C1B47 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = D152A1491F2E63DC004C1B47 /* Button.swift */; };
+		D19A41F81F33D0D100B46FC8 /* CompositeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19A41F71F33D0D100B46FC8 /* CompositeComponent.swift */; };
+		D19A41FA1F33D59B00B46FC8 /* ComponentReducing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19A41F91F33D55400B46FC8 /* ComponentReducing.swift */; };
+		D19A41FE1F33D6E200B46FC8 /* ComponentContaining.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19A41FD1F33D6E200B46FC8 /* ComponentContaining.swift */; };
+		D19A41FF1F33D74400B46FC8 /* UIKitComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19A41FB1F33D66500B46FC8 /* UIKitComponent.swift */; };
 		D1BBA2851F2E0419003FE577 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2831F2E0412003FE577 /* main.swift */; };
 		D1BBA2861F2E0436003FE577 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA27F1F2E0412003FE577 /* AppDelegate.swift */; };
 		D1BBA2871F2E043C003FE577 /* TestingAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2841F2E0412003FE577 /* TestingAppDelegate.swift */; };
@@ -24,17 +28,15 @@
 		D1BBA29C1F2E055C003FE577 /* BaseComponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2981F2E0549003FE577 /* BaseComponentViewController.swift */; };
 		D1BBA29D1F2E055F003FE577 /* ComponentCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2991F2E0549003FE577 /* ComponentCollectionViewDataSource.swift */; };
 		D1BBA2A11F2E0592003FE577 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2A01F2E057D003FE577 /* Layout.swift */; };
-		D1BBA2A91F2E05D5003FE577 /* BaseComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2A81F2E05AA003FE577 /* BaseComponent.swift */; };
+		D1BBA2A91F2E05D5003FE577 /* ComponentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2A81F2E05AA003FE577 /* ComponentType.swift */; };
 		D1BBA2AA1F2E05D7003FE577 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2A61F2E05AA003FE577 /* Component.swift */; };
 		D1BBA2AB1F2E05D9003FE577 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2A41F2E05A9003FE577 /* Container.swift */; };
 		D1BBA2AC1F2E05DB003FE577 /* PropType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2A51F2E05AA003FE577 /* PropType.swift */; };
-		D1BBA2AD1F2E05DE003FE577 /* UIKitComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2A71F2E05AA003FE577 /* UIKitComponent.swift */; };
 		D1BBA2BC1F2E0685003FE577 /* Translator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2B71F2E0670003FE577 /* Translator.swift */; };
 		D1BBA2BD1F2E0687003FE577 /* Cacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2BB1F2E0670003FE577 /* Cacher.swift */; };
 		D1BBA2BE1F2E0689003FE577 /* Reconciler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2B81F2E0670003FE577 /* Reconciler.swift */; };
 		D1BBA2BF1F2E068B003FE577 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2B61F2E0670003FE577 /* Renderer.swift */; };
 		D1BBA2CA1F2E06FF003FE577 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2C81F2E06F2003FE577 /* Label.swift */; };
-		D1BBA2CB1F2E0702003FE577 /* SingleViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2C91F2E06F2003FE577 /* SingleViewComponent.swift */; };
 		D1BBA2D61F2E08FA003FE577 /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2D41F2E08DC003FE577 /* Row.swift */; };
 		D1BBA2D71F2E08FD003FE577 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2D51F2E08DC003FE577 /* Section.swift */; };
 		D1CAC9B11F334D6600F26B9A /* ComponentDimensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CAC9B01F334D6600F26B9A /* ComponentDimensionTests.swift */; };
@@ -72,6 +74,10 @@
 		D152A1451F2E2229004C1B47 /* Reducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Reducer.swift; path = Core/Redux/Reducer.swift; sourceTree = "<group>"; };
 		D152A1471F2E239E004C1B47 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppState.swift; path = Core/Redux/AppState.swift; sourceTree = "<group>"; };
 		D152A1491F2E63DC004C1B47 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Button.swift; path = Core/Components/Button.swift; sourceTree = "<group>"; };
+		D19A41F71F33D0D100B46FC8 /* CompositeComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CompositeComponent.swift; path = Core/Models/CompositeComponent.swift; sourceTree = "<group>"; };
+		D19A41F91F33D55400B46FC8 /* ComponentReducing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComponentReducing.swift; path = Core/Models/ComponentReducing.swift; sourceTree = "<group>"; };
+		D19A41FB1F33D66500B46FC8 /* UIKitComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIKitComponent.swift; path = Core/Components/UIKitComponent.swift; sourceTree = "<group>"; };
+		D19A41FD1F33D6E200B46FC8 /* ComponentContaining.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComponentContaining.swift; path = Core/Models/ComponentContaining.swift; sourceTree = "<group>"; };
 		D1BBA27F1F2E0412003FE577 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "Supporting FIles/AppDelegate.swift"; sourceTree = "<group>"; };
 		D1BBA2801F2E0412003FE577 /* Base.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Base.lproj; path = "Supporting FIles/Base.lproj"; sourceTree = "<group>"; };
 		D1BBA2811F2E0412003FE577 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Supporting FIles/Assets.xcassets"; sourceTree = "<group>"; };
@@ -85,14 +91,12 @@
 		D1BBA2A41F2E05A9003FE577 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Container.swift; path = Core/Models/Container.swift; sourceTree = "<group>"; };
 		D1BBA2A51F2E05AA003FE577 /* PropType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PropType.swift; path = Core/Models/PropType.swift; sourceTree = "<group>"; };
 		D1BBA2A61F2E05AA003FE577 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Component.swift; path = Core/Models/Component.swift; sourceTree = "<group>"; };
-		D1BBA2A71F2E05AA003FE577 /* UIKitComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIKitComponent.swift; path = Core/Models/UIKitComponent.swift; sourceTree = "<group>"; };
-		D1BBA2A81F2E05AA003FE577 /* BaseComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseComponent.swift; path = Core/Models/BaseComponent.swift; sourceTree = "<group>"; };
+		D1BBA2A81F2E05AA003FE577 /* ComponentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComponentType.swift; path = Core/Models/ComponentType.swift; sourceTree = "<group>"; };
 		D1BBA2B61F2E0670003FE577 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Renderer.swift; path = Core/Renderer/Renderer.swift; sourceTree = "<group>"; };
 		D1BBA2B71F2E0670003FE577 /* Translator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Translator.swift; path = Core/Renderer/Translator.swift; sourceTree = "<group>"; };
 		D1BBA2B81F2E0670003FE577 /* Reconciler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Reconciler.swift; path = Core/Renderer/Reconciler.swift; sourceTree = "<group>"; };
 		D1BBA2BB1F2E0670003FE577 /* Cacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Cacher.swift; path = Core/Renderer/Cacher.swift; sourceTree = "<group>"; };
 		D1BBA2C81F2E06F2003FE577 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Label.swift; path = Core/Components/Label.swift; sourceTree = "<group>"; };
-		D1BBA2C91F2E06F2003FE577 /* SingleViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SingleViewComponent.swift; path = Core/Components/SingleViewComponent.swift; sourceTree = "<group>"; };
 		D1BBA2D41F2E08DC003FE577 /* Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Row.swift; path = Core/Renderer/Models/Row.swift; sourceTree = "<group>"; };
 		D1BBA2D51F2E08DC003FE577 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Section.swift; path = Core/Renderer/Models/Section.swift; sourceTree = "<group>"; };
 		D1CAC9B01F334D6600F26B9A /* ComponentDimensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentDimensionTests.swift; sourceTree = "<group>"; };
@@ -196,7 +200,7 @@
 			children = (
 				D152A1491F2E63DC004C1B47 /* Button.swift */,
 				D1BBA2C81F2E06F2003FE577 /* Label.swift */,
-				D1BBA2C91F2E06F2003FE577 /* SingleViewComponent.swift */,
+				D19A41FB1F33D66500B46FC8 /* UIKitComponent.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -259,11 +263,13 @@
 		D1BBA2A31F2E059A003FE577 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D1BBA2A81F2E05AA003FE577 /* BaseComponent.swift */,
-				D1BBA2A61F2E05AA003FE577 /* Component.swift */,
 				D1BBA2A41F2E05A9003FE577 /* Container.swift */,
 				D1BBA2A51F2E05AA003FE577 /* PropType.swift */,
-				D1BBA2A71F2E05AA003FE577 /* UIKitComponent.swift */,
+				D1BBA2A61F2E05AA003FE577 /* Component.swift */,
+				D1BBA2A81F2E05AA003FE577 /* ComponentType.swift */,
+				D19A41F91F33D55400B46FC8 /* ComponentReducing.swift */,
+				D19A41F71F33D0D100B46FC8 /* CompositeComponent.swift */,
+				D19A41FD1F33D6E200B46FC8 /* ComponentContaining.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -409,7 +415,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1BBA2AA1F2E05D7003FE577 /* Component.swift in Sources */,
-				D1BBA2A91F2E05D5003FE577 /* BaseComponent.swift in Sources */,
+				D1BBA2A91F2E05D5003FE577 /* ComponentType.swift in Sources */,
 				D1F7D7231F2F3EB3003AAE5A /* ReduxUtils.swift in Sources */,
 				D1BBA29D1F2E055F003FE577 /* ComponentCollectionViewDataSource.swift in Sources */,
 				D152A1441F2E2043004C1B47 /* Store.swift in Sources */,
@@ -419,7 +425,6 @@
 				D152A1401F2E1DF7004C1B47 /* ComponentDimension.swift in Sources */,
 				D1BBA2871F2E043C003FE577 /* TestingAppDelegate.swift in Sources */,
 				D1BBA2BD1F2E0687003FE577 /* Cacher.swift in Sources */,
-				D1BBA2CB1F2E0702003FE577 /* SingleViewComponent.swift in Sources */,
 				D1F7D7261F30932E003AAE5A /* ComponentFlowLayout.swift in Sources */,
 				D1BBA2D61F2E08FA003FE577 /* Row.swift in Sources */,
 				D1F7D7171F2E721A003AAE5A /* LayoutExampleViewController.swift in Sources */,
@@ -427,21 +432,24 @@
 				D1BBA29C1F2E055C003FE577 /* BaseComponentViewController.swift in Sources */,
 				D1F7D71F1F2F3E16003AAE5A /* CounterRedux.swift in Sources */,
 				D1BBA2A11F2E0592003FE577 /* Layout.swift in Sources */,
-				D1BBA2AD1F2E05DE003FE577 /* UIKitComponent.swift in Sources */,
 				D152A1461F2E2229004C1B47 /* Reducer.swift in Sources */,
 				D1BBA2CA1F2E06FF003FE577 /* Label.swift in Sources */,
 				D1BBA2BF1F2E068B003FE577 /* Renderer.swift in Sources */,
 				D1BBA2861F2E0436003FE577 /* AppDelegate.swift in Sources */,
 				D1BBA2AB1F2E05D9003FE577 /* Container.swift in Sources */,
+				D19A41F81F33D0D100B46FC8 /* CompositeComponent.swift in Sources */,
 				D1BBA2BE1F2E0689003FE577 /* Reconciler.swift in Sources */,
+				D19A41FE1F33D6E200B46FC8 /* ComponentContaining.swift in Sources */,
 				D152A14A1F2E63DC004C1B47 /* Button.swift in Sources */,
 				D152A1481F2E239E004C1B47 /* AppState.swift in Sources */,
 				D1BBA2851F2E0419003FE577 /* main.swift in Sources */,
 				D152A13D1F2E13EF004C1B47 /* ComponentCollectionViewLayout.swift in Sources */,
 				D1F7D71D1F2E8CB9003AAE5A /* ExampleTableViewController.swift in Sources */,
+				D19A41FF1F33D74400B46FC8 /* UIKitComponent.swift in Sources */,
 				D1BBA2AC1F2E05DB003FE577 /* PropType.swift in Sources */,
 				D1F7D7191F2E7234003AAE5A /* ReduxView.swift in Sources */,
 				D1F7D7211F2F3E74003AAE5A /* UIButton+React.swift in Sources */,
+				D19A41FA1F33D59B00B46FC8 /* ComponentReducing.swift in Sources */,
 				D1F7D71B1F2E8B35003AAE5A /* ExampleCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

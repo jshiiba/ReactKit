@@ -34,18 +34,18 @@ protocol LayoutViewProps: PropType {
 
 // MARK: - LayoutView
 
-final class LayoutView: Component, ComponentLike {
+final class LayoutView: CompositeComponent, ComponentLike {
     typealias ComponentPropType = LayoutViewProps
     let props: PropType
     init(props: LayoutViewProps) {
         self.props = props
     }
 
-    func render() -> BaseComponent? {
+    func render() -> Component? {
         let labels = _props.labels.map { label in
             return Label(props: label)
         }
 
-        return Container(components: labels, layout: Layout(dimension: .ratio(ratio: 1.0)))
+        return Container(components: labels, props: ContainerProps(layout: Layout(dimension: .ratio(ratio: 1.0))))
     }
 }
