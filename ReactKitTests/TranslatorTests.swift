@@ -12,16 +12,18 @@ import XCTest
 class TranslatorTests: XCTestCase {
 
     let parentFrame = CGRect(x: 0, y: 0, width: 300, height: 500)
+    var translator: Translator!
     
     override func setUp() {
         super.setUp()
+        translator = Translator()
     }
 
     // MARK: - Translate Container with only Components
 
     func testWhenRootComponentIsAnEmptyContainer() {
         let container = Container(components: [], layout: MockComponents.containerLayoutFill)
-        let result = Translator.translateSections(from: container, in: parentFrame, at: 0)
+        let result = translator.translateSections(from: container, in: parentFrame, at: 0)
 
         XCTAssertEqual(result.count, 1)
         XCTAssertEqual(result[0].index, 0)
@@ -31,7 +33,7 @@ class TranslatorTests: XCTestCase {
 
     func testWhenContainerHasLabelComponent() {
         let container = MockComponents.containerWithLabel(with: .fill, labelHeight: 100)
-        let result = Translator.translateSections(from: container, in: parentFrame, at: 0)
+        let result = translator.translateSections(from: container, in: parentFrame, at: 0)
 
         XCTAssertEqual(result.count, 1)
         XCTAssertEqual(result[0].index, 0)
@@ -42,7 +44,7 @@ class TranslatorTests: XCTestCase {
 
     func testWhenContainerHasTwoLabelComponentsWithSameLayouts() {
         let container = MockComponents.containerWithSameTwoLabels(with: .ratio(ratio: 0.5), labelHeight: 100)
-        let result = Translator.translateSections(from: container, in: parentFrame, at: 0)
+        let result = translator.translateSections(from: container, in: parentFrame, at: 0)
 
         XCTAssertEqual(result.count, 1)
         XCTAssertEqual(result[0].index, 0)
@@ -63,7 +65,7 @@ class TranslatorTests: XCTestCase {
 
     func testWhenContainerHasMultipleLabels() {
         let container = MockComponents.containerWithMultipleLabels()
-        let result = Translator.translateSections(from: container, in: parentFrame, at: 0)
+        let result = translator.translateSections(from: container, in: parentFrame, at: 0)
 
         XCTAssertEqual(result.count, 1)
         XCTAssertEqual(result[0].index, 0)
@@ -96,7 +98,7 @@ class TranslatorTests: XCTestCase {
 
     func testThatContainersWithChildContainersHaveIndex() {
         let container = MockComponents.containerWithContainers()
-        let result = Translator.translateSections(from: container, in: CGRect(origin: .zero, size: CGSize(width: 300, height: 0)), at: 0)
+        let result = translator.translateSections(from: container, in: CGRect(origin: .zero, size: CGSize(width: 300, height: 0)), at: 0)
 
         XCTAssertEqual(result[0].index, 0)
         XCTAssertEqual(result[1].index, 1)
@@ -105,7 +107,7 @@ class TranslatorTests: XCTestCase {
 
     func testThatContainersCanLayoutChildContainers() {
         let container = MockComponents.containerWithContainers()
-        let result = Translator.translateSections(from: container, in: CGRect(origin: .zero, size: CGSize(width: 300, height: 0)), at: 0)
+        let result = translator.translateSections(from: container, in: CGRect(origin: .zero, size: CGSize(width: 300, height: 0)), at: 0)
 
         XCTAssertEqual(result.count, 3)
         XCTAssertEqual(result[0].layout.frame, CGRect(x: 0, y: 0, width: 300, height: 100))
@@ -116,7 +118,7 @@ class TranslatorTests: XCTestCase {
     /* TODO: Fix
     func testMultilevelContainers() {
         let container = MockComponents.multiLevelContainers()
-        let result = Translator.translateSections(from: container, in: CGRect(origin: .zero, size: CGSize(width: 300, height: 0)), at: 0)
+        let result = translator.translateSections(from: container, in: CGRect(origin: .zero, size: CGSize(width: 300, height: 0)), at: 0)
 
         XCTAssertEqual(result.count, 4)
         XCTAssertEqual(result[0].layout.frame, CGRect(x: 0, y: 0, width: 300, height: 100))
@@ -131,7 +133,7 @@ class TranslatorTests: XCTestCase {
     /* TODO: fix when composite view are renderable
     func testThatNonSingleComponentViewsAreRendered() {
         let inputComponent = MockComponents.composite()
-        let result = Translator.translateSections(from: inputComponent, in: CGRect(origin: .zero, size: CGSize(width: 300, height: 0)))
+        let result = translator.translateSections(from: inputComponent, in: CGRect(origin: .zero, size: CGSize(width: 300, height: 0)))
         XCTAssertEqual(result[0].rows.count, 1)
         XCTAssertEqual(result[0].rows[0].layout.frame, CGRect(x: 0, y: 0, width: 300, height: 100))
         XCTAssertNotNil(result[0].rows[0].view)
@@ -141,7 +143,7 @@ class TranslatorTests: XCTestCase {
     // MARK: - Translate Components to Rows
 
     func testThatComponentIsTranslatedToRow() {
-        guard let row = Translator.translateRows(from: MockComponents.labelComponent(), in: 0, at: 1) else {
+        guard let row = translator.translateRows(from: MockComponents.labelComponent(), in: 0, at: 1) else {
             XCTFail("Component was not reducible to a UIView")
             return
         }
@@ -153,7 +155,7 @@ class TranslatorTests: XCTestCase {
 
     func testThatCompositeIsNotTranslated() {
         let inputComponent = MockComponents.composite()
-        let outputRow = Translator.translateRows(from: inputComponent, in: 0, at: 0)
+        let outputRow = translator.translateRows(from: inputComponent, in: 0, at: 0)
         XCTAssertNil(outputRow)
     }
 
@@ -161,7 +163,7 @@ class TranslatorTests: XCTestCase {
 
     func testThatRowLayoutIsCalculatedForASingleRow() {
         let inputRows = MockRows.singleRow
-        let outputRows = Translator.calculateRowData(from: inputRows, in: 400, at: CGPoint(x: 0, y: 0)).rows
+        let outputRows = translator.calculateRowData(from: inputRows, in: 400, at: CGPoint(x: 0, y: 0)).rows
 
         XCTAssertEqual(outputRows.count, 1)
         outputRows.forEach { XCTAssertNotNil($0.layout) }
@@ -171,7 +173,7 @@ class TranslatorTests: XCTestCase {
 
     func testThatRowLayoutIsCalculatedForRows() {
         let inputRows = MockRows.rows
-        let rowData = Translator.calculateRowData(from: inputRows, in: 400, at: CGPoint(x: 0, y: 0))
+        let rowData = translator.calculateRowData(from: inputRows, in: 400, at: CGPoint(x: 0, y: 0))
         let outputRows = rowData.rows
         let outputHeight = rowData.height
 
@@ -184,7 +186,7 @@ class TranslatorTests: XCTestCase {
     // 0.75, 0.5, 0.25, 1.0
     func testThatRowLayoutIsCalculatedForRowsWithMultipleDimensions() {
         let inputRows = MockRows.rowsMultipleDimensions
-        let rowData = Translator.calculateRowData(from: inputRows, in: 400, at: CGPoint(x: 0, y: 0))
+        let rowData = translator.calculateRowData(from: inputRows, in: 400, at: CGPoint(x: 0, y: 0))
         let outputRows = rowData.rows
         let outputHeight = rowData.height
 
@@ -198,7 +200,7 @@ class TranslatorTests: XCTestCase {
     // 0.75-100, 0.5-200, 0.25-10, 1.0-75
     func testThatRowLayoutIsCalculatedForRowsWithMultipleDimensionsAndHeights() {
         let inputRows = MockRows.rowsMultipleDimensionsMultipleHeights
-        let rowData = Translator.calculateRowData(from: inputRows, in: 400, at: CGPoint(x: 0, y: 0))
+        let rowData = translator.calculateRowData(from: inputRows, in: 400, at: CGPoint(x: 0, y: 0))
         let outputRows = rowData.rows
         let outputHeight = rowData.height
 

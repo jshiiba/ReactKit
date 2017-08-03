@@ -15,6 +15,17 @@ enum ComponentDimension {
     case ratio(ratio: CGFloat)
     case fixed(size: CGSize)
     case fill
+
+    func width(in parentWidth: CGFloat) -> CGFloat {
+        switch self {
+        case .fill:
+            return parentWidth
+        case .fixed(let size):
+            return size.width
+        case .ratio(let ratio):
+            return round(parentWidth * ratio)
+        }
+    }
 }
 
 extension ComponentDimension: Equatable {

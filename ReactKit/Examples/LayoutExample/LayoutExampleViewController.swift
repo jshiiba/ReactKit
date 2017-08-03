@@ -46,9 +46,6 @@ final class LayoutView: Component, ComponentLike {
             return Label(props: label)
         }
 
-        return Container(components: [
-            Container(components: labels, layout: Layout(dimension: .ratio(ratio: 0.5))),
-            Container(components: labels, layout: Layout(dimension: .ratio(ratio: 0.5))),
-        ], layout: Layout(dimension: .ratio(ratio: 1.0)))
+        return Container(components: labels, layout: Layout(dimension: .ratio(ratio: 1.0)))
     }
 }

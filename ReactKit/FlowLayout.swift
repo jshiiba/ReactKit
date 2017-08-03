@@ -1,5 +1,5 @@
 //
-//  FlowLayout.swift
+//  ComponentFlowLayout.swift
 //  ReactKit
 //
 //  Created by Justin Shiiba on 8/1/17.
@@ -11,7 +11,7 @@ import UIKit
 ///
 /// Calculates the layout attributes for a layout similar to a UICollectionViewFlowLayout
 ///
-final class FlowLayout {
+final class ComponentFlowLayout {
 
     ///
     /// Attributes needed to layout the rows in a section
