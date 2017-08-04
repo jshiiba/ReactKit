@@ -15,11 +15,12 @@ class TranslatorMultipleContainerTests: TranslatorTests {
 
     func testThatContainersWithChildContainersHaveIndex() {
         let container = MockComponents.containerWithContainers()
-        let result = translator.translate(fromComponent: container, in: parentFrame)
+        var dataSource: VirtualDataSource = ComponentVirtualDataSource()
+        Translator.translate(fromComponent: container, in: parentWidth, to: &dataSource)
 
-        XCTAssertEqual(result[0].index, 0)
-        XCTAssertEqual(result[1].index, 1)
-        XCTAssertEqual(result[2].index, 2)
+        XCTAssertEqual(dataSource.sections[0].index, 0)
+        XCTAssertEqual(dataSource.sections[1].index, 1)
+        XCTAssertEqual(dataSource.sections[2].index, 2)
     }
 
 }

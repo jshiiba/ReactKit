@@ -1,5 +1,5 @@
 //
-//  TranslatorDataSource.swift
+//  ComponentVirtualDataSource.swift
 //  ReactKit
 //
 //  Created by Justin Shiiba on 8/4/17.
@@ -8,14 +8,14 @@
 
 import Foundation
 
-protocol TranslatorDataSource {
+protocol VirtualDataSource: class {
     var sections: [Section] { get }
     var current: Section? { get }
     func nextSectionIndex() -> Int
     func insert(_ section: Section, at index: Int)
 }
 
-final class TranslatorSectionDataSource: TranslatorDataSource {
+final class ComponentVirtualDataSource: VirtualDataSource {
     private var currentSectionIndex: Int = 0
     private var values: [Section] = []
 
