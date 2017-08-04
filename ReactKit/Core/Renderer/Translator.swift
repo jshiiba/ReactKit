@@ -42,7 +42,7 @@ final class Translator {
     }
 
     fileprivate static func translate(fromContainer container: ComponentContaining, in frame: CGRect, to dataSource: inout VirtualDataSource) {
-        let sectionLayout = SectionLayout(width: frame.width, height: frame.height, parentOrigin: frame.origin)
+        let sectionLayout = SectionLayout(frame: CGRect(origin: frame.origin, size: CGSize(width: frame.width, height: frame.height)))
         let section = Section(index: dataSource.nextSectionIndex(), rows: [], layout: sectionLayout)
 
         dataSource.insert(section, at: section.index)
@@ -57,10 +57,7 @@ final class Translator {
 
         // FIXME need to get height of child sections
         let height = section.layout.flow.totalHeight
-        let width = frame.width
-
-        let layout = SectionLayout(width: width, height: height, parentOrigin: frame.origin)
-        section.layout = layout
+        section.layout.updateHeight(height)
     }
 
     fileprivate static func translate(fromViewComponent viewComponent: ComponentReducing, in frame: CGRect, to dataSource: inout VirtualDataSource) {

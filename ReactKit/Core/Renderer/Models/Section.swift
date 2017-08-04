@@ -52,11 +52,15 @@ class Section {
 }
 
 struct SectionLayout {
-    let frame: CGRect
+    var frame: CGRect
     let flow: ComponentFlowLayout
 
-    init(width: CGFloat, height: CGFloat, parentOrigin: CGPoint) {
-        self.frame = CGRect(origin: parentOrigin, size: CGSize(width: width, height: height))
+    init(frame: CGRect) {
+        self.frame = frame
         self.flow = ComponentFlowLayout(parentFrame: self.frame)
+    }
+
+    mutating func updateHeight(_ height: CGFloat) {
+        self.frame = CGRect(x: frame.origin.x, y: frame.origin.y, width: frame.width, height: height)
     }
 }
