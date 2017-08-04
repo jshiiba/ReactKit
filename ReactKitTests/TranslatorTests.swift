@@ -83,7 +83,7 @@ class TranslatorTests: XCTestCase {
 
         XCTAssertEqual(result[0].layout.frame.height, 400)
     }
-/*
+    /* FIXME
 
     func testThatContainersCanLayoutChildContainers() {
         let container = MockComponents.containerWithContainers()

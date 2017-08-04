@@ -8,8 +8,6 @@
 
 import UIKit
 
-/// DEPRECATED
-
 ///
 /// Allows for easier access to cast the base into its true type
 ///

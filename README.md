@@ -14,7 +14,7 @@ class HelloWorldViewController: BaseComponentViewController {
 ```
 
 ### Components
-Components are objects that take properties (PropTypes) as input and render UIViews or additional Components as output. Components can be composed of other Components or an array of Components (Container), but the important aspect is that they all reduce down to singular UIViews to be displayed.
+Components are objects that take properties (PropTypes) as input and render UIViews or additional Components as output. Components can be composed of other Components  (Composite) or an array of Components (Container), but the important aspect is that they all reduce down to singular UIViews to be displayed.
 
 ### PropTypes
 The PropTypes protocol defines the properties that each Component needs in order to render.
@@ -41,10 +41,8 @@ Inspiration:
 - [Redux](http://redux.js.org/)
 
 ## TODOs and Issues
-1. Make Container a subclas	s of Component to enable the layout to be more generic. Right now they are both BaseComponents, but this Model structure is problematic.
-2. Allow for Composite Components (Components that do not reduce down to a single UIView)
-3. Allow the Renderer to accept a Container or Component (this makes the above HelloWorld example not work)
-4. Many levels of Containers within Containers does not work correctly
-5. Make the Store take a Generic StateType
-6. Make protocols for all objects in the Renderer 
-7. More Unit Tests!
+1. Many levels of Containers within Containers does not work correctly
+2. Make the Store take a Generic StateType
+3. Make protocols for all objects in the Renderer
+4. More Unit Tests!
+5. Allow for Other types of Layouts within a Section, not just FlowLayout
