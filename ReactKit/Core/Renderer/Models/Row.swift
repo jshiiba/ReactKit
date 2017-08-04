@@ -14,39 +14,26 @@ import UIKit
 struct Row {
     let props: PropType
     let indexPath: IndexPath
-    let section: Int
-    let index: Int
     let layout: RowLayout
     let view: UIView?
 
     init(row: Row, layout: RowLayout) {
-        self.init(view: row.view, props: row.props, index: row.index, section: row.section, layout: layout)
+        self.init(view: row.view, props: row.props, indexPath: row.indexPath, layout: layout)
     }
 
-    init(view: UIView?, props: PropType, index: Int, section: Int, layout: RowLayout) {
+    init(view: UIView?, props: PropType, indexPath: IndexPath, layout: RowLayout) {
         self.view = view
         self.props = props
-        self.index = index
-        self.section = section
-        self.indexPath = IndexPath(row: index, section: section)
+        self.indexPath = indexPath
         self.layout = layout
     }
 }
 
 struct RowLayout {
 
-    var frame: CGRect
-    let dimension: ComponentDimension
-    let height: CGFloat
+    let frame: CGRect
 
-    init(layout: RowLayout, frame: CGRect) {
-        self.init(dimension: layout.dimension, height: layout.height)
+    init(frame: CGRect) {
         self.frame = frame
-    }
-
-    init(dimension: ComponentDimension, height: CGFloat) {
-        self.dimension = dimension
-        self.height = height
-        self.frame = .zero
     }
 }

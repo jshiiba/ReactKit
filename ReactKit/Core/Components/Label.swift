@@ -20,6 +20,7 @@ struct Label: ComponentReducing, ComponentLike {
         let view = UIKitComponent<UILabel>(props: _props) { label in
             label.text = _props.title
             label.textAlignment = _props.textAlignment
+            label.backgroundColor = _props.backgroundColor
             label.sizeToFit()
         }.view
 
@@ -32,16 +33,19 @@ struct Label: ComponentReducing, ComponentLike {
 protocol LabelPropType: PropType {
     var title: String { get }
     var textAlignment: NSTextAlignment { get }
+    var backgroundColor: UIColor { get }
 }
 
 struct LabelProps: LabelPropType {
     let layout: Layout?
     let title: String
     let textAlignment: NSTextAlignment
+    let backgroundColor: UIColor
 
-    init(title: String, textAlignment: NSTextAlignment = .left, layout: Layout? = nil) {
+    init(title: String, textAlignment: NSTextAlignment = .left, backgroundColor: UIColor = .white, layout: Layout? = nil) {
         self.title = title
         self.textAlignment = textAlignment
+        self.backgroundColor = backgroundColor
         self.layout = layout
     }
 }

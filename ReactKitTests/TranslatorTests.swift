@@ -22,8 +22,8 @@ class TranslatorTests: XCTestCase {
     // MARK: - Translate Container with only Components
 
     func testWhenRootComponentIsAnEmptyContainer() {
-        let container = Container(components: [], layout: MockComponents.containerLayoutFill)
-        let result = translator.translateSections(from: container, in: parentFrame, at: 0)
+        let container = Container(components: [], props: MockComponents.containerProps)
+        let result = translator.translate(fromComponent: container, in: parentFrame, at: 0)
 
         XCTAssertEqual(result.count, 1)
         XCTAssertEqual(result[0].index, 0)
@@ -33,7 +33,7 @@ class TranslatorTests: XCTestCase {
 
     func testWhenContainerHasLabelComponent() {
         let container = MockComponents.containerWithLabel(with: .fill, labelHeight: 100)
-        let result = translator.translateSections(from: container, in: parentFrame, at: 0)
+        let result = translator.translate(fromComponent: container, in: parentFrame, at: 0)
 
         XCTAssertEqual(result.count, 1)
         XCTAssertEqual(result[0].index, 0)
@@ -44,7 +44,7 @@ class TranslatorTests: XCTestCase {
 
     func testWhenContainerHasTwoLabelComponentsWithSameLayouts() {
         let container = MockComponents.containerWithSameTwoLabels(with: .ratio(ratio: 0.5), labelHeight: 100)
-        let result = translator.translateSections(from: container, in: parentFrame, at: 0)
+        let result = translator.translate(fromComponent: container, in: parentFrame, at: 0)
 
         XCTAssertEqual(result.count, 1)
         XCTAssertEqual(result[0].index, 0)
@@ -65,7 +65,7 @@ class TranslatorTests: XCTestCase {
 
     func testWhenContainerHasMultipleLabels() {
         let container = MockComponents.containerWithMultipleLabels()
-        let result = translator.translateSections(from: container, in: parentFrame, at: 0)
+        let result = translator.translate(fromComponent: container, in: parentFrame, at: 0)
 
         XCTAssertEqual(result.count, 1)
         XCTAssertEqual(result[0].index, 0)
@@ -98,7 +98,7 @@ class TranslatorTests: XCTestCase {
 
     func testThatContainersWithChildContainersHaveIndex() {
         let container = MockComponents.containerWithContainers()
-        let result = translator.translateSections(from: container, in: CGRect(origin: .zero, size: CGSize(width: 300, height: 0)), at: 0)
+        let result = translator.translate(fromComponent: container, in: CGRect(origin: .zero, size: CGSize(width: 300, height: 0)), at: 0)
 
         XCTAssertEqual(result[0].index, 0)
         XCTAssertEqual(result[1].index, 1)
@@ -107,7 +107,7 @@ class TranslatorTests: XCTestCase {
 
     func testThatContainersCanLayoutChildContainers() {
         let container = MockComponents.containerWithContainers()
-        let result = translator.translateSections(from: container, in: CGRect(origin: .zero, size: CGSize(width: 300, height: 0)), at: 0)
+        let result = translator.translate(fromComponent: container, in: CGRect(origin: .zero, size: CGSize(width: 300, height: 0)), at: 0)
 
         XCTAssertEqual(result.count, 3)
         XCTAssertEqual(result[0].layout.frame, CGRect(x: 0, y: 0, width: 300, height: 100))
@@ -117,7 +117,7 @@ class TranslatorTests: XCTestCase {
 
     func testMultilevelContainers() {
         let container = MockComponents.multiLevelContainers()
-        let result = translator.translateSections(from: container, in: CGRect(origin: .zero, size: CGSize(width: 300, height: 0)), at: 0)
+        let result = translator.translate(fromComponent: container, in: CGRect(origin: .zero, size: CGSize(width: 300, height: 0)), at: 0)
 
         XCTAssertEqual(result.count, 4)
         XCTAssertEqual(result[0].layout.frame, CGRect(x: 0, y: 0, width: 300, height: 100))
@@ -132,7 +132,7 @@ class TranslatorTests: XCTestCase {
     /* TODO: fix when composite view are renderable
     func testThatNonSingleComponentViewsAreRendered() {
         let inputComponent = MockComponents.composite()
-        let result = translator.translateSections(from: inputComponent, in: CGRect(origin: .zero, size: CGSize(width: 300, height: 0)))
+        let result = translator.translate(fromComponent: inputComponent, in: CGRect(origin: .zero, size: CGSize(width: 300, height: 0)))
         XCTAssertEqual(result[0].rows.count, 1)
         XCTAssertEqual(result[0].rows[0].layout.frame, CGRect(x: 0, y: 0, width: 300, height: 100))
         XCTAssertNotNil(result[0].rows[0].view)
@@ -150,12 +150,6 @@ class TranslatorTests: XCTestCase {
         XCTAssertEqual(row.section, 0)
         XCTAssertEqual(row.index, 1)
         XCTAssertNotNil(row.view)
-    }
-
-    func testThatCompositeIsNotTranslated() {
-        let inputComponent = MockComponents.composite()
-        let outputRow = translator.translateRows(from: inputComponent, in: 0, at: 0)
-        XCTAssertNil(outputRow)
     }
 
     // MARK: - Calculate Row Layout

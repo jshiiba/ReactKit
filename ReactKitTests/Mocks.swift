@@ -11,27 +11,27 @@ import UIKit
 
 struct MockComponents {
 
-    static let containerLayoutFill = Layout(dimension: .fill)
+    static let containerProps = ContainerProps(layout: Layout(dimension: .fill))
 
-    static func labelComponent() -> Component {
+    static func labelComponent() -> ComponentReducing {
         return Label(props: LabelProps(title: "Label 1", layout: Layout(dimension: .fill, height: 100)))
     }
 
-    static func composite() -> Component {
+    static func composite() -> CompositeComponent {
         return MockComposite(props: NilProps())
     }
 
     static func containerWithLabel(with labelDimension: ComponentDimension, labelHeight: CGFloat) -> Container {
         return Container(components: [
             Label(props: LabelProps(title: "Label", layout: Layout(dimension: labelDimension, height: labelHeight)))
-        ], layout: MockComponents.containerLayoutFill)
+        ], props: containerProps)
     }
 
     static func containerWithSameTwoLabels(with labelDimension: ComponentDimension, labelHeight: CGFloat) -> Container {
         return Container(components: [
             Label(props: LabelProps(title: "Label 1", layout: Layout(dimension: labelDimension, height: labelHeight))),
             Label(props: LabelProps(title: "Label 2", layout: Layout(dimension: labelDimension, height: labelHeight)))
-        ], layout: MockComponents.containerLayoutFill)
+        ], props: containerProps)
     }
 
     static func containerWithMultipleLabels() -> Container {
@@ -40,7 +40,7 @@ struct MockComponents {
             Label(props: LabelProps(title: "Label 2", layout: Layout(dimension: .ratio(ratio: 0.5), height: 200))),
             Label(props: LabelProps(title: "Label 3", layout: Layout(dimension: .ratio(ratio: 0.25), height: 25))),
             Label(props: LabelProps(title: "Label 4", layout: Layout(dimension: .ratio(ratio: 1.0), height: 100))),
-        ], layout: MockComponents.containerLayoutFill)
+        ], props: containerProps)
     }
 
     static func containerWithContainers() -> Container {
@@ -48,12 +48,12 @@ struct MockComponents {
             Container(components: [
                 Label(props: LabelProps(title: "Label 1", layout: Layout(dimension: .ratio(ratio: 0.5), height: 100))),
                 Label(props: LabelProps(title: "Label 2", layout: Layout(dimension: .ratio(ratio: 0.5), height: 100)))
-            ], layout: Layout(dimension: .ratio(ratio: 0.5))),
+            ], props: ContainerProps(layout: Layout(dimension: .ratio(ratio: 0.5)))),
             Container(components: [
                 Label(props: LabelProps(title: "Label 3", layout: Layout(dimension: .ratio(ratio: 0.5), height: 100))),
                 Label(props: LabelProps(title: "Label 4", layout: Layout(dimension: .ratio(ratio: 0.5), height: 100)))
-            ], layout: Layout(dimension: .ratio(ratio: 0.5))),
-        ], layout: MockComponents.containerLayoutFill)
+            ], props: ContainerProps(layout: Layout(dimension: .ratio(ratio: 0.5)))),
+        ], props: containerProps)
     }
 
     static func multiLevelContainers() -> Container {
@@ -62,13 +62,13 @@ struct MockComponents {
                 Container(components: [
                     Label(props: LabelProps(title: "Label 1", layout: Layout(dimension: .ratio(ratio: 0.5), height: 100))),
                     Label(props: LabelProps(title: "Label 2", layout: Layout(dimension: .ratio(ratio: 0.5), height: 100)))
-                ], layout: Layout(dimension: .ratio(ratio: 0.5))),
+                ], props: ContainerProps(layout: Layout(dimension: .ratio(ratio: 0.5)))),
                 Container(components: [
                     Label(props: LabelProps(title: "Label 3", layout: Layout(dimension: .ratio(ratio: 0.5), height: 100))),
                     Label(props: LabelProps(title: "Label 4", layout: Layout(dimension: .ratio(ratio: 0.5), height: 100)))
-                ], layout: Layout(dimension: .ratio(ratio: 0.5))),
-            ], layout: Layout(dimension: .ratio(ratio: 0.5))),
-        ], layout: MockComponents.containerLayoutFill)
+                ], props: ContainerProps(layout: Layout(dimension: .ratio(ratio: 0.5)))),
+            ], props: ContainerProps( layout: Layout(dimension: .ratio(ratio: 0.5)))),
+        ], props: containerProps)
     }
 }
 
@@ -155,7 +155,7 @@ struct MockLabelProps: PropType {
     let layout: Layout
 }
 
-struct MockComponent: Component, ComponentLike {
+struct MockComponent: CompositeComponent, ComponentLike {
     typealias ComponentPropType = MockLabelProps
     let props: PropType
 
@@ -163,19 +163,19 @@ struct MockComponent: Component, ComponentLike {
         self.props = props
     }
 
-    func render() -> BaseComponent? {
+    func render() -> Component? {
         return Label(props: _props.labelProps)
     }
 }
 
 struct NilProps: PropType {}
 
-struct MockComposite: Component {
+struct MockComposite: CompositeComponent {
     let props: PropType
     init(props: PropType) {
         self.props = props
     }
-    func render() -> BaseComponent? {
+    func render() -> Component? {
         return MockComponent(props: MockLabelProps(labelProps: LabelProps(title: "composite"),
                                                    layout: Layout(dimension: .fill, height: 100)))
     }

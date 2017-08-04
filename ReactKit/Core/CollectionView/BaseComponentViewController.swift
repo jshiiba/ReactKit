@@ -20,7 +20,6 @@ class BaseComponentViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         renderer = Renderer(translator: Translator(), reconciler: Reconciler())
         dataSource = ComponentCollectionViewDataSource(renderer: renderer)
 
