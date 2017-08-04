@@ -71,7 +71,7 @@ struct MockComponents {
         ], props: containerProps)
     }
 }
-
+/*
 struct MockRows {
     static let singleRow: [Row] = [
         Row(view: nil,
@@ -144,7 +144,7 @@ struct MockRows {
                      section: 0,
                      layout: RowLayout(dimension: .ratio(ratio: 1.0), height: 75)),
     ]
-}
+}*/
 
 struct MockProps: PropType {
     let layout: Layout
