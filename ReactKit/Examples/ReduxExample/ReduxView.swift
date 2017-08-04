@@ -20,7 +20,7 @@ struct ReduxProps: ReduxPropType {
     let buttons: [ButtonPropType]
 }
 
-final class ReduxView: Component, ComponentLike {
+final class ReduxView: CompositeComponent, ComponentLike {
     typealias ComponentPropType = ReduxPropType
     let props: PropType
 
@@ -28,7 +28,7 @@ final class ReduxView: Component, ComponentLike {
         self.props = props
     }
 
-    func render() -> BaseComponent? {
+    func render() -> Component? {
         let counter = CounterView(props: _props.counter)
 
         let buttons = _props.buttons.map { buttonProp in
@@ -36,7 +36,7 @@ final class ReduxView: Component, ComponentLike {
         }
 
         let components: [Component] = [counter] + buttons
-        return Container(components: components, layout: Layout(dimension: .ratio(ratio: 1.0)))
+        return Container(components: components, props: ContainerProps(layout: Layout(dimension: .ratio(ratio: 1.0))))
     }
 }
 
@@ -56,19 +56,16 @@ struct CounterViewProps: CounterViewPropType {
     }
 }
 
-final class CounterView: Component, ComponentLike {
+final class CounterView: CompositeComponent, ComponentLike {
     typealias ComponentPropType = CounterViewPropType
     let props: PropType
     init(props: CounterViewPropType) {
         self.props = props
     }
 
-    func render() -> BaseComponent? {
+    func render() -> Component? {
         let title = "Count: \(_props.count)"
         return Label(props: LabelProps(title: title,
                                        textAlignment: .center))
     }
 }
-
-// TODO: This is only until composite components can be handled be renderer
-extension CounterView: SingleViewComponent {}

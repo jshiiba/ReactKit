@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Button: Component, ComponentLike {
+struct Button: ComponentReducing, ComponentLike {
     typealias ComponentPropType = ButtonPropType
 
     let props: PropType
@@ -16,7 +16,7 @@ struct Button: Component, ComponentLike {
         self.props = props
     }
 
-    func render() -> BaseComponent? {
+    func reduce() -> UIView? {
         let view = UIKitComponent<UIButton>(props: _props) { button in
             button.setTitle(_props.title, for: .normal)
             button.setTitleColor(_props.titleColor, for: .normal)
@@ -26,8 +26,6 @@ struct Button: Component, ComponentLike {
         return view
     }
 }
-
-extension Button: SingleViewComponent {}
 
 // MARK: - ButtonProps
 

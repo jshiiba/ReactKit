@@ -14,113 +14,66 @@ import UIKit
 ///
 final class Translator {
 
-    /// Data calculated from rows in a section
-    struct RowCalculation {
-        let rows: [Row]
-        let height: CGFloat
-    }
-
-    func translateSections(from component: Component, in frame: CGRect) -> [Section] {
-        guard let container = component.render() as? Container else {
-            return []
-        }
-
+    func translate(fromComponent component: Component, in frame: CGRect) -> [Section] {
         /// translator builds from leaf components back to root, so height will be
         /// calculated last
         let startingFrame = CGRect(x: 0, y: 0, width: frame.width, height: 0)
-        return translateSections(from: container, in: startingFrame, at: 0)
+
+        var dataSource: TranslatorDataSource = TranslatorSectionDataSource() // TODO: inject for easier unit testing
+
+        translate(fromComponent: component, in: startingFrame, dataSource: &dataSource)
+
+        return dataSource.sections
     }
 
-    func translateSections(from container: Container, in frame: CGRect, at index: Int) -> [Section] {
-        // vars for rows
-        var currentRowIndex = 0
-        var currentRows: [Row] = []
-
-        // vars for sections
-        var currentSectionIndex = index
-        var childSections: [Section] = []
-
-        let sectionFlowLayout = ComponentFlowLayout(parentFrame: frame)
-
-        container.components.forEach { baseComponent in
-            switch baseComponent.componentType {
-            case .container(let childContainer): // recurse
-
-                let width = childContainer.layout.dimension.width(in: frame.width)
-                let childSectionFrame = sectionFlowLayout.calculateNextFrame(forWidth: width, height: frame.height)
-
-                currentSectionIndex = currentSectionIndex + 1
-
-                let children = translateSections(from: childContainer, in: childSectionFrame, at: currentSectionIndex)
-                childSections.append(contentsOf: children)
-
-            case .component(let component): // base case
-                if let row = translateRows(from: component, in: currentSectionIndex, at: currentRowIndex) {
-                    currentRowIndex = currentRowIndex + 1
-                    currentRows.append(row)
-                } else if let _ = component.render() {
-                    // translate on base
-                    print("render from a composite")
-                }
+    fileprivate func translate(fromComponent component: Component, in frame: CGRect, dataSource: inout TranslatorDataSource) {
+        switch component.type {
+        case .container(let container):
+            translate(fromContainer: container, in: frame, dataSource: &dataSource)
+        case .composite(let composite):
+            if let renderedComposite = composite.render() {
+                translate(fromComponent: renderedComposite, in: frame, dataSource: &dataSource)
             }
+        case .view(let view):
+            translate(fromViewComponent: view, in: frame, dataSource: &dataSource)
         }
-
-        let sectionWidth = frame.width
-        let rowsCalculation = calculateRowData(from: currentRows, in: sectionWidth, at: frame.origin) // TODO: Move inside Section
-        currentRows = rowsCalculation.rows
-
-        let sectionHeight = childSections.reduce(0) { (height, section) in
-            return sectionFlowLayout.maxYFor(section.layout.frame, currentMaxY: height)
-        }
-
-        let totalSectionHeight = sectionHeight + rowsCalculation.height
-
-        let sectionLayout = SectionLayout(width: sectionWidth,
-                                          height: totalSectionHeight,
-                                          parentOrigin: frame.origin)
-
-        let section = Section(index: index,
-                              rows: currentRows,
-                              layout: sectionLayout)
-
-        return [section] + childSections
     }
 
-    func translateRows(from component: Component, in section: Int, at index: Int) -> Row? {
-        guard let view = component as? SingleViewComponent else {
-            return nil
-        }
-        let dimension = component.props.layout?.dimension ?? .fill
-        let height = component.props.layout?.height ?? 0
+    fileprivate func translate(fromContainer container: ComponentContaining, in frame: CGRect, dataSource: inout TranslatorDataSource) {
+        let sectionLayout = SectionLayout(width: frame.width, height: frame.height, parentOrigin: frame.origin)
+        let section = Section(index: dataSource.nextSectionIndex(), rows: [], layout: sectionLayout)
 
-        let row = Row(view: view.reduce(),
-                      props: component.props,
-                      index: index,
-                      section: section,
-                      layout: RowLayout(dimension: dimension, height: height))
-        return row
+        dataSource.insert(section, at: section.index)
+
+        container.components.forEach { component in
+            let width = component.props.layout?.dimension.width(in: frame.width) ?? frame.width
+            let height = component.props.layout?.height ?? frame.height
+            let componentFrame = section.layout.flow.calculateNextFrame(forWidth: width, height: height)
+
+            translate(fromComponent: component, in: componentFrame, dataSource: &dataSource)
+        }
+
+        // need to get height of child sections
+        let height = section.layout.flow.totalHeight
+        let width = frame.width
+
+        let layout = SectionLayout(width: width, height: height, parentOrigin: frame.origin)
+        section.layout = layout
     }
 
-    /// Calculates the layout for Rows in a Section. Updates each Row's RowLayout with new layout properties.
-    /// Also calculates total height of rows in section
-    /// - parameters:
-    ///     - rows: an array of rows in a section
-    ///     - width: width of current section
-    ///     - origin: origin of current section
-    /// - returns:
-    ///     - row calcuation including rows and total height
-    func calculateRowData(from rows: [Row], in width: CGFloat, at origin: CGPoint) -> RowCalculation  {
-        let rowFlowLayout = ComponentFlowLayout(parentFrame: CGRect(x: origin.x, y: origin.y, width: width, height: 0))
-
-        let calculatedRows: [Row] = rows.map { row in
-            let rowHeight = row.layout.height
-            let rowWidth = row.layout.dimension.width(in: width)
-            let rowFrame = rowFlowLayout.calculateNextFrame(forWidth: rowWidth, height: rowHeight)
-            let layout = RowLayout(layout: row.layout, frame: rowFrame)
-            return Row(row: row, layout: layout)
+    func translate(fromViewComponent viewComponent: ComponentReducing, in frame: CGRect, dataSource: inout TranslatorDataSource) {
+        guard let section = dataSource.current, let view = viewComponent.reduce() else {
+            return
         }
 
-        return RowCalculation(rows: calculatedRows, height: rowFlowLayout.totalHeight)
+        let rowIndex = section.rows.count
+        let row = Row(view: view,
+                      props: viewComponent.props,
+                      indexPath: IndexPath(row: rowIndex, section: section.index),
+                      layout: RowLayout(frame: frame))
+
+        section.rows.insert(row, at: rowIndex)
     }
 }
+
 

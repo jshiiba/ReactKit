@@ -11,7 +11,7 @@ import UIKit
 ///
 /// A component that wraps a UIKit element
 ///
-final class UIKitComponent<V: UIView>: Component {
+final class UIKitComponent<V: UIView>: ComponentReducing {
     typealias Configuration = (V) -> ()
     let view: V
     let props: PropType
@@ -23,9 +23,7 @@ final class UIKitComponent<V: UIView>: Component {
         configure(self.view)
     }
 
-    func render() -> BaseComponent? {
+    func reduce() -> UIView? {
         return self.view
     }
 }
-
-extension UIKitComponent: SingleViewComponent {}

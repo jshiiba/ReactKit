@@ -12,9 +12,14 @@ import UIKit
 /// An object that be rendered into a View. Components can be composed together
 /// to create a View hierarchy.
 ///
-protocol Component: BaseComponent {
+protocol Component {
     var props: PropType { get }
-    func render() -> BaseComponent?
+}
+
+extension Component {
+    var type: ComponentType {
+        return ComponentType(component: self)
+    }
 }
 
 ///

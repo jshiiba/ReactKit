@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Label: Component, ComponentLike {
+struct Label: ComponentReducing, ComponentLike {
     typealias ComponentPropType = LabelPropType
 
     let props: PropType
@@ -16,10 +16,11 @@ struct Label: Component, ComponentLike {
         self.props = props
     }
 
-    func render() -> BaseComponent? {
+    func reduce() -> UIView? {
         let view = UIKitComponent<UILabel>(props: _props) { label in
             label.text = _props.title
             label.textAlignment = _props.textAlignment
+            label.backgroundColor = _props.backgroundColor
             label.sizeToFit()
         }.view
 
@@ -27,33 +28,29 @@ struct Label: Component, ComponentLike {
     }
 }
 
-extension Label: SingleViewComponent {}
-
 // MARK: - Label Props
 
 protocol LabelPropType: PropType {
     var title: String { get }
     var textAlignment: NSTextAlignment { get }
+    var backgroundColor: UIColor { get }
 }
 
 struct LabelProps: LabelPropType {
     let layout: Layout?
     let title: String
     let textAlignment: NSTextAlignment
+    let backgroundColor: UIColor
 
-    init(title: String, textAlignment: NSTextAlignment = .left, layout: Layout? = nil) {
+    init(title: String, textAlignment: NSTextAlignment = .left, backgroundColor: UIColor = .white, layout: Layout? = nil) {
         self.title = title
         self.textAlignment = textAlignment
+        self.backgroundColor = backgroundColor
         self.layout = layout
     }
 }
 
 // MARK: - Equatable
-
-// might not be needed
-func ==(lhs: LabelPropType, rhs: LabelPropType) -> Bool {
-    return lhs.isEqualTo(rhs)
-}
 
 extension LabelProps: Equatable {
     static func ==(lhs: LabelProps, rhs: LabelProps) -> Bool {

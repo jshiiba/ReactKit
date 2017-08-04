@@ -14,7 +14,8 @@ import UIKit
 class Section {
     let index: Int
     var rows: [Row]
-    let layout: SectionLayout
+    var layout: SectionLayout
+
     // could store child section indexes
 
     fileprivate var cachedAttributes: [UICollectionViewLayoutAttributes]?
@@ -52,8 +53,10 @@ class Section {
 
 struct SectionLayout {
     let frame: CGRect
+    let flow: ComponentFlowLayout
 
     init(width: CGFloat, height: CGFloat, parentOrigin: CGPoint) {
         self.frame = CGRect(origin: parentOrigin, size: CGSize(width: width, height: height))
+        self.flow = ComponentFlowLayout(parentFrame: self.frame)
     }
 }

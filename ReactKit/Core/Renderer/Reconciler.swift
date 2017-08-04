@@ -33,7 +33,7 @@ final class Reconciler {
                 let cachedProps = cachedSections[sectionIndex].rows[rowIndex].props
 
                 if currentProps != cachedProps {
-                    updatedIndexPaths.append(IndexPath(row: row.index, section: row.section))
+                    updatedIndexPaths.append(row.indexPath)
                 }
             }
         }
