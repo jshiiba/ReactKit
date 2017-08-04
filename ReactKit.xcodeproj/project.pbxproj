@@ -19,7 +19,6 @@
 		D1A43E8F1F347E930029A912 /* TranslatorMultipleContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A43E8E1F347E930029A912 /* TranslatorMultipleContainerTests.swift */; };
 		D1A43E911F34935A0029A912 /* ComponentVirtualDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A43E901F34935A0029A912 /* ComponentVirtualDataSource.swift */; };
 		D1A43E991F349B400029A912 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A43E981F349B320029A912 /* Container.swift */; };
-		D1A43E9A1F349B500029A912 /* ComponentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A43E921F349AF50029A912 /* ComponentType.swift */; };
 		D1A43E9B1F349B550029A912 /* PropType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A43E961F349AF50029A912 /* PropType.swift */; };
 		D1A43E9C1F349B5A0029A912 /* ComponentContaining.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A43E931F349AF50029A912 /* ComponentContaining.swift */; };
 		D1A43E9D1F349B5E0029A912 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A43E951F349AF50029A912 /* Component.swift */; };
@@ -79,7 +78,6 @@
 		D19A41FB1F33D66500B46FC8 /* UIKitComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIKitComponent.swift; path = Core/Components/UIKitComponent.swift; sourceTree = "<group>"; };
 		D1A43E8E1F347E930029A912 /* TranslatorMultipleContainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatorMultipleContainerTests.swift; sourceTree = "<group>"; };
 		D1A43E901F34935A0029A912 /* ComponentVirtualDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComponentVirtualDataSource.swift; path = Core/Renderer/ComponentVirtualDataSource.swift; sourceTree = "<group>"; };
-		D1A43E921F349AF50029A912 /* ComponentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComponentType.swift; path = Core/Types/ComponentType.swift; sourceTree = "<group>"; };
 		D1A43E931F349AF50029A912 /* ComponentContaining.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComponentContaining.swift; path = Core/Types/ComponentContaining.swift; sourceTree = "<group>"; };
 		D1A43E941F349AF50029A912 /* CompositeComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CompositeComponent.swift; path = Core/Types/CompositeComponent.swift; sourceTree = "<group>"; };
 		D1A43E951F349AF50029A912 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Component.swift; path = Core/Types/Component.swift; sourceTree = "<group>"; };
@@ -270,7 +268,6 @@
 			isa = PBXGroup;
 			children = (
 				D1A43E961F349AF50029A912 /* PropType.swift */,
-				D1A43E921F349AF50029A912 /* ComponentType.swift */,
 				D1A43E951F349AF50029A912 /* Component.swift */,
 				D1A43E931F349AF50029A912 /* ComponentContaining.swift */,
 				D1A43E971F349AF50029A912 /* ComponentReducing.swift */,
@@ -420,7 +417,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1A43E9A1F349B500029A912 /* ComponentType.swift in Sources */,
 				D1A43E9D1F349B5E0029A912 /* Component.swift in Sources */,
 				D1F7D7231F2F3EB3003AAE5A /* ReduxUtils.swift in Sources */,
 				D1A43E9C1F349B5A0029A912 /* ComponentContaining.swift in Sources */,
