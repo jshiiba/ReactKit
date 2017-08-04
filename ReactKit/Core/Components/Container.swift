@@ -11,7 +11,7 @@ import UIKit
 protocol ContainerPropType: PropType {}
 
 struct ContainerProps: ContainerPropType {
-    let layout: Layout
+    let layout: Layout?
     init(layout: Layout) {
         self.layout = layout
     }

@@ -55,7 +55,7 @@ final class Translator {
             translate(fromComponent: component, in: componentFrame, to: &dataSource)
         }
 
-        // need to get height of child sections
+        // FIXME need to get height of child sections
         let height = section.layout.flow.totalHeight
         let width = frame.width
 

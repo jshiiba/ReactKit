@@ -87,11 +87,12 @@ class TranslatorTests: XCTestCase {
 
         XCTAssertEqual(dataSource.sections[0].layout.frame.height, 400)
     }
-    /* FIXME
+
 
     func testThatContainersCanLayoutChildContainers() {
         let container = MockComponents.containerWithContainers()
-        let dataSource.sections = translator.translate(fromComponent: container, in: CGRect(origin: .zero, size: CGSize(width: 300, height: 0)), at: 0)
+        var dataSource: VirtualDataSource = ComponentVirtualDataSource()
+        Translator.translate(fromComponent: container, in: parentWidth, to: &dataSource)
 
         XCTAssertEqual(dataSource.sections.count, 3)
         XCTAssertEqual(dataSource.sections[0].layout.frame, CGRect(x: 0, y: 0, width: 300, height: 100))
@@ -101,7 +102,8 @@ class TranslatorTests: XCTestCase {
 
     func testMultilevelContainers() {
         let container = MockComponents.multiLevelContainers()
-        let dataSource.sections = translator.translate(fromComponent: container, in: CGRect(origin: .zero, size: CGSize(width: 300, height: 0)), at: 0)
+        var dataSource: VirtualDataSource = ComponentVirtualDataSource()
+        Translator.translate(fromComponent: container, in: parentWidth, to: &dataSource)
 
         XCTAssertEqual(dataSource.sections.count, 4)
         XCTAssertEqual(dataSource.sections[0].layout.frame, CGRect(x: 0, y: 0, width: 300, height: 100))
@@ -113,15 +115,17 @@ class TranslatorTests: XCTestCase {
 
     // MARK: - Translate Non SingleComponentViews
 
-    /* TODO: fix when composite view are renderable
-    func testThatNonSingleComponentViewsAreRendered() {
-        let inputComponent = MockComponents.composite()
-        let dataSource.sections = translator.translate(fromComponent: inputComponent, in: CGRect(origin: .zero, size: CGSize(width: 300, height: 0)))
-        XCTAssertEqual(dataSource.sections[0].rows.count, 1)
-        XCTAssertEqual(dataSource.sections[0].rows[0].layout.frame, CGRect(x: 0, y: 0, width: 300, height: 100))
-        XCTAssertNotNil(dataSource.sections[0].rows[0].view)
-    }
-     */
+
+//    func testThatNonSingleComponentViewsAreRendered() {
+//        let inputComponent = MockComponents.composite()
+//        var dataSource: VirtualDataSource = ComponentVirtualDataSource()
+//        Translator.translate(fromComponent: inputComponent, in: parentWidth, to: &dataSource)
+//
+//        XCTAssertEqual(dataSource.sections[0].rows.count, 1)
+//        XCTAssertEqual(dataSource.sections[0].rows[0].layout.frame, CGRect(x: 0, y: 0, width: 300, height: 100))
+//        XCTAssertNotNil(dataSource.sections[0].rows[0].view)
+//    }
+     /*
 
     // MARK: - Translate Components to Rows
 

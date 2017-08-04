@@ -10,5 +10,4 @@ import Foundation
 
 protocol ComponentContaining: Component {
     var components: [Component] { get }
-    var props: PropType { get }
 }
