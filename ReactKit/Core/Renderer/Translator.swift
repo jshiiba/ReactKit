@@ -10,36 +10,38 @@ import UIKit
 
 ///
 /// Translates an external View representation (Containers and Component) into an internal
-/// virutal representation (Sections and Rows).
+/// virtual representation (Sections and Rows).
 ///
 final class Translator {
 
-    func translate(fromComponent component: Component, in frame: CGRect) -> [Section] {
+    /// Translates a Component View hierarchy to a VirtualDataSource represented as Sections with Rows
+    /// - parameters:
+    ///     - component: The root component in the tree
+    ///     - width: width of the parent frame
+    ///     - virtualDataSource: data structure that holds Sections
+    static func translate(fromComponent component: Component, in width: CGFloat, to virtualDataSource: inout VirtualDataSource) {
+
         /// translator builds from leaf components back to root, so height will be
         /// calculated last
-        let startingFrame = CGRect(x: 0, y: 0, width: frame.width, height: 0)
+        let startingFrame = CGRect(x: 0, y: 0, width: width, height: 0)
 
-        var dataSource: TranslatorDataSource = TranslatorSectionDataSource() // TODO: inject for easier unit testing
-
-        translate(fromComponent: component, in: startingFrame, dataSource: &dataSource)
-
-        return dataSource.sections
+        translate(fromComponent: component, in: startingFrame, to: &virtualDataSource)
     }
 
-    fileprivate func translate(fromComponent component: Component, in frame: CGRect, dataSource: inout TranslatorDataSource) {
+    fileprivate static func translate(fromComponent component: Component, in frame: CGRect, to dataSource: inout VirtualDataSource) {
         switch component.type {
         case .container(let container):
-            translate(fromContainer: container, in: frame, dataSource: &dataSource)
+            translate(fromContainer: container, in: frame, to: &dataSource)
         case .composite(let composite):
             if let renderedComposite = composite.render() {
-                translate(fromComponent: renderedComposite, in: frame, dataSource: &dataSource)
+                translate(fromComponent: renderedComposite, in: frame, to: &dataSource)
             }
         case .view(let view):
-            translate(fromViewComponent: view, in: frame, dataSource: &dataSource)
+            translate(fromViewComponent: view, in: frame, to: &dataSource)
         }
     }
 
-    fileprivate func translate(fromContainer container: ComponentContaining, in frame: CGRect, dataSource: inout TranslatorDataSource) {
+    fileprivate static func translate(fromContainer container: ComponentContaining, in frame: CGRect, to dataSource: inout VirtualDataSource) {
         let sectionLayout = SectionLayout(width: frame.width, height: frame.height, parentOrigin: frame.origin)
         let section = Section(index: dataSource.nextSectionIndex(), rows: [], layout: sectionLayout)
 
@@ -50,7 +52,7 @@ final class Translator {
             let height = component.props.layout?.height ?? frame.height
             let componentFrame = section.layout.flow.calculateNextFrame(forWidth: width, height: height)
 
-            translate(fromComponent: component, in: componentFrame, dataSource: &dataSource)
+            translate(fromComponent: component, in: componentFrame, to: &dataSource)
         }
 
         // need to get height of child sections
@@ -61,7 +63,7 @@ final class Translator {
         section.layout = layout
     }
 
-    func translate(fromViewComponent viewComponent: ComponentReducing, in frame: CGRect, dataSource: inout TranslatorDataSource) {
+    fileprivate static func translate(fromViewComponent viewComponent: ComponentReducing, in frame: CGRect, to dataSource: inout VirtualDataSource) {
         guard let section = dataSource.current, let view = viewComponent.reduce() else {
             return
         }
