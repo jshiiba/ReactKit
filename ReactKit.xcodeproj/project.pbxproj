@@ -20,6 +20,7 @@
 		D19A41FE1F33D6E200B46FC8 /* ComponentContaining.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19A41FD1F33D6E200B46FC8 /* ComponentContaining.swift */; };
 		D19A41FF1F33D74400B46FC8 /* UIKitComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19A41FB1F33D66500B46FC8 /* UIKitComponent.swift */; };
 		D1A43E8F1F347E930029A912 /* TranslatorMultipleContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A43E8E1F347E930029A912 /* TranslatorMultipleContainerTests.swift */; };
+		D1A43E911F34935A0029A912 /* TranslatorDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A43E901F34935A0029A912 /* TranslatorDataSource.swift */; };
 		D1BBA2851F2E0419003FE577 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2831F2E0412003FE577 /* main.swift */; };
 		D1BBA2861F2E0436003FE577 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA27F1F2E0412003FE577 /* AppDelegate.swift */; };
 		D1BBA2871F2E043C003FE577 /* TestingAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2841F2E0412003FE577 /* TestingAppDelegate.swift */; };
@@ -80,6 +81,7 @@
 		D19A41FB1F33D66500B46FC8 /* UIKitComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIKitComponent.swift; path = Core/Components/UIKitComponent.swift; sourceTree = "<group>"; };
 		D19A41FD1F33D6E200B46FC8 /* ComponentContaining.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComponentContaining.swift; path = Core/Models/ComponentContaining.swift; sourceTree = "<group>"; };
 		D1A43E8E1F347E930029A912 /* TranslatorMultipleContainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatorMultipleContainerTests.swift; sourceTree = "<group>"; };
+		D1A43E901F34935A0029A912 /* TranslatorDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TranslatorDataSource.swift; path = Core/Renderer/TranslatorDataSource.swift; sourceTree = "<group>"; };
 		D1BBA27F1F2E0412003FE577 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "Supporting FIles/AppDelegate.swift"; sourceTree = "<group>"; };
 		D1BBA2801F2E0412003FE577 /* Base.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Base.lproj; path = "Supporting FIles/Base.lproj"; sourceTree = "<group>"; };
 		D1BBA2811F2E0412003FE577 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Supporting FIles/Assets.xcassets"; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 				D1BBA2B81F2E0670003FE577 /* Reconciler.swift */,
 				D1BBA2B61F2E0670003FE577 /* Renderer.swift */,
 				D1BBA2B71F2E0670003FE577 /* Translator.swift */,
+				D1A43E901F34935A0029A912 /* TranslatorDataSource.swift */,
 				D1BBA2D21F2E087C003FE577 /* Models */,
 			);
 			name = Renderer;
@@ -443,6 +446,7 @@
 				D19A41F81F33D0D100B46FC8 /* CompositeComponent.swift in Sources */,
 				D1BBA2BE1F2E0689003FE577 /* Reconciler.swift in Sources */,
 				D19A41FE1F33D6E200B46FC8 /* ComponentContaining.swift in Sources */,
+				D1A43E911F34935A0029A912 /* TranslatorDataSource.swift in Sources */,
 				D152A14A1F2E63DC004C1B47 /* Button.swift in Sources */,
 				D152A1481F2E239E004C1B47 /* AppState.swift in Sources */,
 				D1BBA2851F2E0419003FE577 /* main.swift in Sources */,

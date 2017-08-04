@@ -14,49 +14,46 @@ import UIKit
 ///
 final class Translator {
 
-    typealias SectionTable = [Int: Section]
-    var table: SectionTable = [:]
-
     func translate(fromComponent component: Component, in frame: CGRect) -> [Section] {
         /// translator builds from leaf components back to root, so height will be
         /// calculated last
         let startingFrame = CGRect(x: 0, y: 0, width: frame.width, height: 0)
 
-        var table: SectionTable = [:]
+        var dataSource: TranslatorDataSource = TranslatorSectionDataSource() // TODO: inject for easier unit testing
 
-        translate(fromComponent: component, in: startingFrame, at: 0, table: &table)
+        translate(fromComponent: component, in: startingFrame, dataSource: &dataSource)
 
-        return table.map { $0.value }
+        return dataSource.sections
     }
 
-    fileprivate func translate(fromComponent component: Component, in frame: CGRect, at sectionIndex: Int, table: inout SectionTable) {
+    fileprivate func translate(fromComponent component: Component, in frame: CGRect, dataSource: inout TranslatorDataSource) {
         switch component.type {
         case .container(let container):
-            let index = table.isEmpty ? 0 : sectionIndex + 1
-            translate(fromContainer: container, in: frame, at: index, table: &table)
+            translate(fromContainer: container, in: frame, dataSource: &dataSource)
         case .composite(let composite):
             if let renderedComposite = composite.render() {
-                translate(fromComponent: renderedComposite, in: frame, at: sectionIndex, table: &table)
+                translate(fromComponent: renderedComposite, in: frame, dataSource: &dataSource)
             }
         case .view(let view):
-            translate(fromViewComponent: view, in: frame, at: sectionIndex, table: &table)
+            translate(fromViewComponent: view, in: frame, dataSource: &dataSource)
         }
     }
 
-    fileprivate func translate(fromContainer container: ComponentContaining, in frame: CGRect, at sectionIndex: Int, table: inout SectionTable) {
+    fileprivate func translate(fromContainer container: ComponentContaining, in frame: CGRect, dataSource: inout TranslatorDataSource) {
         let sectionLayout = SectionLayout(width: frame.width, height: frame.height, parentOrigin: frame.origin)
-        let section = Section(index: sectionIndex, rows: [], layout: sectionLayout)
+        let section = Section(index: dataSource.nextSectionIndex(), rows: [], layout: sectionLayout)
 
-        table[sectionIndex] = section
+        dataSource.insert(section, at: section.index)
 
         container.components.forEach { component in
             let width = component.props.layout?.dimension.width(in: frame.width) ?? frame.width
             let height = component.props.layout?.height ?? frame.height
             let componentFrame = section.layout.flow.calculateNextFrame(forWidth: width, height: height)
 
-            translate(fromComponent: component, in: componentFrame, at: section.index, table: &table)
+            translate(fromComponent: component, in: componentFrame, dataSource: &dataSource)
         }
 
+        // need to get height of child sections
         let height = section.layout.flow.totalHeight
         let width = frame.width
 
@@ -64,15 +61,15 @@ final class Translator {
         section.layout = layout
     }
 
-    func translate(fromViewComponent viewComponent: ComponentReducing, in frame: CGRect, at sectionIndex: Int, table: inout SectionTable) {
-        guard let section = table[sectionIndex], let view = viewComponent.reduce() else {
+    func translate(fromViewComponent viewComponent: ComponentReducing, in frame: CGRect, dataSource: inout TranslatorDataSource) {
+        guard let section = dataSource.current, let view = viewComponent.reduce() else {
             return
         }
 
         let rowIndex = section.rows.count
         let row = Row(view: view,
                       props: viewComponent.props,
-                      indexPath: IndexPath(row: rowIndex, section: sectionIndex),
+                      indexPath: IndexPath(row: rowIndex, section: section.index),
                       layout: RowLayout(frame: frame))
 
         section.rows.insert(row, at: rowIndex)

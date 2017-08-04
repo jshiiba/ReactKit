@@ -28,10 +28,6 @@ extension PropType {
 
 // MARK: - Equatable
 
-func ==(lhs: PropType, rhs: PropType) -> Bool {
-    return lhs.isEqualTo(rhs)
-}
-
 func !=(lhs: PropType, rhs: PropType) -> Bool {
     return !lhs.isEqualTo(rhs)
 }
