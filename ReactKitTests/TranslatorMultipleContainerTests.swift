@@ -56,11 +56,11 @@ class TranslatorMultipleContainerTests: TranslatorTests {
         XCTAssertEqual(dataSource.sections[2].rows[2].layout.frame, CGRect(x: 150, y: 100, width: 75, height: 100))
     }
 
-    func testThatFlowLayoutWorksForWrappingContainers() {
-        let container = MockComponents.flowWrappingContainers()
-        var dataSource: VirtualDataSource = ComponentVirtualDataSource()
-        Translator.translate(fromComponent: container, in: parentWidth, to: &dataSource)
-
-        XCTAssertEqual(dataSource.sections[3].layout.frame, CGRect(x: 0, y: 100, width: 150, height: 100))
-    }
+//    func testThatFlowLayoutWorksForWrappingContainers() {
+//        let container = MockComponents.flowWrappingContainers()
+//        var dataSource: VirtualDataSource = ComponentVirtualDataSource()
+//        Translator.translate(fromComponent: container, in: parentWidth, to: &dataSource)
+//
+//        XCTAssertEqual(dataSource.sections[3].layout.frame, CGRect(x: 0, y: 100, width: 150, height: 100))
+//    }
 }

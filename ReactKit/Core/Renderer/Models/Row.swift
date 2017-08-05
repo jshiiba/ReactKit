@@ -32,24 +32,9 @@ struct Row: ComponentRepresentable {
 }
 
 struct RowLayout: ComponentRepresentableLayout {
+    let frame: CGRect
 
-    var frame: CGRect {
-        return CGRect(origin: origin, size: rowFrame.size)
-    }
-
-    var origin: CGPoint {
-        if let sectionFrame = sectionFrame {
-            return CGPoint(x: rowFrame.origin.x + sectionFrame.origin.x, y: rowFrame.origin.y + sectionFrame.origin.y)
-        } else {
-            return rowFrame.origin
-        }
-    }
-
-    private let rowFrame: CGRect
-    private let sectionFrame: CGRect?
-
-    init(frame: CGRect, sectionFrame: CGRect?) {
-        self.rowFrame = frame
-        self.sectionFrame = sectionFrame
+    init(frame: CGRect) {
+        self.frame = frame
     }
 }

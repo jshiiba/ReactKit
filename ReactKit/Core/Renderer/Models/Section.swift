@@ -49,7 +49,7 @@ class Section: ComponentRepresentable {
         }
     }
 
-    func layout() {
+    func invalidateLayout() {
 
     }
 

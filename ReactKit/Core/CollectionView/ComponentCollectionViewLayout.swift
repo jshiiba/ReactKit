@@ -20,7 +20,15 @@ final class ComponentCollectionViewLayout: UICollectionViewLayout {
         return sections.first?.layout.frame.size ?? .zero
     }
 
+    /// called for every section + row
+    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        return super.layoutAttributesForItem(at: indexPath)
+    }
+
+    /// called for current rect
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        _ = super.layoutAttributesForElements(in: rect)
+
         var attributes: [UICollectionViewLayoutAttributes] = []
 
         sections.forEach { section in
