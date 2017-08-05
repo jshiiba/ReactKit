@@ -25,39 +25,39 @@ final class Translator {
         /// calculated last
         let startingFrame = CGRect(x: 0, y: 0, width: width, height: 0)
 
-        translate(fromComponent: component, in: startingFrame, to: &virtualDataSource)
+        translate(fromComponent: component, in: startingFrame, to: &virtualDataSource, parent: nil)
     }
 
-    fileprivate static func translate(fromComponent component: Component, in frame: CGRect, to dataSource: inout VirtualDataSource) {
+    fileprivate static func translate(fromComponent component: Component, in frame: CGRect, to dataSource: inout VirtualDataSource, parent: Section?) {
         switch component.type {
         case .container(let container):
-            translate(fromContainer: container, in: frame, to: &dataSource)
+            translate(fromContainer: container, in: frame, to: &dataSource, parent: parent)
         case .composite(let composite):
             if let renderedComposite = composite.render() {
-                translate(fromComponent: renderedComposite, in: frame, to: &dataSource)
+                translate(fromComponent: renderedComposite, in: frame, to: &dataSource, parent: parent)
             }
         case .view(let view):
             translate(fromViewComponent: view, in: frame, to: &dataSource)
         }
     }
 
-    fileprivate static func translate(fromContainer container: ComponentContaining, in frame: CGRect, to dataSource: inout VirtualDataSource) {
+    fileprivate static func translate(fromContainer container: ComponentContaining, in frame: CGRect, to dataSource: inout VirtualDataSource, parent: Section?) {
+
         let sectionLayout = SectionLayout(frame: CGRect(origin: frame.origin, size: CGSize(width: frame.width, height: frame.height)))
-        let section = Section(index: dataSource.nextSectionIndex(), rows: [], layout: sectionLayout)
+        let section = Section(index: dataSource.nextSectionIndex(), layout: sectionLayout)
 
         dataSource.insert(section, at: section.index)
+        parent?.children.append(section)
 
         container.components.forEach { component in
             let width = component.props.layout?.dimension.width(in: frame.width) ?? frame.width
             let height = component.props.layout?.height ?? frame.height
             let componentFrame = section.layout.flow.calculateNextFrame(forWidth: width, height: height)
 
-            translate(fromComponent: component, in: componentFrame, to: &dataSource)
+            translate(fromComponent: component, in: componentFrame, to: &dataSource, parent: section)
         }
 
-        // FIXME need to get height of child sections
-        let height = section.layout.flow.totalHeight
-        section.layout.updateHeight(height)
+        section.calculateHeight()
     }
 
     fileprivate static func translate(fromViewComponent viewComponent: ComponentReducing, in frame: CGRect, to dataSource: inout VirtualDataSource) {

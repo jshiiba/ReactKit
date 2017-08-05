@@ -24,6 +24,7 @@
 		D1A43E9D1F349B5E0029A912 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A43E951F349AF50029A912 /* Component.swift */; };
 		D1A43E9E1F349B610029A912 /* ComponentReducing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A43E971F349AF50029A912 /* ComponentReducing.swift */; };
 		D1A43E9F1F349B650029A912 /* CompositeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A43E941F349AF50029A912 /* CompositeComponent.swift */; };
+		D1A43EA11F35EA880029A912 /* SectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A43EA01F35EA880029A912 /* SectionTests.swift */; };
 		D1BBA2851F2E0419003FE577 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2831F2E0412003FE577 /* main.swift */; };
 		D1BBA2861F2E0436003FE577 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA27F1F2E0412003FE577 /* AppDelegate.swift */; };
 		D1BBA2871F2E043C003FE577 /* TestingAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2841F2E0412003FE577 /* TestingAppDelegate.swift */; };
@@ -84,6 +85,7 @@
 		D1A43E961F349AF50029A912 /* PropType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PropType.swift; path = Core/Types/PropType.swift; sourceTree = "<group>"; };
 		D1A43E971F349AF50029A912 /* ComponentReducing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComponentReducing.swift; path = Core/Types/ComponentReducing.swift; sourceTree = "<group>"; };
 		D1A43E981F349B320029A912 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Container.swift; path = Core/Components/Container.swift; sourceTree = "<group>"; };
+		D1A43EA01F35EA880029A912 /* SectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTests.swift; sourceTree = "<group>"; };
 		D1BBA27F1F2E0412003FE577 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "Supporting FIles/AppDelegate.swift"; sourceTree = "<group>"; };
 		D1BBA2801F2E0412003FE577 /* Base.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Base.lproj; path = "Supporting FIles/Base.lproj"; sourceTree = "<group>"; };
 		D1BBA2811F2E0412003FE577 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Supporting FIles/Assets.xcassets"; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				D1F7D7271F309443003AAE5A /* FlowLayoutTests.swift */,
 				D121D3091F2CF31800D9B144 /* TranslatorTests.swift */,
 				D1A43E8E1F347E930029A912 /* TranslatorMultipleContainerTests.swift */,
+				D1A43EA01F35EA880029A912 /* SectionTests.swift */,
 				D121D3081F2CF31800D9B144 /* Mocks.swift */,
 				D151039E1F0D1AC800213882 /* Info.plist */,
 			);
@@ -466,6 +469,7 @@
 				D1A43E8F1F347E930029A912 /* TranslatorMultipleContainerTests.swift in Sources */,
 				D121D30B1F2CF31E00D9B144 /* Mocks.swift in Sources */,
 				D1F7D7281F309443003AAE5A /* FlowLayoutTests.swift in Sources */,
+				D1A43EA11F35EA880029A912 /* SectionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

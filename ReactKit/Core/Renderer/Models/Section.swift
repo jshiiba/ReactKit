@@ -13,17 +13,25 @@ import UIKit
 ///
 class Section {
     let index: Int
-    var rows: [Row]
+    var rows: [Row] = []
     var layout: SectionLayout
-
-    // could store child section indexes
+    var children: [Section] = []
 
     fileprivate var cachedAttributes: [UICollectionViewLayoutAttributes]?
 
-    init(index: Int, rows: [Row], layout: SectionLayout) {
+    init(index: Int, layout: SectionLayout) {
         self.index = index
-        self.rows = rows
         self.layout = layout
+    }
+
+    func calculateHeight() {
+        layout.updateHeight(totalHeight())
+    }
+
+    func totalHeight() -> CGFloat {
+        return layout.flow.totalHeight + children.reduce(0) { (height, child) in
+            return layout.flow.maxYFor(child.layout.frame, currentMaxY: height)
+        }
     }
 
     func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
