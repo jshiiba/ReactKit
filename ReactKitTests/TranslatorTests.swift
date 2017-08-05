@@ -13,23 +13,21 @@ class TranslatorTests: XCTestCase {
 
     func testRootIsTranslatedToSection() {
         let container = Container(components: [], props: MockComponents.containerProps)
-        var dataSource: VirtualDataSource = ComponentVirtualDataSource()
-        Translator.translate(fromComponent: container, to: &dataSource)
-        XCTAssertEqual(dataSource.sections.count, 1)
-        XCTAssertEqual(dataSource.sections[0].index, 0)
-        XCTAssertEqual(dataSource.sections[0].rows.count, 0)
+        let sections = Translator.translate(fromComponent: container)
+        XCTAssertEqual(sections.count, 1)
+        XCTAssertEqual(sections[0].index, 0)
+        XCTAssertEqual(sections[0].rows.count, 0)
     }
 
     func testWhenContainerHasLabelComponent() {
         let container = MockComponents.containerWithLabel(with: .fill, labelHeight: 100)
-        var dataSource: VirtualDataSource = ComponentVirtualDataSource()
-        Translator.translate(fromComponent: container, to: &dataSource)
+        let sections = Translator.translate(fromComponent: container)
 
-        XCTAssertEqual(dataSource.sections.count, 1)
-        XCTAssertEqual(dataSource.sections[0].index, 0)
-        XCTAssertEqual(dataSource.sections[0].rows.count, 1)
-        XCTAssertEqual(dataSource.sections[0].rows[0].indexPath.row, 0)
-        XCTAssertEqual(dataSource.sections[0].rows[0].indexPath.section, 0)
+        XCTAssertEqual(sections.count, 1)
+        XCTAssertEqual(sections[0].index, 0)
+        XCTAssertEqual(sections[0].rows.count, 1)
+        XCTAssertEqual(sections[0].rows[0].indexPath.row, 0)
+        XCTAssertEqual(sections[0].rows[0].indexPath.section, 0)
     }
 
 

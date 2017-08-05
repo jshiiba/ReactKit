@@ -28,8 +28,7 @@ final class Renderer {
     let cacher: Cacher
     let layout: ComponentCollectionViewLayout
 
-    /// private vars
-    fileprivate var dataSource: VirtualDataSource!
+    fileprivate var sections: [Section] = []
 
     init(reconciler: Reconciler) {
         self.reconciler = reconciler
@@ -46,17 +45,14 @@ final class Renderer {
     ///     - indexPaths: which indexPaths to update in the collection view
     func render(_ rootComponent: Component, in frame: CGRect) -> [IndexPath] {
 
-        var virtualDataSource: VirtualDataSource = ComponentVirtualDataSource()
+        sections = Translator.translate(fromComponent: rootComponent)
 
-        Translator.translate(fromComponent: rootComponent, to: &virtualDataSource)
-        dataSource = virtualDataSource
+        // TODO recalculate layout
+        layout.sections = sections
 
-        // recalculate layout
-        layout.sections = virtualDataSource.sections
+        let cachedSections = cacher.cache(sections)
 
-        let cachedSections = cacher.cache(virtualDataSource.sections)
-
-        return reconciler.reconcile(virtualDataSource.sections, cachedSections: cachedSections)
+        return reconciler.reconcile(sections, cachedSections: cachedSections)
     }
 }
 
@@ -64,22 +60,22 @@ final class Renderer {
 
 extension Renderer: ComponentDataSource {
     var numberOfSections: Int {
-        return dataSource.sections.count
+        return sections.count
     }
 
     func numberOfItems(in section: Int) -> Int {
-        guard section >= 0 && section < dataSource.sections.count else {
+        guard section >= 0 && section < sections.count else {
             return 0
         }
-        return dataSource.sections[section].rows.count
+        return sections[section].rows.count
     }
 
     func component(at indexPath: IndexPath) -> UIView? {
-        guard indexPath.section >= 0 && indexPath.section < dataSource.sections.count &&
-              indexPath.row >= 0 && indexPath.row < dataSource.sections[indexPath.section].rows.count else {
+        guard indexPath.section >= 0 && indexPath.section < sections.count &&
+              indexPath.row >= 0 && indexPath.row < sections[indexPath.section].rows.count else {
                 return nil
         }
 
-        return dataSource.sections[indexPath.section].rows[indexPath.row].view
+        return sections[indexPath.section].rows[indexPath.row].view
     }
 }

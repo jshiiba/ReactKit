@@ -18,8 +18,12 @@ final class Translator {
     /// - parameters:
     ///     - component: The root component in the tree
     ///     - virtualDataSource: data structure that holds Sections
-    static func translate(fromComponent component: Component, to virtualDataSource: inout VirtualDataSource) {
-        translate(fromComponent: component, to: &virtualDataSource, parent: nil)
+    static func translate(fromComponent component: Component) -> [Section] {
+
+        var dataSource: VirtualDataSource = ComponentVirtualDataSource()
+        translate(fromComponent: component, to: &dataSource, parent: nil)
+
+        return dataSource.sections
     }
 
     fileprivate static func translate(fromComponent component: Component, to dataSource: inout VirtualDataSource, parent: Section?) {
