@@ -12,7 +12,7 @@ import XCTest
 class TranslatorMultipleContainerTests: TranslatorTests {
     
     // MARK: - Translate Container with Containers
-
+    /*
     func testThatContainersWithChildContainersHaveIndex() {
         let container = MockComponents.containerWithContainers()
         var dataSource: VirtualDataSource = ComponentVirtualDataSource()
@@ -55,6 +55,7 @@ class TranslatorMultipleContainerTests: TranslatorTests {
         XCTAssertEqual(dataSource.sections[2].rows[1].layout.frame, CGRect(x: 225, y: 0, width: 75, height: 100))
         XCTAssertEqual(dataSource.sections[2].rows[2].layout.frame, CGRect(x: 150, y: 100, width: 75, height: 100))
     }
+    */
 
 //    func testThatFlowLayoutWorksForWrappingContainers() {
 //        let container = MockComponents.flowWrappingContainers()

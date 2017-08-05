@@ -37,7 +37,6 @@ final class Renderer {
         self.layout = ComponentCollectionViewLayout()
     }
 
-
     /// Renders the Component Tree into Sections.
     /// Then determines the indexPaths that need to be updated through reconciliation
     /// - parameters:
@@ -49,9 +48,10 @@ final class Renderer {
 
         var virtualDataSource: VirtualDataSource = ComponentVirtualDataSource()
 
-        Translator.translate(fromComponent: rootComponent, in: frame.width, to: &virtualDataSource)
+        Translator.translate(fromComponent: rootComponent, to: &virtualDataSource)
         dataSource = virtualDataSource
 
+        // recalculate layout
         layout.sections = virtualDataSource.sections
 
         let cachedSections = cacher.cache(virtualDataSource.sections)

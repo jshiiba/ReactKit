@@ -17,7 +17,7 @@ final class ComponentCollectionViewLayout: UICollectionViewLayout {
 
     /// First Section will contain the height of its sub sections
     override var collectionViewContentSize: CGSize {
-        return sections.first?.layout.frame.size ?? .zero
+        return sections.first?.layout?.frame.size ?? .zero
     }
 
     /// called for every section + row
