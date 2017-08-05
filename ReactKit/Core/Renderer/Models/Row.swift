@@ -11,10 +11,12 @@ import UIKit
 ///
 /// Represents a Row in an IndexPath that contains a UIView
 ///
-struct Row {
+struct Row: ComponentRepresentable {
+    typealias LayoutType = RowLayout
+
     let props: PropType
     let indexPath: IndexPath
-    let layout: RowLayout
+    let layout: LayoutType
     let view: UIView?
 
     init(row: Row, layout: RowLayout) {
@@ -29,11 +31,25 @@ struct Row {
     }
 }
 
-struct RowLayout {
+struct RowLayout: ComponentRepresentableLayout {
 
-    let frame: CGRect
+    var frame: CGRect {
+        return CGRect(origin: origin, size: rowFrame.size)
+    }
 
-    init(frame: CGRect) {
-        self.frame = frame
+    var origin: CGPoint {
+        if let sectionFrame = sectionFrame {
+            return CGPoint(x: rowFrame.origin.x + sectionFrame.origin.x, y: rowFrame.origin.y + sectionFrame.origin.y)
+        } else {
+            return rowFrame.origin
+        }
+    }
+
+    private let rowFrame: CGRect
+    private let sectionFrame: CGRect?
+
+    init(frame: CGRect, sectionFrame: CGRect?) {
+        self.rowFrame = frame
+        self.sectionFrame = sectionFrame
     }
 }

@@ -11,6 +11,19 @@ import XCTest
 
 class SectionTests: XCTestCase {
     let parentFrame = CGRect(x: 0, y: 0, width: 100, height: 500)
+    let mockLayout = SectionLayout(frame: .zero)
+
+    func testThatSectionIsLeafWhenNoChildren() {
+        let section = Section(index: 0, layout: mockLayout)
+        XCTAssertTrue(section.isLeaf)
+    }
+
+    func testThatSectionIsNotLeafWhenChildren() {
+        let section = Section(index: 0, layout: mockLayout)
+        section.children = [Section(index: 1, layout: mockLayout)]
+
+        XCTAssertFalse(section.isLeaf)
+    }
 
     func testThatSectionCalculatesHeightOfChildSectionsInline() {
         let children = [

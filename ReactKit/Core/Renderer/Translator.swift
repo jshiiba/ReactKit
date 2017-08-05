@@ -37,7 +37,7 @@ final class Translator {
                 translate(fromComponent: renderedComposite, in: frame, to: &dataSource, parent: parent)
             }
         case .view(let view):
-            translate(fromViewComponent: view, in: frame, to: &dataSource)
+            translate(fromViewComponent: view, in: frame, to: &dataSource, parent: parent)
         }
     }
 
@@ -60,7 +60,7 @@ final class Translator {
         section.calculateHeight()
     }
 
-    fileprivate static func translate(fromViewComponent viewComponent: ComponentReducing, in frame: CGRect, to dataSource: inout VirtualDataSource) {
+    fileprivate static func translate(fromViewComponent viewComponent: ComponentReducing, in frame: CGRect, to dataSource: inout VirtualDataSource, parent: Section?) {
         guard let section = dataSource.current, let view = viewComponent.reduce() else {
             return
         }
@@ -69,7 +69,7 @@ final class Translator {
         let row = Row(view: view,
                       props: viewComponent.props,
                       indexPath: IndexPath(row: rowIndex, section: section.index),
-                      layout: RowLayout(frame: frame))
+                      layout: RowLayout(frame: frame, sectionFrame: parent?.layout.frame))
 
         section.rows.insert(row, at: rowIndex)
     }

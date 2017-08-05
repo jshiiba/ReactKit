@@ -8,16 +8,31 @@
 
 import UIKit
 
+protocol ComponentRepresentableLayout {
+    var frame: CGRect { get }
+}
+
+protocol ComponentRepresentable {
+    associatedtype LayoutType: ComponentRepresentableLayout
+    var layout: LayoutType { get }
+}
+
 ///
 /// Represents a Section in an IndexPath containing a row of Components
 ///
-class Section {
+class Section: ComponentRepresentable {
+    typealias LayoutType = SectionLayout
+
     let index: Int
+    
     var rows: [Row] = []
-    var layout: SectionLayout
     var children: [Section] = []
 
-    fileprivate var cachedAttributes: [UICollectionViewLayoutAttributes]?
+    var layout: LayoutType
+
+    var isLeaf: Bool {
+        return children.isEmpty
+    }
 
     init(index: Int, layout: SectionLayout) {
         self.index = index
@@ -34,13 +49,17 @@ class Section {
         }
     }
 
+    func layout() {
+
+    }
+
+    func layoutRows() {
+
+    }
+
     func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         guard rect.intersects(layout.frame) else {
             return nil
-        }
-
-        if let cachedAttributes = cachedAttributes {
-            return cachedAttributes
         }
 
         var attributes: [UICollectionViewLayoutAttributes] = []
@@ -51,15 +70,11 @@ class Section {
             attributes.append(newAttribute)
         }
 
-        if !attributes.isEmpty {
-            cachedAttributes = attributes
-        }
-
         return attributes
     }
 }
 
-struct SectionLayout {
+struct SectionLayout: ComponentRepresentableLayout {
     var frame: CGRect
     let flow: ComponentFlowLayout
 
