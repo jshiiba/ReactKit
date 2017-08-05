@@ -49,12 +49,20 @@ class Section: ComponentRepresentable {
         }
     }
 
-    func invalidateLayout() {
-
+    func invalidateLayout(for newFrame: CGRect) {
+        if isLeaf {
+            layout = SectionLayout(frame: newFrame)
+            rows = recalculateLayout(of: rows, layout.flow.calculateNextFrame)
+        }
     }
 
-    func layoutRows() {
-
+    func recalculateLayout(of rows: [Row], _ calculateNextFrame: (CGFloat, CGFloat) -> (CGRect)) -> [Row] {
+        return rows.map { row in
+            let rowWidth = row.layout.frame.width
+            let rowHeight = row.layout.frame.height
+            let rowFrame = calculateNextFrame(rowWidth, rowHeight)
+            return Row(row: row, layout: RowLayout(frame: rowFrame))
+        }
     }
 
     func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {

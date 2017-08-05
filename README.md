@@ -31,6 +31,18 @@ Similiar to React, ReactKit uses a **Renderer** to take Components as input, rec
 
 The above algorithm is very naive right now and will need to be optimized for speed and additional functionality.
 
+### New Algorithm
+1. Translate Component Tree to VirtualDataSource containing Sections and Rows - O(*n*)
+2. Calculate Layout: - O(*n<sup>2</sup>*)
+
+	```
+	Start at Root Section
+		For each child
+			Recurse down to leaf
+		For each Row
+			recalculate row's layout
+	```
+
 ## Redux
 // TODO: (Check out the ReduxExample for now)
 
