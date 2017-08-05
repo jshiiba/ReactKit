@@ -33,6 +33,12 @@ class FlowLayoutTests: XCTestCase {
         layout.parentFrame = frame
     }
 
+    func testThatFlowLayoutGetsInitializedWithParentOrigin() {
+        layout = ComponentFlowLayout(parentFrame: CGRect(x: 100, y: 100, width: 100, height: 100))
+        XCTAssertEqual(layout.startX, 100)
+        XCTAssertEqual(layout.maxY, 100)
+    }
+
     // MARK: Calculate Flow Origin
 
     func testThatOriginIsInlineStartingAtZeroOrigin() {
@@ -84,6 +90,14 @@ class FlowLayoutTests: XCTestCase {
 
         XCTAssertEqual(output.origin.x, 0)
         XCTAssertEqual(output.origin.y, 100)
+    }
+
+    func testOriginInParentSection() {
+        let parentFrame = CGRect(x: 100, y: 0, width: 100, height: 200)
+        let previousFrame = CGRect(x: 150, y: 0, width: 50, height: 100)
+        let output = layout.calculateCurrentXOrigin(fromPreviousFrame: previousFrame, in: parentFrame)
+
+        XCTAssertEqual(output, 150)
     }
 
     // MARK: - Max Y
