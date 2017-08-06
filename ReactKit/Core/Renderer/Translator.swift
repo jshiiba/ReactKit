@@ -22,32 +22,33 @@ final class Translator {
 
         var dataSource: VirtualDataSource = ComponentVirtualDataSource()
 
-        translate(fromComponent: component, to: &dataSource)
+        translate(fromComponent: component, to: &dataSource, parent: nil)
 
         return dataSource.sections
     }
 
-    fileprivate static func translate(fromComponent component: Component, to dataSource: inout VirtualDataSource) {
+    fileprivate static func translate(fromComponent component: Component, to dataSource: inout VirtualDataSource, parent: Section?) {
         switch component.type {
         case .container(let container):
-            translate(fromContainer: container, to: &dataSource)
+            translate(fromContainer: container, to: &dataSource, parent: parent)
         case .composite(let composite):
             if let renderedComposite = composite.render() {
-                translate(fromComponent: renderedComposite, to: &dataSource)
+                translate(fromComponent: renderedComposite, to: &dataSource, parent: parent)
             }
         case .view(let view):
             translate(fromViewComponent: view, to: &dataSource)
         }
     }
 
-    fileprivate static func translate(fromContainer container: ComponentContaining, to dataSource: inout VirtualDataSource) {
+    fileprivate static func translate(fromContainer container: ComponentContaining, to dataSource: inout VirtualDataSource, parent: Section?) {
 
         let section = Section(index: dataSource.nextSectionIndex(), props: container.props)
 
         dataSource.insert(section, at: section.index)
+        parent?.add(section)
 
         container.components.forEach { component in
-            translate(fromComponent: component, to: &dataSource)
+            translate(fromComponent: component, to: &dataSource, parent: section)
         }
     }
 

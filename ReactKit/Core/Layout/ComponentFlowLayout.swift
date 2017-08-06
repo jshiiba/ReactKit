@@ -66,6 +66,14 @@ final class ComponentFlowLayout {
         }
     }
 
+    func updatePreviousSize(_ size: CGSize) {
+        previousFrame?.size = size
+
+        if let previousFrame = previousFrame {
+            maxY = maxYFor(previousFrame, currentMaxY: maxY)
+        }
+    }
+
     ///
     /// Get the Maximum Y position of the current Section
     /// - parameters:
