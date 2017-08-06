@@ -52,8 +52,16 @@ final class Translator {
     }
 
     fileprivate static func translate(fromViewComponent viewComponent: ComponentReducing, to dataSource: inout VirtualDataSource) {
-        guard let section = dataSource.current, let view = viewComponent.reduce() else {
+        guard let view = viewComponent.reduce() else {
             return
+        }
+
+        var section: Section
+        if let currentSection = dataSource.current {
+            section = currentSection
+        } else {
+            section = Section(index: dataSource.nextSectionIndex())
+            dataSource.insert(section, at: section.index)
         }
 
         let rowIndex = section.rows.count

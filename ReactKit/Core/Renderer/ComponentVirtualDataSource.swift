@@ -20,6 +20,10 @@ final class ComponentVirtualDataSource: VirtualDataSource {
     private var values: [Section] = []
 
     var current: Section? {
+        guard currentSectionIndex >= 0, currentSectionIndex < values.count else {
+            return nil
+        }
+
         return values[currentSectionIndex]
     }
 

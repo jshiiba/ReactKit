@@ -24,7 +24,7 @@ class Section: ComponentRepresentable {
     typealias LayoutType = SectionLayout
 
     let index: Int
-    let props: PropType
+    let props: PropType?
     
     var rows: [Row] = []
     var children: [Section] = []
@@ -35,7 +35,7 @@ class Section: ComponentRepresentable {
         return children.isEmpty
     }
 
-    init(index: Int, props: PropType) {
+    init(index: Int, props: PropType? = nil) {
         self.index = index
         self.props = props
     }

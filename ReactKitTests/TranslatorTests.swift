@@ -30,6 +30,21 @@ class TranslatorTests: XCTestCase {
         XCTAssertEqual(sections[0].rows[0].indexPath.section, 0)
     }
 
+    func testLabelIsTranslatedToSection() {
+        // TODO: work on creating a section if none exists
+    }
+
+    func testCompositeIsTranslatedToSection() {
+        let composite = MockComponents.composite()
+        let sections = Translator.translate(fromComponent: composite)
+
+        XCTAssertEqual(sections.count, 1)
+        XCTAssertEqual(sections[0].index, 0)
+        XCTAssertEqual(sections[0].rows.count, 1)
+        XCTAssertEqual(sections[0].rows[0].indexPath.row, 0)
+        XCTAssertEqual(sections[0].rows[0].indexPath.section, 0)
+    }
+
 
     // TODO: OLD Translation tests
     // MARK: - Translate Container with only Components
