@@ -27,12 +27,12 @@ class Section: ComponentRepresentable {
     let props: PropType?
     
     var rows: [Row] = []
-    var children: [Section] = []
+    var childrenIndexes: [Int] = []
 
     var layout: LayoutType?
 
     var isLeaf: Bool {
-        return children.isEmpty
+        return childrenIndexes.isEmpty
     }
 
     init(index: Int, props: PropType? = nil) {
@@ -40,24 +40,14 @@ class Section: ComponentRepresentable {
         self.props = props
     }
 
-    func calculateHeight() {
-        layout?.updateHeight(totalHeight())
-    }
-
-    func totalHeight() -> CGFloat {
-        guard let layout = layout else {
-            return 0
-        }
-
-        return layout.flow.totalHeight + children.reduce(0) { (height, child) in
-            return layout.flow.maxYFor(child.layout!.frame, currentMaxY: height)
-        }
-    }
-
     func invalidateLayout(for newFrame: CGRect) {
+
         if isLeaf {
             layout = SectionLayout(frame: newFrame)
             rows = recalculateLayout(of: rows, layout!.flow.calculateNextFrame)
+            layout!.updateHeight(layout!.flow.totalHeight)
+        } else {
+            
         }
     }
 

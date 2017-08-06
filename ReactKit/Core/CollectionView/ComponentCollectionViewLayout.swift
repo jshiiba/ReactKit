@@ -40,4 +40,20 @@ final class ComponentCollectionViewLayout: UICollectionViewLayout {
 
         return attributes
     }
+
+    static func calculateLayout(for sections: inout [Section], at index: Int, in frame: CGRect) {
+        guard index >= 0, index < sections.count else {
+            return
+        }
+
+        let section = sections[index]
+        section.layout = SectionLayout(frame: frame)
+
+        section.childrenIndexes.forEach { index in
+            let childFrame = section.layout?.flow.calculateNextFrame(forWidth: frame.width, height: frame.height) ?? frame
+            calculateLayout(for: &sections, at: index, in: childFrame)
+        }
+
+        section.invalidateLayout(for: frame)
+    }
 }

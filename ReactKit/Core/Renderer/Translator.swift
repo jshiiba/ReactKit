@@ -19,7 +19,6 @@ final class Translator {
     ///     - component: The root component in the tree
     ///     - virtualDataSource: data structure that holds Sections
     static func translate(fromComponent component: Component) -> [Section] {
-
         var dataSource: VirtualDataSource = ComponentVirtualDataSource()
         translate(fromComponent: component, to: &dataSource, parent: nil)
 
@@ -44,7 +43,7 @@ final class Translator {
         let section = Section(index: dataSource.nextSectionIndex(), props: container.props)
 
         dataSource.insert(section, at: section.index)
-        parent?.children.append(section)
+        parent?.childrenIndexes.append(section.index)
 
         container.components.forEach { component in
             translate(fromComponent: component, to: &dataSource, parent: section)
