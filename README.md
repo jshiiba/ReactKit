@@ -39,10 +39,10 @@ The above algorithm is very naive right now and will need to be optimized for sp
 	Start at Root Section
 	For each child
 		if row
-            Calculate Row layout
-        if section
-            Recurse on section given its width and origin
-                When this returns, all of its childrens layout will be calculated
+	        Calculate Row layout
+	   if section
+	        Recurse on section given its width and origin
+	            When this returns, all of its childrens layout will be calculated
     Update section's height based on its children
     
 	```
