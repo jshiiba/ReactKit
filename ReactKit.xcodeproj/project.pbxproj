@@ -20,10 +20,7 @@
 		D1A43E911F34935A0029A912 /* ComponentVirtualDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A43E901F34935A0029A912 /* ComponentVirtualDataSource.swift */; };
 		D1A43E991F349B400029A912 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A43E981F349B320029A912 /* Container.swift */; };
 		D1A43E9B1F349B550029A912 /* PropType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A43E961F349AF50029A912 /* PropType.swift */; };
-		D1A43E9C1F349B5A0029A912 /* ComponentContaining.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A43E931F349AF50029A912 /* ComponentContaining.swift */; };
 		D1A43E9D1F349B5E0029A912 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A43E951F349AF50029A912 /* Component.swift */; };
-		D1A43E9E1F349B610029A912 /* ComponentReducing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A43E971F349AF50029A912 /* ComponentReducing.swift */; };
-		D1A43E9F1F349B650029A912 /* CompositeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A43E941F349AF50029A912 /* CompositeComponent.swift */; };
 		D1A43EA11F35EA880029A912 /* SectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A43EA01F35EA880029A912 /* SectionTests.swift */; };
 		D1BBA2851F2E0419003FE577 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2831F2E0412003FE577 /* main.swift */; };
 		D1BBA2861F2E0436003FE577 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA27F1F2E0412003FE577 /* AppDelegate.swift */; };
@@ -42,6 +39,7 @@
 		D1BBA2D61F2E08FA003FE577 /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2D41F2E08DC003FE577 /* Row.swift */; };
 		D1BBA2D71F2E08FD003FE577 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2D51F2E08DC003FE577 /* Section.swift */; };
 		D1CA52A71F36158A004DF117 /* ComponentCollectionViewLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CA52A61F36158A004DF117 /* ComponentCollectionViewLayoutTests.swift */; };
+		D1CA52AC1F378590004DF117 /* ComponentTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CA52AB1F378590004DF117 /* ComponentTypes.swift */; };
 		D1CAC9B11F334D6600F26B9A /* ComponentDimensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CAC9B01F334D6600F26B9A /* ComponentDimensionTests.swift */; };
 		D1F7D7151F2E7204003AAE5A /* ReduxExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F7D7141F2E71F4003AAE5A /* ReduxExampleViewController.swift */; };
 		D1F7D7171F2E721A003AAE5A /* LayoutExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F7D7161F2E720D003AAE5A /* LayoutExampleViewController.swift */; };
@@ -80,11 +78,8 @@
 		D19A41FB1F33D66500B46FC8 /* UIKitComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIKitComponent.swift; path = Core/Components/UIKitComponent.swift; sourceTree = "<group>"; };
 		D1A43E8E1F347E930029A912 /* TranslatorMultipleContainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatorMultipleContainerTests.swift; sourceTree = "<group>"; };
 		D1A43E901F34935A0029A912 /* ComponentVirtualDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComponentVirtualDataSource.swift; path = Core/Renderer/ComponentVirtualDataSource.swift; sourceTree = "<group>"; };
-		D1A43E931F349AF50029A912 /* ComponentContaining.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComponentContaining.swift; path = Core/Types/ComponentContaining.swift; sourceTree = "<group>"; };
-		D1A43E941F349AF50029A912 /* CompositeComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CompositeComponent.swift; path = Core/Types/CompositeComponent.swift; sourceTree = "<group>"; };
 		D1A43E951F349AF50029A912 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Component.swift; path = Core/Types/Component.swift; sourceTree = "<group>"; };
 		D1A43E961F349AF50029A912 /* PropType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PropType.swift; path = Core/Types/PropType.swift; sourceTree = "<group>"; };
-		D1A43E971F349AF50029A912 /* ComponentReducing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComponentReducing.swift; path = Core/Types/ComponentReducing.swift; sourceTree = "<group>"; };
 		D1A43E981F349B320029A912 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Container.swift; path = Core/Components/Container.swift; sourceTree = "<group>"; };
 		D1A43EA01F35EA880029A912 /* SectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTests.swift; sourceTree = "<group>"; };
 		D1BBA27F1F2E0412003FE577 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "Supporting FIles/AppDelegate.swift"; sourceTree = "<group>"; };
@@ -105,6 +100,7 @@
 		D1BBA2D41F2E08DC003FE577 /* Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Row.swift; path = Core/Renderer/Models/Row.swift; sourceTree = "<group>"; };
 		D1BBA2D51F2E08DC003FE577 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Section.swift; path = Core/Renderer/Models/Section.swift; sourceTree = "<group>"; };
 		D1CA52A61F36158A004DF117 /* ComponentCollectionViewLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentCollectionViewLayoutTests.swift; sourceTree = "<group>"; };
+		D1CA52AB1F378590004DF117 /* ComponentTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComponentTypes.swift; path = Core/Types/ComponentTypes.swift; sourceTree = "<group>"; };
 		D1CAC9B01F334D6600F26B9A /* ComponentDimensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentDimensionTests.swift; sourceTree = "<group>"; };
 		D1F7D7141F2E71F4003AAE5A /* ReduxExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReduxExampleViewController.swift; path = Examples/ReduxExample/ReduxExampleViewController.swift; sourceTree = "<group>"; };
 		D1F7D7161F2E720D003AAE5A /* LayoutExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LayoutExampleViewController.swift; path = Examples/LayoutExample/LayoutExampleViewController.swift; sourceTree = "<group>"; };
@@ -275,9 +271,7 @@
 			children = (
 				D1A43E961F349AF50029A912 /* PropType.swift */,
 				D1A43E951F349AF50029A912 /* Component.swift */,
-				D1A43E931F349AF50029A912 /* ComponentContaining.swift */,
-				D1A43E971F349AF50029A912 /* ComponentReducing.swift */,
-				D1A43E941F349AF50029A912 /* CompositeComponent.swift */,
+				D1CA52AB1F378590004DF117 /* ComponentTypes.swift */,
 			);
 			name = Types;
 			sourceTree = "<group>";
@@ -425,9 +419,7 @@
 			files = (
 				D1A43E9D1F349B5E0029A912 /* Component.swift in Sources */,
 				D1F7D7231F2F3EB3003AAE5A /* ReduxUtils.swift in Sources */,
-				D1A43E9C1F349B5A0029A912 /* ComponentContaining.swift in Sources */,
 				D1BBA29D1F2E055F003FE577 /* ComponentCollectionViewDataSource.swift in Sources */,
-				D1A43E9F1F349B650029A912 /* CompositeComponent.swift in Sources */,
 				D152A1441F2E2043004C1B47 /* Store.swift in Sources */,
 				D1BBA2BC1F2E0685003FE577 /* Translator.swift in Sources */,
 				D1F7D7151F2E7204003AAE5A /* ReduxExampleViewController.swift in Sources */,
@@ -442,7 +434,6 @@
 				D1A43E991F349B400029A912 /* Container.swift in Sources */,
 				D1BBA29C1F2E055C003FE577 /* BaseComponentViewController.swift in Sources */,
 				D1F7D71F1F2F3E16003AAE5A /* CounterRedux.swift in Sources */,
-				D1A43E9E1F349B610029A912 /* ComponentReducing.swift in Sources */,
 				D1BBA2A11F2E0592003FE577 /* Layout.swift in Sources */,
 				D152A1461F2E2229004C1B47 /* Reducer.swift in Sources */,
 				D1BBA2CA1F2E06FF003FE577 /* Label.swift in Sources */,
@@ -460,6 +451,7 @@
 				D1F7D7191F2E7234003AAE5A /* ReduxView.swift in Sources */,
 				D1F7D7211F2F3E74003AAE5A /* UIButton+React.swift in Sources */,
 				D1F7D71B1F2E8B35003AAE5A /* ExampleCoordinator.swift in Sources */,
+				D1CA52AC1F378590004DF117 /* ComponentTypes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

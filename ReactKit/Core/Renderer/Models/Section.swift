@@ -14,7 +14,7 @@ import UIKit
 ///
 enum SectionChild {
     case section(index: Int) // hold reference index to child section
-    case row(row: Row) // hold row model
+    case row(Row) // hold row model
 }
 
 ///
@@ -46,6 +46,10 @@ class Section {
 
     func rowIndexPaths() -> [IndexPath] {
         return rows.map { $0.indexPath }
+    }
+
+    func view(at index: Int) -> UIView? {
+        return rows[index].view
     }
 
     func addChild(_ child: SectionChild) {

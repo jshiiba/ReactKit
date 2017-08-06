@@ -66,15 +66,15 @@ extension Renderer: ComponentDataSource {
         guard section >= 0 && section < sections.count else {
             return 0
         }
-        return sections[section].rows.count
+        return sections[section].rowCount
     }
 
     func component(at indexPath: IndexPath) -> UIView? {
         guard indexPath.section >= 0 && indexPath.section < sections.count &&
-              indexPath.row >= 0 && indexPath.row < sections[indexPath.section].rows.count else {
+              indexPath.row >= 0 && indexPath.row < sections[indexPath.section].rowCount else {
                 return nil
         }
 
-        return sections[indexPath.section].rows[indexPath.row].view
+        return sections[indexPath.section].view(at: indexPath.row)
     }
 }

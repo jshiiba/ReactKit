@@ -68,7 +68,7 @@ final class ComponentCollectionViewLayout: UICollectionViewLayout {
                 let updatedRow = Row(row: row, layout: ComponentLayout(frame: childFrame))
 
                 section.children.remove(at: index)
-                section.children.insert(.row(row: updatedRow), at: index)
+                section.children.insert(.row(updatedRow), at: index)
             case .section(let index):
                 let childSection = sections[index]
                 let childSectionWidth = childSection.props?.layout?.dimension.width(in: frame.width) ?? 0
@@ -77,7 +77,6 @@ final class ComponentCollectionViewLayout: UICollectionViewLayout {
                 calculateLayout(for: &sections, at: childSection.index, in: estimatedChildFrame)
 
                 let childHeight = childSection.layout?.frame.height ?? 0
-
                 section.layout?.flow.updatePreviousSize(CGSize(width: childSectionWidth, height: childHeight))
                 childSection.layout?.updateHeight(childHeight)
             }

@@ -66,7 +66,7 @@ final class Translator {
         }
 
         let row = Row(view: view, props: viewComponent.props, indexPath: IndexPath(row: section.rowCount, section: section.index))
-        section.addChild(.row(row: row))
+        section.addChild(.row(row))
     }
 }
 

@@ -15,12 +15,8 @@ import Foundation
 /// - returns: IndexPaths to update
 final class Reconciler {
     func reconcile(_ currentSections: [Section], cachedSections: [Section]?) -> [IndexPath] {
-
-        // TODO: Change to BFS
-
         guard let cachedSections = cachedSections else {
             return currentSections
-            // convert sections to array of rows to update
             .reduce([]) { (result, section) in
                 return result + section.rowIndexPaths()
             }
