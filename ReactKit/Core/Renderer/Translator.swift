@@ -45,7 +45,7 @@ final class Translator {
         let section = Section(index: dataSource.nextSectionIndex(), props: container.props)
 
         dataSource.insert(section, at: section.index)
-        parent?.add(section)
+        parent?.addChild(.section(index: section.index))
 
         container.components.forEach { component in
             translate(fromComponent: component, to: &dataSource, parent: section)
@@ -66,7 +66,7 @@ final class Translator {
         }
 
         let row = Row(view: view, props: viewComponent.props, indexPath: IndexPath(row: section.rowCount, section: section.index))
-        section.add(row)
+        section.addChild(.row(row: row))
     }
 }
 

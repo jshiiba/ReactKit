@@ -8,30 +8,25 @@
 
 import UIKit
 
-protocol ComponentRepresentableLayout {
-    var frame: CGRect { get }
-}
-
-protocol ComponentRepresentable {
-    var layout: ComponentLayout? { get }
-    var props: PropType? { get }
+///
+/// Allows sections to hold an array of children containing either
+/// rows or sections. When a section is the child, only store a reference to its index.
+///
+enum SectionChild {
+    case section(index: Int) // hold reference index to child section
+    case row(row: Row) // hold row model
 }
 
 ///
 /// Represents a Section in an IndexPath containing a row of Components
 ///
-class Section: ComponentRepresentable {
+class Section {
 
     let index: Int
     let props: PropType?
 
-    var children: [ComponentRepresentable] = []
+    var children: [SectionChild] = []
     var rowCount: Int = 0
-
-    // FIXME
-    var rows: [Row] {
-        return children.flatMap { $0 as? Row }
-    }
 
     var layout: ComponentLayout?
 
@@ -40,11 +35,26 @@ class Section: ComponentRepresentable {
         self.props = props
     }
 
-    func add(_ child: ComponentRepresentable) {
-        if child is Row {
-            rowCount = rowCount + 1
+    var rows: [Row] {
+        return children.flatMap { child in
+            switch child {
+            case .row(let row): return row
+            default: return nil
+            }
         }
+    }
+
+    func rowIndexPaths() -> [IndexPath] {
+        return rows.map { $0.indexPath }
+    }
+
+    func addChild(_ child: SectionChild) {
         children.append(child)
+        switch child {
+        case .row(_):
+            rowCount = rowCount + 1
+        default: break
+        }
     }
 
     func updateHeight() {
@@ -61,12 +71,12 @@ class Section: ComponentRepresentable {
         var attributes: [UICollectionViewLayoutAttributes] = []
 
         for child in children {
-            if let row = child as? Row {
+            switch child {
+            case .row(let row):
                 let newAttribute = UICollectionViewLayoutAttributes(forCellWith: row.indexPath)
                 newAttribute.frame = row.layout?.frame ?? .zero
                 attributes.append(newAttribute)
-            } else {
-                print("I'm a section")
+            default: break
             }
         }
 

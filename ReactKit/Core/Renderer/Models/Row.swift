@@ -11,7 +11,7 @@ import UIKit
 ///
 /// Represents a Row in an IndexPath that contains a UIView
 ///
-struct Row: ComponentRepresentable {
+struct Row {
 
     let props: PropType?
     let indexPath: IndexPath

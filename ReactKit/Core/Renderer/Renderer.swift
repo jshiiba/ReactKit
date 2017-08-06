@@ -47,8 +47,7 @@ final class Renderer {
 
         sections = Translator.translate(fromComponent: rootComponent)
 
-        ComponentCollectionViewLayout.calculateLayout(for: &sections, at: 0, in: frame)
-        layout.sections = sections
+        layout.calculateLayout(for: &sections, in: frame)
 
         let cachedSections = cacher.cache(sections)
 
