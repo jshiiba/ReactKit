@@ -24,14 +24,12 @@ protocol ComponentDataSource {
 final class Renderer {
 
     /// dependencies
-    let reconciler: Reconciler
     let cacher: Cacher
     let layout: ComponentCollectionViewLayout
 
     fileprivate var sections: [Section] = []
 
-    init(reconciler: Reconciler) {
-        self.reconciler = reconciler
+    init() {
         self.cacher = Cacher()
         self.layout = ComponentCollectionViewLayout()
     }
@@ -51,7 +49,7 @@ final class Renderer {
 
         let cachedSections = cacher.cache(sections)
 
-        return reconciler.reconcile(sections, cachedSections: cachedSections)
+        return Reconciler.reconcile(sections, cachedSections: cachedSections)
     }
 }
 
@@ -75,6 +73,6 @@ extension Renderer: ComponentDataSource {
                 return nil
         }
 
-        return sections[indexPath.section].view(at: indexPath.row)
+        return sections[indexPath.section].view(fromRowAt: indexPath.row)
     }
 }

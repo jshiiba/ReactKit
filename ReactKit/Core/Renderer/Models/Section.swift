@@ -21,43 +21,49 @@ enum SectionChild {
 /// Represents a Section in an IndexPath containing a row of Components
 ///
 class Section {
-
+    /// index of section in IndexPath
     let index: Int
+
+    /// properties of the Container Component
     let props: PropType?
 
+    /// calculated layout determined from props
+    var layout: RenderedLayout?
+
+    /// child sections or rows
     var children: [SectionChild] = []
+
+    /// current row count from children
     var rowCount: Int = 0
 
-    var layout: ComponentLayout?
+    /// Filters out references to Sections
+    var rows: [Row] {
+        return children.flatMap { child in
+            if case let .row(row) = child {
+                return row
+            } else {
+                return nil
+            }
+        }
+    }
 
     init(index: Int, props: PropType? = nil) {
         self.index = index
         self.props = props
     }
 
-    var rows: [Row] {
-        return children.flatMap { child in
-            switch child {
-            case .row(let row): return row
-            default: return nil
-            }
-        }
-    }
-
     func rowIndexPaths() -> [IndexPath] {
         return rows.map { $0.indexPath }
     }
 
-    func view(at index: Int) -> UIView? {
+    func view(fromRowAt index: Int) -> UIView? {
         return rows[index].view
     }
 
     func addChild(_ child: SectionChild) {
         children.append(child)
-        switch child {
-        case .row(_):
+        if case .row(_) = child {
             rowCount = rowCount + 1
-        default: break
         }
     }
 
@@ -74,30 +80,13 @@ class Section {
 
         var attributes: [UICollectionViewLayoutAttributes] = []
 
-        for child in children {
-            switch child {
-            case .row(let row):
-                let newAttribute = UICollectionViewLayoutAttributes(forCellWith: row.indexPath)
-                newAttribute.frame = row.layout?.frame ?? .zero
-                attributes.append(newAttribute)
-            default: break
-            }
+        // TODO: cache attributes
+        for row in rows {
+            let newAttribute = UICollectionViewLayoutAttributes(forCellWith: row.indexPath)
+            newAttribute.frame = row.layout?.frame ?? .zero
+            attributes.append(newAttribute)
         }
 
         return attributes
-    }
-}
-
-struct ComponentLayout {
-    var frame: CGRect
-    let flow: ComponentFlowLayout
-
-    init(frame: CGRect) {
-        self.frame = frame
-        self.flow = ComponentFlowLayout(parentFrame: self.frame)
-    }
-
-    mutating func updateHeight(_ height: CGFloat) {
-        self.frame = CGRect(x: frame.origin.x, y: frame.origin.y, width: frame.width, height: height)
     }
 }

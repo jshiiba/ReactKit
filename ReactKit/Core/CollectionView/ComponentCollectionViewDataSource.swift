@@ -14,16 +14,17 @@ private let identifier = "Identifier"
 /// Main DataSource for a ComponentViewController that uses a Renderer
 ///
 final class ComponentCollectionViewDataSource: NSObject {
-    let renderer: Renderer
+
+    fileprivate let renderer: Renderer = Renderer()
+
+    var collectionViewLayout: ComponentCollectionViewLayout {
+        return renderer.layout
+    }
 
     var componentCollectionView: UICollectionView! {
         didSet {
             configure(componentCollectionView)
         }
-    }
-
-    init(renderer: Renderer) {
-        self.renderer = renderer
     }
 
     /// Configures the collectionview with properties needed for rendering

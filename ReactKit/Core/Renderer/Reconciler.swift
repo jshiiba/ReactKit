@@ -14,7 +14,7 @@ import Foundation
 /// - parameters: Current Components with new props
 /// - returns: IndexPaths to update
 final class Reconciler {
-    func reconcile(_ currentSections: [Section], cachedSections: [Section]?) -> [IndexPath] {
+    static func reconcile(_ currentSections: [Section], cachedSections: [Section]?) -> [IndexPath] {
         guard let cachedSections = cachedSections else {
             return currentSections
             .reduce([]) { (result, section) in
@@ -24,7 +24,9 @@ final class Reconciler {
 
         var updatedIndexPaths: [IndexPath] = []
 
-        // TODO: improve algorithm, this is a naive implementation
+        /// TODO: improve algorithm, this is a naive implementation. Improved algo would be:
+        /// Perform a BFS starting at the Root section and reconcile each child down the tree
+        /// until dirty data is found. Mark all sections/rows under as also dirty and reload
         for (sectionIndex, _) in currentSections.enumerated() {
             for (rowIndex, row) in currentSections[sectionIndex].rows.enumerated() {
                 let currentProps = row.props
@@ -37,6 +39,5 @@ final class Reconciler {
         }
 
         return updatedIndexPaths
-
     }
 }

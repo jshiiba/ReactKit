@@ -30,7 +30,7 @@
 		D1BBA29B1F2E055A003FE577 /* BaseComponentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA29A1F2E0549003FE577 /* BaseComponentCell.swift */; };
 		D1BBA29C1F2E055C003FE577 /* BaseComponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2981F2E0549003FE577 /* BaseComponentViewController.swift */; };
 		D1BBA29D1F2E055F003FE577 /* ComponentCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2991F2E0549003FE577 /* ComponentCollectionViewDataSource.swift */; };
-		D1BBA2A11F2E0592003FE577 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2A01F2E057D003FE577 /* Layout.swift */; };
+		D1BBA2A11F2E0592003FE577 /* ComponentLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2A01F2E057D003FE577 /* ComponentLayout.swift */; };
 		D1BBA2BC1F2E0685003FE577 /* Translator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2B71F2E0670003FE577 /* Translator.swift */; };
 		D1BBA2BD1F2E0687003FE577 /* Cacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2BB1F2E0670003FE577 /* Cacher.swift */; };
 		D1BBA2BE1F2E0689003FE577 /* Reconciler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2B81F2E0670003FE577 /* Reconciler.swift */; };
@@ -40,6 +40,7 @@
 		D1BBA2D71F2E08FD003FE577 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2D51F2E08DC003FE577 /* Section.swift */; };
 		D1CA52A71F36158A004DF117 /* ComponentCollectionViewLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CA52A61F36158A004DF117 /* ComponentCollectionViewLayoutTests.swift */; };
 		D1CA52AC1F378590004DF117 /* ComponentTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CA52AB1F378590004DF117 /* ComponentTypes.swift */; };
+		D1CA52AE1F37946A004DF117 /* RenderedLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CA52AD1F37946A004DF117 /* RenderedLayout.swift */; };
 		D1CAC9B11F334D6600F26B9A /* ComponentDimensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CAC9B01F334D6600F26B9A /* ComponentDimensionTests.swift */; };
 		D1F7D7151F2E7204003AAE5A /* ReduxExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F7D7141F2E71F4003AAE5A /* ReduxExampleViewController.swift */; };
 		D1F7D7171F2E721A003AAE5A /* LayoutExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F7D7161F2E720D003AAE5A /* LayoutExampleViewController.swift */; };
@@ -91,7 +92,7 @@
 		D1BBA2981F2E0549003FE577 /* BaseComponentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseComponentViewController.swift; path = Core/CollectionView/BaseComponentViewController.swift; sourceTree = "<group>"; };
 		D1BBA2991F2E0549003FE577 /* ComponentCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComponentCollectionViewDataSource.swift; path = Core/CollectionView/ComponentCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		D1BBA29A1F2E0549003FE577 /* BaseComponentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseComponentCell.swift; path = Core/CollectionView/BaseComponentCell.swift; sourceTree = "<group>"; };
-		D1BBA2A01F2E057D003FE577 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Layout.swift; path = Core/Layout/Layout.swift; sourceTree = "<group>"; };
+		D1BBA2A01F2E057D003FE577 /* ComponentLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComponentLayout.swift; path = Core/Layout/ComponentLayout.swift; sourceTree = "<group>"; };
 		D1BBA2B61F2E0670003FE577 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Renderer.swift; path = Core/Renderer/Renderer.swift; sourceTree = "<group>"; };
 		D1BBA2B71F2E0670003FE577 /* Translator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Translator.swift; path = Core/Renderer/Translator.swift; sourceTree = "<group>"; };
 		D1BBA2B81F2E0670003FE577 /* Reconciler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Reconciler.swift; path = Core/Renderer/Reconciler.swift; sourceTree = "<group>"; };
@@ -101,6 +102,7 @@
 		D1BBA2D51F2E08DC003FE577 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Section.swift; path = Core/Renderer/Models/Section.swift; sourceTree = "<group>"; };
 		D1CA52A61F36158A004DF117 /* ComponentCollectionViewLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentCollectionViewLayoutTests.swift; sourceTree = "<group>"; };
 		D1CA52AB1F378590004DF117 /* ComponentTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComponentTypes.swift; path = Core/Types/ComponentTypes.swift; sourceTree = "<group>"; };
+		D1CA52AD1F37946A004DF117 /* RenderedLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RenderedLayout.swift; path = Core/Renderer/Models/RenderedLayout.swift; sourceTree = "<group>"; };
 		D1CAC9B01F334D6600F26B9A /* ComponentDimensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentDimensionTests.swift; sourceTree = "<group>"; };
 		D1F7D7141F2E71F4003AAE5A /* ReduxExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReduxExampleViewController.swift; path = Examples/ReduxExample/ReduxExampleViewController.swift; sourceTree = "<group>"; };
 		D1F7D7161F2E720D003AAE5A /* LayoutExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LayoutExampleViewController.swift; path = Examples/LayoutExample/LayoutExampleViewController.swift; sourceTree = "<group>"; };
@@ -260,8 +262,8 @@
 			isa = PBXGroup;
 			children = (
 				D152A13F1F2E1DF7004C1B47 /* ComponentDimension.swift */,
+				D1BBA2A01F2E057D003FE577 /* ComponentLayout.swift */,
 				D1F7D7251F30932E003AAE5A /* ComponentFlowLayout.swift */,
-				D1BBA2A01F2E057D003FE577 /* Layout.swift */,
 			);
 			name = Layout;
 			sourceTree = "<group>";
@@ -294,6 +296,7 @@
 			children = (
 				D1BBA2D41F2E08DC003FE577 /* Row.swift */,
 				D1BBA2D51F2E08DC003FE577 /* Section.swift */,
+				D1CA52AD1F37946A004DF117 /* RenderedLayout.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -434,7 +437,8 @@
 				D1A43E991F349B400029A912 /* Container.swift in Sources */,
 				D1BBA29C1F2E055C003FE577 /* BaseComponentViewController.swift in Sources */,
 				D1F7D71F1F2F3E16003AAE5A /* CounterRedux.swift in Sources */,
-				D1BBA2A11F2E0592003FE577 /* Layout.swift in Sources */,
+				D1BBA2A11F2E0592003FE577 /* ComponentLayout.swift in Sources */,
+				D1CA52AE1F37946A004DF117 /* RenderedLayout.swift in Sources */,
 				D152A1461F2E2229004C1B47 /* Reducer.swift in Sources */,
 				D1BBA2CA1F2E06FF003FE577 /* Label.swift in Sources */,
 				D1BBA2BF1F2E068B003FE577 /* Renderer.swift in Sources */,

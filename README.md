@@ -37,10 +37,14 @@ The above algorithm is very naive right now and will need to be optimized for sp
 
 	```
 	Start at Root Section
-		For each child
-			Recurse down to leaf
-		For each Row
-			recalculate row's layout
+	For each child
+		if row
+            Calculate Row layout
+        if section
+            Recurse on section given its width and origin
+                When this returns, all of its childrens layout will be calculated
+            Update section's height based on its children
+    
 	```
 
 ## Redux
@@ -58,3 +62,4 @@ Inspiration:
 3. Make protocols for all objects in the Renderer
 4. More Unit Tests!
 5. Allow for Other types of Layouts within a Section, not just FlowLayout
+6. Allow inserting and removing of index paths. Right now only updating works.

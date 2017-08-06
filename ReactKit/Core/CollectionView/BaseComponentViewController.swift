@@ -13,17 +13,14 @@ import UIKit
 ///
 class BaseComponentViewController: UIViewController {
 
-    var renderer: Renderer!
-
     var dataSource: ComponentCollectionViewDataSource!
     var collectionView: UICollectionView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        renderer = Renderer(reconciler: Reconciler())
-        dataSource = ComponentCollectionViewDataSource(renderer: renderer)
+        dataSource = ComponentCollectionViewDataSource()
 
-        collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: renderer.layout)
+        collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: dataSource.collectionViewLayout)
         collectionView.dataSource = dataSource
 
         // TODO: prevent retain cycle

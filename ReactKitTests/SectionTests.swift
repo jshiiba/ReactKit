@@ -11,7 +11,7 @@ import XCTest
 
 class SectionTests: XCTestCase {
     let parentFrame = CGRect(x: 0, y: 0, width: 100, height: 500)
-    let mockLayout = ComponentLayout(frame: .zero)
+    let mockLayout = RenderedLayout(frame: .zero)
 
     /*
     func testThatSectionIsLeafWhenNoChildren() {

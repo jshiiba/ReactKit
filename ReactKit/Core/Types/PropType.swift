@@ -12,12 +12,12 @@ import Foundation
 /// Represents an object that contains properties for a component
 ///
 protocol PropType {
-    var layout: Layout? { get }
+    var layout: ComponentLayout? { get }
     func isEqualTo(_ other: PropType) -> Bool
 }
 
 extension PropType {
-    var layout: Layout? {
+    var layout: ComponentLayout? {
         return nil
     }
 

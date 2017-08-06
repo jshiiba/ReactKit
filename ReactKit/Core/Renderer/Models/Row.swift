@@ -15,14 +15,14 @@ struct Row {
 
     let props: PropType?
     let indexPath: IndexPath
-    let layout: ComponentLayout?
+    let layout: RenderedLayout?
     let view: UIView?
 
-    init(row: Row, layout: ComponentLayout) {
+    init(row: Row, layout: RenderedLayout) {
         self.init(view: row.view, props: row.props, indexPath: row.indexPath, layout: layout)
     }
 
-    init(view: UIView?, props: PropType?, indexPath: IndexPath, layout: ComponentLayout? = nil) {
+    init(view: UIView?, props: PropType?, indexPath: IndexPath, layout: RenderedLayout? = nil) {
         self.view = view
         self.props = props
         self.indexPath = indexPath

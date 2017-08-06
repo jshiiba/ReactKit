@@ -13,24 +13,17 @@ import UIKit
 ///
 final class ComponentCollectionViewLayout: UICollectionViewLayout {
 
-    var sections: [Section] = []
+    private(set) var sections: [Section] = []
 
     /// First Section will contain the height of its sub sections
+    /// TODO: Fix height
     override var collectionViewContentSize: CGSize {
         let width = sections.first?.layout?.frame.width ?? 0
         let height = sections.first?.layout?.flow.totalHeight ?? 0
         return CGSize(width: width, height: height)
     }
 
-    /// called for every section + row
-    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        return super.layoutAttributesForItem(at: indexPath)
-    }
-
-    /// called for current rect
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        _ = super.layoutAttributesForElements(in: rect)
-
         var attributes: [UICollectionViewLayoutAttributes] = []
 
         sections.forEach { section in
@@ -43,21 +36,31 @@ final class ComponentCollectionViewLayout: UICollectionViewLayout {
         return attributes
     }
 
-    ///
-    ///
-    ///
+    // MARK: - Layout Calculations
+
+    /// Calculates the layout for each Section
+    /// - parameters:
+    ///     - sections: inout reference to the array of sections
+    ///     - frame: the frame of reference to layout the sections
     func calculateLayout(for sections: inout [Section], in frame: CGRect) {
         calculateLayout(for: &sections, at: 0, in: frame)
         self.sections = sections
     }
 
+    /// Recursive algorithm to calculate the layout for each section and row
+    /// Similar to a Post-order Depth first search. Must calculate the heights of all children
+    /// before finishing the calculation of the current sections height and origin
+    /// - parameters:
+    ///     - sections: the section array
+    ///     - index: indicates the current section to access within the sections array
+    ///     - frame: the current frame to layout the section or view
     fileprivate func calculateLayout(for sections: inout [Section], at index: Int, in frame: CGRect) {
         guard index >= 0, index < sections.count else {
             return
         }
 
         let section = sections[index]
-        section.layout = ComponentLayout(frame: frame)
+        section.layout = RenderedLayout(frame: frame)
 
         for (index, child) in section.children.enumerated() {
             switch child {
@@ -65,7 +68,7 @@ final class ComponentCollectionViewLayout: UICollectionViewLayout {
                 let childWidth = row.props?.layout?.dimension.width(in: frame.width) ?? 0
                 let childHeight = row.props?.layout?.height ?? 0
                 let childFrame = section.layout?.flow.calculateNextFrame(forWidth: childWidth, height: childHeight) ?? frame
-                let updatedRow = Row(row: row, layout: ComponentLayout(frame: childFrame))
+                let updatedRow = Row(row: row, layout: RenderedLayout(frame: childFrame))
 
                 section.children.remove(at: index)
                 section.children.insert(.row(updatedRow), at: index)
@@ -78,7 +81,6 @@ final class ComponentCollectionViewLayout: UICollectionViewLayout {
 
                 let childHeight = childSection.layout?.frame.height ?? 0
                 section.layout?.flow.updatePreviousSize(CGSize(width: childSectionWidth, height: childHeight))
-                childSection.layout?.updateHeight(childHeight)
             }
         }
 

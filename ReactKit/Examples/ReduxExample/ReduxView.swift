@@ -36,7 +36,7 @@ final class ReduxView: CompositeComponent, ComponentLike {
         }
 
         let components: [Component] = [counter] + buttons
-        return Container(components: components, props: ContainerProps(layout: Layout(dimension: .ratio(ratio: 1.0))))
+        return Container(components: components, props: ContainerProps(layout: ComponentLayout(dimension: .ratio(ratio: 1.0))))
     }
 }
 
@@ -48,9 +48,9 @@ protocol CounterViewPropType: PropType {
 
 struct CounterViewProps: CounterViewPropType {
     let count: Int
-    let layout: Layout?
+    let layout: ComponentLayout?
 
-    init(count: Int, layout: Layout? = nil) {
+    init(count: Int, layout: ComponentLayout? = nil) {
         self.count = count
         self.layout = layout
     }
@@ -67,6 +67,6 @@ final class CounterView: CompositeComponent, ComponentLike {
         let title = "Count: \(_props.count)"
         return Label(props: LabelProps(title: title,
                                        textAlignment: .center,
-                                       layout: Layout(dimension: .fill, height: 100)))
+                                       layout: ComponentLayout(dimension: .fill, height: 100)))
     }
 }

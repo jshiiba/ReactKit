@@ -36,12 +36,12 @@ protocol ButtonPropType: PropType {
 }
 
 struct ButtonProps: ButtonPropType {
-    let layout: Layout?
+    let layout: ComponentLayout?
     let title: String
     let titleColor: UIColor
     let handler: (UIControl) -> ()
 
-    init(title: String, titleColor: UIColor, layout: Layout? = nil, handler: @escaping ((UIControl) ->())) {
+    init(title: String, titleColor: UIColor, layout: ComponentLayout? = nil, handler: @escaping ((UIControl) ->())) {
         self.title = title
         self.titleColor = titleColor
         self.layout = layout
