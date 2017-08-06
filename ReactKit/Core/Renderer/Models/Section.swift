@@ -8,81 +8,87 @@
 
 import UIKit
 
-protocol ComponentRepresentableLayout {
-    var frame: CGRect { get }
-}
-
-protocol ComponentRepresentable {
-    associatedtype LayoutType: ComponentRepresentableLayout
-    var layout: LayoutType { get }
+///
+/// Allows sections to hold an array of children containing either
+/// rows or sections. When a section is the child, only store a reference to its index.
+///
+enum SectionChild {
+    case section(index: Int) // hold reference index to child section
+    case row(Row) // hold row model
 }
 
 ///
 /// Represents a Section in an IndexPath containing a row of Components
 ///
-class Section: ComponentRepresentable {
-    typealias LayoutType = SectionLayout
+class Section {
 
     let index: Int
-    
-    var rows: [Row] = []
-    var children: [Section] = []
+    let props: PropType?
 
-    var layout: LayoutType
+    var children: [SectionChild] = []
+    var rowCount: Int = 0
 
-    var isLeaf: Bool {
-        return children.isEmpty
-    }
+    var layout: ComponentLayout?
 
-    init(index: Int, layout: SectionLayout) {
+    init(index: Int, props: PropType? = nil) {
         self.index = index
-        self.layout = layout
+        self.props = props
     }
 
-    func calculateHeight() {
-        layout.updateHeight(totalHeight())
-    }
-
-    func totalHeight() -> CGFloat {
-        return layout.flow.totalHeight + children.reduce(0) { (height, child) in
-            return layout.flow.maxYFor(child.layout.frame, currentMaxY: height)
+    var rows: [Row] {
+        return children.flatMap { child in
+            switch child {
+            case .row(let row): return row
+            default: return nil
+            }
         }
     }
 
-    func invalidateLayout(for newFrame: CGRect) {
-        if isLeaf {
-            layout = SectionLayout(frame: newFrame)
-            rows = recalculateLayout(of: rows, layout.flow.calculateNextFrame)
+    func rowIndexPaths() -> [IndexPath] {
+        return rows.map { $0.indexPath }
+    }
+
+    func view(at index: Int) -> UIView? {
+        return rows[index].view
+    }
+
+    func addChild(_ child: SectionChild) {
+        children.append(child)
+        switch child {
+        case .row(_):
+            rowCount = rowCount + 1
+        default: break
         }
     }
 
-    func recalculateLayout(of rows: [Row], _ calculateNextFrame: (CGFloat, CGFloat) -> (CGRect)) -> [Row] {
-        return rows.map { row in
-            let rowWidth = row.layout.frame.width
-            let rowHeight = row.layout.frame.height
-            let rowFrame = calculateNextFrame(rowWidth, rowHeight)
-            return Row(row: row, layout: RowLayout(frame: rowFrame))
+    func updateHeight() {
+        if let height = layout?.flow.totalHeight {
+            layout?.updateHeight(height)
         }
     }
 
     func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        guard rect.intersects(layout.frame) else {
+        guard let frame = layout?.frame, rect.intersects(frame) else {
             return nil
         }
 
         var attributes: [UICollectionViewLayoutAttributes] = []
 
-        for row in rows {
-            let newAttribute = UICollectionViewLayoutAttributes(forCellWith: row.indexPath)
-            newAttribute.frame = row.layout.frame
-            attributes.append(newAttribute)
+        for child in children {
+            switch child {
+            case .row(let row):
+                let newAttribute = UICollectionViewLayoutAttributes(forCellWith: row.indexPath)
+                newAttribute.frame = row.layout?.frame ?? .zero
+                attributes.append(newAttribute)
+            default: break
+            }
         }
 
         return attributes
     }
 }
 
-struct SectionLayout: ComponentRepresentableLayout {
+struct ComponentLayout {
     var frame: CGRect
     let flow: ComponentFlowLayout
 

@@ -48,3 +48,11 @@ struct ButtonProps: ButtonPropType {
         self.handler = handler
     }
 }
+
+// MARK: - Equatable
+
+extension ButtonProps: Equatable {
+    static func ==(lhs: ButtonProps, rhs: ButtonProps) -> Bool {
+        return lhs.title == rhs.title
+    }
+}

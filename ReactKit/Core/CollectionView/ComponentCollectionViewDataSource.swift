@@ -50,6 +50,8 @@ extension ComponentCollectionViewDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! BaseComponentCell
 
+        cell.removeView()
+
         if let component = renderer.component(at: indexPath) {
             cell.configure(with: component)
         }

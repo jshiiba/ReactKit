@@ -66,6 +66,7 @@ final class CounterView: CompositeComponent, ComponentLike {
     func render() -> Component? {
         let title = "Count: \(_props.count)"
         return Label(props: LabelProps(title: title,
-                                       textAlignment: .center))
+                                       textAlignment: .center,
+                                       layout: Layout(dimension: .fill, height: 100)))
     }
 }

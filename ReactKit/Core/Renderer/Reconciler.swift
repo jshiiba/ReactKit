@@ -17,11 +17,9 @@ final class Reconciler {
     func reconcile(_ currentSections: [Section], cachedSections: [Section]?) -> [IndexPath] {
         guard let cachedSections = cachedSections else {
             return currentSections
-            // convert sections to array of rows to update
             .reduce([]) { (result, section) in
-                return result + section.rows
+                return result + section.rowIndexPaths()
             }
-            .map { $0.indexPath }
         }
 
         var updatedIndexPaths: [IndexPath] = []
@@ -32,12 +30,13 @@ final class Reconciler {
                 let currentProps = row.props
                 let cachedProps = cachedSections[sectionIndex].rows[rowIndex].props
 
-                if currentProps != cachedProps {
+                if let current = currentProps, let cached = cachedProps, current != cached {
                     updatedIndexPaths.append(row.indexPath)
                 }
             }
         }
 
         return updatedIndexPaths
+
     }
 }

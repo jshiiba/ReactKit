@@ -16,6 +16,11 @@ final class BaseComponentCell: UICollectionViewCell {
 
     var previousView: UIView?
 
+    func removeView() {
+        previousView = nil
+        contentView.subviews.forEach { $0.removeFromSuperview() }
+    }
+
     func configure(with view: UIView) {
         if let previousView = previousView {
             previousView.removeFromSuperview()

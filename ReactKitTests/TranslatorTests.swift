@@ -6,44 +6,50 @@
 //  Copyright © 2017 Shiiba. All rights reserved.
 //
 
-import XCTest
 @testable import ReactKit
+import XCTest
 
 class TranslatorTests: XCTestCase {
 
-    let parentWidth: CGFloat = 300
-    var translator: Translator!
-    
-    override func setUp() {
-        super.setUp()
-        translator = Translator()
-    }
-
-    // MARK: - Translate Container with only Components
-
-    func testWhenRootComponentIsAnEmptyContainer() {
+    func testRootIsTranslatedToSection() {
         let container = Container(components: [], props: MockComponents.containerProps)
-        var dataSource: VirtualDataSource = ComponentVirtualDataSource()
-        Translator.translate(fromComponent: container, in: parentWidth, to: &dataSource)
-
-        XCTAssertEqual(dataSource.sections.count, 1)
-        XCTAssertEqual(dataSource.sections[0].index, 0)
-        XCTAssertEqual(dataSource.sections[0].layout.frame, CGRect(x: 0, y: 0, width: 300, height: 0))
-        XCTAssertEqual(dataSource.sections[0].rows.count, 0)
+        let sections = Translator.translate(fromComponent: container)
+        XCTAssertEqual(sections.count, 1)
+        XCTAssertEqual(sections[0].index, 0)
+        XCTAssertEqual(sections[0].rows.count, 0)
     }
-
 
     func testWhenContainerHasLabelComponent() {
         let container = MockComponents.containerWithLabel(with: .fill, labelHeight: 100)
-        var dataSource: VirtualDataSource = ComponentVirtualDataSource()
-        Translator.translate(fromComponent: container, in: parentWidth, to: &dataSource)
+        let sections = Translator.translate(fromComponent: container)
 
-        XCTAssertEqual(dataSource.sections.count, 1)
-        XCTAssertEqual(dataSource.sections[0].index, 0)
-        XCTAssertEqual(dataSource.sections[0].rows.count, 1)
-        XCTAssertEqual(dataSource.sections[0].rows[0].indexPath.row, 0)
-        XCTAssertEqual(dataSource.sections[0].rows[0].indexPath.section, 0)
+        XCTAssertEqual(sections.count, 1)
+        XCTAssertEqual(sections[0].index, 0)
+        XCTAssertEqual(sections[0].rows.count, 1)
+        XCTAssertEqual(sections[0].rows[0].indexPath.row, 0)
+        XCTAssertEqual(sections[0].rows[0].indexPath.section, 0)
     }
+
+    func testLabelIsTranslatedToSection() {
+        // TODO: work on creating a section if none exists
+    }
+
+    func testCompositeIsTranslatedToSection() {
+        let composite = MockComponents.composite()
+        let sections = Translator.translate(fromComponent: composite)
+
+        XCTAssertEqual(sections.count, 1)
+        XCTAssertEqual(sections[0].index, 0)
+        XCTAssertEqual(sections[0].rows.count, 1)
+        XCTAssertEqual(sections[0].rows[0].indexPath.row, 0)
+        XCTAssertEqual(sections[0].rows[0].indexPath.section, 0)
+    }
+
+
+    // TODO: OLD Translation tests
+    // MARK: - Translate Container with only Components
+
+    /*
 
     func testWhenContainerHasTwoLabelComponentsWithSameLayouts() {
         let container = MockComponents.containerWithSameTwoLabels(with: .ratio(ratio: 0.5), labelHeight: 100)
@@ -87,20 +93,5 @@ class TranslatorTests: XCTestCase {
 
         XCTAssertEqual(dataSource.sections[0].layout.frame.height, 400)
     }
-
-
-
-    // MARK: - Translate Non SingleComponentViews
-
-
-//    func testThatNonSingleComponentViewsAreRendered() {
-//        let inputComponent = MockComponents.composite()
-//        var dataSource: VirtualDataSource = ComponentVirtualDataSource()
-//        Translator.translate(fromComponent: inputComponent, in: parentWidth, to: &dataSource)
-//
-//        XCTAssertEqual(dataSource.sections[0].rows.count, 1)
-//        XCTAssertEqual(dataSource.sections[0].rows[0].layout.frame, CGRect(x: 0, y: 0, width: 300, height: 100))
-//        XCTAssertNotNil(dataSource.sections[0].rows[0].view)
-//    }
- 
+     */
 }

@@ -103,88 +103,21 @@ struct MockComponents {
         ], props: containerProps)
     }
 }
-/*
-struct MockRows {
-    static let singleRow: [Row] = [
-        Row(view: nil,
-                     props: MockProps(layout: Layout(dimension: .fill, height: 100)),
-                     index: 0,
-                     section: 0,
-                     layout: RowLayout(dimension: .fill, height: 100))
-    ]
-
-    static let rows: [Row] = [
-        Row(view: nil,
-                     props: MockProps(layout: Layout(dimension: .ratio(ratio: 0.5), height: 100)),
-                     index: 0,
-                     section: 0,
-                     layout: RowLayout(dimension: .ratio(ratio: 0.5), height: 100)),
-        Row(view: nil,
-                     props: MockProps(layout: Layout(dimension: .ratio(ratio: 0.5), height: 100)),
-                     index: 0,
-                     section: 0,
-                     layout: RowLayout(dimension: .ratio(ratio: 0.5), height: 100)),
-        Row(view: nil,
-                     props: MockProps(layout: Layout(dimension: .ratio(ratio: 0.5), height: 100)),
-                     index: 0,
-                     section: 0,
-                     layout: RowLayout(dimension: .ratio(ratio: 0.5), height: 100)),
-    ]
-
-    static let rowsMultipleDimensions: [Row] = [
-        Row(view: nil,
-                     props: MockProps(layout: Layout(dimension: .ratio(ratio: 0.75), height: 100)),
-                     index: 0,
-                     section: 0,
-                     layout: RowLayout(dimension: .ratio(ratio: 0.75), height: 100)),
-        Row(view: nil,
-                     props: MockProps(layout: Layout(dimension: .ratio(ratio: 0.5), height: 100)),
-                     index: 0,
-                     section: 0,
-                     layout: RowLayout(dimension: .ratio(ratio: 0.5), height: 100)),
-        Row(view: nil,
-                     props: MockProps(layout: Layout(dimension: .ratio(ratio: 0.25), height: 100)),
-                     index: 0,
-                     section: 0,
-                     layout: RowLayout(dimension: .ratio(ratio: 0.25), height: 100)),
-        Row(view: nil,
-                     props: MockProps(layout: Layout(dimension: .ratio(ratio: 1.0), height: 100)),
-                     index: 0,
-                     section: 0,
-                     layout: RowLayout(dimension: .ratio(ratio: 1.0), height: 100)),
-    ]
-
-    static let rowsMultipleDimensionsMultipleHeights: [Row] = [
-        Row(view: nil,
-                     props: MockProps(layout: Layout(dimension: .ratio(ratio: 0.75), height: 100)),
-                     index: 0,
-                     section: 0,
-                     layout: RowLayout(dimension: .ratio(ratio: 0.75), height: 100)),
-        Row(view: nil,
-                     props: MockProps(layout: Layout(dimension: .ratio(ratio: 0.5), height: 200)),
-                     index: 0,
-                     section: 0,
-                     layout: RowLayout(dimension: .ratio(ratio: 0.5), height: 200)),
-        Row(view: nil,
-                     props: MockProps(layout: Layout(dimension: .ratio(ratio: 0.25), height: 10)),
-                     index: 0,
-                     section: 0,
-                     layout: RowLayout(dimension: .ratio(ratio: 0.25), height: 10)),
-        Row(view: nil,
-                     props: MockProps(layout: Layout(dimension: .ratio(ratio: 1.0), height: 75)),
-                     index: 0,
-                     section: 0,
-                     layout: RowLayout(dimension: .ratio(ratio: 1.0), height: 75)),
-    ]
-}*/
 
 struct MockProps: PropType {
-    let layout: Layout
+    let layout: Layout?
 }
 
 struct MockLabelProps: PropType {
     let labelProps: LabelPropType
-    let layout: Layout
+    let layout: Layout?
+
+    init(labelProps: LabelPropType, layout: Layout?) {
+        self.labelProps = labelProps
+        self.layout = layout
+    }
+
+    static let fill = MockLabelProps(labelProps: LabelProps(title: ""), layout: Layout(dimension: .fill, height: 100))
 }
 
 struct MockComponent: CompositeComponent, ComponentLike {
