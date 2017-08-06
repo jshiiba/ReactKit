@@ -47,13 +47,37 @@ final class ComponentCollectionViewLayout: UICollectionViewLayout {
         }
 
         let section = sections[index]
-        section.layout = SectionLayout(frame: frame)
+        section.layout = ComponentLayout(frame: frame)
 
-        section.childrenIndexes.forEach { index in
-            let childFrame = section.layout?.flow.calculateNextFrame(forWidth: frame.width, height: frame.height) ?? frame
-            calculateLayout(for: &sections, at: index, in: childFrame)
+        for (index, child) in section.children.enumerated() {
+            if let row = child as? Row {
+                let childWidth = child.props?.layout?.dimension.width(in: frame.width) ?? 0
+                let childHeight = child.props?.layout?.height ?? 0
+                let childFrame = section.layout?.flow.calculateNextFrame(forWidth: childWidth, height: childHeight) ?? frame
+                let updatedRow = Row(row: row, layout: ComponentLayout(frame: childFrame))
+
+                section.children.insert(updatedRow, at: index)
+            } else if let childSection = child as? Section {
+                let childWidth = child.props?.layout?.dimension.width(in: frame.width) ?? 0
+
+                // origin is set from previous section
+                let estimatedFrame = section.layout?.flow.calculateNextFrame(forWidth: childWidth, height: 0) ?? frame
+
+                // recurse in order to get height of children
+                calculateLayout(for: &sections, at: childSection.index, in: estimatedFrame)
+
+                // height of children has been calculated
+                let childHeight = childSection.layout?.frame.height ?? 0
+
+                // new frame has Y based on parent's flow layout
+                // update Y of flow layout?
+                section.layout?.flow.previousFrame?.size = CGSize(width: childWidth, height: childHeight)
+
+                childSection.layout?.updateHeight(childHeight)
+            }
         }
 
-        section.invalidateLayout(for: frame)
+        // sets frame height as the Max Y of flow layout
+        section.updateHeight()
     }
 }

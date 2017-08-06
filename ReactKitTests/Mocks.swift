@@ -105,12 +105,19 @@ struct MockComponents {
 }
 
 struct MockProps: PropType {
-    let layout: Layout
+    let layout: Layout?
 }
 
 struct MockLabelProps: PropType {
     let labelProps: LabelPropType
-    let layout: Layout
+    let layout: Layout?
+
+    init(labelProps: LabelPropType, layout: Layout?) {
+        self.labelProps = labelProps
+        self.layout = layout
+    }
+
+    static let fill = MockLabelProps(labelProps: LabelProps(title: ""), layout: Layout(dimension: .fill, height: 100))
 }
 
 struct MockComponent: CompositeComponent, ComponentLike {

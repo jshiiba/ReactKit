@@ -14,8 +14,8 @@ class ComponentCollectionViewLayoutTests: XCTestCase {
     func testThatRootSectionLayoutIsCalculated() {
         let expectedFrame = CGRect(x: 0, y: 0, width: 200, height: 100)
         let section = Section(index: 0)
-        section.rows = [
-            Row(view: nil, props: NilProps(), indexPath: IndexPath(), layout: RowLayout(frame: expectedFrame))
+        section.children = [
+            Row(view: nil, props: MockLabelProps.fill, indexPath: IndexPath(), layout: ComponentLayout(frame: expectedFrame))
         ]
 
         var sections = [section]

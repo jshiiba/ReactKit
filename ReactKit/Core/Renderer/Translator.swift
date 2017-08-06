@@ -19,34 +19,35 @@ final class Translator {
     ///     - component: The root component in the tree
     ///     - virtualDataSource: data structure that holds Sections
     static func translate(fromComponent component: Component) -> [Section] {
+
         var dataSource: VirtualDataSource = ComponentVirtualDataSource()
-        translate(fromComponent: component, to: &dataSource, parent: nil)
+
+        translate(fromComponent: component, to: &dataSource)
 
         return dataSource.sections
     }
 
-    fileprivate static func translate(fromComponent component: Component, to dataSource: inout VirtualDataSource, parent: Section?) {
+    fileprivate static func translate(fromComponent component: Component, to dataSource: inout VirtualDataSource) {
         switch component.type {
         case .container(let container):
-            translate(fromContainer: container, to: &dataSource, parent: parent)
+            translate(fromContainer: container, to: &dataSource)
         case .composite(let composite):
             if let renderedComposite = composite.render() {
-                translate(fromComponent: renderedComposite, to: &dataSource, parent: parent)
+                translate(fromComponent: renderedComposite, to: &dataSource)
             }
         case .view(let view):
             translate(fromViewComponent: view, to: &dataSource)
         }
     }
 
-    fileprivate static func translate(fromContainer container: ComponentContaining, to dataSource: inout VirtualDataSource, parent: Section?) {
+    fileprivate static func translate(fromContainer container: ComponentContaining, to dataSource: inout VirtualDataSource) {
 
         let section = Section(index: dataSource.nextSectionIndex(), props: container.props)
 
         dataSource.insert(section, at: section.index)
-        parent?.childrenIndexes.append(section.index)
 
         container.components.forEach { component in
-            translate(fromComponent: component, to: &dataSource, parent: section)
+            translate(fromComponent: component, to: &dataSource)
         }
     }
 
@@ -63,9 +64,8 @@ final class Translator {
             dataSource.insert(section, at: section.index)
         }
 
-        let rowIndex = section.rows.count
-        let row = Row(view: view, props: viewComponent.props, indexPath: IndexPath(row: rowIndex, section: section.index))
-        section.rows.insert(row, at: rowIndex)
+        let row = Row(view: view, props: viewComponent.props, indexPath: IndexPath(row: section.rowCount, section: section.index))
+        section.add(row)
     }
 }
 

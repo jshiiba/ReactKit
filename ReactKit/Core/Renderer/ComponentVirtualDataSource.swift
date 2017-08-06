@@ -36,6 +36,7 @@ final class ComponentVirtualDataSource: VirtualDataSource {
     }
 
     func insert(_ section: Section, at index: Int) {
+        current?.add(section) // new section is added as child to parent
         values.insert(section, at: index)
         currentSectionIndex = index
     }

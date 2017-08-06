@@ -13,50 +13,43 @@ protocol ComponentRepresentableLayout {
 }
 
 protocol ComponentRepresentable {
-    associatedtype LayoutType: ComponentRepresentableLayout
-    var layout: LayoutType? { get }
+    var layout: ComponentLayout? { get }
+    var props: PropType? { get }
 }
 
 ///
 /// Represents a Section in an IndexPath containing a row of Components
 ///
 class Section: ComponentRepresentable {
-    typealias LayoutType = SectionLayout
 
     let index: Int
     let props: PropType?
-    
-    var rows: [Row] = []
-    var childrenIndexes: [Int] = []
 
-    var layout: LayoutType?
+    var children: [ComponentRepresentable] = []
+    var rowCount: Int = 0
 
-    var isLeaf: Bool {
-        return childrenIndexes.isEmpty
+    // FIXME
+    var rows: [Row] {
+        return children.flatMap { $0 as? Row }
     }
+
+    var layout: ComponentLayout?
 
     init(index: Int, props: PropType? = nil) {
         self.index = index
         self.props = props
     }
 
-    func invalidateLayout(for newFrame: CGRect) {
-
-        if isLeaf {
-            layout = SectionLayout(frame: newFrame)
-            rows = recalculateLayout(of: rows, layout!.flow.calculateNextFrame)
-            layout!.updateHeight(layout!.flow.totalHeight)
-        } else {
-            
+    func add(_ child: ComponentRepresentable) {
+        if child is Row {
+            rowCount = rowCount + 1
         }
+        children.append(child)
     }
 
-    func recalculateLayout(of rows: [Row], _ calculateNextFrame: (CGFloat, CGFloat) -> (CGRect)) -> [Row] {
-        return rows.map { row in
-            let rowWidth = row.layout?.frame.width ?? 0
-            let rowHeight = row.layout?.frame.height ?? 0
-            let rowFrame = calculateNextFrame(rowWidth, rowHeight)
-            return Row(row: row, layout: RowLayout(frame: rowFrame))
+    func updateHeight() {
+        if let height = layout?.flow.totalHeight {
+            layout?.updateHeight(height)
         }
     }
 
@@ -67,17 +60,21 @@ class Section: ComponentRepresentable {
 
         var attributes: [UICollectionViewLayoutAttributes] = []
 
-        for row in rows {
-            let newAttribute = UICollectionViewLayoutAttributes(forCellWith: row.indexPath)
-            newAttribute.frame = row.layout?.frame ?? .zero
-            attributes.append(newAttribute)
+        for child in children {
+            if let row = child as? Row {
+                let newAttribute = UICollectionViewLayoutAttributes(forCellWith: row.indexPath)
+                newAttribute.frame = row.layout?.frame ?? .zero
+                attributes.append(newAttribute)
+            } else {
+                print("I'm a section")
+            }
         }
 
         return attributes
     }
 }
 
-struct SectionLayout: ComponentRepresentableLayout {
+struct ComponentLayout {
     var frame: CGRect
     let flow: ComponentFlowLayout
 
