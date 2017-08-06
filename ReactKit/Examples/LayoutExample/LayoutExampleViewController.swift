@@ -54,10 +54,14 @@ final class LayoutView: CompositeComponent, ComponentLike {
         }
 
         return Container(components: [
+            Container(components: [
+                Container(components: labels, props: ContainerProps(layout: ComponentLayout(dimension: .ratio(ratio: 0.5)))),
+                Container(components: labels, props: ContainerProps(layout: ComponentLayout(dimension: .ratio(ratio: 0.5)))),
+            ], props: ContainerProps(layout: ComponentLayout(dimension: .ratio(ratio: 0.5)))),
             Container(components: labels, props: ContainerProps(layout: ComponentLayout(dimension: .ratio(ratio: 0.5)))),
             Container(components: labels.reversed(), props: ContainerProps(layout: ComponentLayout(dimension: .ratio(ratio: 0.5)))),
             Container(components: labels.reversed(), props: ContainerProps(layout: ComponentLayout(dimension: .ratio(ratio: 0.5)))),
-            Container(components: labels, props: ContainerProps(layout: ComponentLayout(dimension: .ratio(ratio: 0.5)))),
+//            Container(components: labels, props: ContainerProps(layout: ComponentLayout(dimension: .ratio(ratio: 0.5)))),
         ], props: ContainerProps(layout: ComponentLayout(dimension: .ratio(ratio: 1.0))))
     }
 }

@@ -32,7 +32,6 @@ final class ComponentFlowLayout {
     func calculateNextFrame(forWidth width: CGFloat, height: CGFloat) -> CGRect {
         let previous = previousFrame ?? CGRect(origin: parentFrame.origin, size: .zero)
         let origin = nextOrigin(for: width, after: previous, in: parentFrame, startX: startX, maxY: maxY)
-
         let frame = CGRect(origin: origin, size: CGSize(width: width, height: height))
 
         maxY = maxYFor(frame, currentMaxY: maxY)
@@ -70,7 +69,8 @@ final class ComponentFlowLayout {
         previousFrame?.size = size
 
         if let previousFrame = previousFrame {
-            maxY = maxYFor(previousFrame, currentMaxY: maxY)
+            // FIXME: this doesn't seem right
+            maxY = previousFrame.height
         }
     }
 

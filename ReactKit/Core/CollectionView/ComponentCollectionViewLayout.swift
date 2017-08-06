@@ -75,11 +75,12 @@ final class ComponentCollectionViewLayout: UICollectionViewLayout {
             case .section(let index):
                 let childSection = sections[index]
                 let childSectionWidth = childSection.props?.layout?.dimension.width(in: frame.width) ?? 0
-                let estimatedChildFrame = section.layout?.flow.calculateNextFrame(forWidth: childSectionWidth, height: 0) ?? frame
+                let estimatedChildFrame = section.layout?.flow.calculateNextFrame(forWidth: childSectionWidth, height: 0) ?? .zero
 
                 calculateLayout(for: &sections, at: childSection.index, in: estimatedChildFrame)
 
                 let childHeight = childSection.layout?.frame.height ?? 0
+
                 section.layout?.flow.updatePreviousSize(CGSize(width: childSectionWidth, height: childHeight))
             }
         }

@@ -31,9 +31,9 @@ Similiar to React, ReactKit uses a **Renderer** to take Components as input, rec
 
 The above algorithm is very naive right now and will need to be optimized for speed and additional functionality.
 
-### New Algorithm
+### Layout Algorithm
 1. Translate Component Tree to VirtualDataSource containing Sections and Rows - O(*n*)
-2. Calculate Layout: - O(*n<sup>2</sup>*)
+2. Calculate Layout: - O(*n*)
 
 	```
 	Start at Root Section
@@ -43,7 +43,7 @@ The above algorithm is very naive right now and will need to be optimized for sp
         if section
             Recurse on section given its width and origin
                 When this returns, all of its childrens layout will be calculated
-            Update section's height based on its children
+    Update section's height based on its children
     
 	```
 
@@ -63,3 +63,4 @@ Inspiration:
 4. More Unit Tests!
 5. Allow for Other types of Layouts within a Section, not just FlowLayout
 6. Allow inserting and removing of index paths. Right now only updating works.
+7. Support rotations
