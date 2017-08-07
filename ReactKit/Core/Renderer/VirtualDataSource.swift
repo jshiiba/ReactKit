@@ -1,5 +1,5 @@
 //
-//  ComponentVirtualDataSource.swift
+//  VirtualDataSource.swift
 //  ReactKit
 //
 //  Created by Justin Shiiba on 8/4/17.
@@ -15,7 +15,7 @@ protocol VirtualDataSource: class {
     func insert(_ section: Section, at index: Int)
 }
 
-final class ComponentVirtualDataSource: VirtualDataSource {
+final class TranslatorVirtualDataSource: VirtualDataSource {
     private var currentSectionIndex: Int = 0
     private var values: [Section] = []
 

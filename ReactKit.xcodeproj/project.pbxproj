@@ -17,7 +17,7 @@
 		D152A14A1F2E63DC004C1B47 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = D152A1491F2E63DC004C1B47 /* Button.swift */; };
 		D19A41FF1F33D74400B46FC8 /* UIKitComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19A41FB1F33D66500B46FC8 /* UIKitComponent.swift */; };
 		D1A43E8F1F347E930029A912 /* TranslatorMultipleContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A43E8E1F347E930029A912 /* TranslatorMultipleContainerTests.swift */; };
-		D1A43E911F34935A0029A912 /* ComponentVirtualDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A43E901F34935A0029A912 /* ComponentVirtualDataSource.swift */; };
+		D1A43E911F34935A0029A912 /* VirtualDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A43E901F34935A0029A912 /* VirtualDataSource.swift */; };
 		D1A43E991F349B400029A912 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A43E981F349B320029A912 /* Container.swift */; };
 		D1A43E9B1F349B550029A912 /* PropType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A43E961F349AF50029A912 /* PropType.swift */; };
 		D1A43E9D1F349B5E0029A912 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A43E951F349AF50029A912 /* Component.swift */; };
@@ -78,7 +78,7 @@
 		D152A1491F2E63DC004C1B47 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Button.swift; path = Core/Components/Button.swift; sourceTree = "<group>"; };
 		D19A41FB1F33D66500B46FC8 /* UIKitComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIKitComponent.swift; path = Core/Components/UIKitComponent.swift; sourceTree = "<group>"; };
 		D1A43E8E1F347E930029A912 /* TranslatorMultipleContainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatorMultipleContainerTests.swift; sourceTree = "<group>"; };
-		D1A43E901F34935A0029A912 /* ComponentVirtualDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComponentVirtualDataSource.swift; path = Core/Renderer/ComponentVirtualDataSource.swift; sourceTree = "<group>"; };
+		D1A43E901F34935A0029A912 /* VirtualDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VirtualDataSource.swift; path = Core/Renderer/VirtualDataSource.swift; sourceTree = "<group>"; };
 		D1A43E951F349AF50029A912 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Component.swift; path = Core/Types/Component.swift; sourceTree = "<group>"; };
 		D1A43E961F349AF50029A912 /* PropType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PropType.swift; path = Core/Types/PropType.swift; sourceTree = "<group>"; };
 		D1A43E981F349B320029A912 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Container.swift; path = Core/Components/Container.swift; sourceTree = "<group>"; };
@@ -285,7 +285,7 @@
 				D1BBA2B81F2E0670003FE577 /* Reconciler.swift */,
 				D1BBA2B61F2E0670003FE577 /* Renderer.swift */,
 				D1BBA2B71F2E0670003FE577 /* Translator.swift */,
-				D1A43E901F34935A0029A912 /* ComponentVirtualDataSource.swift */,
+				D1A43E901F34935A0029A912 /* VirtualDataSource.swift */,
 				D1BBA2D21F2E087C003FE577 /* Models */,
 			);
 			name = Renderer;
@@ -444,7 +444,7 @@
 				D1BBA2BF1F2E068B003FE577 /* Renderer.swift in Sources */,
 				D1BBA2861F2E0436003FE577 /* AppDelegate.swift in Sources */,
 				D1BBA2BE1F2E0689003FE577 /* Reconciler.swift in Sources */,
-				D1A43E911F34935A0029A912 /* ComponentVirtualDataSource.swift in Sources */,
+				D1A43E911F34935A0029A912 /* VirtualDataSource.swift in Sources */,
 				D1A43E9B1F349B550029A912 /* PropType.swift in Sources */,
 				D152A14A1F2E63DC004C1B47 /* Button.swift in Sources */,
 				D152A1481F2E239E004C1B47 /* AppState.swift in Sources */,

@@ -53,7 +53,7 @@ class TranslatorTests: XCTestCase {
 
     func testWhenContainerHasTwoLabelComponentsWithSameLayouts() {
         let container = MockComponents.containerWithSameTwoLabels(with: .ratio(ratio: 0.5), labelHeight: 100)
-        var dataSource: VirtualDataSource = ComponentVirtualDataSource()
+        var dataSource: VirtualDataSource = TranslatorVirtualDataSource()
         Translator.translate(fromComponent: container, in: parentWidth, to: &dataSource)
 
         XCTAssertEqual(dataSource.sections.count, 1)
@@ -71,7 +71,7 @@ class TranslatorTests: XCTestCase {
 
     func testWhenContainerHasMultipleLabels() {
         let container = MockComponents.containerWithMultipleLabels()
-        var dataSource: VirtualDataSource = ComponentVirtualDataSource()
+        var dataSource: VirtualDataSource = TranslatorVirtualDataSource()
         Translator.translate(fromComponent: container, in: parentWidth, to: &dataSource)
 
         XCTAssertEqual(dataSource.sections.count, 1)

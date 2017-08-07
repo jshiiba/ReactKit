@@ -22,7 +22,7 @@ final class Translator {
     ///     - an array of Sections
     static func translate(fromComponent component: Component) -> [Section] {
 
-        var dataSource: VirtualDataSource = ComponentVirtualDataSource()
+        var dataSource: VirtualDataSource = TranslatorVirtualDataSource()
 
         translate(fromComponent: component, to: &dataSource, parent: nil)
 

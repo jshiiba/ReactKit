@@ -15,7 +15,7 @@ class TranslatorMultipleContainerTests: TranslatorTests {
     /*
     func testThatContainersWithChildContainersHaveIndex() {
         let container = MockComponents.containerWithContainers()
-        var dataSource: VirtualDataSource = ComponentVirtualDataSource()
+        var dataSource: VirtualDataSource = TranslatorVirtualDataSource()
         Translator.translate(fromComponent: container, in: parentWidth, to: &dataSource)
 
         XCTAssertEqual(dataSource.sections[0].index, 0)
@@ -25,7 +25,7 @@ class TranslatorMultipleContainerTests: TranslatorTests {
 
     func testThatContainersCanLayoutChildContainers() {
         let container = MockComponents.containerWithContainers()
-        var dataSource: VirtualDataSource = ComponentVirtualDataSource()
+        var dataSource: VirtualDataSource = TranslatorVirtualDataSource()
         Translator.translate(fromComponent: container, in: parentWidth, to: &dataSource)
 
         XCTAssertEqual(dataSource.sections.count, 3)
@@ -36,7 +36,7 @@ class TranslatorMultipleContainerTests: TranslatorTests {
 
     func testMultilevelContainers() {
         let container = MockComponents.multiLevelContainers()
-        var dataSource: VirtualDataSource = ComponentVirtualDataSource()
+        var dataSource: VirtualDataSource = TranslatorVirtualDataSource()
         Translator.translate(fromComponent: container, in: parentWidth, to: &dataSource)
 
         XCTAssertEqual(dataSource.sections.count, 4)
@@ -48,7 +48,7 @@ class TranslatorMultipleContainerTests: TranslatorTests {
 
     func testWrappingMultilevelContainers() {
         let container = MockComponents.wrappingMultilevelContainers()
-        var dataSource: VirtualDataSource = ComponentVirtualDataSource()
+        var dataSource: VirtualDataSource = TranslatorVirtualDataSource()
         Translator.translate(fromComponent: container, in: parentWidth, to: &dataSource)
 
         XCTAssertEqual(dataSource.sections[2].rows[0].layout.frame, CGRect(x: 150, y: 0, width: 75, height: 100))
@@ -59,7 +59,7 @@ class TranslatorMultipleContainerTests: TranslatorTests {
 
 //    func testThatFlowLayoutWorksForWrappingContainers() {
 //        let container = MockComponents.flowWrappingContainers()
-//        var dataSource: VirtualDataSource = ComponentVirtualDataSource()
+//        var dataSource: VirtualDataSource = TranslatorVirtualDataSource()
 //        Translator.translate(fromComponent: container, in: parentWidth, to: &dataSource)
 //
 //        XCTAssertEqual(dataSource.sections[3].layout.frame, CGRect(x: 0, y: 100, width: 150, height: 100))
