@@ -38,6 +38,7 @@
 		D1BBA2CA1F2E06FF003FE577 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2C81F2E06F2003FE577 /* Label.swift */; };
 		D1BBA2D61F2E08FA003FE577 /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2D41F2E08DC003FE577 /* Row.swift */; };
 		D1BBA2D71F2E08FD003FE577 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2D51F2E08DC003FE577 /* Section.swift */; };
+		D1BF677D1F3B33F900B2D9AE /* HelloWorldExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BF677C1F3B33F900B2D9AE /* HelloWorldExampleViewController.swift */; };
 		D1CA52A71F36158A004DF117 /* ComponentCollectionViewLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CA52A61F36158A004DF117 /* ComponentCollectionViewLayoutTests.swift */; };
 		D1CA52AC1F378590004DF117 /* ComponentTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CA52AB1F378590004DF117 /* ComponentTypes.swift */; };
 		D1CA52AE1F37946A004DF117 /* RenderedLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CA52AD1F37946A004DF117 /* RenderedLayout.swift */; };
@@ -100,6 +101,7 @@
 		D1BBA2C81F2E06F2003FE577 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Label.swift; path = Core/Components/Label.swift; sourceTree = "<group>"; };
 		D1BBA2D41F2E08DC003FE577 /* Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Row.swift; path = Core/Renderer/Models/Row.swift; sourceTree = "<group>"; };
 		D1BBA2D51F2E08DC003FE577 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Section.swift; path = Core/Renderer/Models/Section.swift; sourceTree = "<group>"; };
+		D1BF677C1F3B33F900B2D9AE /* HelloWorldExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HelloWorldExampleViewController.swift; path = Examples/HelloWorldExample/HelloWorldExampleViewController.swift; sourceTree = "<group>"; };
 		D1CA52A61F36158A004DF117 /* ComponentCollectionViewLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentCollectionViewLayoutTests.swift; sourceTree = "<group>"; };
 		D1CA52AB1F378590004DF117 /* ComponentTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComponentTypes.swift; path = Core/Types/ComponentTypes.swift; sourceTree = "<group>"; };
 		D1CA52AD1F37946A004DF117 /* RenderedLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RenderedLayout.swift; path = Core/Renderer/Models/RenderedLayout.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 			children = (
 				D1F7D71A1F2E8B35003AAE5A /* ExampleCoordinator.swift */,
 				D1F7D71C1F2E8CB9003AAE5A /* ExampleTableViewController.swift */,
+				D1BF677E1F3B33FC00B2D9AE /* HelloWorldExample */,
 				D1F7D7131F2E71E5003AAE5A /* LayoutExample */,
 				D1F7D7121F2E71D7003AAE5A /* ReduxExample */,
 			);
@@ -299,6 +302,14 @@
 				D1CA52AD1F37946A004DF117 /* RenderedLayout.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		D1BF677E1F3B33FC00B2D9AE /* HelloWorldExample */ = {
+			isa = PBXGroup;
+			children = (
+				D1BF677C1F3B33F900B2D9AE /* HelloWorldExampleViewController.swift */,
+			);
+			name = HelloWorldExample;
 			sourceTree = "<group>";
 		};
 		D1F7D7121F2E71D7003AAE5A /* ReduxExample */ = {
@@ -435,6 +446,7 @@
 				D1F7D7171F2E721A003AAE5A /* LayoutExampleViewController.swift in Sources */,
 				D1BBA29B1F2E055A003FE577 /* BaseComponentCell.swift in Sources */,
 				D1A43E991F349B400029A912 /* Container.swift in Sources */,
+				D1BF677D1F3B33F900B2D9AE /* HelloWorldExampleViewController.swift in Sources */,
 				D1BBA29C1F2E055C003FE577 /* BaseComponentViewController.swift in Sources */,
 				D1F7D71F1F2F3E16003AAE5A /* CounterRedux.swift in Sources */,
 				D1BBA2A11F2E0592003FE577 /* ComponentLayout.swift in Sources */,

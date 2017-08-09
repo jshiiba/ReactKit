@@ -86,8 +86,10 @@ Any view controller that wants to use Components needs to subclass `BaseComponen
 ```swift
 class HelloWorldViewController: BaseComponentViewController {
 	override func render() -> Component {
-		return Label(props: LabelProps(title: "Hello World!"),
-					 layout: ComponentLayout(dimension: .fill, height: 100))
+		return Label(props: LabelProps(title: "Hello World!",
+                                      textAlignment: .center,
+                                      layout: ComponentLayout(dimension: .fill, 
+                                      	                      height: 100)))
 	}
 }
 ```

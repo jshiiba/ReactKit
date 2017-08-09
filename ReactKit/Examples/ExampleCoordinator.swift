@@ -44,4 +44,9 @@ extension ExampleCoordinator: ExampleTableViewControllerDelegate {
 
         navigationController?.pushViewController(reduxExample, animated: true)
     }
+
+    func didSelectHelloWorldExample() {
+        let helloWorldExample = HelloWorldViewController()
+        navigationController?.pushViewController(helloWorldExample, animated: true)
+    }
 }

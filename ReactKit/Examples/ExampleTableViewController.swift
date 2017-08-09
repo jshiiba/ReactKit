@@ -9,6 +9,7 @@
 import UIKit
 
 protocol ExampleTableViewControllerDelegate {
+    func didSelectHelloWorldExample()
     func didSelectLayoutExample()
     func didSelectReduxExample()
 }
@@ -28,6 +29,9 @@ final class ExampleTableViewController: UITableViewController {
         super.viewDidLoad()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: identifier)
         rows = [
+            Row(title: "Hello World Example") { [weak self] in
+                self?.delegate?.didSelectHelloWorldExample()
+            },
             Row(title: "Layout Example") { [weak self] in
                 self?.delegate?.didSelectLayoutExample()
             },
