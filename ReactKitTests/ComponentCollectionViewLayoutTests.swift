@@ -10,17 +10,22 @@
 import XCTest
 
 class ComponentCollectionViewLayoutTests: XCTestCase {
+    var layout: ComponentCollectionViewLayout!
+    override func setUp() {
+        super.setUp()
+        layout = ComponentCollectionViewLayout()
+    }
 
     func testThatRootSectionLayoutIsCalculated() {
         let expectedFrame = CGRect(x: 0, y: 0, width: 200, height: 100)
         let section = Section(index: 0)
         section.children = [
-            .row(row: Row(view: nil, props: MockLabelProps.fill, indexPath: IndexPath()))
+            .row(Row(view: nil, props: MockLabelProps.fill, indexPath: IndexPath()))
         ]
 
         var sections = [section]
 
-        ComponentCollectionViewLayout.calculateLayout(for: &sections, at: 0, in: CGRect(x: 0, y: 0, width: 200, height: 400))
+        layout.calculateLayout(for: &sections, in: CGRect(x: 0, y: 0, width: 200, height: 400))
 
         XCTAssertEqual(sections[0].layout?.frame, expectedFrame)
     }
