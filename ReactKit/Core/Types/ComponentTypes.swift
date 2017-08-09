@@ -9,7 +9,7 @@
 import UIKit
 
 ///
-///
+/// Represents an array of components
 ///
 protocol ComponentContaining: Component {
     var components: [Component] { get }
@@ -23,7 +23,7 @@ protocol ComponentReducing: Component {
 }
 
 ///
-/// Represents a
+/// Represents a component that renders another component
 ///
 protocol CompositeComponent: Component {
     func render() -> Component?
