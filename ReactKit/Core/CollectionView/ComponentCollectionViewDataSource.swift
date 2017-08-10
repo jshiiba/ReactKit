@@ -15,16 +15,20 @@ private let identifier = "Identifier"
 ///
 final class ComponentCollectionViewDataSource: NSObject {
 
-    fileprivate let renderer: Renderer = Renderer(cacher: Cacher(), layout: ComponentCollectionViewLayout())
+    fileprivate let rendererDataSource: ComponentRendererDataSource
 
     var collectionViewLayout: ComponentCollectionViewLayout {
-        return renderer.layout
+        return rendererDataSource.componentLayout
     }
 
     var componentCollectionView: UICollectionView! {
         didSet {
             configure(componentCollectionView)
         }
+    }
+
+    init(rendererDataSource: ComponentRendererDataSource) {
+        self.rendererDataSource = rendererDataSource
     }
 
     /// Configures the collectionview with properties needed for rendering
@@ -40,11 +44,13 @@ final class ComponentCollectionViewDataSource: NSObject {
     /// - parameters:
     ///     - component: component to update
     func setComponent(_ component: Component) {
-        let updatedIndexPaths = renderer.render(component, in: componentCollectionView.frame)
+        let updatedIndexPaths = rendererDataSource.render(component, in: componentCollectionView.frame,
+                                                          translation: Translator.translate,
+                                                          reconciliation: Reconciler.reconcile)
+
         componentCollectionView.reloadItems(at: updatedIndexPaths)
     }
 }
-
 // MARK: - UICollectionViewDataSource
 
 extension ComponentCollectionViewDataSource: UICollectionViewDataSource {
@@ -53,7 +59,7 @@ extension ComponentCollectionViewDataSource: UICollectionViewDataSource {
 
         cell.removeView()
 
-        if let component = renderer.component(at: indexPath) {
+        if let component = rendererDataSource.component(at: indexPath) {
             cell.configure(with: component)
         }
 
@@ -61,10 +67,10 @@ extension ComponentCollectionViewDataSource: UICollectionViewDataSource {
     }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return renderer.numberOfSections
+        return rendererDataSource.numberOfSections
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return renderer.numberOfItems(in: section)
+        return rendererDataSource.numberOfItems(in: section)
     }
 }

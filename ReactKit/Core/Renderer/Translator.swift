@@ -8,15 +8,13 @@
 
 import UIKit
 
-protocol ComponentTranslator: class {
-    static func translate(fromComponent component: Component) -> [Section]
-}
+typealias Translation = (Component) -> [Section]
 
 ///
 /// Translates an external View representation (Containers and Component) into an internal
 /// virtual representation (Sections and Rows).
 ///
-final class Translator: ComponentTranslator {
+final class Translator {
 
     /// Translates a Component View hierarchy to a VirtualDataSource represented as Sections with Rows
     /// - parameters:

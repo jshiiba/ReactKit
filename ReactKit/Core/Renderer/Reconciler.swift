@@ -8,16 +8,14 @@
 
 import Foundation
 
-protocol ComponentReconciler: class {
-    static func reconcile(_ currentSections: [Section], cachedSections: [Section]?) -> [IndexPath]
-}
+typealias Reconciliation = ([Section], [Section]?) -> [IndexPath]
 
 /// Performs reconcilation between a new virtual datasource and a cached datasource
 /// It determines what has changed between the old and new versions and outputs those
 /// components (represented as IndexPaths) to update due to dirty data
 /// - parameters: Current Components with new props
 /// - returns: IndexPaths to update
-final class Reconciler: ComponentReconciler {
+final class Reconciler {
     static func reconcile(_ currentSections: [Section], cachedSections: [Section]?) -> [IndexPath] {
         guard let cachedSections = cachedSections else {
             return currentSections

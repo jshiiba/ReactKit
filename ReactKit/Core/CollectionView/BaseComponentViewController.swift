@@ -18,7 +18,9 @@ class BaseComponentViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        dataSource = ComponentCollectionViewDataSource()
+
+        let rendererDataSource = ComponentRendererProvider.provide()
+        dataSource = ComponentCollectionViewDataSource(rendererDataSource: rendererDataSource)
 
         collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: dataSource.collectionViewLayout)
         collectionView.dataSource = dataSource

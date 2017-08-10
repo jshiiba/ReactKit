@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ComponentLayoutCalculator: class {
+    func calculateLayout(for sections: inout [Section], in frame: CGRect)
+}
+
 ///
 /// Custom UICollectionViewLayout
 ///
@@ -35,8 +39,11 @@ final class ComponentCollectionViewLayout: UICollectionViewLayout {
 
         return attributes
     }
+}
 
-    // MARK: - Layout Calculations
+// MARK: - ComponentLayoutCalculator
+
+extension ComponentCollectionViewLayout: ComponentLayoutCalculator {
 
     /// Calculates the layout for each Section
     /// - parameters:
