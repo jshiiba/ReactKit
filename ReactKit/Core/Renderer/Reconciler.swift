@@ -8,6 +8,8 @@
 
 import Foundation
 
+typealias Reconciliation = ([Section], [Section]?) -> [IndexPath]
+
 /// Performs reconcilation between a new virtual datasource and a cached datasource
 /// It determines what has changed between the old and new versions and outputs those
 /// components (represented as IndexPaths) to update due to dirty data

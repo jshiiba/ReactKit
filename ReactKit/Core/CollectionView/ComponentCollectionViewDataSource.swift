@@ -15,16 +15,20 @@ private let identifier = "Identifier"
 ///
 final class ComponentCollectionViewDataSource: NSObject {
 
-    fileprivate let renderer: Renderer = Renderer()
+    fileprivate let rendererDataSource: ComponentRendererDataSource
 
     var collectionViewLayout: ComponentCollectionViewLayout {
-        return renderer.layout
+        return rendererDataSource.componentLayout
     }
 
     var componentCollectionView: UICollectionView! {
         didSet {
             configure(componentCollectionView)
         }
+    }
+
+    init(rendererDataSource: ComponentRendererDataSource) {
+        self.rendererDataSource = rendererDataSource
     }
 
     /// Configures the collectionview with properties needed for rendering
@@ -40,31 +44,39 @@ final class ComponentCollectionViewDataSource: NSObject {
     /// - parameters:
     ///     - component: component to update
     func setComponent(_ component: Component) {
-        let updatedIndexPaths = renderer.render(component, in: componentCollectionView.frame)
+        let updatedIndexPaths = rendererDataSource.render(component, in: componentCollectionView.frame,
+                                                          translation: Translator.translate,
+                                                          reconciliation: Reconciler.reconcile)
+
         componentCollectionView.reloadItems(at: updatedIndexPaths)
     }
 }
-
 // MARK: - UICollectionViewDataSource
 
 extension ComponentCollectionViewDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! BaseComponentCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
 
-        cell.removeView()
-
-        if let component = renderer.component(at: indexPath) {
-            cell.configure(with: component)
+        if let componentCell = cell as? ComponentDisplayable {
+            configureDisplayable(componentCell, at: indexPath)
         }
 
         return cell
     }
 
+    internal func configureDisplayable(_ displayable: ComponentDisplayable, at indexPath: IndexPath) {
+        displayable.removeView()
+
+        if let component = rendererDataSource.component(at: indexPath) {
+            displayable.configure(with: component)
+        }
+    }
+
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return renderer.numberOfSections
+        return rendererDataSource.numberOfSections
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return renderer.numberOfItems(in: section)
+        return rendererDataSource.numberOfItems(in: section)
     }
 }

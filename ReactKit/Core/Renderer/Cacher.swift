@@ -8,11 +8,15 @@
 
 import Foundation
 
+protocol ComponentCache: class {
+    func cache(_ sections: [Section]) -> [Section]?
+}
+
 /// Takes input and caches it and returns last cached sections
 /// - parameters: sections
 /// - returns: Recently Cached sections
-final class Cacher {
-    var cachedSections: [Section]?
+final class Cacher: ComponentCache {
+    private var cachedSections: [Section]?
 
     func cache(_ sections: [Section]) -> [Section]? {
         defer {

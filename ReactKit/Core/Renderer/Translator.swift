@@ -8,6 +8,8 @@
 
 import UIKit
 
+typealias Translation = (Component) -> [Section]
+
 ///
 /// Translates an external View representation (Containers and Component) into an internal
 /// virtual representation (Sections and Rows).

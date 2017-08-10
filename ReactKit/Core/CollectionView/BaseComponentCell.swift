@@ -8,14 +8,20 @@
 
 import UIKit
 
+protocol ComponentDisplayable {
+    func removeView()
+    func configure(with view: UIView)
+}
+
 ///
 /// A generic UICollectionView that can be configured with a UIView
 /// All components use this base class to display content
 ///
 final class BaseComponentCell: UICollectionViewCell {
+    fileprivate var previousView: UIView?
+}
 
-    var previousView: UIView?
-
+extension BaseComponentCell: ComponentDisplayable {
     func removeView() {
         previousView = nil
         contentView.subviews.forEach { $0.removeFromSuperview() }
