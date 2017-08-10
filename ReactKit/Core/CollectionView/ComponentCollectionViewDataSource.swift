@@ -55,15 +55,21 @@ final class ComponentCollectionViewDataSource: NSObject {
 
 extension ComponentCollectionViewDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! BaseComponentCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
 
-        cell.removeView()
-
-        if let component = rendererDataSource.component(at: indexPath) {
-            cell.configure(with: component)
+        if let componentCell = cell as? ComponentDisplayable {
+            configureDisplayable(componentCell, at: indexPath)
         }
 
         return cell
+    }
+
+    internal func configureDisplayable(_ displayable: ComponentDisplayable, at indexPath: IndexPath) {
+        displayable.removeView()
+
+        if let component = rendererDataSource.component(at: indexPath) {
+            displayable.configure(with: component)
+        }
     }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
