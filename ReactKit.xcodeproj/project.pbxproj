@@ -18,6 +18,7 @@
 		D19347E41F3BDEE2003CA3DC /* CacherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19347E21F3BDECB003CA3DC /* CacherTests.swift */; };
 		D19347E51F3BDEE5003CA3DC /* RendererTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19347E31F3BDECB003CA3DC /* RendererTests.swift */; };
 		D19347E71F3BE5F9003CA3DC /* ComponentRendererProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19347E61F3BE5F9003CA3DC /* ComponentRendererProvider.swift */; };
+		D19347E91F3C657F003CA3DC /* ComponentCollectionViewDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19347E81F3C657F003CA3DC /* ComponentCollectionViewDataSourceTests.swift */; };
 		D19A41FF1F33D74400B46FC8 /* UIKitComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19A41FB1F33D66500B46FC8 /* UIKitComponent.swift */; };
 		D1A43E8F1F347E930029A912 /* TranslatorMultipleContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A43E8E1F347E930029A912 /* TranslatorMultipleContainerTests.swift */; };
 		D1A43E911F34935A0029A912 /* VirtualDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A43E901F34935A0029A912 /* VirtualDataSource.swift */; };
@@ -83,6 +84,7 @@
 		D19347E21F3BDECB003CA3DC /* CacherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CacherTests.swift; path = Renderer/CacherTests.swift; sourceTree = "<group>"; };
 		D19347E31F3BDECB003CA3DC /* RendererTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RendererTests.swift; path = Renderer/RendererTests.swift; sourceTree = "<group>"; };
 		D19347E61F3BE5F9003CA3DC /* ComponentRendererProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComponentRendererProvider.swift; path = Core/Renderer/ComponentRendererProvider.swift; sourceTree = "<group>"; };
+		D19347E81F3C657F003CA3DC /* ComponentCollectionViewDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentCollectionViewDataSourceTests.swift; sourceTree = "<group>"; };
 		D19A41FB1F33D66500B46FC8 /* UIKitComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIKitComponent.swift; path = Core/Components/UIKitComponent.swift; sourceTree = "<group>"; };
 		D1A43E8E1F347E930029A912 /* TranslatorMultipleContainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatorMultipleContainerTests.swift; sourceTree = "<group>"; };
 		D1A43E901F34935A0029A912 /* VirtualDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VirtualDataSource.swift; path = Core/Renderer/VirtualDataSource.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				D1A43E8E1F347E930029A912 /* TranslatorMultipleContainerTests.swift */,
 				D1A43EA01F35EA880029A912 /* SectionTests.swift */,
 				D1CA52A61F36158A004DF117 /* ComponentCollectionViewLayoutTests.swift */,
+				D19347E81F3C657F003CA3DC /* ComponentCollectionViewDataSourceTests.swift */,
 				D121D3081F2CF31800D9B144 /* Mocks.swift */,
 				D151039E1F0D1AC800213882 /* Info.plist */,
 			);
@@ -496,6 +499,7 @@
 				D1CAC9B11F334D6600F26B9A /* ComponentDimensionTests.swift in Sources */,
 				D121D30A1F2CF31C00D9B144 /* TranslatorTests.swift in Sources */,
 				D1A43E8F1F347E930029A912 /* TranslatorMultipleContainerTests.swift in Sources */,
+				D19347E91F3C657F003CA3DC /* ComponentCollectionViewDataSourceTests.swift in Sources */,
 				D1CA52A71F36158A004DF117 /* ComponentCollectionViewLayoutTests.swift in Sources */,
 				D121D30B1F2CF31E00D9B144 /* Mocks.swift in Sources */,
 				D19347E41F3BDEE2003CA3DC /* CacherTests.swift in Sources */,
