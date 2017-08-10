@@ -82,9 +82,11 @@ class Section {
 
         // TODO: cache attributes
         for row in rows {
-            let newAttribute = UICollectionViewLayoutAttributes(forCellWith: row.indexPath)
-            newAttribute.frame = row.layout?.frame ?? .zero
-            attributes.append(newAttribute)
+            if let rowFrame = row.layout?.frame {
+                let newAttribute = UICollectionViewLayoutAttributes(forCellWith: row.indexPath)
+                newAttribute.frame = rowFrame
+                attributes.append(newAttribute)
+            }
         }
 
         return attributes
