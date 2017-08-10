@@ -15,7 +15,7 @@ private let identifier = "Identifier"
 ///
 final class ComponentCollectionViewDataSource: NSObject {
 
-    fileprivate let renderer: Renderer = Renderer()
+    fileprivate let renderer: Renderer = Renderer(cacher: Cacher(), layout: ComponentCollectionViewLayout())
 
     var collectionViewLayout: ComponentCollectionViewLayout {
         return renderer.layout

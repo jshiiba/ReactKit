@@ -24,14 +24,15 @@ protocol ComponentDataSource {
 final class Renderer {
 
     /// dependencies
-    let cacher: Cacher
+    let cacher: ComponentCache
     let layout: ComponentCollectionViewLayout
 
     fileprivate var sections: [Section] = []
 
-    init() {
-        self.cacher = Cacher()
-        self.layout = ComponentCollectionViewLayout()
+    // , translator: ComponentTranslator, reconciler: ComponentReconciler
+    init(cacher: ComponentCache, layout: ComponentCollectionViewLayout) {
+        self.cacher = cacher
+        self.layout = layout
     }
 
     /// Renders the Component Tree into Sections.
