@@ -137,6 +137,7 @@ Inspiration:
 2. Make the Store take a Generic StateType
 3. Make protocols for all objects in the Renderer for easier testability
 4. Optimizations to renderer algorithms
-5. Allow for Other types of Layouts within a Section, not just FlowLayout
-6. Allow inserting and removing of index paths. Right now only updating works.
-7. Support rotations
+5. Minimize Copying of virtual datasource and component tree within the Renderer. Look into a copy-on-write wrapper or passing large value types by reference.
+6. Allow for Other types of Layouts within a Section, not just FlowLayout
+7. Allow inserting and removing of index paths. Right now only updating works.
+8. Support rotations

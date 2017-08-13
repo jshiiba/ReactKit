@@ -54,6 +54,6 @@ struct LabelProps: LabelPropType {
 
 extension LabelProps: Equatable {
     static func ==(lhs: LabelProps, rhs: LabelProps) -> Bool {
-        return lhs.title == rhs.title
+        return lhs.title == rhs.title && lhs.textAlignment == rhs.textAlignment
     }
 }

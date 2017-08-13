@@ -21,6 +21,6 @@ protocol Reducer {
 
 struct AppReducer: Reducer {
     func handle(_ action: Action, with state: AppState) -> AppState {
-        return countersReducer(action: action, state: state)
+        return CounterAppState.reducer(action: action, state: state)
     }
 }
