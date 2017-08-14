@@ -15,9 +15,10 @@
 		D152A1461F2E2229004C1B47 /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D152A1451F2E2229004C1B47 /* Reducer.swift */; };
 		D152A1481F2E239E004C1B47 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D152A1471F2E239E004C1B47 /* AppState.swift */; };
 		D152A14A1F2E63DC004C1B47 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = D152A1491F2E63DC004C1B47 /* Button.swift */; };
+		D16E073D1F41AD1C00BCB743 /* ClosureSleeveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E073C1F41AD1C00BCB743 /* ClosureSleeveTests.swift */; };
+		D16E07411F41BBF700BCB743 /* ComponentDataSourceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E07401F41BBF700BCB743 /* ComponentDataSourceProvider.swift */; };
 		D19347E41F3BDEE2003CA3DC /* CacherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19347E21F3BDECB003CA3DC /* CacherTests.swift */; };
 		D19347E51F3BDEE5003CA3DC /* RendererTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19347E31F3BDECB003CA3DC /* RendererTests.swift */; };
-		D19347E71F3BE5F9003CA3DC /* ComponentRendererProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19347E61F3BE5F9003CA3DC /* ComponentRendererProvider.swift */; };
 		D19347E91F3C657F003CA3DC /* ComponentCollectionViewDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19347E81F3C657F003CA3DC /* ComponentCollectionViewDataSourceTests.swift */; };
 		D19347EB1F3C770E003CA3DC /* VirtualDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19347EA1F3C770E003CA3DC /* VirtualDataSourceTests.swift */; };
 		D19A41FF1F33D74400B46FC8 /* UIKitComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19A41FB1F33D66500B46FC8 /* UIKitComponent.swift */; };
@@ -32,8 +33,8 @@
 		D1BBA2871F2E043C003FE577 /* TestingAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2841F2E0412003FE577 /* TestingAppDelegate.swift */; };
 		D1BBA2881F2E043F003FE577 /* Base.lproj in Resources */ = {isa = PBXBuildFile; fileRef = D1BBA2801F2E0412003FE577 /* Base.lproj */; };
 		D1BBA28A1F2E0446003FE577 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1BBA2811F2E0412003FE577 /* Assets.xcassets */; };
-		D1BBA29B1F2E055A003FE577 /* BaseComponentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA29A1F2E0549003FE577 /* BaseComponentCell.swift */; };
-		D1BBA29C1F2E055C003FE577 /* BaseComponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2981F2E0549003FE577 /* BaseComponentViewController.swift */; };
+		D1BBA29B1F2E055A003FE577 /* ComponentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA29A1F2E0549003FE577 /* ComponentCell.swift */; };
+		D1BBA29C1F2E055C003FE577 /* ComponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2981F2E0549003FE577 /* ComponentViewController.swift */; };
 		D1BBA29D1F2E055F003FE577 /* ComponentCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2991F2E0549003FE577 /* ComponentCollectionViewDataSource.swift */; };
 		D1BBA2A11F2E0592003FE577 /* ComponentLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2A01F2E057D003FE577 /* ComponentLayout.swift */; };
 		D1BBA2BC1F2E0685003FE577 /* Translator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA2B71F2E0670003FE577 /* Translator.swift */; };
@@ -82,9 +83,10 @@
 		D152A1451F2E2229004C1B47 /* Reducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Reducer.swift; path = Core/Redux/Reducer.swift; sourceTree = "<group>"; };
 		D152A1471F2E239E004C1B47 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppState.swift; path = Core/Redux/AppState.swift; sourceTree = "<group>"; };
 		D152A1491F2E63DC004C1B47 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Button.swift; path = Core/Components/Button.swift; sourceTree = "<group>"; };
+		D16E073C1F41AD1C00BCB743 /* ClosureSleeveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosureSleeveTests.swift; sourceTree = "<group>"; };
+		D16E07401F41BBF700BCB743 /* ComponentDataSourceProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ComponentDataSourceProvider.swift; path = Core/CollectionView/ComponentDataSourceProvider.swift; sourceTree = "<group>"; };
 		D19347E21F3BDECB003CA3DC /* CacherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CacherTests.swift; path = Renderer/CacherTests.swift; sourceTree = "<group>"; };
 		D19347E31F3BDECB003CA3DC /* RendererTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RendererTests.swift; path = Renderer/RendererTests.swift; sourceTree = "<group>"; };
-		D19347E61F3BE5F9003CA3DC /* ComponentRendererProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComponentRendererProvider.swift; path = Core/Renderer/ComponentRendererProvider.swift; sourceTree = "<group>"; };
 		D19347E81F3C657F003CA3DC /* ComponentCollectionViewDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentCollectionViewDataSourceTests.swift; sourceTree = "<group>"; };
 		D19347EA1F3C770E003CA3DC /* VirtualDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualDataSourceTests.swift; sourceTree = "<group>"; };
 		D19A41FB1F33D66500B46FC8 /* UIKitComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIKitComponent.swift; path = Core/Components/UIKitComponent.swift; sourceTree = "<group>"; };
@@ -100,9 +102,9 @@
 		D1BBA2821F2E0412003FE577 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1BBA2831F2E0412003FE577 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = main.swift; path = "Supporting FIles/main.swift"; sourceTree = "<group>"; };
 		D1BBA2841F2E0412003FE577 /* TestingAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TestingAppDelegate.swift; path = "Supporting FIles/TestingAppDelegate.swift"; sourceTree = "<group>"; };
-		D1BBA2981F2E0549003FE577 /* BaseComponentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseComponentViewController.swift; path = Core/CollectionView/BaseComponentViewController.swift; sourceTree = "<group>"; };
+		D1BBA2981F2E0549003FE577 /* ComponentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComponentViewController.swift; path = Core/CollectionView/ComponentViewController.swift; sourceTree = "<group>"; };
 		D1BBA2991F2E0549003FE577 /* ComponentCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComponentCollectionViewDataSource.swift; path = Core/CollectionView/ComponentCollectionViewDataSource.swift; sourceTree = "<group>"; };
-		D1BBA29A1F2E0549003FE577 /* BaseComponentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseComponentCell.swift; path = Core/CollectionView/BaseComponentCell.swift; sourceTree = "<group>"; };
+		D1BBA29A1F2E0549003FE577 /* ComponentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComponentCell.swift; path = Core/CollectionView/ComponentCell.swift; sourceTree = "<group>"; };
 		D1BBA2A01F2E057D003FE577 /* ComponentLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComponentLayout.swift; path = Core/Layout/ComponentLayout.swift; sourceTree = "<group>"; };
 		D1BBA2B61F2E0670003FE577 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Renderer.swift; path = Core/Renderer/Renderer.swift; sourceTree = "<group>"; };
 		D1BBA2B71F2E0670003FE577 /* Translator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Translator.swift; path = Core/Renderer/Translator.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				D1A43EA01F35EA880029A912 /* SectionTests.swift */,
 				D1CA52A61F36158A004DF117 /* ComponentCollectionViewLayoutTests.swift */,
 				D19347E81F3C657F003CA3DC /* ComponentCollectionViewDataSourceTests.swift */,
+				D16E073C1F41AD1C00BCB743 /* ClosureSleeveTests.swift */,
 				D121D3081F2CF31800D9B144 /* Mocks.swift */,
 				D151039E1F0D1AC800213882 /* Info.plist */,
 			);
@@ -275,8 +278,9 @@
 		D1BBA2971F2E0526003FE577 /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				D1BBA29A1F2E0549003FE577 /* BaseComponentCell.swift */,
-				D1BBA2981F2E0549003FE577 /* BaseComponentViewController.swift */,
+				D1BBA29A1F2E0549003FE577 /* ComponentCell.swift */,
+				D1BBA2981F2E0549003FE577 /* ComponentViewController.swift */,
+				D16E07401F41BBF700BCB743 /* ComponentDataSourceProvider.swift */,
 				D1BBA2991F2E0549003FE577 /* ComponentCollectionViewDataSource.swift */,
 				D152A13C1F2E13DD004C1B47 /* ComponentCollectionViewLayout.swift */,
 			);
@@ -306,7 +310,6 @@
 		D1BBA2B51F2E0665003FE577 /* Renderer */ = {
 			isa = PBXGroup;
 			children = (
-				D19347E61F3BE5F9003CA3DC /* ComponentRendererProvider.swift */,
 				D1BBA2BB1F2E0670003FE577 /* Cacher.swift */,
 				D1BBA2B81F2E0670003FE577 /* Reconciler.swift */,
 				D1BBA2B61F2E0670003FE577 /* Renderer.swift */,
@@ -467,16 +470,17 @@
 				D1F7D7261F30932E003AAE5A /* ComponentFlowLayout.swift in Sources */,
 				D1BBA2D61F2E08FA003FE577 /* Row.swift in Sources */,
 				D1F7D7171F2E721A003AAE5A /* LayoutExampleViewController.swift in Sources */,
-				D1BBA29B1F2E055A003FE577 /* BaseComponentCell.swift in Sources */,
+				D1BBA29B1F2E055A003FE577 /* ComponentCell.swift in Sources */,
 				D1A43E991F349B400029A912 /* Container.swift in Sources */,
 				D1BF677D1F3B33F900B2D9AE /* HelloWorldExampleViewController.swift in Sources */,
-				D1BBA29C1F2E055C003FE577 /* BaseComponentViewController.swift in Sources */,
+				D1BBA29C1F2E055C003FE577 /* ComponentViewController.swift in Sources */,
 				D1F7D71F1F2F3E16003AAE5A /* CounterRedux.swift in Sources */,
 				D1BBA2A11F2E0592003FE577 /* ComponentLayout.swift in Sources */,
 				D1CA52AE1F37946A004DF117 /* RenderedLayout.swift in Sources */,
 				D152A1461F2E2229004C1B47 /* Reducer.swift in Sources */,
 				D1BBA2CA1F2E06FF003FE577 /* Label.swift in Sources */,
 				D1BBA2BF1F2E068B003FE577 /* Renderer.swift in Sources */,
+				D16E07411F41BBF700BCB743 /* ComponentDataSourceProvider.swift in Sources */,
 				D1BBA2861F2E0436003FE577 /* AppDelegate.swift in Sources */,
 				D1BBA2BE1F2E0689003FE577 /* Reconciler.swift in Sources */,
 				D1A43E911F34935A0029A912 /* VirtualDataSource.swift in Sources */,
@@ -485,7 +489,6 @@
 				D152A1481F2E239E004C1B47 /* AppState.swift in Sources */,
 				D1BBA2851F2E0419003FE577 /* main.swift in Sources */,
 				D152A13D1F2E13EF004C1B47 /* ComponentCollectionViewLayout.swift in Sources */,
-				D19347E71F3BE5F9003CA3DC /* ComponentRendererProvider.swift in Sources */,
 				D1F7D71D1F2E8CB9003AAE5A /* ExampleTableViewController.swift in Sources */,
 				D19A41FF1F33D74400B46FC8 /* UIKitComponent.swift in Sources */,
 				D1F7D7191F2E7234003AAE5A /* ReduxView.swift in Sources */,
@@ -502,6 +505,7 @@
 				D1CAC9B11F334D6600F26B9A /* ComponentDimensionTests.swift in Sources */,
 				D121D30A1F2CF31C00D9B144 /* TranslatorTests.swift in Sources */,
 				D1A43E8F1F347E930029A912 /* TranslatorMultipleContainerTests.swift in Sources */,
+				D16E073D1F41AD1C00BCB743 /* ClosureSleeveTests.swift in Sources */,
 				D19347E91F3C657F003CA3DC /* ComponentCollectionViewDataSourceTests.swift in Sources */,
 				D1CA52A71F36158A004DF117 /* ComponentCollectionViewLayoutTests.swift in Sources */,
 				D121D30B1F2CF31E00D9B144 /* Mocks.swift in Sources */,

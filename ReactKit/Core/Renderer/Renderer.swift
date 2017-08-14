@@ -9,9 +9,9 @@
 import UIKit
 
 ///
-/// DataSource for a BaseComponentViewController
+/// DataSource for a ComponentCollectionViewDataSource
 ///
-protocol ComponentDataSource {
+protocol RendererDataSource {
     var componentLayout: ComponentCollectionViewLayout { get }
     var numberOfSections: Int { get }
     func numberOfItems(in section: Int) -> Int
@@ -22,7 +22,7 @@ protocol ComponentRenderer {
     func render(_ rootComponent: Component, in frame: CGRect, translation: Translation, reconciliation: Reconciliation) -> [IndexPath]
 }
 
-typealias ComponentRendererDataSource = ComponentDataSource & ComponentRenderer
+typealias ComponentRendererDataSource = RendererDataSource & ComponentRenderer
 
 ///
 /// Object that renders Components into a virtual CollectionViewDataSource
@@ -59,15 +59,15 @@ extension Renderer: ComponentRenderer {
 
         layout.calculateLayout(for: &sections, in: frame)
 
-        let cachedSections = cacher.cache(sections)
+        var cachedSections = cacher.cache(sections)
 
-        return reconciliation(sections, cachedSections)
+        return reconciliation(&sections, &cachedSections)
     }
 }
 
-// MARK: -  ComponentDataSource
+// MARK: - RendererDataSource
 
-extension Renderer: ComponentDataSource {
+extension Renderer: RendererDataSource {
     var componentLayout: ComponentCollectionViewLayout {
         return layout as! ComponentCollectionViewLayout
     }

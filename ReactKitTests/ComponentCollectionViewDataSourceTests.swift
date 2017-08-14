@@ -57,11 +57,11 @@ class MockComponentCollectionView: UICollectionView {
     }
 
     override func dequeueReusableCell(withReuseIdentifier identifier: String, for indexPath: IndexPath) -> UICollectionViewCell {
-        return BaseComponentCell()
+        return ComponentCell()
     }
 }
 
-class MockBaseComponentCell: ComponentDisplayable {
+class MockComponentCell: ComponentDisplayable {
     var removeViewCalled = false
     func removeView() {
         removeViewCalled = true
@@ -73,16 +73,16 @@ class MockBaseComponentCell: ComponentDisplayable {
 }
 
 class ComponentCollectionViewDataSourceTests: XCTestCase {
-    var mockCell: MockBaseComponentCell!
+    var mockCell: MockComponentCell!
     var mockRendererDataSource: MockComponentRendererDataSource!
     var mockCollectionView: MockComponentCollectionView!
-    var dataSource: ComponentCollectionViewDataSource!
+    var dataSource: ComponentViewControllerDataSource!
     override func setUp() {
         super.setUp()
-        mockCell = MockBaseComponentCell()
+        mockCell = MockComponentCell()
         mockRendererDataSource = MockComponentRendererDataSource()
         mockCollectionView = MockComponentCollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        dataSource = ComponentCollectionViewDataSource(rendererDataSource: mockRendererDataSource)
+        dataSource = ComponentViewControllerDataSource(rendererDataSource: mockRendererDataSource)
         dataSource.componentCollectionView = mockCollectionView
     }
 
@@ -93,7 +93,7 @@ class ComponentCollectionViewDataSourceTests: XCTestCase {
     }
 
     func testThatCellWasRegisteredWithClass() {
-        XCTAssertNotNil(mockCollectionView.usedCellClass as? BaseComponentCell.Type)
+        XCTAssertNotNil(mockCollectionView.usedCellClass as? ComponentCell.Type)
     }
 
     func testThatCollectionViewIsAutoResizing() {
@@ -117,7 +117,7 @@ class ComponentCollectionViewDataSourceTests: XCTestCase {
 
     func testThatDequeueReturnsBaseComponentCell() {
         let cell = dataSource.collectionView(dataSource.componentCollectionView, cellForItemAt: IndexPath(row: 0, section: 0))
-        XCTAssertTrue(cell is BaseComponentCell)
+        XCTAssertTrue(cell is ComponentCell)
     }
 
     func testThatCellRemovesView() {

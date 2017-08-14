@@ -8,7 +8,7 @@
 
 import Foundation
 
-class HelloWorldViewController: BaseComponentViewController {
+class HelloWorldViewController: ComponentViewController {
     override func render() -> Component {
         return Label(props: LabelProps(title: "Hello World!",
                                        textAlignment: .center,

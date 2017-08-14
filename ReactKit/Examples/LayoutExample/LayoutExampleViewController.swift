@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class LayoutExampleViewController: BaseComponentViewController {
+final class LayoutExampleViewController: ComponentViewController {
     struct Props: LayoutViewProps {
         let labels: [LabelPropType] = [
             LabelProps(title: "1", textAlignment: .center, backgroundColor: .red,

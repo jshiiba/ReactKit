@@ -11,16 +11,16 @@ import UIKit
 ///
 /// The base class view controller that renders Components in a UICollectionView
 ///
-class BaseComponentViewController: UIViewController {
+class ComponentViewController: UIViewController {
 
-    var dataSource: ComponentCollectionViewDataSource!
+    internal var dataSourceProvider: ComponentCollectionViewDataSourceProvider = ComponentDataSourceProvider()
+    internal var dataSource: ComponentCollectionViewDataSource!
     var collectionView: UICollectionView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let rendererDataSource = ComponentRendererProvider.provide()
-        dataSource = ComponentCollectionViewDataSource(rendererDataSource: rendererDataSource)
+        dataSource = dataSourceProvider.provide()
 
         collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: dataSource.collectionViewLayout)
         collectionView.dataSource = dataSource

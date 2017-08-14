@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias Reconciliation = ([Section], [Section]?) -> [IndexPath]
+typealias Reconciliation = (inout [Section], inout [Section]?) -> [IndexPath]
 
 /// Performs reconcilation between a new virtual datasource and a cached datasource
 /// It determines what has changed between the old and new versions and outputs those
@@ -16,7 +16,7 @@ typealias Reconciliation = ([Section], [Section]?) -> [IndexPath]
 /// - parameters: Current Components with new props
 /// - returns: IndexPaths to update
 final class Reconciler {
-    static func reconcile(_ currentSections: [Section], cachedSections: [Section]?) -> [IndexPath] {
+    static func reconcile(_ currentSections: inout [Section], cachedSections: inout [Section]?) -> [IndexPath] {
         guard let cachedSections = cachedSections else {
             return currentSections
             .reduce([]) { (result, section) in

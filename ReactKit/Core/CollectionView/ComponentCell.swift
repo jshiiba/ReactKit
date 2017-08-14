@@ -1,5 +1,5 @@
 //
-//  BaseComponentCell.swift
+//  ComponentCell.swift
 //  ReactKit
 //
 //  Created by Justin Shiiba on 7/8/17.
@@ -17,11 +17,11 @@ protocol ComponentDisplayable {
 /// A generic UICollectionView that can be configured with a UIView
 /// All components use this base class to display content
 ///
-final class BaseComponentCell: UICollectionViewCell {
+final class ComponentCell: UICollectionViewCell {
     fileprivate var previousView: UIView?
 }
 
-extension BaseComponentCell: ComponentDisplayable {
+extension ComponentCell: ComponentDisplayable {
     func removeView() {
         previousView = nil
         contentView.subviews.forEach { $0.removeFromSuperview() }

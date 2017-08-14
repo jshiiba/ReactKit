@@ -8,18 +8,21 @@
 
 import UIKit
 
-private let identifier = "Identifier"
+typealias ComponentCollectionViewDataSource = ComponentDataSource & UICollectionViewDataSource
+
+protocol ComponentDataSource: class {
+    var collectionViewLayout: ComponentCollectionViewLayout { get }
+    var componentCollectionView: UICollectionView! { get set }
+    func setComponent(_ component: Component)
+}
 
 ///
-/// Main DataSource for a ComponentViewController that uses a Renderer
+/// Main DataSource for a ComponentViewController
 ///
-final class ComponentCollectionViewDataSource: NSObject {
+final class ComponentViewControllerDataSource: NSObject {
 
     fileprivate let rendererDataSource: ComponentRendererDataSource
-
-    var collectionViewLayout: ComponentCollectionViewLayout {
-        return rendererDataSource.componentLayout
-    }
+    fileprivate let identifier = "Identifier"
 
     var componentCollectionView: UICollectionView! {
         didSet {
@@ -35,9 +38,17 @@ final class ComponentCollectionViewDataSource: NSObject {
     /// - parameters:
     ///     - collectionView
     private func configure(_ collectionView: UICollectionView) {
-        collectionView.register(BaseComponentCell.self, forCellWithReuseIdentifier: identifier)
+        collectionView.register(ComponentCell.self, forCellWithReuseIdentifier: identifier)
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.backgroundColor = .white
+    }
+}
+
+// MARK: - ComponentDataSource
+
+extension ComponentViewControllerDataSource: ComponentDataSource {
+    var collectionViewLayout: ComponentCollectionViewLayout {
+        return rendererDataSource.componentLayout
     }
 
     /// Updates collectionview with new components and props, reloads updated cells
@@ -51,9 +62,10 @@ final class ComponentCollectionViewDataSource: NSObject {
         componentCollectionView.reloadItems(at: updatedIndexPaths)
     }
 }
+
 // MARK: - UICollectionViewDataSource
 
-extension ComponentCollectionViewDataSource: UICollectionViewDataSource {
+extension ComponentViewControllerDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
 

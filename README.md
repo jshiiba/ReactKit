@@ -80,11 +80,11 @@ struct Label: ComponentReducing, ComponentLike {
 }
 ```
 
-#### BaseComponentViewController
-Any view controller that wants to use Components needs to subclass `BaseComponentViewController` and overrides its `render` method by providing the Component(s) you'd like the render. All of the complex rendering and reconcilation are done behind-the-scenes and abstracted behind the `Renderer`. When new state is received, call `triggerRender` and the View will rerender based on the new state. See the `ReduxExample`.
+#### ComponentViewController
+Any view controller that wants to use Components needs to subclass `ComponentViewController` and overrides its `render` method by providing the Component(s) you'd like the render. All of the complex rendering and reconcilation are done behind-the-scenes and abstracted behind the `Renderer`. When new state is received, call `triggerRender` and the View will rerender based on the new state. See the `ReduxExample`.
 
 ```swift
-class HelloWorldViewController: BaseComponentViewController {
+class HelloWorldViewController: ComponentViewController {
 	override func render() -> Component {
 		return Label(props: LabelProps(title: "Hello World!",
                                       textAlignment: .center,
